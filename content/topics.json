@@ -211,6 +211,13 @@
       "en_title": "How StatPlay Was Built",
       "ja_path": "/columns/how_statplay_was_built.html",
       "en_path": "/en/columns/how_statplay_was_built.html"
+    },
+    {
+      "slug": "income_prediction",
+      "ja_title": "あなたの年収は、統計でどこまで当てられるか",
+      "en_title": "How Far Can Statistics Predict Your Income?",
+      "ja_path": "/columns/income_prediction.html",
+      "en_path": "/en/columns/income_prediction.html"
     }
   ],
   "title_translations": {

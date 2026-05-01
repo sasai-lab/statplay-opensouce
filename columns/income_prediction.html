@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta content="年齢・性別・都道府県という3つの情報だけで、あなたの年収はどこまで予測できるのか。賃金構造基本統計調査の公開データをもとに、統計が出せる「予測の幅」をインタラクティブに体感する。" name="description"/>
+<meta content="年収予測, 統計 年収, 賃金統計, 信頼区間, 予測区間, 重回帰分析, 統計検定2級" name="keywords"/>
+<meta content="Sasai Lab" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<title>あなたの年収は、統計でどこまで当てられるか — StatPlay</title>
+<link href="https://statplay.sasailab.com/columns/income_prediction.html" rel="canonical"/>
+<link href="https://statplay.sasailab.com/columns/income_prediction.html" hreflang="ja" rel="alternate"/>
+<link href="https://statplay.sasailab.com/en/columns/income_prediction.html" hreflang="en" rel="alternate"/>
+<link href="https://statplay.sasailab.com/columns/income_prediction.html" hreflang="x-default" rel="alternate"/>
+<meta content="article" property="og:type"/>
+<meta content="StatPlay" property="og:site_name"/>
+<meta content="あなたの年収は、統計でどこまで当てられるか" property="og:title"/>
+<meta content="年齢・性別・都道府県という3つの情報だけで、年収はどこまで予測できるのか。統計が出せる「予測の幅」をインタラクティブに体感。" property="og:description"/>
+<meta content="https://statplay.sasailab.com/columns/income_prediction.html" property="og:url"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
+<meta content="StatPlay — 年収予測" property="og:image:alt"/>
+<meta content="ja_JP" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="あなたの年収は、統計でどこまで当てられるか" name="twitter:title"/>
+<meta content="年齢・性別・都道府県という3つの情報だけで、年収はどこまで予測できるのか。統計が出せる「予測の幅」をインタラクティブに体感。" name="twitter:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<meta content="#00f3ff" name="theme-color"/>
+<link href="../icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="../icons/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../icons/icon-192.png" rel="icon" type="image/png"/>
+<link href="../css/stat_cyber.css" rel="stylesheet"/>
+<style>
+body.column-page #mainNav .nav-links a,
+body.column-page #mainNav .nav-links button { font-size: 12px; }
+body.column-page section { padding-top: 0; }
+body.column-page .col-breadcrumb {
+  max-width: 800px; margin: 48px auto 4px; padding: 0 24px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.column-page .col-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.column-page .col-breadcrumb a:hover { text-decoration: underline; }
+body.column-page .col-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.column-page main { padding-top: 4px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+/* ── Cinematic hero ── */
+.hero-cinema {
+  position: relative; width: 100%; min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; z-index: 2;
+}
+#heroCanvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+.hero-content {
+  position: relative; z-index: 2; text-align: center;
+  max-width: 720px; padding: 0 24px;
+  text-shadow: 0 0 30px var(--bg), 0 0 60px var(--bg);
+}
+body.theme-light .hero-content {
+  text-shadow: 0 0 30px rgba(240,243,250,.9), 0 0 60px rgba(240,243,250,.8);
+}
+.hero-content h1 {
+  font-family: 'Courier New', monospace; font-size: clamp(24px, 5vw, 38px);
+  line-height: 1.4; color: var(--text); margin-bottom: 20px;
+  opacity: 0; transform: translateY(20px);
+}
+.hero-content h1.hero-in {
+  opacity: 1; transform: translateY(0);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.hero-content h1 em {
+  font-style: normal; color: var(--yellow);
+  text-shadow: 0 0 24px rgba(255,230,0,.5);
+}
+.hero-content .hook-sub {
+  color: var(--dim); font-size: 15px; line-height: 1.7;
+  opacity: 0;
+}
+.hero-content .hook-sub.hero-in {
+  opacity: 1; transition: opacity .8s ease .6s;
+}
+.hero-content .hook-sub strong { color: var(--magenta); }
+.hero-impact {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(36px, 10vw, 72px); font-weight: 900;
+  color: var(--yellow); letter-spacing: -2px;
+  text-shadow: 0 0 40px rgba(255,230,0,.6), 0 0 80px rgba(255,230,0,.3);
+  opacity: 0; transform: scale(2);
+  margin-bottom: 20px;
+}
+.hero-impact.hero-in {
+  opacity: 1; transform: scale(1);
+  transition: opacity .4s ease, transform .5s cubic-bezier(.17,.67,.3,1.3);
+}
+body.theme-light .hero-impact {
+  text-shadow: 0 0 20px rgba(180,140,0,.3);
+}
+.hero-scroll {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  font-family: 'Courier New', monospace; font-size: 12px; color: var(--dim);
+  opacity: 0; animation: heroFadeIn 1s ease 3.5s forwards;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  cursor: pointer; z-index: 3; border: none; background: none;
+  padding: 8px 16px; transition: color .2s;
+}
+.hero-scroll:hover { color: var(--cyan); }
+.hero-scroll:hover .chevron { border-color: var(--cyan); }
+.hero-scroll .chevron {
+  width: 20px; height: 20px; border-right: 2px solid var(--cyan);
+  border-bottom: 2px solid var(--cyan);
+  transform: rotate(45deg); animation: heroChevron 1.5s ease-in-out infinite;
+}
+@keyframes heroChevron {
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: .5; }
+  50% { transform: rotate(45deg) translateY(6px); opacity: 1; }
+}
+@keyframes heroFadeIn { to { opacity: 1; } }
+
+/* Section styling */
+.col-section {
+  margin-bottom: 48px; position: relative; z-index: 2;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.col-section.visible { opacity: 1; transform: translateY(0); }
+.col-section h2 {
+  font-family: 'Courier New', monospace; font-size: 18px;
+  color: var(--cyan); margin-bottom: 16px; letter-spacing: 1px;
+}
+.col-section p, .col-section li {
+  color: var(--text); font-size: 15px; line-height: 1.85; margin-bottom: 12px;
+}
+.col-section blockquote {
+  border-left: 3px solid var(--cyan); padding: 12px 16px; margin: 16px 0;
+  background: rgba(0,243,255,.03); color: var(--text); font-size: 15px; line-height: 1.85;
+}
+
+/* Section divider */
+.col-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 56px 0 48px; position: relative; z-index: 2;
+}
+.col-divider::before, .col-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,243,255,.2), transparent);
+}
+.col-divider .divider-num {
+  font-family: 'Courier New', monospace; font-size: 11px; color: var(--cyan);
+  letter-spacing: 2px; white-space: nowrap; opacity: .6;
+}
+
+/* Takeaway */
+.takeaway {
+  position: relative; z-index: 2;
+  border: 1px solid rgba(255,230,0,.2);
+  background: rgba(255,230,0,.03);
+  padding: 24px 28px; margin: 48px 0 32px;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.takeaway.visible { opacity: 1; transform: translateY(0); }
+.takeaway h3 {
+  font-family: 'Courier New', monospace; font-size: 14px;
+  color: var(--yellow); margin-bottom: 12px; letter-spacing: 1px;
+}
+.takeaway ul { list-style: none; padding: 0; }
+.takeaway li {
+  color: var(--text); font-size: 14px; line-height: 1.8;
+  padding-left: 16px; position: relative; margin-bottom: 6px;
+}
+.takeaway li::before { content: '▸'; position: absolute; left: 0; color: var(--yellow); }
+
+/* Simulator */
+#incomeCanvas { width: 100%; height: 420px; display: block; }
+.sim-result {
+  display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+  margin: 16px 0; padding: 16px;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  font-family: 'Courier New', monospace;
+}
+.sim-result .sim-item { text-align: center; }
+.sim-result .sim-label { font-size: 11px; color: var(--dim); display: block; margin-bottom: 4px; }
+.sim-result .sim-val { font-size: 22px; font-weight: bold; color: var(--cyan); }
+.sim-result .sim-val.mean-val { color: var(--yellow); font-size: 28px; }
+
+.sim-interact {
+  display: grid; grid-template-columns: 1fr; gap: 20px;
+  margin-top: 20px; align-items: start;
+}
+.sim-panel-label {
+  font-family: 'Courier New', monospace; font-size: 11px; color: var(--dim);
+  letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase;
+}
+.sim-ctrl { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.sim-ctrl label {
+  font-family: 'Courier New', monospace; font-size: 13px; color: var(--dim);
+  min-width: 100px;
+}
+.sim-ctrl input[type="range"] { flex: 1; min-width: 80px; }
+.sim-ctrl .val {
+  font-family: 'Courier New', monospace; font-size: 14px;
+  color: var(--yellow); min-width: 36px; text-align: right;
+}
+.sim-ctrl select {
+  flex: 1; min-width: 120px; padding: 6px 10px;
+  background: #0a0e1a; border: 1px solid rgba(0,243,255,.25);
+  color: #d8f7ff; font-family: 'Courier New', monospace; font-size: 13px;
+  cursor: pointer;
+}
+.sim-ctrl select option {
+  background: #0a0e1a; color: #d8f7ff;
+}
+body.theme-light .sim-ctrl select {
+  background: #f5f7fa; border-color: rgba(0,100,130,.25); color: #1a1a2e;
+}
+body.theme-light .sim-ctrl select option {
+  background: #f5f7fa; color: #1a1a2e;
+}
+
+/* Coefficient table */
+.coeff-table-wrap {
+  overflow-x: auto; margin: 16px 0;
+}
+.coeff-table {
+  width: 100%; border-collapse: collapse;
+  font-family: 'Courier New', monospace; font-size: 13px;
+}
+.coeff-table th {
+  text-align: left; padding: 6px 10px; font-size: 11px; color: var(--dim);
+  border-bottom: 1px solid rgba(0,243,255,.2); letter-spacing: 1px;
+}
+.coeff-table td {
+  padding: 5px 10px; border-bottom: 1px solid rgba(0,243,255,.06); color: var(--text);
+}
+.coeff-table td:last-child {
+  color: var(--cyan); font-weight: bold; text-align: right;
+}
+.coeff-table tr:hover { background: rgba(0,243,255,.04); }
+
+/* Formula box */
+.regression-formula {
+  text-align: center; font-family: 'Courier New', monospace;
+  font-size: clamp(13px, 2.5vw, 16px); color: var(--yellow); padding: 20px;
+  border: 1px dashed rgba(255,230,0,.2); margin: 16px 0 24px;
+  background: rgba(255,230,0,.03); line-height: 1.8;
+}
+
+/* Gender buttons */
+.gender-group {
+  display: flex; gap: 8px; flex: 1;
+}
+.gender-btn {
+  padding: 6px 20px; border: 1px solid rgba(0,243,255,.3); background: transparent;
+  color: var(--cyan); font-family: 'Courier New', monospace; font-size: 13px;
+  cursor: pointer; transition: .2s;
+}
+.gender-btn:hover { background: rgba(0,243,255,.08); }
+.gender-btn.active {
+  background: rgba(0,243,255,.15); border-color: var(--cyan);
+  color: var(--text); font-weight: bold;
+}
+body.theme-light .gender-btn.active {
+  background: rgba(0,100,130,.12);
+}
+
+/* Graph share bar */
+.graph-share-bar {
+  display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap;
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid rgba(0,243,255,.08);
+}
+.graph-share-bar .share-btn,
+.share-row .share-btn {
+  padding: 6px 14px; border: 1px solid rgba(0,243,255,.25);
+  background: transparent; color: var(--cyan);
+  font-family: 'Courier New', monospace; font-size: 12px;
+  cursor: pointer; transition: .2s; white-space: nowrap;
+}
+.graph-share-bar .share-btn:hover,
+.share-row .share-btn:hover {
+  background: rgba(0,243,255,.08); border-color: rgba(0,243,255,.5);
+}
+
+/* FAQ */
+.faq-item { border-bottom: 1px solid rgba(0,243,255,.1); }
+.faq-q {
+  display: flex; align-items: center; width: 100%;
+  padding: 16px 0; background: none; border: none;
+  color: var(--text); font-size: 15px; font-weight: bold;
+  font-family: inherit; cursor: pointer; text-align: left;
+  gap: 12px; transition: color .2s;
+}
+.faq-q::before {
+  content: '+'; flex-shrink: 0;
+  width: 24px; height: 24px; display: flex;
+  align-items: center; justify-content: center;
+  border: 1px solid rgba(0,243,255,.3);
+  font-family: 'Courier New', monospace; font-size: 16px;
+  color: var(--cyan); transition: .3s;
+}
+.faq-item.open .faq-q::before { content: '-'; background: rgba(0,243,255,.1); transform: rotate(180deg); }
+.faq-q:hover { color: var(--cyan); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .35s ease;
+  padding: 0 0 0 36px;
+}
+.faq-item.open .faq-a { max-height: 500px; padding: 0 0 16px 36px; }
+.faq-a p { color: var(--dim); font-size: 14px; line-height: 1.8; margin-bottom: 8px; }
+.faq-a p:last-child { margin-bottom: 0; }
+
+/* CTA */
+.col-cta { border-top: none; margin-top: 0; padding-top: 0; padding-bottom: 16px; }
+.cta-headline {
+  font-family: 'Courier New', monospace; font-size: 18px;
+  color: var(--text); margin-bottom: 8px;
+}
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.col-cta .cta-links a {
+  padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
+  color: var(--cyan); text-decoration: none;
+  font-family: 'Courier New', monospace; font-size: 13px; transition: .2s;
+}
+.col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
+.share-row {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* Progress bar */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  width: 0%; transition: width .1s linear;
+  box-shadow: 0 0 8px var(--cyan);
+}
+body.theme-light .progress-bar { box-shadow: none; }
+
+/* Article meta */
+.article-meta {
+  display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+  margin-top: 20px;
+  font-family: 'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+.article-meta span::before {
+  content: ''; display: inline-block;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--cyan); margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* Data source box */
+.data-source {
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  padding: 16px 20px; margin: 20px 0; font-size: 13px; line-height: 1.8;
+  color: var(--dim);
+}
+.data-source a { color: var(--cyan); text-decoration: none; }
+.data-source a:hover { text-decoration: underline; }
+
+/* Light theme */
+body.theme-light .hero-content h1 em { text-shadow: none; }
+body.theme-light .hero-impact { text-shadow: 0 0 20px rgba(180,140,0,.3); }
+body.theme-light .takeaway { border-color: rgba(140,100,0,.2); background: rgba(255,230,0,.05); }
+body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "あなたの年収は、統計でどこまで当てられるか",
+      "description": "年齢・性別・都道府県という3つの情報だけで、あなたの年収はどこまで予測できるのか。賃金構造基本統計調査の公開データをもとに、統計が出せる「予測の幅」をインタラクティブに体感する。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/columns/income_prediction.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://statplay.sasailab.com/columns/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "年収予測"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="column-page">
+<div class="progress-bar" id="progressBar"></div>
+<nav id="mainNav">
+<a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+<div class="nav-links" id="navLinks">
+<a href="../index.html">← StatPlay</a>
+<a href="../en/columns/income_prediction.html" style="font-size:12px">EN</a>
+<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
+</div>
+</nav>
+<!-- ═══ 1. CINEMATIC HERO ═══ -->
+<div class="hero-cinema" id="heroCinema">
+<canvas aria-hidden="true" id="heroCanvas"></canvas>
+<div class="hero-content">
+<div class="hero-impact" id="heroImpact">±196万</div>
+<h1 id="heroTitle">年齢・性別・都道府県。<br/>たった3つで、<br/><em>年収の「幅」が見える。</em></h1>
+<p class="hook-sub" id="heroSub">
+    統計は「ズバリ当てる」道具じゃない。<br/>
+<strong>不確かさを正直に示す</strong>のが、統計の誠実さだ。
+  </p>
+<div class="article-meta" id="heroMeta" style="opacity:0">
+<span>5分で読める</span>
+<span>インタラクティブ解説</span>
+<span>Sasai Lab</span>
+</div>
+</div>
+<button aria-label="コンテンツへスクロール" class="hero-scroll" id="heroScroll" type="button">
+<span>SCROLL</span>
+<div class="chevron"></div>
+</button>
+</div>
+<div aria-label="パンくず" class="col-breadcrumb" style="margin-top:16px">
+<a href="../index.html">StatPlay</a><span class="sep">›</span>
+<span>コラム</span><span class="sep">›</span>
+<span>年収予測</span>
+</div>
+<main>
+<!-- ═══ INTRO ═══ -->
+<div class="col-section">
+<p>
+    統計で年収を当てると聞くと、占いみたいに感じるかもしれません。<br/>
+    でも、年齢・性別・住んでいる地域という3つの情報だけで、
+    かなりのところまで言える。
+  </p>
+<p>
+    「ピンポイントで当てる」のではなく「幅で示す」というのが、
+    統計の正直なやり方です。
+  </p>
+<p>実際に動かしてみてください。</p>
+</div>
+<div class="col-divider"><span class="divider-num">01</span></div>
+<!-- ═══ PREDICTOR ═══ -->
+<div class="col-section" id="predictor">
+<h2>// 年収予測シミュレーター</h2>
+<p>あなたの属性を選んでください。グラフと数値がリアルタイムで連動します。</p>
+<div class="sim-interact">
+<div class="sim-sliders">
+<div class="sim-ctrl">
+<label for="incomeAge">年齢</label>
+<input id="incomeAge" max="65" min="22" step="1" type="range" value="35"/>
+<span class="val" id="incomeAgeVal">35</span><span style="color:var(--dim);font-size:12px">歳</span>
+</div>
+<div class="sim-ctrl">
+<label>性別</label>
+<div class="gender-group">
+<button class="gender-btn active" data-gender="male" type="button">男性</button>
+<button class="gender-btn" data-gender="female" type="button">女性</button>
+</div>
+</div>
+<div class="sim-ctrl">
+<label for="incomePref">都道府県</label>
+<select aria-label="都道府県を選択" id="incomePref">
+<option value="東京都">東京都</option>
+<option value="神奈川県">神奈川県</option>
+<option value="大阪府">大阪府</option>
+<option value="愛知県">愛知県</option>
+<option value="千葉県">千葉県</option>
+<option value="埼玉県">埼玉県</option>
+<option value="京都府">京都府</option>
+<option value="兵庫県">兵庫県</option>
+<option value="北海道">北海道</option>
+<option value="福岡県">福岡県</option>
+<option value="茨城県">茨城県</option>
+<option value="静岡県">静岡県</option>
+<option value="広島県">広島県</option>
+<option value="宮城県">宮城県</option>
+<option value="新潟県">新潟県</option>
+<option value="長野県">長野県</option>
+<option value="岐阜県">岐阜県</option>
+<option value="栃木県">栃木県</option>
+<option value="群馬県">群馬県</option>
+<option value="三重県">三重県</option>
+<option value="滋賀県">滋賀県</option>
+<option value="奈良県">奈良県</option>
+<option value="富山県">富山県</option>
+<option value="石川県">石川県</option>
+<option value="福井県">福井県</option>
+<option value="山梨県">山梨県</option>
+<option value="和歌山県">和歌山県</option>
+<option value="岡山県">岡山県</option>
+<option value="山口県">山口県</option>
+<option value="香川県">香川県</option>
+<option value="徳島県">徳島県</option>
+<option value="愛媛県">愛媛県</option>
+<option value="福島県">福島県</option>
+<option value="山形県">山形県</option>
+<option value="岩手県">岩手県</option>
+<option value="大分県">大分県</option>
+<option value="佐賀県">佐賀県</option>
+<option value="熊本県">熊本県</option>
+<option value="長崎県">長崎県</option>
+<option value="鹿児島県">鹿児島県</option>
+<option value="島根県">島根県</option>
+<option value="鳥取県">鳥取県</option>
+<option value="高知県">高知県</option>
+<option value="秋田県">秋田県</option>
+<option value="宮崎県">宮崎県</option>
+<option value="青森県">青森県</option>
+<option value="沖縄県">沖縄県</option>
+</select>
+</div>
+<div class="sim-ctrl">
+<label for="incomeEdu">学歴</label>
+<select aria-label="学歴を選択" id="incomeEdu">
+<option value="university">大卒（基準）</option>
+<option value="graduate">大学院卒（+80万）</option>
+<option value="vocational">専門・短大卒（−40万）</option>
+<option value="high_school">高卒（−80万）</option>
+</select>
+</div>
+<div class="sim-ctrl">
+<label for="incomeComp">企業規模</label>
+<select aria-label="企業規模を選択" id="incomeComp">
+<option value="large">大企業 100〜999人（基準）</option>
+<option value="enterprise">大手 1000人以上（+60万）</option>
+<option value="medium">中企業 30〜99人（−20万）</option>
+<option value="small">小企業 10〜29人（−60万）</option>
+</select>
+</div>
+</div>
+</div>
+<canvas aria-label="年収予測シミュレーター：ドラッグで年齢操作、正規分布として予測区間と信頼区間を可視化" height="420" id="incomeCanvas"></canvas>
+<div class="sim-result">
+<div class="sim-item">
+<span class="sim-label">予測年収（平均）</span>
+<span class="sim-val mean-val" id="incomeMean">—</span><span style="color:var(--dim);font-size:14px">万円</span>
+</div>
+<div class="sim-item">
+<span class="sim-label"><span style="display:inline-block;width:10px;height:10px;background:var(--cyan);border-radius:2px;margin-right:4px;vertical-align:middle"></span>95%予測区間</span>
+<span class="sim-val" id="incomeRange">—</span>
+</div>
+<div class="sim-item">
+<span class="sim-label"><span style="display:inline-block;width:10px;height:10px;background:var(--yellow);border-radius:2px;margin-right:4px;vertical-align:middle"></span>95%信頼区間</span>
+<span class="sim-val" id="incomeConfRange">—</span>
+</div>
+</div>
+<div class="interval-note" style="margin:10px 0 14px;padding:12px 16px;font-size:13px;line-height:1.7;color:var(--dim);border-left:3px solid rgba(0,243,255,.3);background:rgba(0,243,255,.03)">
+<b style="color:var(--cyan)">予測区間</b>（広い帯）：同じ属性の人を1人選んだとき、その人の年収がこの範囲に入る確率が95%。<br/>
+<b style="color:var(--yellow)">信頼区間</b>（狭い帯）：同じ属性の全員の「真の平均年収」がこの範囲にある確率が95%。<br/>
+<span style="font-size:12px">100人の平均点を推定するのは比較的簡単でも、次に来る1人の点数を当てるのは難しい。個人のばらつきがあるぶん、予測区間は常に信頼区間より広くなります。</span>
+</div>
+<div class="graph-share-bar">
+<button class="share-btn" data-kind="dl" data-share="incomeCanvas" data-title="年収予測シミュレーター">💾 画像保存</button>
+<button class="share-btn" data-kind="url" data-share="incomeCanvas" data-title="年収予測シミュレーター">🔗 URLコピー</button>
+<button class="share-btn" data-kind="x" data-share="incomeCanvas" data-title="年収予測シミュレーター">𝕏 でシェア</button>
+<button class="share-btn" data-kind="native" data-share="incomeCanvas" data-title="年収予測シミュレーター">📤 シェア</button>
+</div>
+</div>
+<div class="col-divider"><span class="divider-num">02</span></div>
+<!-- ═══ HOW IT WORKS ═══ -->
+<div class="col-section">
+<h2>// どうやって予測しているか</h2>
+<p>
+<a href="../topics/mreg.html" style="color:var(--cyan)">重回帰分析</a>という統計手法を使っています。
+    複数の説明変数（年齢・性別・都道府県・学歴・企業規模）から、
+    1つの目的変数（年収）を予測するモデルです。
+  </p>
+<div class="regression-formula">
+  ŷ = f(年齢) + β<sub>性別</sub> + β<sub>都道府県</sub> + β<sub>学歴</sub> + β<sub>企業規模</sub>
+</div>
+<p>
+    各変数の「効果」を足し合わせるだけのシンプルな線形モデルです。<br/>
+    以下が、このシミュレーターで使っているパラメーターの一覧です。
+  </p>
+<h3 style="color:var(--cyan);font-size:15px;margin:24px 0 8px">年齢別ベース年収（万円）</h3>
+<div class="coeff-table-wrap">
+<table class="coeff-table">
+<tr><th>年齢</th><th>22</th><th>25</th><th>30</th><th>35</th><th>40</th><th>45</th><th>50</th><th>55</th><th>60</th><th>65</th></tr>
+<tr><td>年収</td><td>280</td><td>340</td><td>420</td><td>480</td><td>540</td><td>590</td><td>620</td><td>640</td><td>580</td><td>480</td></tr>
+</table>
+</div>
+<p style="font-size:12px;color:var(--dim)">中間の年齢は線形補間で算出。</p>
+<h3 style="color:var(--cyan);font-size:15px;margin:24px 0 8px">性別効果（万円）</h3>
+<div class="coeff-table-wrap">
+<table class="coeff-table">
+<tr><th>性別</th><th>効果</th></tr>
+<tr><td>男性（基準）</td><td>±0</td></tr>
+<tr><td>女性</td><td>−120</td></tr>
+</table>
+</div>
+<h3 style="color:var(--cyan);font-size:15px;margin:24px 0 8px">学歴効果（万円）</h3>
+<div class="coeff-table-wrap">
+<table class="coeff-table">
+<tr><th>学歴</th><th>効果</th></tr>
+<tr><td>大学院卒</td><td>+80</td></tr>
+<tr><td>大卒（基準）</td><td>±0</td></tr>
+<tr><td>専門・短大卒</td><td>−40</td></tr>
+<tr><td>高卒</td><td>−80</td></tr>
+</table>
+</div>
+<h3 style="color:var(--cyan);font-size:15px;margin:24px 0 8px">企業規模効果（万円）</h3>
+<div class="coeff-table-wrap">
+<table class="coeff-table">
+<tr><th>企業規模</th><th>効果</th></tr>
+<tr><td>大手（1000人以上）</td><td>+60</td></tr>
+<tr><td>大企業（100〜999人・基準）</td><td>±0</td></tr>
+<tr><td>中企業（30〜99人）</td><td>−20</td></tr>
+<tr><td>小企業（10〜29人）</td><td>−60</td></tr>
+</table>
+</div>
+<h3 style="color:var(--cyan);font-size:15px;margin:24px 0 8px">都道府県効果（万円・抜粋）</h3>
+<div class="coeff-table-wrap">
+<table class="coeff-table">
+<tr><th>都道府県</th><th>効果</th><th>都道府県</th><th>効果</th><th>都道府県</th><th>効果</th></tr>
+<tr><td>東京都</td><td>+130</td><td>神奈川県</td><td>+80</td><td>大阪府</td><td>+50</td></tr>
+<tr><td>愛知県</td><td>+40</td><td>千葉県</td><td>+30</td><td>福岡県</td><td>+5</td></tr>
+<tr><td>北海道</td><td>−30</td><td>宮崎県</td><td>−60</td><td>青森県</td><td>−70</td></tr>
+<tr><td>沖縄県</td><td>−80</td><td colspan="4" style="font-size:12px;color:var(--dim)">…全47都道府県に対応</td></tr>
+</table>
+</div>
+<p>
+    重回帰分析の仕組みをもっと詳しく知りたい方は、
+    <a href="../topics/mreg.html" style="color:var(--cyan)">重回帰分析のトピックページ</a>で
+    インタラクティブに学べます。
+  </p>
+<div class="data-source">
+    このコラムは厚生労働省「令和5年 賃金構造基本統計調査」を
+    ベースにしています。<br/>
+    出典: <a href="https://www.mhlw.go.jp/toukei/itiran/roudou/chingin/kouzou/z2023/" rel="noopener" target="_blank">https://www.mhlw.go.jp/toukei/itiran/roudou/chingin/kouzou/z2023/ ↗</a><br/><br/>
+    公開データから抽出した代表値をハードコードしており、
+    リアルタイムにAPIから取得しているわけではありません。
+    データの正確性は調査時点のものです。
+  </div>
+</div>
+<div class="col-divider"><span class="divider-num">03</span></div>
+<!-- ═══ AVERAGE vs INDIVIDUAL ═══ -->
+<div class="col-section">
+<h2>// 「平均」と「あなた個人」は違う</h2>
+<p>
+    さっきの予測結果をもう一度見てみます。
+  </p>
+<p>
+    「あなたと同じ属性の人の年収は、平均 ○○万円」<br/>
+    「95%の人が △△万円 〜 □□万円」
+  </p>
+<p>
+    ここで重要なのは、この幅は
+    「同じ属性の人の中での散らばり」だということです。
+  </p>
+<p>
+    あなた個人がこの中のどこにいるかは、
+    統計だけではわかりません。<br/>
+    学歴・職種・勤続年数・運・努力——<br/>
+    3つの情報には入っていない要素が、いくらでもあるからです。
+  </p>
+<p>だから統計が言えるのは、こういうことです。</p>
+<blockquote>
+    あなたと同じ属性の人を100人集めたら、<br/>
+    そのうち95人は △△万円〜□□万円 のどこかにいる。
+  </blockquote>
+<p>
+    ピンポイントで当てているわけじゃない。<br/>
+    でも、占いより誠実な答え方だと思いませんか。
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">04</span></div>
+<!-- ═══ CONFIDENCE vs PREDICTION ═══ -->
+<div class="col-section">
+<h2>// 信頼区間と予測区間の違い</h2>
+<p>
+    グラフの<b style="color:var(--cyan)">広い帯</b>と<b style="color:var(--yellow)">狭い帯</b>。
+    これは答えている「問い」が違います。
+  </p>
+<p>
+<b style="color:var(--cyan)">予測区間</b>が答える問い：<br/>
+    「同じ属性の人を1人ランダムに選んだら、その人の年収はどのあたり？」
+  </p>
+<p>
+<b style="color:var(--yellow)">信頼区間</b>が答える問い：<br/>
+    「同じ属性の人を全員集めたとき、その全員の平均年収は本当はいくら？」
+  </p>
+<p>
+    イメージしてみてください。<br/>
+    あなたと同じ属性の人が1万人いるとします。
+  </p>
+<blockquote>
+    1万人の<b>平均年収</b>を推定する → たぶん580万円〜620万円のどこか（信頼区間、<b style="color:var(--yellow)">狭い</b>）<br/>
+    1万人の中の<b>1人を指さして</b>年収を当てる → 404万円〜796万円（予測区間、<b style="color:var(--cyan)">ずっと広い</b>）
+  </blockquote>
+<p>
+    平均はデータが増えるほど安定するけれど、
+    個人は一人ひとり違うからバラつきが大きい。<br/>
+    だから「1人を当てる幅」は、「平均を推定する幅」より常に広くなります。
+  </p>
+<p>
+    両者を混同したまま「95%信頼できる」と言っている解説は少なくありません。<br/>
+    ここをスッキリ区別できると、統計の読み方がワンランク上がります。
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">05</span></div>
+<!-- ═══ OPEN SOURCE ═══ -->
+<div class="col-section">
+<h2>// 計算の根拠を開示する</h2>
+<p>
+    このコラムで使っている計算は、すべて GitHub で公開しています。<br/>
+<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan)" target="_blank">github.com/sasai-lab/statplay-opensource ↗</a>
+</p>
+<p>データ:</p>
+<ul>
+<li>年齢別平均年収（22〜65歳）</li>
+<li>性別補正係数</li>
+<li>都道府県別補正係数（47都道府県）</li>
+<li>学歴別補正係数</li>
+<li>企業規模別補正係数</li>
+</ul>
+<p>
+    これらをハードコードして、入力に応じて足し合わせる
+    シンプルな線形モデルです。
+    係数の詳細は<a href="#" onclick="document.querySelector('.col-divider:nth-of-type(2)').scrollIntoView({behavior:'smooth'});return false" style="color:var(--cyan)">セクション02</a>に掲載しています。
+  </p>
+<p>
+    また、係数の導出過程や予測関数の全体像、予測区間・信頼区間の計算方法など、
+    このシミュレーターの裏側のロジックを Qiita で詳しく解説しています。<br/>
+<a href="https://qiita.com/sasailab/items/787bd06e05528aa336e4" rel="noopener" style="color:var(--cyan)" target="_blank">年齢・性別・都道府県で年収を予測する回帰式を、公開統計からたてる実験 — Qiita ↗</a>
+</p>
+</div>
+<!-- ═══ TAKEAWAY ═══ -->
+<div class="takeaway">
+<h3>// KEY TAKEAWAY</h3>
+<ul>
+<li>統計は「ズバリ当てる」のではなく、<b style="color:var(--cyan)">幅で正直に示す</b></li>
+<li>同じ属性の人の「平均」と、あなた個人の「予測」では<b style="color:var(--yellow)">幅が違う</b></li>
+<li><b style="color:var(--yellow)">信頼区間</b>（狭い）は平均の推定幅、<b style="color:var(--cyan)">予測区間</b>（広い）は個人の予測幅</li>
+<li>「不確かさを正直に出す」ことが、ピンポイント予測より<b style="color:var(--magenta)">ずっと役に立つ</b></li>
+</ul>
+</div>
+<div class="col-divider"><span class="divider-num">FAQ</span></div>
+<!-- ═══ FAQ ═══ -->
+<div class="col-section">
+<h2>// このコラムの計算について</h2>
+<div class="faq-item">
+<button class="faq-q" type="button">データの出典は？</button>
+<div class="faq-a">
+<p>厚生労働省「令和5年 賃金構造基本統計調査」を出典としています。公開データから抽出した代表値をハードコードしており、最新データとは差異がある可能性があります。</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">変数を増やせばもっと精度は上がる？</button>
+<div class="faq-a">
+<p>はい、職種・勤続年数・業種など変数を増やせばモデルの精度は上がります。ただし、このコラムの目的は「信頼区間と予測区間の違いを体感してもらう」こと。現在の5変数（年齢・性別・都道府県・学歴・企業規模）は、概念を理解するのに十分な複雑さです。</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">個人の年収を保証するもの？</button>
+<div class="faq-a">
+<p><b style="color:var(--magenta)">いいえ。</b>これは統計的な「同じ属性の人の分布」を示すものであり、個人の年収を保証・予測するものではありません。学歴・職種・勤続年数など、モデルに含まれない要素が年収に大きく影響します。</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">計算ロジックは公開されている？</button>
+<div class="faq-a">
+<p>はい。計算ロジックはすべて <a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan)" target="_blank">GitHub</a> で公開しています。係数・計算方法・コード全文を確認できます。</p>
+</div>
+</div>
+</div>
+<!-- ═══ CTA ═══ -->
+<div class="col-cta">
+<p class="cta-headline">統計はピンポイントの占いではない。</p>
+<p class="cta-sub">
+    「だいたいこのへんに何%の確率でいる」を、正直に幅で示してくれるツール。<br/>
+    「ズバリ当たる」より「不確かさを正直に出す」ことのほうが、本当はずっと役に立つ。<br/>
+    これがこのコラムで一番伝えたかったことです。
+  </p>
+<div class="cta-links">
+<a href="../topics/ci.html">信頼区間を深掘り →</a>
+<a href="../topics/reg.html">回帰分析を体感 →</a>
+<a href="../topics/mreg.html">重回帰分析へ →</a>
+<a href="../index.html">全トピック一覧 →</a>
+</div>
+<div class="share-row">
+<button class="share-btn" data-kind="dl" data-share="incomeCanvas" data-title="年収予測 — StatPlay">💾 画像保存</button>
+<button class="share-btn" data-kind="url" data-share="incomeCanvas" data-title="年収予測 — StatPlay">🔗 URLコピー</button>
+<button class="share-btn" data-kind="x" data-share="incomeCanvas" data-title="年収予測 — StatPlay">𝕏 でシェア</button>
+<button class="share-btn" data-kind="native" data-share="incomeCanvas" data-title="年収予測 — StatPlay">📤 シェア</button>
+</div>
+</div>
+</main>
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version"></span></div>
+</div>
+</footer>
+<script src="../js/modules/income_prediction.js" type="module"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Theme toggle
+  const btn = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('svl_theme');
+  if (saved === 'light') { document.body.classList.add('theme-light'); btn.textContent = 'DARK'; btn.setAttribute('aria-pressed', 'true'); }
+  btn?.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('theme-light');
+    btn.textContent = isLight ? 'DARK' : 'LIGHT';
+    btn.setAttribute('aria-pressed', String(isLight));
+    localStorage.setItem('svl_theme', isLight ? 'light' : 'dark');
+  });
+
+  // Progress bar
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+  }, { passive: true });
+
+  // Scroll button
+  const scrollBtn = document.getElementById('heroScroll');
+  scrollBtn?.addEventListener('click', () => {
+    const main = document.querySelector('main');
+    if (main) main.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.col-section, .takeaway').forEach(el => obs.observe(el));
+
+  // Cinematic hero animation
+  const hc = document.getElementById('heroCanvas');
+  if (hc) {
+    const TAU = Math.PI * 2;
+    const pdf = (x, mu, sd) => Math.exp(-0.5 * ((x - mu) / sd) ** 2) / (sd * Math.sqrt(TAU));
+    const dpr = window.devicePixelRatio || 1;
+    let w, h, ctx;
+    const lt = () => document.body.classList.contains('theme-light');
+
+    function sizeCanvas() {
+      const rect = hc.parentElement.getBoundingClientRect();
+      hc.width = rect.width * dpr;
+      hc.height = rect.height * dpr;
+      w = rect.width; h = rect.height;
+      ctx = hc.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    const mean = 480, sd = 100;
+    const toX = v => w * 0.1 + (v - (mean - 3.5 * sd)) / (7 * sd) * (w * 0.8);
+    const toY = v => h * 0.88 - v / pdf(mean, mean, sd) * (h * 0.35);
+
+    function drawFrame(progress) {
+      ctx.clearRect(0, 0, w, h);
+      const curveP = Math.min(1, progress / 0.35);
+      const fillP  = Math.max(0, Math.min(1, (progress - 0.25) / 0.2));
+      const markP  = Math.max(0, Math.min(1, (progress - 0.4) / 0.15));
+      const impactP = Math.max(0, Math.min(1, (progress - 0.55) / 0.15));
+      const textP   = Math.max(0, Math.min(1, (progress - 0.65) / 0.2));
+
+      // grid
+      const gridA = lt() ? 0.06 : 0.04;
+      ctx.strokeStyle = lt() ? `rgba(0,60,90,${gridA})` : `rgba(0,243,255,${gridA})`;
+      ctx.lineWidth = 1;
+      for (let x = 0; x < w; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+      for (let y = 0; y < h; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+
+      // bell curve
+      if (curveP > 0) {
+        const steps = Math.floor(400 * curveP);
+        const pts = [];
+        for (let i = 0; i <= steps; i++) {
+          const v = (mean - 3.5 * sd) + (7 * sd * i / 400);
+          pts.push([toX(v), toY(pdf(v, mean, sd))]);
+        }
+        ctx.save();
+        ctx.strokeStyle = lt() ? 'rgba(0,100,130,.3)' : 'rgba(0,243,255,.35)';
+        ctx.lineWidth = 2.5;
+        ctx.shadowBlur = lt() ? 0 : 16;
+        ctx.shadowColor = 'rgba(0,243,255,.5)';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]));
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // prediction interval fill
+      if (fillP > 0) {
+        const lb = mean - 1.96 * sd, ub = mean + 1.96 * sd;
+        const aFill = fillP * (lt() ? 0.1 : 0.12);
+        ctx.save();
+        ctx.fillStyle = lt() ? `rgba(0,100,130,${aFill})` : `rgba(0,243,255,${aFill})`;
+        ctx.beginPath();
+        ctx.moveTo(toX(lb), toY(0));
+        for (let v = lb; v <= ub; v += 2) ctx.lineTo(toX(v), toY(pdf(v, mean, sd)));
+        ctx.lineTo(toX(ub), toY(0));
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // mean line
+      if (markP > 0) {
+        const mx = toX(mean);
+        ctx.save();
+        ctx.globalAlpha = markP;
+        ctx.setLineDash([5, 4]);
+        ctx.strokeStyle = lt() ? 'rgba(140,100,0,.4)' : 'rgba(255,230,0,.45)';
+        ctx.lineWidth = 2;
+        ctx.shadowBlur = lt() ? 0 : 10;
+        ctx.shadowColor = 'rgba(255,230,0,.5)';
+        ctx.beginPath();
+        ctx.moveTo(mx, toY(pdf(mean, mean, sd)));
+        ctx.lineTo(mx, toY(0));
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = lt() ? 'rgba(140,100,0,.5)' : 'rgba(255,230,0,.5)';
+        ctx.font = 'bold 15px "Courier New", monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('480万円', mx, toY(0) + 20);
+        ctx.restore();
+      }
+
+      // impact / title / sub
+      const impactEl = document.getElementById('heroImpact');
+      if (impactP > 0 && !impactEl.classList.contains('hero-in')) impactEl.classList.add('hero-in');
+      const titleEl = document.getElementById('heroTitle');
+      if (textP > 0 && !titleEl.classList.contains('hero-in')) titleEl.classList.add('hero-in');
+      const subEl = document.getElementById('heroSub');
+      if (textP > 0.5 && !subEl.classList.contains('hero-in')) subEl.classList.add('hero-in');
+      const metaEl = document.getElementById('heroMeta');
+      if (progress > 0.9) { metaEl.style.opacity = '1'; metaEl.style.transition = 'opacity .8s ease'; }
+    }
+
+    sizeCanvas();
+    const duration = 3000;
+    let start = null;
+    function animate(ts) {
+      if (!start) start = ts;
+      const p = Math.min(1, (ts - start) / duration);
+      drawFrame(p);
+      if (p < 1) requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+
+    const redrawFinal = () => { sizeCanvas(); drawFrame(1); };
+    window.addEventListener('resize', redrawFinal);
+    new MutationObserver(redrawFinal).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  }
+});
+</script>
+</body>
+</html>
