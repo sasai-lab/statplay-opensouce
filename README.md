@@ -49,7 +49,7 @@ Also works out of the box on GitHub Pages (`Settings → Pages → main / root`)
 - **偏差値って何？** / What Is a Deviation Value?
 - **誕生日のパラドックス** / The Birthday Paradox
 - **標準化って何？** / What Is Standardization?
-- **StatPlayはどうやって作られた？** / How StatPlay Was Built
+- **あなたの年収は、統計でどこまで当てられるか** / How Far Can Statistics Predict Your Income?
 
 ## Project Structure / プロジェクト構成
 
@@ -61,6 +61,8 @@ topics/<slug>.html            Per-topic pages (JA) × 14
 en/topics/<slug>.html         Per-topic pages (EN) × 14
 columns/<slug>.html           Columns (JA) × 4
 en/columns/<slug>.html        Columns (EN) × 4
+tables/index.html             Statistical tables (JA)
+en/tables/index.html          Statistical tables (EN)
 css/
   stat_cyber.css              Stylesheet (dark + light) / スタイルシート
 js/
@@ -73,7 +75,7 @@ js/
     clt.js  lln.js  ci.js  htest.js  dist.js  chitest.js
     corr.js  reg.js  mreg.js  errs.js  descriptive.js  anova.js
     ├── Columns ───────────────────────────────────
-    deviation.js  birthday.js
+    deviation.js  birthday.js  income_prediction.js
     ├── UI / Infra ────────────────────────────────
     hero.js  theme.js  prefs.js  nav.js  toc.js  anchor.js
     reveal.js  autorun.js  scrolltop.js  tables.js
