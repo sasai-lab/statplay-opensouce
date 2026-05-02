@@ -260,6 +260,11 @@
       "slug": "about",
       "ja_path": "/about.html",
       "en_path": "/en/about.html"
+    },
+    {
+      "slug": "tables",
+      "ja_path": "/tables/index.html",
+      "en_path": "/en/tables/index.html"
     }
   ]
 }
