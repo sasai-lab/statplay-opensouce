@@ -7,7 +7,7 @@
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
-<meta content="身長160cmと年収500万円、どっちが「普通から遠い」？標準化 Z=(X-μ)/σ は、単位も平均もバラバラな数値を「σ何個分」という共通言語に翻訳する。3分で式の意味が絵で見えるインタラクティブ解説。" name="description"/>
+<meta content="身長182cmとTOEIC 860点、どっちが「普通から遠い」？標準化 Z=(X-μ)/σ は、単位も平均もバラバラな数値を「σ何個分」という共通言語に翻訳する。3分で式の意味が絵で見えるインタラクティブ解説。" name="description"/>
 <meta content="標準化, 標準化とは, Z変換, Zスコア, 正規分布, 統計, 偏差値, σ, 統計検定2級" name="keywords"/>
 <meta content="Sasai Lab" name="author"/>
 <meta content="index, follow, max-image-preview:large" name="robots"/>
@@ -18,14 +18,14 @@
 <link href="https://statplay.sasailab.com/columns/standardization.html" hreflang="x-default" rel="alternate"/>
 <meta content="article" property="og:type"/>
 <meta content="StatPlay" property="og:site_name"/>
-<meta content="身長160cmと年収500万円、どっちが「ふつう」から遠い？" property="og:title"/>
+<meta content="身長182cmとTOEIC 860点、どっちが「ふつう」から遠い？" property="og:title"/>
 <meta content="標準化 Z=(X-μ)/σ は、単位も平均もバラバラな数値を「σ何個分」という共通言語に翻訳する。3分で式の意味が絵で見えるインタラクティブ解説。" property="og:description"/>
 <meta content="https://statplay.sasailab.com/columns/standardization.html" property="og:url"/>
 <meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
 <meta content="StatPlay — 標準化って何？" property="og:image:alt"/>
 <meta content="ja_JP" property="og:locale"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="身長160cmと年収500万円、どっちが「ふつう」から遠い？" name="twitter:title"/>
+<meta content="身長182cmとTOEIC 860点、どっちが「ふつう」から遠い？" name="twitter:title"/>
 <meta content="標準化 Z=(X-μ)/σ は、単位も平均もバラバラな数値を「σ何個分」という共通言語に翻訳する。" name="twitter:description"/>
 <meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
 <link href="../manifest.webmanifest" rel="manifest"/>
@@ -316,7 +316,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
     {
       "@type": "Article",
       "headline": "標準化って何？ — 世界中の「ふつう」を比べる翻訳機",
-      "description": "身長160cmと年収500万円、どっちが「普通から遠い」？標準化 Z=(X-μ)/σ は、単位も平均もバラバラな数値を「σ何個分」という共通言語に翻訳する。",
+      "description": "身長182cmとTOEIC 860点、どっちが「普通から遠い」？標準化 Z=(X-μ)/σ は、単位も平均もバラバラな数値を「σ何個分」という共通言語に翻訳する。",
       "inLanguage": "ja",
       "isPartOf": {
         "@type": "WebSite",
@@ -359,7 +359,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
           "name": "標準化するとなぜ比較できるようになる？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "標準化は「cm」「円」「点」といった元の単位を消し去り、すべてを「σ（標準偏差）何個分」という無次元の共通言語に変換します。これにより、身長と年収のように本来比較できないものも「どちらがより珍しいか」を比較できるようになります。"
+            "text": "標準化は「cm」「円」「点」といった元の単位を消し去り、すべてを「σ（標準偏差）何個分」という無次元の共通言語に変換します。これにより、身長とTOEICのように本来比較できないものも「どちらがより珍しいか」を比較できるようになります。"
           }
         },
         {
@@ -413,7 +413,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <canvas aria-hidden="true" id="heroCanvas"></canvas>
 <div class="hero-content">
 <div class="hero-impact" id="heroImpact">Z</div>
-<h1 id="heroTitle">身長160cmと年収500万円。<br/>どっちが<em>「ふつう」から遠い</em>？</h1>
+<h1 id="heroTitle">身長182cmとTOEIC 860点。<br/>どっちが<em>「ふつう」から遠い</em>？</h1>
 <p class="hook-sub" id="heroSub">
       単位も平均もバラバラなのに、比べられる。<br/>
       その魔法の名前は、<strong>標準化</strong>。
@@ -438,8 +438,8 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <!-- ═══ INTRO ═══ -->
 <div class="col-section">
 <p>
-    「身長160cm」と「年収500万円」—— どちらが「普通」から遠いだろう？<br/>
-    そもそも cm と円を比べるなんて、意味がなさそうに見える。<br/>
+    「身長182cm」と「TOEIC 860点」—— どちらが「普通」から遠いだろう？<br/>
+    そもそも cm と点を比べるなんて、意味がなさそうに見える。<br/>
     でも統計学には、<b style="color:var(--cyan)">あらゆる数値を同じ土俵に乗せる翻訳機</b>がある。<br/>
     それが「標準化」だ。
   </p>
@@ -691,7 +691,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <div class="faq-item">
 <button class="faq-q" type="button">標準化するとなぜ比較できるようになる？</button>
 <div class="faq-a">
-<p>標準化は「cm」「円」「点」といった元の単位を消し去り、すべてを<b style="color:var(--cyan)">「σ何個分」という無次元の共通言語</b>に変換する。これにより、身長と年収のように本来比較できないものも「どちらがより珍しいか」を比較できるようになる。</p>
+<p>標準化は「cm」「円」「点」といった元の単位を消し去り、すべてを<b style="color:var(--cyan)">「σ何個分」という無次元の共通言語</b>に変換する。これにより、身長とTOEICのように本来比較できないものも「どちらがより珍しいか」を比較できるようになる。</p>
 </div>
 </div>
 <div class="faq-item">
