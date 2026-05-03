@@ -338,7 +338,7 @@ function chi(){
     ctx.strokeStyle=withAlpha(tc.cyan,.3);ctx.lineWidth=1;
     ctx.beginPath();ctx.moveTo(0,h-22);ctx.lineTo(w,h-22);ctx.stroke();
     const pts=[];for(let px=0;px<=w;px++){const x=px/w*xmax;pts.push([px,yToPx(chi2PDF(x,df))]);}
-    const fill=[[0,h],...pts,[w,h]];neonFill(ctx,fill,tc.magenta,.18);
+    const baseY=h-22;const fill=[[0,baseY],...pts,[w,baseY]];neonFill(ctx,fill,tc.magenta,.18);
     neonLine(ctx,pts,tc.magenta,14,2.5);
     const meanX=xToPx(df);
     ctx.strokeStyle=withAlpha(tc.yellow,.75);ctx.setLineDash([3,3]);ctx.lineWidth=1;
@@ -491,7 +491,7 @@ function fdist(){
     ctx.strokeStyle=withAlpha(tc.cyan,.3);ctx.lineWidth=1;
     ctx.beginPath();ctx.moveTo(0,h-22);ctx.lineTo(w,h-22);ctx.stroke();
     const pts=[];for(let px=0;px<=w;px++){const x=px/w*xmax;pts.push([px,yToPx(fPDF(x,d1,d2))]);}
-    const fill=[[0,h],...pts,[w,h]];neonFill(ctx,fill,tc.yellow,.18);
+    const baseY=h-22;const fill=[[0,baseY],...pts,[w,baseY]];neonFill(ctx,fill,tc.yellow,.18);
     neonLine(ctx,pts,tc.yellow,14,2.5);
     if(d2>2){
       const mean=d2/(d2-2);

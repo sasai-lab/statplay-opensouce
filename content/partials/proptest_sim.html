@@ -1,0 +1,29 @@
+<div class="panel">
+  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460;-b 信頼区間シミュレーション</h3>
+  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460;-b CI simulation</h3>
+
+  <div class="controls">
+    <div class="ctrl"><label><span data-lang="ja">母比率 p（真の値）</span><span data-lang="en">True proportion p</span> = <span class="val" id="ptCiSimPVal">0.50</span></label>
+      <input type="range" id="ptCiSimP" min="0.05" max="0.95" step="0.01" value="0.50">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">標本サイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="ptCiSimNVal">30</span></label>
+      <input type="range" id="ptCiSimN" min="10" max="200" step="1" value="30">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">信頼水準</span><span data-lang="en">Confidence level</span></label>
+      <select id="ptCiSimLvl">
+        <option value="90" data-ja="90%" data-en="90%">90%</option>
+        <option value="95" data-ja="95%" data-en="95%" selected>95%</option>
+        <option value="99" data-ja="99%" data-en="99%">99%</option>
+      </select>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;margin:8px 0">
+    <button id="ptCiSimRun" style="background:var(--cyan);color:#000;border:none;padding:6px 20px;font-family:'Courier New',monospace;font-weight:bold;cursor:pointer;font-size:13px"><span data-lang="ja">&#x25B6; Run</span><span data-lang="en">&#x25B6; Run</span></button>
+    <button id="ptCiSimReset" style="background:transparent;color:var(--dim);border:1px solid var(--dim);padding:6px 20px;font-family:'Courier New',monospace;cursor:pointer;font-size:13px"><span data-lang="ja">&#x21BA; Reset</span><span data-lang="en">&#x21BA; Reset</span></button>
+  </div>
+  <canvas id="ptCiSimCanvas" aria-label="信頼区間シミュレーション。200回の標本抽出で信頼区間が母比率を捕捉する割合を視覚化" data-aria-label-en="CI simulation. Visualize how often confidence intervals capture the true proportion across 200 samples" style="aspect-ratio:16/9" aria-busy="true"></canvas>
+  <div class="info">
+    <div><span data-lang="ja">生成数</span><span data-lang="en">Generated</span><strong id="ptCiSimMade">0</strong></div>
+    <div><span data-lang="ja">捕捉率</span><span data-lang="en">Coverage rate</span><strong id="ptCiSimCov">&#x2014;</strong></div>
+  </div>
+</div>

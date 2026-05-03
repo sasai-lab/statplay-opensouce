@@ -1,0 +1,45 @@
+<div class="panel">
+  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; 母比率の検定（1標本z検定）</h3>
+  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; One-sample z-test for a proportion</h3>
+
+  <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
+    母平均の検定でやったことと同じ流れ。帰無仮説 H&#x2080;: p = p&#x2080; を立てて、標本から計算した z が棄却域に入るかどうかを見るだけ。<br/>
+    標準誤差の式が &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n) に変わるところだけ押さえれば、もう迷わないはず。
+  </p>
+  <p class="sec-desc" data-lang="en" style="margin-bottom:14px">
+    Same flow as testing a population mean. Set up H&#x2080;: p = p&#x2080;, compute z from the sample, and check whether it lands in the rejection region.<br/>
+    The only twist is that the standard error becomes &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n). Nail that, and the rest is familiar.
+  </p>
+
+  <div class="controls">
+    <div class="ctrl"><label><span data-lang="ja">標本サイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="ptTNVal">100</span></label>
+      <input type="range" id="ptTN" min="10" max="1000" step="1" value="100">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">標本比率 p&#x0302;</span><span data-lang="en">Sample proportion p&#x0302;</span> = <span class="val" id="ptTPVal">0.60</span></label>
+      <input type="range" id="ptTP" min="0.01" max="0.99" step="0.01" value="0.60">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">帰無仮説 p&#x2080;</span><span data-lang="en">Null hypothesis p&#x2080;</span> = <span class="val" id="ptTP0Val">0.50</span></label>
+      <input type="range" id="ptTP0" min="0.01" max="0.99" step="0.01" value="0.50">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">有意水準 &#x03B1;</span><span data-lang="en">Significance level &#x03B1;</span> = <span class="val" id="ptTAVal">0.050</span></label>
+      <input type="range" id="ptTA" min="0.001" max="0.2" step="0.001" value="0.05">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">検定タイプ</span><span data-lang="en">Test type</span></label>
+      <select id="ptTType">
+        <option value="two" data-ja="両側" data-en="Two-sided">両側</option>
+        <option value="right" data-ja="右側" data-en="Right">右側</option>
+        <option value="left" data-ja="左側" data-en="Left">左側</option>
+      </select>
+    </div>
+  </div>
+  <canvas id="ptTestCanvas" aria-label="母比率の検定の可視化。検定統計量zと棄却域の関係をインタラクティブに確認できる" data-aria-label-en="Proportion test visualization. Interactively explore the relationship between the z-statistic and the rejection region" height="260" aria-busy="true"></canvas>
+  <div class="info">
+    <div><span data-lang="ja">検定統計量 z</span><span data-lang="en">Test statistic z</span><strong id="ptTZstat">&#x2014;</strong></div>
+    <div><span data-lang="ja">臨界値</span><span data-lang="en">Critical value</span><strong id="ptTCrit">&#x2014;</strong></div>
+    <div><span data-lang="ja">p値</span><span data-lang="en">p-value</span><strong id="ptTPval">&#x2014;</strong></div>
+    <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span><strong id="ptTDecision">&#x2014;</strong></div>
+  </div>
+  <div class="share-row">
+    <button class="share-btn dl" data-share="ptTestCanvas" data-title="母比率の検定" data-title-en="Proportion Test" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+  </div>
+</div>

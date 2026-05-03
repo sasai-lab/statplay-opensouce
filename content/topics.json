@@ -118,6 +118,19 @@
       "en_teaches": ["Hypothesis testing", "p-value and significance level", "Rejection region"]
     },
     {
+      "slug": "proptest",
+      "ja_sidebar": "母比率の検定と推定",
+      "en_sidebar": "Proportion Test",
+      "ja_title": "母比率の検定と推定 — 比率のz検定を可視化",
+      "en_title": "Proportion Testing & Estimation — Visualize the z-test for Proportions",
+      "ja_desc": "「100人中60人が賛成」── この60%は本当に過半数？ 標本比率から信頼区間を構築し、1標本・2標本のz検定をスライダーで直感的に体験する。",
+      "en_desc": "\"60 out of 100 agree\" — is that really a majority? Build confidence intervals from sample proportions and experience one-sample and two-sample z-tests with interactive sliders.",
+      "ja_kw": "母比率, 比率の検定, 比率の推定, 信頼区間, z検定, 標本比率, プール比率, 統計検定2級",
+      "en_kw": "proportion test, proportion estimation, confidence interval, z-test, sample proportion, pooled proportion",
+      "teaches": ["母比率の区間推定", "母比率の検定", "2標本比率の検定", "正規近似条件"],
+      "en_teaches": ["Confidence interval for a proportion", "One-sample proportion test", "Two-proportion test", "Normal approximation conditions"]
+    },
+    {
       "slug": "dists",
       "ja_sidebar": "三大検定分布",
       "en_sidebar": "Three Test Distributions",
@@ -253,7 +266,11 @@
     "ベイズの定理": "Bayes' Theorem",
     "確率の基本法則": "Basic Rules of Probability",
     "適合度検定": "Goodness-of-Fit Test",
-    "独立性検定": "Test of Independence"
+    "独立性検定": "Test of Independence",
+    "母比率の検定と推定": "Proportion Test & Estimation",
+    "母比率の区間推定": "Proportion CI",
+    "母比率の検定": "Proportion Test",
+    "プール比率": "Pooled Proportion"
   },
   "pages": [
     {

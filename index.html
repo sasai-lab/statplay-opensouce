@@ -1238,8 +1238,275 @@
     <a data-lang="ja" href="topics/test.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/test.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
-<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>σ を知らない世界へ <span class="story-arrow">▸</span> <a href="#dists">I5 t・χ²・F</a></div>
-  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>into the world where σ is unknown <span class="story-arrow">▸</span> <a href="#dists">I5 t, χ², F</a></div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>平均から比率へ <span class="story-arrow">▸</span> <a href="#proptest">I5 母比率の検定と推定</a></div>
+  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>from means to proportions <span class="story-arrow">▸</span> <a href="#proptest">I5 Proportion Test</a></div>
+</section>
+
+
+<!-- ============ PROPTEST ============ -->
+
+
+
+
+<section id="proptest" class="reveal">
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/proptest.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/proptest.html">▸ Dedicated page for this topic</a></div>
+  <div class="sec-tag">I5 / 母比率の検定と推定</div>
+  <h2 class="sec-title" data-lang="ja">母比率の検定と推定 <span class="sec-sub">— 標本比率から母比率を探る</span></h2>
+  <h2 class="sec-title" data-lang="en">Proportion Test &amp; Estimation <span class="sec-sub">— from sample proportion to the truth</span></h2>
+
+  <div class="story-bridge" data-lang="ja">母平均で信頼区間や検定をやったときと、考え方はまったく同じ。ただ「連続的なデータの平均」から「成功 or 失敗のカウント」に変わると、<span class="next">標準誤差の形</span>がちょっと違ってくる。ここを触って慣れておくと、参考書の公式がスッと入ってくるはず。</div>
+  <div class="story-bridge" data-lang="en">The logic is exactly the same as when we did confidence intervals and hypothesis tests for means. The only twist: data is now "success or failure" counts instead of continuous measurements, so <span class="next">the standard error formula</span> changes shape. Play with the sliders here and the textbook formulas will click.</div>
+  <p class="sec-desc" data-lang="ja">
+    データが「成功 / 失敗」の二択しかない世界。<b>標本比率 p̂ = x/n</b> がすべての出発点で、n が十分大きければ正規分布で近似できる（中心極限定理のおかげ）。<br>
+    ここでは <b>① 区間推定</b> → <b>② 1標本検定</b> → <b>③ 2標本検定</b> の順に触っていく。平均のときと何が同じで何が違うのか、比べながら進めると整理しやすい。
+  </p>
+  <p class="sec-desc" data-lang="en">
+    A world where every data point is just "success" or "failure." <b>The sample proportion p̂ = x/n</b> is the starting point, and when n is large enough the normal approximation kicks in (thanks to the CLT).<br>
+    We'll work through <b>① interval estimation</b> → <b>② one-sample test</b> → <b>③ two-sample test</b>. Compare each step with what you learned for means — spotting the similarities makes the differences easy to absorb.
+  </p>
+
+  <div class="sim-layout">
+  <div class="guided-steps" data-lang="ja">
+    <b>実験ガイド — 順番に試してみよう</b>
+    <ol>
+      <li><b>Step 1:</b> n=15, p̂=0.50, 95% → 信頼区間がかなり広い。たった15人では精度が出ない。</li>
+      <li><b>Step 2:</b> n を 100 に → 信頼区間がぐっと狭まる。サンプルサイズの威力を実感。</li>
+      <li><b>Step 3:</b> p̂ を 0.90 に → 分散 p(1-p) が小さくなり、CI が狭くなる。p̂=0.50 が最も広い。</li>
+      <li><b>Step 4:</b> p̂=0.90 のまま n を 10 に下げる → ⚠ 警告が出たら正規近似の条件を満たしていない。</li>
+    </ol>
+  </div>
+  <div class="guided-steps" data-lang="en">
+    <b>Experiment Guide — try these in order</b>
+    <ol>
+      <li><b>Step 1:</b> n=15, p̂=0.50, 95% → the interval is really wide. Just 15 people isn't enough precision.</li>
+      <li><b>Step 2:</b> Push n to 100 → the interval tightens up fast. Feel the power of sample size.</li>
+      <li><b>Step 3:</b> Set p̂ to 0.90 → variance p(1-p) shrinks, so the CI narrows. p̂=0.50 gives the widest interval.</li>
+      <li><b>Step 4:</b> Keep p̂=0.90, drop n to 10 → if ⚠ appears, the normal approximation conditions aren't met.</li>
+    </ol>
+  </div>
+<!-- @panel:proptest_ci -->
+<div class="panel">
+  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; 母比率の区間推定</h3>
+  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; Confidence interval for a proportion</h3>
+
+  <div class="controls">
+    <div class="ctrl"><label><span data-lang="ja">標本サイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="ptCiNVal">15</span></label>
+      <input type="range" id="ptCiN" min="10" max="200" step="1" value="15">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">標本比率 p&#x0302;</span><span data-lang="en">Sample proportion p&#x0302;</span> = <span class="val" id="ptCiPVal">0.50</span></label>
+      <input type="range" id="ptCiP" min="0.01" max="0.99" step="0.01" value="0.50">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">信頼水準</span><span data-lang="en">Confidence level</span></label>
+      <select id="ptCiLvl">
+        <option value="90" data-ja="90%" data-en="90%">90%</option>
+        <option value="95" data-ja="95%" data-en="95%" selected>95%</option>
+        <option value="99" data-ja="99%" data-en="99%">99%</option>
+      </select>
+    </div>
+  </div>
+  <canvas id="ptCiCanvas" aria-label="母比率の信頼区間の可視化。標本比率を中心に信頼区間がどう広がるかをインタラクティブに確認できる" data-aria-label-en="Confidence interval for a proportion. Interactively see how the interval widens or narrows around the sample proportion" style="aspect-ratio:16/9" aria-busy="true"></canvas>
+  <div class="info">
+    <div><span data-lang="ja">標準誤差 SE</span><span data-lang="en">Standard error SE</span><strong id="ptCiSE">&#x2014;</strong></div>
+    <div><span data-lang="ja">信頼区間 下限</span><span data-lang="en">CI lower bound</span><strong id="ptCiLo">&#x2014;</strong></div>
+    <div><span data-lang="ja">信頼区間 上限</span><span data-lang="en">CI upper bound</span><strong id="ptCiHi">&#x2014;</strong></div>
+    <div><span data-lang="ja">誤差幅 E</span><span data-lang="en">Margin of error E</span><strong id="ptCiMoe">&#x2014;</strong></div>
+  </div>
+  <div class="share-row">
+    <button class="share-btn dl" data-share="ptCiCanvas" data-title="母比率の区間推定" data-title-en="Proportion CI" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+  </div>
+</div>
+<!-- /@panel -->
+</div>
+
+  <div class="sim-layout">
+  <div class="guided-steps" data-lang="ja">
+    <b>シミュレーション — 「95%」の意味を確かめる</b>
+    <p>「95%信頼区間って、つまり何？」── 自分もここで最初つまずいた。答えは「同じ調査を何回もやったら、そのうち約95%の区間が真の母比率を捕まえる」ということ。<br/>
+    200回試してみると、この「95%」が本当かどうか確かめられる。</p>
+  </div>
+  <div class="guided-steps" data-lang="en">
+    <b>Simulation — verify what "95%" really means</b>
+    <p>"What does a 95% CI actually mean?" — this tripped me up at first too. The answer: "if you repeated the same survey many times, about 95% of the intervals would capture the true proportion."<br/>
+    Run it 200 times and see whether that 95% claim holds up.</p>
+  </div>
+<!-- @panel:proptest_sim -->
+<div class="panel">
+  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460;-b 信頼区間シミュレーション</h3>
+  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460;-b CI simulation</h3>
+
+  <div class="controls">
+    <div class="ctrl"><label><span data-lang="ja">母比率 p（真の値）</span><span data-lang="en">True proportion p</span> = <span class="val" id="ptCiSimPVal">0.50</span></label>
+      <input type="range" id="ptCiSimP" min="0.05" max="0.95" step="0.01" value="0.50">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">標本サイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="ptCiSimNVal">30</span></label>
+      <input type="range" id="ptCiSimN" min="10" max="200" step="1" value="30">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">信頼水準</span><span data-lang="en">Confidence level</span></label>
+      <select id="ptCiSimLvl">
+        <option value="90" data-ja="90%" data-en="90%">90%</option>
+        <option value="95" data-ja="95%" data-en="95%" selected>95%</option>
+        <option value="99" data-ja="99%" data-en="99%">99%</option>
+      </select>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;margin:8px 0">
+    <button id="ptCiSimRun" style="background:var(--cyan);color:#000;border:none;padding:6px 20px;font-family:'Courier New',monospace;font-weight:bold;cursor:pointer;font-size:13px"><span data-lang="ja">&#x25B6; Run</span><span data-lang="en">&#x25B6; Run</span></button>
+    <button id="ptCiSimReset" style="background:transparent;color:var(--dim);border:1px solid var(--dim);padding:6px 20px;font-family:'Courier New',monospace;cursor:pointer;font-size:13px"><span data-lang="ja">&#x21BA; Reset</span><span data-lang="en">&#x21BA; Reset</span></button>
+  </div>
+  <canvas id="ptCiSimCanvas" aria-label="信頼区間シミュレーション。200回の標本抽出で信頼区間が母比率を捕捉する割合を視覚化" data-aria-label-en="CI simulation. Visualize how often confidence intervals capture the true proportion across 200 samples" style="aspect-ratio:16/9" aria-busy="true"></canvas>
+  <div class="info">
+    <div><span data-lang="ja">生成数</span><span data-lang="en">Generated</span><strong id="ptCiSimMade">0</strong></div>
+    <div><span data-lang="ja">捕捉率</span><span data-lang="en">Coverage rate</span><strong id="ptCiSimCov">&#x2014;</strong></div>
+  </div>
+</div>
+<!-- /@panel -->
+</div>
+
+  <div class="sim-layout">
+  <div class="guided-steps" data-lang="ja">
+    <b>実験ガイド — 比率の検定を体験</b>
+    <ol>
+      <li><b>Step 1:</b> n=100, p̂=0.60, p₀=0.50, α=0.05, 両側 → 「60%は50%と有意に違うか？」</li>
+      <li><b>Step 2:</b> p₀ を 0.55 に → z が小さくなり棄却できなくなる。差が小さいと見分けがつかない。</li>
+      <li><b>Step 3:</b> n を 400 に → 同じ p̂=0.60, p₀=0.55 でも今度は棄却できる。サンプルサイズの威力。</li>
+      <li><b>Step 4:</b> 検定タイプを「右側」に → 「50%より大きいか」だけを問う片側検定。p値が半分に。</li>
+    </ol>
+  </div>
+  <div class="guided-steps" data-lang="en">
+    <b>Experiment Guide — experience proportion testing</b>
+    <ol>
+      <li><b>Step 1:</b> n=100, p̂=0.60, p₀=0.50, α=0.05, two-sided → "Is 60% significantly different from 50%?"</li>
+      <li><b>Step 2:</b> Change p₀ to 0.55 → z shrinks and you can no longer reject. Small differences are hard to detect.</li>
+      <li><b>Step 3:</b> Increase n to 400 → same p̂=0.60, p₀=0.55 but now you reject. The power of sample size.</li>
+      <li><b>Step 4:</b> Switch test type to "Right" → one-sided test asking only "greater than 50%?" The p-value halves.</li>
+    </ol>
+  </div>
+<!-- @panel:proptest_test -->
+<div class="panel">
+  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; 母比率の検定（1標本z検定）</h3>
+  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; One-sample z-test for a proportion</h3>
+
+  <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
+    母平均の検定でやったことと同じ流れ。帰無仮説 H&#x2080;: p = p&#x2080; を立てて、標本から計算した z が棄却域に入るかどうかを見るだけ。<br/>
+    標準誤差の式が &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n) に変わるところだけ押さえれば、もう迷わないはず。
+  </p>
+  <p class="sec-desc" data-lang="en" style="margin-bottom:14px">
+    Same flow as testing a population mean. Set up H&#x2080;: p = p&#x2080;, compute z from the sample, and check whether it lands in the rejection region.<br/>
+    The only twist is that the standard error becomes &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n). Nail that, and the rest is familiar.
+  </p>
+
+  <div class="controls">
+    <div class="ctrl"><label><span data-lang="ja">標本サイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="ptTNVal">100</span></label>
+      <input type="range" id="ptTN" min="10" max="1000" step="1" value="100">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">標本比率 p&#x0302;</span><span data-lang="en">Sample proportion p&#x0302;</span> = <span class="val" id="ptTPVal">0.60</span></label>
+      <input type="range" id="ptTP" min="0.01" max="0.99" step="0.01" value="0.60">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">帰無仮説 p&#x2080;</span><span data-lang="en">Null hypothesis p&#x2080;</span> = <span class="val" id="ptTP0Val">0.50</span></label>
+      <input type="range" id="ptTP0" min="0.01" max="0.99" step="0.01" value="0.50">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">有意水準 &#x03B1;</span><span data-lang="en">Significance level &#x03B1;</span> = <span class="val" id="ptTAVal">0.050</span></label>
+      <input type="range" id="ptTA" min="0.001" max="0.2" step="0.001" value="0.05">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">検定タイプ</span><span data-lang="en">Test type</span></label>
+      <select id="ptTType">
+        <option value="two" data-ja="両側" data-en="Two-sided">両側</option>
+        <option value="right" data-ja="右側" data-en="Right">右側</option>
+        <option value="left" data-ja="左側" data-en="Left">左側</option>
+      </select>
+    </div>
+  </div>
+  <canvas id="ptTestCanvas" aria-label="母比率の検定の可視化。検定統計量zと棄却域の関係をインタラクティブに確認できる" data-aria-label-en="Proportion test visualization. Interactively explore the relationship between the z-statistic and the rejection region" height="260" aria-busy="true"></canvas>
+  <div class="info">
+    <div><span data-lang="ja">検定統計量 z</span><span data-lang="en">Test statistic z</span><strong id="ptTZstat">&#x2014;</strong></div>
+    <div><span data-lang="ja">臨界値</span><span data-lang="en">Critical value</span><strong id="ptTCrit">&#x2014;</strong></div>
+    <div><span data-lang="ja">p値</span><span data-lang="en">p-value</span><strong id="ptTPval">&#x2014;</strong></div>
+    <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span><strong id="ptTDecision">&#x2014;</strong></div>
+  </div>
+  <div class="share-row">
+    <button class="share-btn dl" data-share="ptTestCanvas" data-title="母比率の検定" data-title-en="Proportion Test" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+  </div>
+</div>
+<!-- /@panel -->
+</div>
+
+  <div class="sim-layout">
+  <div class="guided-steps" data-lang="ja">
+    <b>実験ガイド — 2群の比率を比較</b>
+    <ol>
+      <li><b>Step 1:</b> n₁=n₂=100, p̂₁=0.60, p̂₂=0.45 → 差は有意か？</li>
+      <li><b>Step 2:</b> p̂₂ を 0.55 に近づける → z が小さくなり、棄却が難しくなる。</li>
+      <li><b>Step 3:</b> n₁=n₂=400 に増やす → 同じ差でも検出力が上がる。</li>
+      <li><b>Step 4:</b> n₁=50, n₂=200 と非対称にしてみる → 小さい方のnが精度のボトルネック。</li>
+    </ol>
+  </div>
+  <div class="guided-steps" data-lang="en">
+    <b>Experiment Guide — compare two groups</b>
+    <ol>
+      <li><b>Step 1:</b> n₁=n₂=100, p̂₁=0.60, p̂₂=0.45 → is the difference significant?</li>
+      <li><b>Step 2:</b> Move p̂₂ toward 0.55 → z shrinks, rejection gets harder.</li>
+      <li><b>Step 3:</b> Increase both to n₁=n₂=400 → same gap, more power.</li>
+      <li><b>Step 4:</b> Try n₁=50, n₂=200 (asymmetric) → the smaller n is the bottleneck.</li>
+    </ol>
+  </div>
+<!-- @panel:proptest_two -->
+<div class="panel">
+  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2462; 2つの母比率の差の検定</h3>
+  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2462; Two-proportion z-test</h3>
+
+  <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
+    「薬Aと薬B、どっちが効く？」「広告A vs B、クリック率に差はある？」&#x2500;&#x2500; そういう2群比較のための検定。<br/>
+    H&#x2080;: p&#x2081; = p&#x2082; を仮定して<b>プール比率</b>で共通のSEを作るところがポイント。ここだけ押さえれば1標本と同じ。
+  </p>
+  <p class="sec-desc" data-lang="en" style="margin-bottom:14px">
+    "Drug A vs. Drug B &#x2014; which works better?" "Ad A vs. Ad B &#x2014; is the click-through rate really different?" This test is for comparing two groups.<br/>
+    The key idea: under H&#x2080;: p&#x2081; = p&#x2082;, we pool both samples into a single <b>pooled proportion</b> to build a shared SE. Get that, and the rest mirrors the one-sample test.
+  </p>
+
+  <div class="controls">
+    <div class="ctrl"><label>n&#x2081; = <span class="val" id="ptTwoN1Val">100</span></label>
+      <input type="range" id="ptTwoN1" min="10" max="500" step="1" value="100">
+    </div>
+    <div class="ctrl"><label>p&#x0302;&#x2081; = <span class="val" id="ptTwoP1Val">0.60</span></label>
+      <input type="range" id="ptTwoP1" min="0.01" max="0.99" step="0.01" value="0.60">
+    </div>
+    <div class="ctrl"><label>n&#x2082; = <span class="val" id="ptTwoN2Val">100</span></label>
+      <input type="range" id="ptTwoN2" min="10" max="500" step="1" value="100">
+    </div>
+    <div class="ctrl"><label>p&#x0302;&#x2082; = <span class="val" id="ptTwoP2Val">0.45</span></label>
+      <input type="range" id="ptTwoP2" min="0.01" max="0.99" step="0.01" value="0.45">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">有意水準 &#x03B1;</span><span data-lang="en">Significance level &#x03B1;</span> = <span class="val" id="ptTwoAVal">0.050</span></label>
+      <input type="range" id="ptTwoA" min="0.001" max="0.2" step="0.001" value="0.05">
+    </div>
+    <div class="ctrl"><label><span data-lang="ja">検定タイプ</span><span data-lang="en">Test type</span></label>
+      <select id="ptTwoType">
+        <option value="two" data-ja="両側" data-en="Two-sided">両側</option>
+        <option value="right" data-ja="右側" data-en="Right">右側</option>
+        <option value="left" data-ja="左側" data-en="Left">左側</option>
+      </select>
+    </div>
+  </div>
+  <canvas id="ptTwoCanvas" aria-label="2つの母比率の差の検定。2群の標本比率からz値を計算し棄却域との関係を可視化" data-aria-label-en="Two-proportion z-test. Compute z from two sample proportions and visualize its position relative to the rejection region" height="260" aria-busy="true"></canvas>
+  <div class="info">
+    <div><span data-lang="ja">プール比率 p&#x0302;</span><span data-lang="en">Pooled proportion p&#x0302;</span><strong id="ptTwoPool">&#x2014;</strong></div>
+    <div><span data-lang="ja">検定統計量 z</span><span data-lang="en">Test statistic z</span><strong id="ptTwoZstat">&#x2014;</strong></div>
+    <div><span data-lang="ja">p値</span><span data-lang="en">p-value</span><strong id="ptTwoPval">&#x2014;</strong></div>
+    <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span><strong id="ptTwoDecision">&#x2014;</strong></div>
+  </div>
+  <div class="share-row">
+    <button class="share-btn dl" data-share="ptTwoCanvas" data-title="2つの母比率の差の検定" data-title-en="Two-Proportion Test" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+  </div>
+</div>
+<!-- /@panel -->
+</div>
+
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/proptest.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/proptest.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>σ を知らない世界へ <span class="story-arrow">▸</span> <a href="#dists">I6 t・χ²・F</a></div>
+  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>into the world where σ is unknown <span class="story-arrow">▸</span> <a href="#dists">I6 t, χ², F</a></div>
 </section>
 
 
@@ -1376,7 +1643,7 @@
             <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
           </select>
         </div>
-        <button class="sim-btn" id="diceRandom"><span data-lang="ja">&#x25B6; 試行</span><span data-lang="en">&#x25B6; Roll</span></button>
+        <button class="btn" id="diceRandom"><span data-lang="ja">&#x25B6; 振る</span><span data-lang="en">&#x25B6; Roll</span></button>
       </div>
       <canvas id="diceBarCanvas" height="140" style="width:100%;height:140px;display:block" aria-label="サイコロの出目分布" data-aria-label-en="Dice roll distribution" aria-busy="true"></canvas>
       <div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>

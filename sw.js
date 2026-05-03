@@ -1,13 +1,13 @@
 // StatPlay - Service Worker
 // Cache-first for static assets; bumps version to invalidate on deploy.
-const CACHE = 'sp-v3.5.2.1777764220';
+const CACHE = 'sp-v3.7.0.1777793253';
 const COLUMN_SLUGS = ["deviation", "birthday", "standardization", "income_prediction"];
-const TOPIC_SLUGS = /* __TOPIC_SLUGS__ */ ["stdnorm", "normal", "prob", "bayes", "morep", "clt", "lln", "ci", "test", "dists", "chitest", "anova", "corr", "reg", "mreg"];
+const TOPIC_SLUGS = /* __TOPIC_SLUGS__ */ ["stdnorm", "normal", "prob", "bayes", "morep", "clt", "lln", "ci", "test", "proptest", "dists", "chitest", "anova", "corr", "reg", "mreg"];
 const MODULE_FILES = [
   'a11y.js','anchor.js','anova.js','autorun.js','bayes.js','chitest.js',
   'ci.js','clt.js','corr.js','descriptive.js','deviation.js','dist.js',
   'errs.js','graphDrag.js','hero.js','htest.js','income_prediction.js','lang.js','lln.js',
-  'morep.js','mreg.js','nav.js','normal.js','prefs.js','prob.js',
+  'morep.js','mreg.js','nav.js','normal.js','prefs.js','prob.js','proptest.js',
   'pwa.js','reg.js','reveal.js','scrolltop.js','share.js','stdnorm.js','tables.js','theme.js',
   'toc.js','urlParams.js','version.js'
 ];

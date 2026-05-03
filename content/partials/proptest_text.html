@@ -1,0 +1,163 @@
+<div data-lang="ja" class="detail-section">
+<h3>// ここで使われる公式</h3>
+
+<h4 style="color:var(--cyan);margin:16px 0 8px">母比率の区間推定（Wald型信頼区間）</h4>
+<div class="formula" data-tex="\hat{p} \;\pm\; z_{\alpha/2}\,\sqrt{\frac{\hat{p}\,(1-\hat{p})}{n}}"></div>
+<p>
+・p&#x0302; = x/n：標本比率（n人中x人が「成功」）<br/>
+・z<sub>&#x03B1;/2</sub>：標準正規分布の上側 &#x03B1;/2 点。&#x03B1; は<b>有意水準</b>（＝「信頼区間の外側に出る確率」）。95% CI なら &#x03B1;=0.05 で z<sub>0.025</sub>=1.96<br/>
+・&#x221A;(p&#x0302;(1&#x2212;p&#x0302;)/n)：<b>標本比率の標準誤差</b>。平均の SE = &#x03C3;/&#x221A;n と似ているが、分散が p(1&#x2212;p) で決まるのが比率ならではの特徴
+</p>
+
+<h4 style="color:var(--cyan);margin:16px 0 8px">母比率の検定（1標本z検定）</h4>
+<div class="formula" data-tex="z = \frac{\hat{p} - p_0}{\sqrt{\dfrac{p_0\,(1-p_0)}{n}}}"></div>
+<p>
+・p&#x2080;：帰無仮説で想定する母比率（「50%である」なら p&#x2080; = 0.5）<br/>
+・分母の SE は <b>p&#x2080; を使う</b>（推定ではなく検定なので、H&#x2080; の世界を基準にする）<br/>
+・この z が標準正規分布に従うことを使って p値を計算する
+</p>
+
+<h4 style="color:var(--cyan);margin:16px 0 8px">2つの母比率の差の検定</h4>
+<div class="formula" data-tex="z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}\,(1-\hat{p})\left(\dfrac{1}{n_1}+\dfrac{1}{n_2}\right)}}\,,\quad \hat{p} = \frac{x_1 + x_2}{n_1 + n_2}"></div>
+<p>
+・p&#x0302;：<b>プール比率</b>（2群を合算した全体の比率）。H&#x2080;: p&#x2081; = p&#x2082; の下では2群の母比率は同じはずなので、合算して推定する<br/>
+・分母は「差の標準誤差」。1/n&#x2081; + 1/n&#x2082; が入ることで、サンプルサイズが小さい方がボトルネックになる構造
+</p>
+</div>
+
+<div data-lang="en" class="detail-section">
+<h3>// Formulas used here</h3>
+
+<h4 style="color:var(--cyan);margin:16px 0 8px">Confidence interval for a proportion (Wald interval)</h4>
+<div class="formula" data-tex="\hat{p} \;\pm\; z_{\alpha/2}\,\sqrt{\frac{\hat{p}\,(1-\hat{p})}{n}}"></div>
+<p>
+&#x00B7; p&#x0302; = x/n: sample proportion (x successes out of n trials)<br/>
+&#x00B7; z<sub>&#x03B1;/2</sub>: upper &#x03B1;/2 quantile of the standard normal. For a 95% CI, &#x03B1; = 0.05 and z<sub>0.025</sub> = 1.96<br/>
+&#x00B7; &#x221A;(p&#x0302;(1&#x2212;p&#x0302;)/n): <b>standard error of the sample proportion</b>. Similar to SE = &#x03C3;/&#x221A;n for means, but the variance is p(1&#x2212;p) &#x2014; that's what makes proportions special
+</p>
+
+<h4 style="color:var(--cyan);margin:16px 0 8px">One-sample z-test for a proportion</h4>
+<div class="formula" data-tex="z = \frac{\hat{p} - p_0}{\sqrt{\dfrac{p_0\,(1-p_0)}{n}}}"></div>
+<p>
+&#x00B7; p&#x2080;: the proportion assumed under the null hypothesis (e.g., p&#x2080; = 0.5 for "50%")<br/>
+&#x00B7; The denominator uses <b>p&#x2080;</b>, not p&#x0302; &#x2014; because in a test we work inside the H&#x2080; world<br/>
+&#x00B7; Under H&#x2080; this z follows a standard normal, which lets us compute the p-value
+</p>
+
+<h4 style="color:var(--cyan);margin:16px 0 8px">Two-proportion z-test</h4>
+<div class="formula" data-tex="z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}\,(1-\hat{p})\left(\dfrac{1}{n_1}+\dfrac{1}{n_2}\right)}}\,,\quad \hat{p} = \frac{x_1 + x_2}{n_1 + n_2}"></div>
+<p>
+&#x00B7; p&#x0302;: the <b>pooled proportion</b> &#x2014; both groups combined. Under H&#x2080;: p&#x2081; = p&#x2082; the true rates are the same, so pooling gives a better estimate<br/>
+&#x00B7; The denominator is the SE of the difference. The 1/n&#x2081; + 1/n&#x2082; term means the smaller sample is the bottleneck
+</p>
+</div>
+
+<div data-lang="ja" class="detail-section">
+<h3>// 正規近似の条件 &#x2014; いつこの方法が使えるのか</h3>
+<p>
+比率のz検定・信頼区間は「標本比率 p&#x0302; が正規分布に従う」ことを前提にしている。<br/>
+この近似が成り立つ目安は：
+</p>
+<ul>
+<li><b>np &#x2265; 5</b> かつ <b>n(1&#x2212;p) &#x2265; 5</b>（検定では p&#x2080; を使う）</li>
+<li>直感的には「成功も失敗も5回以上は起きそう」ということ</li>
+<li>p が 0 や 1 に近いと、分布が歪んでしまい正規近似が崩れる</li>
+</ul>
+<p>
+条件を満たさない場合は、<b>二項検定</b>（exact binomial test）を使うか、n を増やして出直す。<br/>
+上の &#x2460; のグラフで n を小さくしたり p&#x0302; を 0.01 に近づけると、&#x26A0; 警告が出るのはこのため。
+</p>
+</div>
+
+<div data-lang="en" class="detail-section">
+<h3>// Normal approximation conditions &#x2014; when can you use this method?</h3>
+<p>
+The z-test and CI for proportions rely on the sample proportion following a normal distribution.<br/>
+The rule of thumb for this approximation to hold:
+</p>
+<ul>
+<li><b>np &#x2265; 5</b> and <b>n(1&#x2212;p) &#x2265; 5</b> (use p&#x2080; for tests)</li>
+<li>Intuitively: "both successes and failures should occur at least 5 times"</li>
+<li>When p is close to 0 or 1, the distribution becomes skewed and the normal approximation breaks down</li>
+</ul>
+<p>
+If the conditions aren't met, use an <b>exact binomial test</b> or go back and collect more data.<br/>
+In panel &#x2460; above, try shrinking n or pushing p&#x0302; toward 0.01 &#x2014; the &#x26A0; warning appears for exactly this reason.
+</p>
+</div>
+
+<div data-lang="ja" class="detail-section">
+<h3>// 推定と検定の使い分け</h3>
+<ul>
+<li><b>区間推定</b>：「母比率はだいたいどのあたりか？」を知りたいとき &#x2192; 信頼区間で幅を提示</li>
+<li><b>検定</b>：「母比率は p&#x2080; と違うのか？」にYES/NOで答えたいとき &#x2192; p値で判定</li>
+<li>両者は表裏一体：<b>95% CIに p&#x2080; が含まれない &#x27FA; 有意水準 &#x03B1;=0.05 で H&#x2080; を棄却</b></li>
+</ul>
+<p>
+この対応関係を &#x2460; と &#x2461; を行き来しながら確認してみると、腹落ちするはず。同じ n と p&#x0302; で、&#x2460; の CI に p&#x2080; が入っていなければ &#x2461; では棄却される。
+</p>
+</div>
+
+<div data-lang="en" class="detail-section">
+<h3>// Estimation vs. testing &#x2014; when to use which</h3>
+<ul>
+<li><b>Interval estimation</b>: "Roughly where is the true proportion?" &#x2192; present a confidence interval</li>
+<li><b>Hypothesis test</b>: "Is the true proportion different from p&#x2080;? Yes or no?" &#x2192; decide via the p-value</li>
+<li>They are two sides of the same coin: <b>p&#x2080; outside the 95% CI &#x27FA; reject H&#x2080; at &#x03B1; = 0.05</b></li>
+</ul>
+<p>
+Flip between panels &#x2460; and &#x2461; with the same n and p&#x0302; to see this relationship in action. If p&#x2080; sits outside the CI in &#x2460;, panel &#x2461; will reject.
+</p>
+</div>
+
+<div data-lang="ja" class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>&#x274C;「推定の SE と検定の SE は同じ」</b>
+<p>推定では SE = &#x221A;(p&#x0302;(1&#x2212;p&#x0302;)/n) と標本比率を使うが、検定では SE = &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n) と帰無仮説の値を使う。「どの世界を基準にするか」が違う。</p>
+</div>
+<div class="misc-item">
+<b>&#x274C;「n が大きければ何でも正規近似でOK」</b>
+<p>p が 0.001 のように極端に小さいと、n=1000 でも np=1 で条件を満たさない。「5以上ルール」は p と n の両方を見る。</p>
+</div>
+<div class="misc-item">
+<b>&#x274C;「2群の検定で、各群の SE を個別に計算して足す」</b>
+<p>H&#x2080;: p&#x2081;=p&#x2082; の下では母比率は同じはず。だからプール比率で共通の SE を計算する。個別に計算するのは信頼区間を作るとき。</p>
+</div>
+</div>
+
+<div data-lang="en" class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>&#x274C; "The SE for estimation and the SE for testing are the same"</b>
+<p>For estimation, SE = &#x221A;(p&#x0302;(1&#x2212;p&#x0302;)/n) uses the sample proportion; for testing, SE = &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n) uses the null value. The difference comes down to "which world are we basing our calculation on?"</p>
+</div>
+<div class="misc-item">
+<b>&#x274C; "Large n means the normal approximation always works"</b>
+<p>If p is as extreme as 0.001, even n = 1,000 gives np = 1, which fails the condition. The "rule of 5" checks both p and n together.</p>
+</div>
+<div class="misc-item">
+<b>&#x274C; "For the two-sample test, compute each group's SE separately and add them"</b>
+<p>Under H&#x2080;: p&#x2081; = p&#x2082;, the true proportions are the same, so we pool them into a single estimate to build a shared SE. You compute separate SEs only when constructing a confidence interval for the difference.</p>
+</div>
+</div>
+
+<div data-lang="ja" class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>区間推定の計算</b>：「200人中120人が賛成。母比率の95%信頼区間は？」&#x2192; p&#x0302;=0.6, SE=&#x221A;(0.6&#x00D7;0.4/200), CI = 0.6 &#x00B1; 1.96&#x00D7;SE</li>
+<li><b>検定の判定</b>：「不良品率は5%か？ 500個中35個が不良」&#x2192; p&#x0302;=0.07, p&#x2080;=0.05, z = (0.07&#x2212;0.05)/&#x221A;(0.05&#x00D7;0.95/500)</li>
+<li><b>正規近似の条件</b>：「n=20, p&#x2080;=0.1 でz検定は使えるか？」&#x2192; np&#x2080;=2 &lt; 5 なので使えない</li>
+<li><b>2標本の出題</b>：「薬A群は100人中60人改善、薬B群は100人中45人改善。差は有意か？」</li>
+</ul>
+</div>
+
+<div data-lang="en" class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>CI calculation</b>: "120 out of 200 people agree. Find the 95% CI for the population proportion." &#x2192; p&#x0302; = 0.6, SE = &#x221A;(0.6 &#x00D7; 0.4 / 200), CI = 0.6 &#x00B1; 1.96 &#x00D7; SE</li>
+<li><b>Test decision</b>: "Is the defect rate 5%? 35 defects out of 500." &#x2192; p&#x0302; = 0.07, p&#x2080; = 0.05, z = (0.07 &#x2212; 0.05) / &#x221A;(0.05 &#x00D7; 0.95 / 500)</li>
+<li><b>Normal approximation check</b>: "Can we use a z-test with n = 20, p&#x2080; = 0.1?" &#x2192; np&#x2080; = 2 &lt; 5, so no</li>
+<li><b>Two-sample problem</b>: "Drug A: 60 of 100 improved. Drug B: 45 of 100 improved. Is the difference significant?"</li>
+</ul>
+</div>
