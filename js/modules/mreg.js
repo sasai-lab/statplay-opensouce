@@ -36,8 +36,8 @@ export function initMregVs(){
 
   function fitSimple(pts){
     const n=pts.length;if(n<2) return {b0:0,b1:0,r2:0};
-    let sx=0,sy=0,sxy=0,sx2=0,sy2=0;
-    pts.forEach(p=>{sx+=p.x1;sy+=p.y;sxy+=p.x1*p.y;sx2+=p.x1*p.x1;sy2+=p.y*p.y;});
+    let sx=0,sy=0,sxy=0,sx2=0;
+    pts.forEach(p=>{sx+=p.x1;sy+=p.y;sxy+=p.x1*p.y;sx2+=p.x1*p.x1;});
     const mx=sx/n,my=sy/n;
     const b1=(sxy-n*mx*my)/(sx2-n*mx*mx||1);
     const b0=my-b1*mx;
@@ -75,32 +75,14 @@ export function initMregVs(){
     return {b0:b[0],b1:b[1],b2:b[2],r2:1-ssRes/(ssTot||1)};
   }
 
-  function partialResiduals(pts,multi){
-    const n=pts.length;if(n<3) return pts.map(p=>({rx:p.x1,ry:p.y}));
-    let sx2=0,sy=0,sn=0;
-    pts.forEach(p=>{sx2+=p.x2;sy+=p.y;sn++;});
-    const mx2=sx2/sn,my=sy/sn;
-    let sx1x2=0,sx22=0,sx1=0,syx2=0;
-    pts.forEach(p=>{
-      sx1+=p.x1;sx1x2+=p.x1*p.x2;sx22+=p.x2*p.x2;syx2+=p.y*p.x2;
-    });
-    const mx1=sx1/sn;
-    const bx=(sx1x2-sn*mx1*mx2)/(sx22-sn*mx2*mx2||1);
-    const by=(syx2-sn*my*mx2)/(sx22-sn*mx2*mx2||1);
-    return pts.map(p=>({
-      rx:p.x1-(mx1+bx*(p.x2-mx2)),
-      ry:p.y-(my+by*(p.x2-mx2))
-    }));
-  }
+
 
   let simpleRes={b0:0,b1:0,r2:0};
   let multiRes={b0:0,b1:0,b2:0,r2:0};
-  let residuals=[];
 
   function compute(){
     simpleRes=fitSimple(pool);
     multiRes=fitMultiple(pool);
-    residuals=partialResiduals(pool,multiRes);
   }
 
   function draw(){
