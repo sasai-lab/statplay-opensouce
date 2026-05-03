@@ -18,21 +18,22 @@ export function initErrs(){
     const peak = normPDF(0);
     const yToPx = y => h - 28 - y / peak * (h - 70);
     const crit=zCritical(a*2); // right-tailed critical
+    const axisY=h-28;
     // beta region under H1, up to crit
     const critPx=Math.round(xToPx(crit));
-    const betaPts=[[xToPx(lo),h]];
+    const betaPts=[[xToPx(lo),axisY]];
     for(let x=lo;x<=crit;x+=0.05) betaPts.push([xToPx(x),yToPx(normPDF(x,d,1))]);
-    betaPts.push([critPx,yToPx(normPDF(crit,d,1))],[critPx,h]);
+    betaPts.push([critPx,yToPx(normPDF(crit,d,1))],[critPx,axisY]);
     neonFill(ctx,betaPts,tc.purple,.4);
     // alpha region under H0, beyond crit
-    const aPts=[[critPx,h]];
+    const aPts=[[critPx,axisY]];
     for(let x=crit;x<=hi;x+=0.05) aPts.push([xToPx(x),yToPx(normPDF(x))]);
-    aPts.push([xToPx(hi),h]);
+    aPts.push([xToPx(hi),axisY]);
     neonFill(ctx,aPts,tc.magenta,.45);
     // power region under H1 beyond crit
-    const pPts=[[critPx,h]];
+    const pPts=[[critPx,axisY]];
     for(let x=crit;x<=hi;x+=0.05) pPts.push([xToPx(x),yToPx(normPDF(x,d,1))]);
-    pPts.push([xToPx(hi),h]);
+    pPts.push([xToPx(hi),axisY]);
     neonFill(ctx,pPts,tc.green,.3);
     // H0 curve
     const h0=[];for(let px=0;px<=w;px++){h0.push([px,yToPx(normPDF(lo+px/w*(hi-lo)))]);}

@@ -26,10 +26,11 @@ export function initHtest(){
     else {crit=-zCritical(alpha*2);rejection=[[lo,crit]];}
 
     // rejection fills
+    const axisY=h-20;
     rejection.forEach(r=>{
-      const pts=[[xToPx(r[0]),h]];
+      const pts=[[xToPx(r[0]),axisY]];
       for(let x=r[0];x<=r[1];x+=0.05) pts.push([xToPx(x),yToPx(normPDF(x))]);
-      pts.push([xToPx(r[1]),h]);
+      pts.push([xToPx(r[1]),axisY]);
       neonFill(ctx,pts,tc.magenta,.35);
     });
     // annotation: rejection region labels
@@ -74,22 +75,22 @@ export function initHtest(){
       pval=2*(1-normCDF(Math.abs(zObs)));
       const az=Math.abs(zObs);
       [[-hi,-az],[az,hi]].forEach(r=>{
-        const pp=[[xToPx(r[0]),h]];
+        const pp=[[xToPx(r[0]),axisY]];
         for(let x=r[0];x<=r[1];x+=0.05) pp.push([xToPx(x),yToPx(normPDF(x))]);
-        pp.push([xToPx(r[1]),h]);
+        pp.push([xToPx(r[1]),axisY]);
         neonFill(ctx,pp,tc.orange,.25);
       });
     } else if(t==='right'){
       pval=1-normCDF(zObs);
-      const pp=[[xToPx(zObs),h]];
+      const pp=[[xToPx(zObs),axisY]];
       for(let x=zObs;x<=hi;x+=0.05) pp.push([xToPx(x),yToPx(normPDF(x))]);
-      pp.push([xToPx(hi),h]);
+      pp.push([xToPx(hi),axisY]);
       neonFill(ctx,pp,tc.orange,.25);
     } else {
       pval=normCDF(zObs);
-      const pp=[[xToPx(lo),h]];
+      const pp=[[xToPx(lo),axisY]];
       for(let x=lo;x<=zObs;x+=0.05) pp.push([xToPx(x),yToPx(normPDF(x))]);
-      pp.push([xToPx(zObs),h]);
+      pp.push([xToPx(zObs),axisY]);
       neonFill(ctx,pp,tc.orange,.25);
     }
 

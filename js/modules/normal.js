@@ -25,11 +25,12 @@ export function initNormal(){
     for(let x=-6;x<=6;x+=2){ctx.fillText(x.toString(),xToPx(x)-4,h-6);}
 
     // fill region [a,b]
-    const pts=[];pts.push([xToPx(Math.min(a,b)),h]);
+    const axisY=h-20;
+    const pts=[];pts.push([xToPx(Math.min(a,b)),axisY]);
     for(let px=xToPx(Math.min(a,b));px<=xToPx(Math.max(a,b));px+=1){
       const x=pxToX(px);pts.push([px,yToPx(normPDF(x,mu,sd))]);
     }
-    pts.push([xToPx(Math.max(a,b)),h]);
+    pts.push([xToPx(Math.max(a,b)),axisY]);
     neonFill(ctx,pts,tc.magenta,.35);
 
     // curve

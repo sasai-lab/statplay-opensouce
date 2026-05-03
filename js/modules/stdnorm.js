@@ -17,20 +17,21 @@ export function initStdnorm(){
     const peak = normPDF(0);
     const yToPx = y => h - 22 - y / peak * (h - 60);
     // fill inside ±k — snap boundary pixels to eliminate seams
+    const axisY=h-22;
     const kPxL=Math.round(xToPx(-k)),kPxR=Math.round(xToPx(k));
-    const pts=[[kPxL,h]];
+    const pts=[[kPxL,axisY]];
     for(let x=-k;x<=k;x+=0.04) pts.push([xToPx(x),yToPx(normPDF(x))]);
-    pts.push([kPxR,yToPx(normPDF(k))],[kPxR,h]);
+    pts.push([kPxR,yToPx(normPDF(k))],[kPxR,axisY]);
     neonFill(ctx,pts,tc.cyan,.35);
     // tails — start/end at exact same snapped pixel as central fill
     {
-      const psL=[[0,h]];
+      const psL=[[0,axisY]];
       for(let x=-4;x<=-k;x+=0.04) psL.push([xToPx(x),yToPx(normPDF(x))]);
-      psL.push([kPxL,yToPx(normPDF(-k))],[kPxL,h]);
+      psL.push([kPxL,yToPx(normPDF(-k))],[kPxL,axisY]);
       neonFill(ctx,psL,tc.magenta,.35);
-      const psR=[[kPxR,h],[kPxR,yToPx(normPDF(k))]];
+      const psR=[[kPxR,axisY],[kPxR,yToPx(normPDF(k))]];
       for(let x=k;x<=4;x+=0.04) psR.push([xToPx(x),yToPx(normPDF(x))]);
-      psR.push([w,yToPx(normPDF(4))],[w,h]);
+      psR.push([w,yToPx(normPDF(4))],[w,axisY]);
       neonFill(ctx,psR,tc.magenta,.35);
     }
     // curve

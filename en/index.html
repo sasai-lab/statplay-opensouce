@@ -121,13 +121,28 @@
 </button>
 <div class="nav-links" id="navLinks">
 <div class="nav-dropdown">
+<a class="nav-cat-link" data-cat="columns" href="#columns"><span>COLUMN</span></a>
+<div class="nav-dropdown-menu">
+<a href="columns/deviation.html">What Is Deviation?</a>
+<a href="columns/birthday.html">Birthday Paradox</a>
+<a href="columns/standardization.html">What Is Standardization?</a>
+<a href="columns/income_prediction.html">Predicting Income</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-cat-link" data-cat="tools" href="#dist-tables"><span>TOOLS</span></a>
+<div class="nav-dropdown-menu">
+<a href="tables/index.html">Interactive Distribution Tables</a>
+</div>
+</div>
+<div class="nav-dropdown">
 <a class="nav-cat-link" data-cat="probability" href="#cat-probability"><span>PROB</span></a>
 <div class="nav-dropdown-menu">
 <a href="#stdnorm">Standard Normal</a>
-<a href="#normal">Normal &amp; Standardization</a>
+<a href="#normal">Normal Distribution</a>
 <a href="#prob">Probability Rules</a>
-<a href="#morep">Binomial / Poisson / Exp</a>
 <a href="#bayes">Bayes' Theorem</a>
+<a href="#morep">Discrete &amp; Exponential</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -135,10 +150,12 @@
 <div class="nav-dropdown-menu">
 <a href="#clt">Central Limit Theorem</a>
 <a href="#lln">Law of Large Numbers</a>
-<a href="#ci">Confidence Intervals</a>
+<a href="#ci">Confidence Interval</a>
 <a href="#test">Hypothesis Testing</a>
-<a href="#dists">t / χ² / F Distributions</a>
+<a href="#proptest">Proportion Test</a>
+<a href="#dists">Three Test Distributions</a>
 <a href="#chitest">Chi-Squared Test</a>
+<a href="#anova">ANOVA</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -147,19 +164,6 @@
 <a href="#corr">Correlation</a>
 <a href="#reg">Simple Regression</a>
 <a href="#mreg">Multiple Regression</a>
-</div>
-</div>
-<div class="nav-dropdown">
-<a class="nav-cat-link" data-cat="columns" href="#columns"><span>COLUMN</span></a>
-<div class="nav-dropdown-menu">
-<a href="columns/deviation.html">What Is Deviation?</a>
-<a href="columns/birthday.html">Birthday Paradox</a>
-</div>
-</div>
-<div class="nav-dropdown">
-<a class="nav-cat-link" data-cat="tools" href="#dist-tables"><span>TOOLS</span></a>
-<div class="nav-dropdown-menu">
-<a href="tables/index.html">Interactive Distribution Tables</a>
 </div>
 </div>
 
@@ -339,6 +343,10 @@
 
 <a href="topics/stdnorm.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
+<div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
+
+<a href="columns/standardization.html" style="color:var(--green,#0f6)">📊 Column: What Is Standardization? — The universal translator for "normal" →</a>
+</div>
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>the normal as a tool <span class="story-arrow">▸</span> <a href="#normal">P2 Normal Distribution</a></div>
 </section>
@@ -404,6 +412,10 @@
 <div class="learn-more-link" style="margin:16px 0;text-align:center">
 
 <a href="topics/normal.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+<div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
+
+<a href="columns/deviation.html" style="color:var(--yellow)">📊 Column: What Is a Deviation Value? — See "Top X%" through the normal curve →</a>
 </div>
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>probability rules with Venn diagrams <span class="story-arrow">▸</span> <a href="#prob">P3 Probability Rules</a></div>
@@ -474,6 +486,10 @@
 <div class="learn-more-link" style="margin:16px 0;text-align:center">
 
 <a href="topics/prob.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+<div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
+
+<a href="columns/birthday.html" style="color:var(--magenta)">📊 Column: The Birthday Paradox — How far off our probability intuition can be →</a>
 </div>
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>flipping the conditional <span class="story-arrow">▸</span> <a href="#bayes">P4 Bayes' Theorem</a></div>
@@ -944,7 +960,7 @@
 <!-- ============ PROPTEST ============ -->
 <section class="reveal" id="proptest">
 <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/proptest.html">▸ Dedicated page for this topic</a></div>
-<div class="sec-tag">I5 / 母比率の検定と推定</div>
+<div class="sec-tag">I5 / Proportion Test &amp; Estimation</div>
 
 <h2 class="sec-title">Proportion Test &amp; Estimation <span class="sec-sub">— from sample proportion to the truth</span></h2>
 
