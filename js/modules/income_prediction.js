@@ -290,30 +290,30 @@ function initPredictor() {
   /* ── Drag → age ── */
   function ageFromPointer(e) {
     const rect = canvas.getBoundingClientRect();
-    const cx = e.touches ? e.touches[0].clientX : e.clientX;
+    const cx = e.clientX;
     const ratio = (cx - rect.left - plotPadL) / plotW;
     return Math.round(22 + Math.max(0, Math.min(1, ratio)) * (65 - 22));
   }
 
   canvas.style.cursor = 'grab';
-  canvas.addEventListener('mousedown', e => {
+  canvas.style.touchAction = 'none';
+  canvas.addEventListener('pointerdown', e => {
     dragging = true; canvas.style.cursor = 'grabbing';
+    canvas.setPointerCapture(e.pointerId);
     ageSlider.value = ageFromPointer(e); update(); e.preventDefault();
   });
-  window.addEventListener('mousemove', e => {
+  canvas.addEventListener('pointermove', e => {
     if (!dragging) return;
     ageSlider.value = ageFromPointer(e); update();
   });
-  window.addEventListener('mouseup', () => { if (dragging) { dragging = false; canvas.style.cursor = 'grab'; } });
-  canvas.addEventListener('touchstart', e => {
-    dragging = true; ageSlider.value = ageFromPointer(e); update(); e.preventDefault();
-  }, { passive: false });
-  window.addEventListener('touchmove', e => {
-    if (!dragging) return;
-    if (e.cancelable) e.preventDefault();
-    ageSlider.value = ageFromPointer(e); update();
-  }, { passive: false });
-  window.addEventListener('touchend', () => { dragging = false; });
+  canvas.addEventListener('pointerup', e => {
+    if (dragging) { dragging = false; canvas.style.cursor = 'grab'; }
+    try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+  });
+  canvas.addEventListener('pointercancel', e => {
+    dragging = false; canvas.style.cursor = 'grab';
+    try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+  });
 
   /* ── Keyboard a11y ── */
   canvas.setAttribute('tabindex', '0');

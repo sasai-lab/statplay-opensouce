@@ -223,10 +223,9 @@ export function regBetaI(x, a, b) {
 export function tCDF(x, df) {
   if (x <= -30) return 0;
   if (x >= 30) return 1;
-  const N = 500, lo = -30, step = (x - lo) / N;
-  let s = tPDF(lo, df) + tPDF(x, df);
-  for (let i = 1; i < N; i++) s += (i & 1 ? 4 : 2) * tPDF(lo + i * step, df);
-  return Math.max(0, Math.min(1, s * step / 3));
+  const xt = df / (df + x * x);
+  const ib = regBetaI(xt, df / 2, 0.5);
+  return x >= 0 ? 1 - 0.5 * ib : 0.5 * ib;
 }
 
 export function tCrit(alpha, df) {

@@ -64,10 +64,16 @@ export function initHtest(){
       ctx.fillText(crit.toFixed(2),xToPx(crit)+(t==='left'?-32:4),h-24);
     }
 
-    // z marker (observed)
+    // z marker (observed) — dash-dot line + diamond for color-blind accessibility
     ctx.strokeStyle=tc.green;ctx.lineWidth=tc.light?2.5:2;ctx.shadowBlur=tc.light?2:14;ctx.shadowColor=tc.green;
+    ctx.setLineDash([10,3,2,3]);
     ctx.beginPath();ctx.moveTo(xToPx(zObs),10);ctx.lineTo(xToPx(zObs),h-20);ctx.stroke();ctx.shadowBlur=0;
-    ctx.fillStyle=tc.green;ctx.font='bold 12px "Courier New"';ctx.fillText(`Z = ${zObs.toFixed(2)}`,xToPx(zObs)+4,24);
+    ctx.setLineDash([]);
+    // diamond marker at top of Z line
+    const zPx=xToPx(zObs),dm=5;
+    ctx.fillStyle=tc.green;
+    ctx.beginPath();ctx.moveTo(zPx,10);ctx.lineTo(zPx+dm,10+dm);ctx.lineTo(zPx,10+dm*2);ctx.lineTo(zPx-dm,10+dm);ctx.closePath();ctx.fill();
+    ctx.font='bold 12px "Courier New"';ctx.fillText(`Z = ${zObs.toFixed(2)}`,xToPx(zObs)+4,24);
 
     // p-value shading (orange, distinct from rejection region magenta)
     let pval;
@@ -113,7 +119,7 @@ export function initHtest(){
     $('tDecision').style.color=reject?'var(--magenta)':'var(--green)';
 
     // axis
-    ctx.fillStyle=tc.dim;ctx.font='11px "Courier New"';
+    ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';
     for(let x=-4;x<=4;x+=1)ctx.fillText(x.toString(),xToPx(x)-4,h-6);
   }
   draw();

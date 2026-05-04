@@ -1,5 +1,5 @@
 // StatPlay — module: MULTIPLE REGRESSION — 3D regression plane + comparison panel
-import { $, TAU, rng_normal, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw } from '../utils.js';
+import { $, TAU, rng_normal, normCDF, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw } from '../utils.js';
 
 /* ═══════════════════════════════════════════════════
    PANEL: Simple vs Multiple Regression comparison
@@ -27,12 +27,7 @@ export function initMregVs(){
       pool.push({x1,x2,y});
     }
   }
-  function normCDF01(z){return 0.5*(1+erf_approx(z/Math.SQRT2));}
-  function erf_approx(x){
-    const a=0.147,s=Math.sign(x);x=Math.abs(x);
-    const x2=x*x,t=1-Math.exp(-x2*(4/Math.PI+a*x2)/(1+a*x2));
-    return s*Math.sqrt(t);
-  }
+  function normCDF01(z){return normCDF(z);}
 
   function fitSimple(pts){
     const n=pts.length;if(n<2) return {b0:0,b1:0,r2:0};

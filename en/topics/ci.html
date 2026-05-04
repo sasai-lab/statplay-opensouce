@@ -64,7 +64,13 @@
         "@type": "Organization",
         "name": "Sasai Lab"
       },
-      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Statistics learners"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -201,6 +207,8 @@
 ・"center ± multiplier × wobble" casts a net around the truth<br/>
 ・Quadruple n → √n doubles → interval width halves. Precision costs data<br/>
 ・Raising confidence increases the multiplier: wider net, but more likely to catch the true value</p>
+<p><b>What if σ is unknown?</b><br/>
+The formula above assumes the population standard deviation σ is known. In practice, σ is almost never known — you replace it with the sample standard deviation s and swap z for the <b>t-distribution</b> critical value. As n grows, the t-distribution approaches the standard normal, so the z-interval becomes a good approximation. Details are in the <a href="dists.html#dists-t" style="color:var(--cyan)">t-distribution section</a>.</p>
 </div>
 
 <div class="misconception-box">

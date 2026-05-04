@@ -39,7 +39,7 @@ export function initStdnorm(){
     neonLine(ctx,curve,tc.cyan,14,2.5);
     // axis
     ctx.strokeStyle=withAlpha(tc.cyan,.35);ctx.beginPath();ctx.moveTo(0,h-22);ctx.lineTo(w,h-22);ctx.stroke();
-    ctx.fillStyle=tc.dim;ctx.font='11px "Courier New"';
+    ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';
     for(let x=-3;x<=3;x++)ctx.fillText(x.toString(),xToPx(x)-4,h-6);
     // ±k markers
     ctx.strokeStyle=withAlpha(tc.yellow,.8);ctx.setLineDash([4,4]);ctx.lineWidth=1.5;
@@ -130,7 +130,7 @@ export function initStdnorm(){
     ctx.fillText(`μ=${bMu.toFixed(2)}`,xToPx(bMu)+4,26);
     // axis
     ctx.strokeStyle=withAlpha(tc.cyan,.35);ctx.beginPath();ctx.moveTo(0,h-22);ctx.lineTo(w,h-22);ctx.stroke();
-    ctx.fillStyle=tc.dim;ctx.font='11px "Courier New"';
+    ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';
     for(let x=-5;x<=5;x++)ctx.fillText(x.toString(),xToPx(x)-4,h-6);
     // title
     ctx.fillStyle=color;ctx.font='bold 13px "Courier New"';

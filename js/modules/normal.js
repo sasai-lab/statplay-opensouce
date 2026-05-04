@@ -21,7 +21,7 @@ export function initNormal(){
     // axis
     ctx.strokeStyle=withAlpha(tc.cyan,.35);ctx.beginPath();ctx.moveTo(0,h-20);ctx.lineTo(w,h-20);ctx.stroke();
     // labels
-    ctx.fillStyle=tc.dim;ctx.font='11px "Courier New"';
+    ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';
     for(let x=-6;x<=6;x+=2){ctx.fillText(x.toString(),xToPx(x)-4,h-6);}
 
     // fill region [a,b]
@@ -40,7 +40,7 @@ export function initNormal(){
     // mean line
     ctx.strokeStyle=withAlpha(tc.yellow,.7);ctx.setLineDash([4,4]);
     ctx.beginPath();ctx.moveTo(xToPx(mu),20);ctx.lineTo(xToPx(mu),h-20);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New","Segoe UI","Hiragino Sans",sans-serif';ctx.fillText('μ',xToPx(mu)+4,30);
+    ctx.fillStyle=tc.yellow;ctx.font='12px "Courier New","Segoe UI","Hiragino Sans",sans-serif';ctx.fillText('μ',xToPx(mu)+4,30);
 
     // ±1σ ±2σ markers
     [1,2].forEach(k=>{

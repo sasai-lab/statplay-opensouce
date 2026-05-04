@@ -1,24 +1,13 @@
 // StatPlay — module: Birthday Paradox interactive column
-import { themeColors } from '../utils.js';
-const TAU = Math.PI * 2;
-function _throttle(fn){let id=0;return function(){id||(id=requestAnimationFrame(()=>{id=0;fn();}));};}
-function _debResize(fn,ms=120){let t=0;return function(){clearTimeout(t);t=setTimeout(fn,ms);};}
+import { TAU, themeColors, resizeCanvas, throttledDraw, debouncedResize } from '../utils.js';
 
 const ja = () => document.documentElement.lang === 'ja';
 const lt = () => document.body.classList.contains('theme-light');
-const _raw = window.devicePixelRatio || 1;
-const dpr = (Number.isFinite(_raw) && _raw > 0) ? Math.min(_raw, 8) : 1;
 
 
 function setupCanvas(canvas, h) {
-  const r = canvas.parentElement.getBoundingClientRect();
-  canvas.width = r.width * dpr;
-  canvas.height = h * dpr;
   canvas.style.height = h + 'px';
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return { ctx: null, w: 0, h: 0 };
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  return { ctx, w: r.width, h };
+  return resizeCanvas(canvas);
 }
 
 function exactP(n) {
@@ -203,7 +192,7 @@ export function initBirthday() {
         startAuto();
       });
 
-      window.addEventListener('resize', _debResize(drawCal));
+      window.addEventListener('resize', debouncedResize(drawCal));
       reset();
     }
   }
@@ -263,8 +252,8 @@ export function initBirthday() {
         ctx.shadowBlur = 0;
       }
 
-      slider.addEventListener('input', _throttle(draw));
-      window.addEventListener('resize', _debResize(draw));
+      slider.addEventListener('input', throttledDraw(draw));
+      window.addEventListener('resize', debouncedResize(draw));
 
       bindCanvasDrag(canvas, slider, (x, w) => {
         const cx = w / 2, R = Math.min(w, CANVAS_H) / 2 - 30;
@@ -412,8 +401,8 @@ export function initBirthday() {
         ctx.restore();
       }
 
-      slider.addEventListener('input', _throttle(draw));
-      window.addEventListener('resize', _debResize(draw));
+      slider.addEventListener('input', throttledDraw(draw));
+      window.addEventListener('resize', debouncedResize(draw));
 
       bindCanvasDrag(canvas, slider, (x, w) => {
         const gw = w - pad.l - pad.r;

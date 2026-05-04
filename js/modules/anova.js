@@ -404,7 +404,12 @@ function initAnovaSim(){
       ctx.fillStyle=withAlpha(color,.85);
       ctx.shadowBlur=fp?(tc.light?3:10):0;
       ctx.shadowColor=color;
-      ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.fill();
+      if(fp){
+        // square for false positives (shape differentiation for color-blind accessibility)
+        ctx.fillRect(cx-r,cy-r,r*2,r*2);
+      } else {
+        ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.fill();
+      }
       ctx.shadowBlur=0;
     }
 
@@ -414,7 +419,7 @@ function initAnovaSim(){
     ctx.fillStyle=tc.cyan;
     ctx.fillText(en?'● No false positive':'● 偽陽性なし',pad,14);
     ctx.fillStyle=tc.magenta;
-    const fpLabel=en?'● False positive (≥1 test significant)':'● 偽陽性あり（1回以上「有意」）';
+    const fpLabel=en?'■ False positive (≥1 test significant)':'■ 偽陽性あり（1回以上「有意」）';
     ctx.fillText(fpLabel,pad+140,14);
 
     // theoretical line

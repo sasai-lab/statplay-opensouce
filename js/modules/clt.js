@@ -196,7 +196,7 @@ export function initClt(){
       }
     }
     // axis ticks
-    ctx.fillStyle=tc.dim;ctx.font='11px "Courier New"';
+    ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';
     ctx.fillText(range[0].toFixed(2),px0-4,py0+ph+14);
     ctx.fillText(range[1].toFixed(2),px0+pw-28,py0+ph+14);
   }

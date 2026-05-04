@@ -35,23 +35,31 @@ export function initErrs(){
     for(let x=crit;x<=hi;x+=0.05) pPts.push([xToPx(x),yToPx(normPDF(x,d,1))]);
     pPts.push([xToPx(hi),axisY]);
     neonFill(ctx,pPts,tc.green,.3);
+    // power region hatching (diagonal lines for color-blind accessibility)
+    ctx.save();
+    ctx.beginPath();pPts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.closePath();ctx.clip();
+    ctx.strokeStyle=withAlpha(tc.green,.4);ctx.lineWidth=1;
+    for(let i=-h;i<w+h;i+=8){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i+h,h);ctx.stroke();}
+    ctx.restore();
     // H0 curve
     const h0=[];for(let px=0;px<=w;px++){h0.push([px,yToPx(normPDF(lo+px/w*(hi-lo)))]);}
     neonLine(ctx,h0,tc.cyan,14,2.5);
-    // H1 curve
+    // H1 curve (dashed for color-blind accessibility)
     const h1=[];for(let px=0;px<=w;px++){h1.push([px,yToPx(normPDF(lo+px/w*(hi-lo),d,1))]);}
+    ctx.save();ctx.setLineDash([8,4]);
     neonLine(ctx,h1,tc.purple,14,2.5);
+    ctx.setLineDash([]);ctx.restore();
     // critical line
     ctx.strokeStyle=withAlpha(tc.yellow,.8);ctx.setLineDash([4,4]);ctx.lineWidth=1.5;
     ctx.beginPath();ctx.moveTo(xToPx(crit),12);ctx.lineTo(xToPx(crit),h-28);ctx.stroke();ctx.setLineDash([]);
     const alpha=1-normCDF(crit);
-    ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New"';ctx.fillText(crit.toFixed(2),xToPx(crit)+4,26);
+    ctx.fillStyle=tc.yellow;ctx.font='12px "Courier New"';ctx.fillText(crit.toFixed(2),xToPx(crit)+4,26);
     // labels
     const greekFont='bold 12px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
     ctx.fillStyle=tc.cyan;ctx.font=greekFont;ctx.fillText('H₀',xToPx(0)-8,yToPx(peak)-6);
     ctx.fillStyle=tc.purple;ctx.fillText('H₁ (δ='+d.toFixed(1)+')',xToPx(d)-8,yToPx(peak)-6);
     // axis
-    ctx.fillStyle=tc.dim;ctx.font='11px "Courier New"';
+    ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';
     for(let x=lo;x<=hi;x+=2) ctx.fillText(x.toString(),xToPx(x)-4,h-12);
     // readouts
     const beta=normCDF(crit,d,1);

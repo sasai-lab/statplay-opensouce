@@ -72,8 +72,8 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 　単回帰は「勉強が増えると同時に睡眠が減ることのマイナス」まで勉強のせいにしていた。<br/>
 　重回帰が睡眠を分離したことで、<b>勉強の本当の効果</b>が見えた。</p>
 <p>⑤ 予測してみる<br/>
-　勉強6h・睡眠7hの学生 → ŷ = β₀ + 3.1×6 + 2.0×7 = 26.4 + 18.6 + 14.0 = <b>59.0点</b>... ではなく<br/>
-　正しくは β₀（切片）を含めて ŷ = 23.4 + 3.1×6 + 2.0×7 = 23.4 + 18.6 + 14.0 = <b>56.0点</b><br/>
+　β₀ は ȳ − β₁x̄₁ − β₂x̄₂ = 65 − 3.1×5 − 2.0×7 = 35.5 と決まる（OLS回帰は必ず平均点を通る）。<br/>
+　勉強6h・睡眠7hの学生 → ŷ = 35.5 + 3.1×6 + 2.0×7 = 35.5 + 18.6 + 14.0 = <b>68.1点</b><br/>
 　β₀ は「勉強0h・睡眠0hの仮想スコア」で、ここでは直感的な意味を持たない（外挿に注意）。</p>
 </div>
 <div data-lang="en" class="detail-section">
@@ -93,7 +93,8 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 　Simple regression blamed studying for the negative impact of lost sleep.<br/>
 　Multiple regression separated sleep out, revealing <b>studying's true effect</b>.</p>
 <p>⑤ Make a prediction<br/>
-　Student with 6h study, 7h sleep → ŷ = 23.4 + 3.1×6 + 2.0×7 = 23.4 + 18.6 + 14.0 = <b>56.0 pts</b><br/>
+　β₀ = ȳ − β₁x̄₁ − β₂x̄₂ = 65 − 3.1×5 − 2.0×7 = 35.5 (OLS always passes through the means).<br/>
+　Student with 6h study, 7h sleep → ŷ = 35.5 + 3.1×6 + 2.0×7 = 35.5 + 18.6 + 14.0 = <b>68.1 pts</b><br/>
 　β₀ is the "score at 0h study, 0h sleep" — a hypothetical baseline with no intuitive meaning (don't extrapolate).</p>
 </div>
 

@@ -67,7 +67,13 @@
         "@type": "Organization",
         "name": "Sasai Lab"
       },
-      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Statistics learners"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -303,7 +309,8 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 　Simple regression blamed studying for the negative impact of lost sleep.<br/>
 　Multiple regression separated sleep out, revealing <b>studying's true effect</b>.</p>
 <p>⑤ Make a prediction<br/>
-　Student with 6h study, 7h sleep → ŷ = 23.4 + 3.1×6 + 2.0×7 = 23.4 + 18.6 + 14.0 = <b>56.0 pts</b><br/>
+　β₀ = ȳ − β₁x̄₁ − β₂x̄₂ = 65 − 3.1×5 − 2.0×7 = 35.5 (OLS always passes through the means).<br/>
+　Student with 6h study, 7h sleep → ŷ = 35.5 + 3.1×6 + 2.0×7 = 35.5 + 18.6 + 14.0 = <b>68.1 pts</b><br/>
 　β₀ is the "score at 0h study, 0h sleep" — a hypothetical baseline with no intuitive meaning (don't extrapolate).</p>
 </div>
 

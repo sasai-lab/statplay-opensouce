@@ -9,6 +9,8 @@
 ・「中心 ± 倍率 × ブレ幅」で"網"を張る<br/>
 ・n を4倍にすると √n が2倍 → 区間の幅が半分に。精度を2倍にするにはデータが4倍要る<br/>
 ・信頼度を上げると z<sub>α/2</sub> が大きくなり、網は広がるが「当たる確率」が上がる</p>
+<p><b>σ が分からないときは？</b><br/>
+上の公式は母標準偏差 σ が既知の場合。実際には σ が分からないことがほとんどで、その場合は σ の代わりに標本標準偏差 s を使い、z の代わりに <b>t 分布</b>の臨界値を使う。n が大きくなると t 分布は標準正規分布に近づくので、z で代用しても差は小さくなる。t 分布の詳細は<a href="dists.html#dists-t" style="color:var(--cyan)">t分布セクション</a>で扱う。</p>
 </div>
 <div data-lang="en" class="detail-section">
 <h3>// Formula used here</h3>
@@ -21,6 +23,8 @@
 ・"center ± multiplier × wobble" casts a net around the truth<br/>
 ・Quadruple n → √n doubles → interval width halves. Precision costs data<br/>
 ・Raising confidence increases the multiplier: wider net, but more likely to catch the true value</p>
+<p><b>What if σ is unknown?</b><br/>
+The formula above assumes the population standard deviation σ is known. In practice, σ is almost never known — you replace it with the sample standard deviation s and swap z for the <b>t-distribution</b> critical value. As n grows, the t-distribution approaches the standard normal, so the z-interval becomes a good approximation. Details are in the <a href="dists.html#dists-t" style="color:var(--cyan)">t-distribution section</a>.</p>
 </div>
 <div data-lang="ja" class="misconception-box">
 <h3>// よくある誤解</h3>

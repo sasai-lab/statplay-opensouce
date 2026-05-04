@@ -192,7 +192,7 @@ export function initCorr(){
     ctx.fillText('R² = '+R2.toFixed(3), w-120, 36);
 
     // axis labels near mean lines
-    ctx.fillStyle=withAlpha(tc.text,0.4);ctx.font='11px "Courier New"';
+    ctx.fillStyle=withAlpha(tc.text,0.4);ctx.font='10px "Courier New"';
     ctx.fillText('x',w-14,pmy-6);
     ctx.fillText('y',pmx+6,14);
 

@@ -15,6 +15,8 @@
     --text:#d8f7ff;
     --dim:#94a3bb;
     --orange:#ff8c00;
+    --cyan-light:#7fdbea;
+    --magenta-light:#ffb6f3;
     --grid:rgba(0,243,255,.08);
     --bg-grid:rgba(0,243,255,0);
     --canvas-bg:rgba(0,0,0,.4);
@@ -27,8 +29,8 @@
   html,body{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Sans',sans-serif;overflow-x:hidden;scroll-behavior:smooth}
   a{color:var(--cyan)}
   a:visited{color:var(--purple)}
-  body.theme-light a{color:#1a6b7a}
-  body.theme-light a:visited{color:#4a3090}
+  body.theme-light a{color:var(--cyan)}
+  body.theme-light a:visited{color:var(--purple)}
   body::before{
     content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
     background:
@@ -96,7 +98,7 @@
     white-space:nowrap;
   }
   .nav-links>a:not(.nav-cat-link):hover{color:var(--cyan);border-color:var(--cyan);text-shadow:0 0 8px var(--cyan);box-shadow:inset 0 0 20px rgba(0,243,255,.1)}
-  .nav-links>a:not(.nav-cat-link).current{color:#7fdbea;border-color:rgba(0,220,240,.5);background:rgba(0,220,240,.08)}
+  .nav-links>a:not(.nav-cat-link).current{color:var(--cyan-light);border-color:rgba(0,220,240,.5);background:rgba(0,220,240,.08)}
 
   /* ===== Nav dropdown ===== */
   .nav-dropdown{position:relative}
@@ -357,14 +359,14 @@
   .story-next{
     margin:26px 0 0 0;padding:14px 18px;
     border-top:1px dashed rgba(255,43,214,.35);
-    font-family:'Courier New',monospace;font-size:var(--fs-sm);color:#aab8d0;letter-spacing:1px;
+    font-family:'Courier New',monospace;font-size:var(--fs-sm);color:var(--dim);letter-spacing:1px;
     line-height:1.9;word-spacing:2px;
   }
   .story-next .lbl{color:var(--magenta);margin-right:8px}
   .story-next a{color:var(--cyan);text-decoration:none;border-bottom:1px dotted var(--cyan)}
   .story-next a:hover{color:var(--text);border-bottom-color:var(--text)}
-  .story-arrow{color:#7080a0;margin:0 6px}
-  .text-sub{color:#94a3bb}
+  .story-arrow{color:var(--dim);margin:0 6px}
+  .text-sub{color:var(--dim)}
   .story-next[data-lang]{display:none}
   body:not(.lang-en) .story-next[data-lang="ja"]{display:block}
   body.lang-en .story-next[data-lang="en"]{display:block}
@@ -430,7 +432,7 @@
   .share-btn.url{border-color:var(--green);color:var(--green)}
   .share-btn.url:hover{background:var(--green);color:var(--bg);box-shadow:0 0 15px var(--green)}
   .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
-    background:rgba(0,243,255,.9);color:#05060f;padding:10px 20px;font-family:'Courier New',monospace;font-size:13px;
+    background:var(--cyan);color:var(--bg);padding:10px 20px;font-family:'Courier New',monospace;font-size:13px;
     letter-spacing:2px;z-index:1000;box-shadow:0 0 30px var(--cyan);opacity:0;transition:opacity .3s;pointer-events:none}
   .toast.show{opacity:1}
   .info{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;font-family:'Courier New',monospace;font-size:var(--fs-sm)}
@@ -684,7 +686,7 @@
     border:1px solid rgba(0,243,255,.25);background:rgba(0,243,255,.05);
     color:var(--text);padding:4px 8px;
   }
-  footer .foot-col li.m{border-color:rgba(255,43,214,.4);color:#ffb6f3;background:rgba(255,43,214,.05)}
+  footer .foot-col li.m{border-color:rgba(255,43,214,.4);color:var(--magenta-light);background:rgba(255,43,214,.05)}
   footer .foot-col li.y{border-color:rgba(0,243,255,.4);color:var(--cyan);background:rgba(0,243,255,.05)}
   footer .foot-col li.g{border-color:rgba(0,255,156,.4);color:var(--green);background:rgba(0,255,156,.05)}
   footer .built{
@@ -771,6 +773,8 @@
     --purple:#4a3090;
     --green:#1a6040;
     --orange:#7a4a00;
+    --cyan-light:#1a6b7a;
+    --magenta-light:#7a2060;
     --canvas-bg:#ffffff;
     color-scheme:light;
   }
@@ -853,7 +857,7 @@
   body.theme-light .cat-preview-desc b{color:var(--text)}
 
   /* Sections & panels — opaque white ----------------------------- */
-  body.theme-light .sec-title{text-shadow:none;color:var(--text)}
+  body.theme-light .sec-title{text-shadow:none;color:var(--text);background:none;-webkit-background-clip:unset;background-clip:unset;-webkit-text-fill-color:var(--text)}
   body.theme-light .sec-tag{background:#ffffff;box-shadow:none !important;text-shadow:none}
   body.theme-light .sec-desc{color:#3a4050}
   body.theme-light .sec-desc b{color:var(--cyan)}
@@ -1097,7 +1101,7 @@
     background: rgba(0,243,255,.04);
   }
   .side-toc-list a.current{
-    color: #7fdbea;
+    color: var(--cyan-light);
     border-left: 3px solid rgba(0,220,240,.6);
     background: rgba(0,220,240,.08);
     font-weight: 700;

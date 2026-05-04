@@ -64,7 +64,13 @@
         "@type": "Organization",
         "name": "Sasai Lab"
       },
-      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "統計学初学者全般"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -201,6 +207,8 @@
 ・「中心 ± 倍率 × ブレ幅」で"網"を張る<br/>
 ・n を4倍にすると √n が2倍 → 区間の幅が半分に。精度を2倍にするにはデータが4倍要る<br/>
 ・信頼度を上げると z<sub>α/2</sub> が大きくなり、網は広がるが「当たる確率」が上がる</p>
+<p><b>σ が分からないときは？</b><br/>
+上の公式は母標準偏差 σ が既知の場合。実際には σ が分からないことがほとんどで、その場合は σ の代わりに標本標準偏差 s を使い、z の代わりに <b>t 分布</b>の臨界値を使う。n が大きくなると t 分布は標準正規分布に近づくので、z で代用しても差は小さくなる。t 分布の詳細は<a href="dists.html#dists-t" style="color:var(--cyan)">t分布セクション</a>で扱う。</p>
 </div>
 
 <div class="misconception-box">

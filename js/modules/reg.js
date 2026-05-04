@@ -60,7 +60,7 @@ export function initReg(){
       ctx.beginPath(); ctx.moveTo(PAD.left, py); ctx.lineTo(w - PAD.right, py); ctx.stroke();
       ctx.strokeStyle = tc.dim; ctx.lineWidth = 1;
     }
-    ctx.fillStyle = tc.dim; ctx.font = '11px "Courier New"';
+    ctx.fillStyle = tc.dim; ctx.font = '10px "Courier New"';
     ctx.fillText('x', w - PAD.right - 4, h - PAD.bottom + 14);
     ctx.fillText('y', PAD.left - 8, PAD.top + 2);
   }

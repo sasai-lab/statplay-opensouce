@@ -52,7 +52,7 @@ export function initCi(){
     // true mean line
     ctx.strokeStyle=withAlpha(tc.yellow,.8);ctx.setLineDash([4,4]);
     const xMid=w/2;ctx.beginPath();ctx.moveTo(xMid,0);ctx.lineTo(xMid,h);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New","Segoe UI","Hiragino Sans",sans-serif';ctx.fillText('μ = 0',xMid+4,14);
+    ctx.fillStyle=tc.yellow;ctx.font='12px "Courier New","Segoe UI","Hiragino Sans",sans-serif';ctx.fillText('μ = 0',xMid+4,14);
 
     const range = 1.5;
     const xToPx = x => xMid + x / range * (w / 2 - 20);

@@ -81,7 +81,7 @@ export function initProptest(){
       // axis
       ctx.strokeStyle=withAlpha(tc.dim,.5);ctx.lineWidth=1;
       ctx.beginPath();ctx.moveTo(margin,axisY);ctx.lineTo(w-margin,axisY);ctx.stroke();
-      ctx.fillStyle=tc.dim;ctx.font='11px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
+      ctx.fillStyle=tc.dim;ctx.font='10px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
       for(let v=0;v<=1;v+=0.1){
         const px=xToPx(v);
         ctx.beginPath();ctx.moveTo(px,axisY-4);ctx.lineTo(px,axisY+4);ctx.stroke();
@@ -308,7 +308,7 @@ export function initProptest(){
       ctx.beginPath();ctx.moveTo(xToPx(lo),axisY);ctx.lineTo(xToPx(hi),axisY);ctx.stroke();
 
       // axis ticks & labels
-      ctx.fillStyle=tc.dim;ctx.font='11px "Courier New"';ctx.textAlign='center';
+      ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';ctx.textAlign='center';
       for(let x=-4;x<=4;x+=1){
         const px=xToPx(x);
         ctx.beginPath();ctx.moveTo(px,axisY);ctx.lineTo(px,axisY+5);ctx.stroke();
@@ -473,7 +473,7 @@ export function initProptest(){
       ctx.beginPath();ctx.moveTo(xToPx(lo),axisY);ctx.lineTo(xToPx(hi),axisY);ctx.stroke();
 
       // axis ticks & labels
-      ctx.fillStyle=tc.dim;ctx.font='11px "Courier New"';ctx.textAlign='center';
+      ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';ctx.textAlign='center';
       for(let x=-4;x<=4;x+=1){
         const px=xToPx(x);
         ctx.beginPath();ctx.moveTo(px,axisY);ctx.lineTo(px,axisY+5);ctx.stroke();
