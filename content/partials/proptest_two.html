@@ -13,22 +13,22 @@
 
   <div class="controls">
     <div class="ctrl"><label>n&#x2081; = <span class="val" id="ptTwoN1Val">100</span></label>
-      <input type="range" id="ptTwoN1" min="10" max="500" step="1" value="100">
+      <input type="range" id="ptTwoN1" min="10" max="500" step="1" value="100" aria-label="Sample size n1">
     </div>
     <div class="ctrl"><label>p&#x0302;&#x2081; = <span class="val" id="ptTwoP1Val">0.60</span></label>
-      <input type="range" id="ptTwoP1" min="0.01" max="0.99" step="0.01" value="0.60">
+      <input type="range" id="ptTwoP1" min="0.01" max="0.99" step="0.01" value="0.60" aria-label="Sample proportion p1">
     </div>
     <div class="ctrl"><label>n&#x2082; = <span class="val" id="ptTwoN2Val">100</span></label>
-      <input type="range" id="ptTwoN2" min="10" max="500" step="1" value="100">
+      <input type="range" id="ptTwoN2" min="10" max="500" step="1" value="100" aria-label="Sample size n2">
     </div>
     <div class="ctrl"><label>p&#x0302;&#x2082; = <span class="val" id="ptTwoP2Val">0.45</span></label>
-      <input type="range" id="ptTwoP2" min="0.01" max="0.99" step="0.01" value="0.45">
+      <input type="range" id="ptTwoP2" min="0.01" max="0.99" step="0.01" value="0.45" aria-label="Sample proportion p2">
     </div>
     <div class="ctrl"><label><span data-lang="ja">有意水準 &#x03B1;</span><span data-lang="en">Significance level &#x03B1;</span> = <span class="val" id="ptTwoAVal">0.050</span></label>
-      <input type="range" id="ptTwoA" min="0.001" max="0.2" step="0.001" value="0.05">
+      <input type="range" id="ptTwoA" min="0.001" max="0.2" step="0.001" value="0.05" aria-label="Significance alpha">
     </div>
     <div class="ctrl"><label><span data-lang="ja">検定タイプ</span><span data-lang="en">Test type</span></label>
-      <select id="ptTwoType">
+      <select id="ptTwoType" aria-label="Test type">
         <option value="two" data-ja="両側" data-en="Two-sided">両側</option>
         <option value="right" data-ja="右側" data-en="Right">右側</option>
         <option value="left" data-ja="左側" data-en="Left">左側</option>

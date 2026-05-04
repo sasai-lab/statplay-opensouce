@@ -3,13 +3,13 @@
   <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; Basics: z-statistic &amp; rejection region</h3>
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">観測 z</span><span data-lang="en">Observed z</span> = <span class="val" id="tZVal">1.96</span></label>
-        <input type="range" id="tZ" min="-4" max="4" step="0.01" value="1.96">
+        <input type="range" id="tZ" min="-4" max="4" step="0.01" value="1.96" aria-label="Observed z">
       </div>
       <div class="ctrl"><label>&#x03B1; = <span class="val" id="tAVal">0.05</span></label>
-        <input type="range" id="tA" min="0.001" max="0.2" step="0.001" value="0.05">
+        <input type="range" id="tA" min="0.001" max="0.2" step="0.001" value="0.05" aria-label="Significance alpha">
       </div>
       <div class="ctrl"><label><span data-lang="ja">検定タイプ</span><span data-lang="en">Test type</span></label>
-        <select id="tType">
+        <select id="tType" aria-label="Test type">
           <option value="two" data-ja="両側" data-en="Two-sided">両側</option>
           <option value="right" data-ja="右側" data-en="Right">右側</option>
           <option value="left" data-ja="左側" data-en="Left">左側</option>

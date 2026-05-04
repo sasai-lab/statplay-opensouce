@@ -174,14 +174,14 @@
 <div class="panel" data-autorun="cltRun">
 <div class="controls">
 <div class="ctrl"><label><span>Base distribution (the skewed one)</span></label>
-<select id="cltDist">
+<select aria-label="Base distribution" id="cltDist">
 <option data-en="Exponential λ=1 (heavy right-skew)" data-ja="指数分布 λ=1（右に超歪み）" selected="" value="exp">Exponential λ=1 (heavy right-skew)</option>
 <option data-en="Uniform [0,1] (flat)" data-ja="一様分布 [0,1]（平ら）" value="uniform">Uniform [0,1] (flat)</option>
 <option data-en="Bimodal (two peaks)" data-ja="二峰分布（山が2つ）" value="bimodal">Bimodal (two peaks)</option>
 </select>
 </div>
 <div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="cltNVal">30</span></label>
-<input id="cltN" max="50" min="1" type="range" value="30"/>
+<input aria-label="Sample size n" id="cltN" max="50" min="1" type="range" value="30"/>
 </div>
 <button class="btn" id="cltRun"><span>▶ Run 3000 trials</span></button>
 <button class="btn magenta" id="cltClear"><span>↺ Reset</span></button>

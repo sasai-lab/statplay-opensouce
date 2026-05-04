@@ -299,7 +299,7 @@
     </p>
 <div class="controls">
 <div class="ctrl"><label><span>Range ±k σ</span> = <span class="val" id="snKVal">1.0</span></label>
-<input id="snK" max="3.5" min="0.1" step="0.1" type="range" value="1.0"/>
+<input aria-label="Range plus-minus k sigma" id="snK" max="3.5" min="0.1" step="0.1" type="range" value="1.0"/>
 </div>
 </div>
 <canvas aria-busy="true" aria-label="Standard normal N(0,1) PDF" height="240" id="snCanvas"></canvas>
@@ -337,13 +337,13 @@
     </p>
 <div class="controls">
 <div class="ctrl"><label>μ = <span class="val" id="snMuVal">2.0</span></label>
-<input id="snMu" max="3" min="-3" step="0.1" type="range" value="2.0"/>
+<input aria-label="mu" id="snMu" max="3" min="-3" step="0.1" type="range" value="2.0"/>
 </div>
 <div class="ctrl"><label>σ = <span class="val" id="snSdVal">1.5</span></label>
-<input id="snSd" max="3" min="0.3" step="0.1" type="range" value="1.5"/>
+<input aria-label="sigma" id="snSd" max="3" min="0.3" step="0.1" type="range" value="1.5"/>
 </div>
 <div class="ctrl"><label><span>Progress</span> = <span class="val" id="snTVal">0</span></label>
-<input id="snT" max="100" min="0" type="range" value="0"/>
+<input aria-label="Progress" id="snT" max="100" min="0" type="range" value="0"/>
 </div>
 <button class="btn" id="snAnim"><span>▶ Standardize</span></button>
 </div>
@@ -405,16 +405,16 @@
 <div class="panel">
 <div class="controls">
 <div class="ctrl"><label><span>μ (mean)</span> = <span class="val" id="nMuVal">0</span></label>
-<input id="nMu" max="4" min="-4" step="0.1" type="range" value="0"/>
+<input aria-label="mu (mean)" id="nMu" max="4" min="-4" step="0.1" type="range" value="0"/>
 </div>
 <div class="ctrl"><label><span>σ (std dev)</span> = <span class="val" id="nSdVal">1</span></label>
-<input id="nSd" max="3" min="0.3" step="0.1" type="range" value="1"/>
+<input aria-label="sigma (std dev)" id="nSd" max="3" min="0.3" step="0.1" type="range" value="1"/>
 </div>
 <div class="ctrl"><label><span>Interval [a,b] : a</span> = <span class="val" id="nAVal">-1</span></label>
-<input id="nA" max="5" min="-5" step="0.1" type="range" value="-1"/>
+<input aria-label="Interval a" id="nA" max="5" min="-5" step="0.1" type="range" value="-1"/>
 </div>
 <div class="ctrl"><label>b = <span class="val" id="nBVal">1</span></label>
-<input id="nB" max="5" min="-5" step="0.1" type="range" value="1"/>
+<input aria-label="Interval b" id="nB" max="5" min="-5" step="0.1" type="range" value="1"/>
 </div>
 </div>
 <canvas aria-busy="true" aria-label="Normal distribution N(μ,σ²) PDF" height="260" id="normalCanvas"></canvas>
@@ -480,13 +480,13 @@
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Interactive Venn Diagram</h3>
 <div class="controls">
 <div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
-<input id="probPA" max="0.95" min="0.05" step="0.01" type="range" value="0.4"/>
+<input aria-label="P(A)" id="probPA" max="0.95" min="0.05" step="0.01" type="range" value="0.4"/>
 </div>
 <div class="ctrl"><label>P(B) = <span class="val" id="probPBVal">0.30</span></label>
-<input id="probPB" max="0.95" min="0.05" step="0.01" type="range" value="0.3"/>
+<input aria-label="P(B)" id="probPB" max="0.95" min="0.05" step="0.01" type="range" value="0.3"/>
 </div>
 <div class="ctrl"><label>P(A∩B) = <span class="val" id="probPABVal">0.12</span></label>
-<input id="probPAB" max="0.30" min="0" step="0.01" type="range" value="0.12"/>
+<input aria-label="P(A intersect B)" id="probPAB" max="0.30" min="0" step="0.01" type="range" value="0.12"/>
 </div>
 <button class="btn yellow" id="probIndep"><span>Set Independent</span></button>
 </div>
@@ -544,15 +544,15 @@
 <div class="controls">
 <div class="ctrl">
 <label><span>Prevalence — how many of 1,000 are sick?</span> = <span class="val" id="bPdVal"><span>10 / 1,000</span></span></label>
-<input id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.01"/>
+<input aria-label="Prevalence" id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.01"/>
 </div>
 <div class="ctrl">
 <label><span>Sensitivity — % of sick people the test correctly flags</span> = <span class="val" id="bSensVal">99%</span></label>
-<input id="bSens" max="0.999" min="0.5" step="0.001" type="range" value="0.99"/>
+<input aria-label="Sensitivity" id="bSens" max="0.999" min="0.5" step="0.001" type="range" value="0.99"/>
 </div>
 <div class="ctrl">
 <label><span>Specificity — % of healthy people correctly cleared</span> = <span class="val" id="bSpecVal">95%</span></label>
-<input id="bSpec" max="0.999" min="0.5" step="0.001" type="range" value="0.95"/>
+<input aria-label="Specificity" id="bSpec" max="0.999" min="0.5" step="0.001" type="range" value="0.95"/>
 </div>
 </div>
 <canvas aria-busy="true" aria-label="Bayes theorem visualization" id="bayesCanvas" style="width:100%;display:block;height:380px"></canvas>
@@ -603,9 +603,9 @@
 <div class="panel-title">Binomial B(n, p)</div>
 <canvas aria-busy="true" aria-label="Binomial distribution simulation" height="180" id="binomCanvas"></canvas>
 <div class="controls">
-<div class="ctrl"><label>trials n</label><input id="binomN" max="50" min="1" step="1" type="range" value="20"/>
+<div class="ctrl"><label>trials n</label><input aria-label="Trials n" id="binomN" max="50" min="1" step="1" type="range" value="20"/>
 <span class="val" id="binomNVal">20</span></div>
-<div class="ctrl"><label>success p</label><input id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
+<div class="ctrl"><label>success p</label><input aria-label="Success probability p" id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
 <span class="val" id="binomPVal">0.35</span></div>
 </div>
 
@@ -632,7 +632,7 @@
 <div class="panel-title">Poisson(λ)</div>
 <canvas aria-busy="true" aria-label="Poisson distribution simulation" height="180" id="poissonCanvas"></canvas>
 <div class="controls">
-<div class="ctrl"><label>rate λ</label><input id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
+<div class="ctrl"><label>rate λ</label><input aria-label="Rate lambda" id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
 <span class="val" id="poisLVal">3</span></div>
 </div>
 
@@ -659,7 +659,7 @@
 <div class="panel-title">Exponential(λ) — waiting time</div>
 <canvas aria-busy="true" aria-label="Exponential distribution PDF" height="180" id="expCanvas"></canvas>
 <div class="controls">
-<div class="ctrl"><label>rate λ</label><input id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
+<div class="ctrl"><label>rate λ</label><input aria-label="Rate lambda" id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
 <span class="val" id="expLVal">1</span></div>
 </div>
 
@@ -689,8 +689,8 @@
 </div>
 </div>
 <div class="controls">
-<div class="ctrl"><label>already waited t</label><input id="memT" max="30" min="0" step="0.5" type="range" value="0"/><span class="val" id="memTVal">0</span></div>
-<div class="ctrl"><label>rate λ</label><input id="memL" max="1" min="0.1" step="0.05" type="range" value="0.2"/><span class="val" id="memLVal">0.20</span></div>
+<div class="ctrl"><label>already waited t</label><input aria-label="Already waited time t" id="memT" max="30" min="0" step="0.5" type="range" value="0"/><span class="val" id="memTVal">0</span></div>
+<div class="ctrl"><label>rate λ</label><input aria-label="Rate lambda" id="memL" max="1" min="0.1" step="0.05" type="range" value="0.2"/><span class="val" id="memLVal">0.20</span></div>
 </div>
 </div>
 <!-- /@panel -->
@@ -701,7 +701,7 @@
 
 <div class="sec-bridge">One process — "λ calls per hour" — viewed through three distributions simultaneously. Move λ and all three update. Same phenomenon, different angles.</div>
 <div class="controls" style="margin-bottom:12px">
-<div class="ctrl"><label>calls per hour λ</label><input id="ccLambda" max="15" min="0.5" step="0.5" type="range" value="3"/><span class="val" id="ccLambdaVal">3.0</span></div>
+<div class="ctrl"><label>calls per hour λ</label><input aria-label="Calls per hour lambda" id="ccLambda" max="15" min="0.5" step="0.5" type="range" value="3"/><span class="val" id="ccLambdaVal">3.0</span></div>
 </div>
 <div class="cc-trio">
 <div class="cc-col">
@@ -785,14 +785,14 @@
 <div class="panel" data-autorun="cltRun">
 <div class="controls">
 <div class="ctrl"><label><span>Base distribution (the skewed one)</span></label>
-<select id="cltDist">
+<select aria-label="Base distribution" id="cltDist">
 <option selected="" value="exp">Exponential λ=1 (heavy right-skew)</option>
 <option value="uniform">Uniform [0,1] (flat)</option>
 <option value="bimodal">Bimodal (two peaks)</option>
 </select>
 </div>
 <div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="cltNVal">30</span></label>
-<input id="cltN" max="50" min="1" type="range" value="30"/>
+<input aria-label="Sample size n" id="cltN" max="50" min="1" type="range" value="30"/>
 </div>
 <button class="btn" id="cltRun"><span>▶ Run 3000 trials</span></button>
 <button class="btn magenta" id="cltClear"><span>↺ Reset</span></button>
@@ -849,7 +849,7 @@
 <div class="panel" data-autorun="llnRun">
 <div class="controls">
 <div class="ctrl"><label><span>Probability p</span> = <span class="val" id="llnPVal">0.5</span></label>
-<input id="llnP" max="0.95" min="0.05" step="0.01" type="range" value="0.5"/>
+<input aria-label="Probability p" id="llnP" max="0.95" min="0.05" step="0.01" type="range" value="0.5"/>
 </div>
 <button class="btn" id="llnRun"><span>▶ Simulate</span></button>
 <button class="btn magenta" id="llnReset"><span>↺ Reset</span></button>
@@ -904,10 +904,10 @@
 <div class="panel" data-autorun="ciRun">
 <div class="controls">
 <div class="ctrl"><label>n = <span class="val" id="ciNVal">30</span></label>
-<input id="ciN" max="200" min="5" step="1" type="range" value="30"/>
+<input aria-label="Sample size n" id="ciN" max="200" min="5" step="1" type="range" value="30"/>
 </div>
 <div class="ctrl"><label><span>Confidence</span> = <span class="val" id="ciLvlVal">95%</span></label>
-<input id="ciLvl" max="99" min="80" step="1" type="range" value="95"/>
+<input aria-label="Confidence level" id="ciLvl" max="99" min="80" step="1" type="range" value="95"/>
 </div>
 <button class="btn" id="ciRun"><span>▶ Generate 300</span></button>
 <button class="btn magenta" id="ciReset"><span>↺ Reset</span></button>
@@ -961,13 +961,13 @@
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① Basics: z-statistic &amp; rejection region</h3>
 <div class="controls">
 <div class="ctrl"><label><span>Observed z</span> = <span class="val" id="tZVal">1.96</span></label>
-<input id="tZ" max="4" min="-4" step="0.01" type="range" value="1.96"/>
+<input aria-label="Observed z" id="tZ" max="4" min="-4" step="0.01" type="range" value="1.96"/>
 </div>
 <div class="ctrl"><label>α = <span class="val" id="tAVal">0.05</span></label>
-<input id="tA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
+<input aria-label="Significance alpha" id="tA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
 </div>
 <div class="ctrl"><label><span>Test type</span></label>
-<select id="tType">
+<select aria-label="Test type" id="tType">
 <option value="two">Two-sided</option>
 <option value="right">Right</option>
 <option value="left">Left</option>
@@ -1013,10 +1013,10 @@
 </p>
 <div class="controls">
 <div class="ctrl"><label><span>Effect size δ</span> = <span class="val" id="eDVal">2.0</span></label>
-<input id="eD" max="5" min="0" step="0.1" type="range" value="2"/>
+<input aria-label="Effect size delta" id="eD" max="5" min="0" step="0.1" type="range" value="2"/>
 </div>
 <div class="ctrl"><label>α = <span class="val" id="eAVal">0.050</span></label>
-<input id="eA" max="0.3" min="0.001" step="0.001" type="range" value="0.05"/>
+<input aria-label="Significance alpha" id="eA" max="0.3" min="0.001" step="0.001" type="range" value="0.05"/>
 </div>
 </div>
 <canvas aria-busy="true" aria-label="Visualize the relationship between Type I/II errors and statistical power" height="260" id="errCanvas"></canvas>
@@ -1069,13 +1069,13 @@
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① Confidence interval for a proportion</h3>
 <div class="controls">
 <div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="ptCiNVal">15</span></label>
-<input id="ptCiN" max="200" min="10" step="1" type="range" value="15"/>
+<input aria-label="Sample size n" id="ptCiN" max="200" min="10" step="1" type="range" value="15"/>
 </div>
 <div class="ctrl"><label><span>Sample proportion p̂</span> = <span class="val" id="ptCiPVal">0.50</span></label>
-<input id="ptCiP" max="0.99" min="0.01" step="0.01" type="range" value="0.50"/>
+<input aria-label="Sample proportion" id="ptCiP" max="0.99" min="0.01" step="0.01" type="range" value="0.50"/>
 </div>
 <div class="ctrl"><label><span>Confidence level</span></label>
-<select id="ptCiLvl">
+<select aria-label="Confidence level" id="ptCiLvl">
 <option value="90">90%</option>
 <option selected="" value="95">95%</option>
 <option value="99">99%</option>
@@ -1108,13 +1108,13 @@
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ①-b CI simulation</h3>
 <div class="controls">
 <div class="ctrl"><label><span>True proportion p</span> = <span class="val" id="ptCiSimPVal">0.50</span></label>
-<input id="ptCiSimP" max="0.95" min="0.05" step="0.01" type="range" value="0.50"/>
+<input aria-label="True proportion p" id="ptCiSimP" max="0.95" min="0.05" step="0.01" type="range" value="0.50"/>
 </div>
 <div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="ptCiSimNVal">30</span></label>
-<input id="ptCiSimN" max="200" min="10" step="1" type="range" value="30"/>
+<input aria-label="Sample size n" id="ptCiSimN" max="200" min="10" step="1" type="range" value="30"/>
 </div>
 <div class="ctrl"><label><span>Confidence level</span></label>
-<select id="ptCiSimLvl">
+<select aria-label="Confidence level" id="ptCiSimLvl">
 <option value="90">90%</option>
 <option selected="" value="95">95%</option>
 <option value="99">99%</option>
@@ -1155,19 +1155,19 @@
   </br></p>
 <div class="controls">
 <div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="ptTNVal">100</span></label>
-<input id="ptTN" max="1000" min="10" step="1" type="range" value="100"/>
+<input aria-label="Sample size n" id="ptTN" max="1000" min="10" step="1" type="range" value="100"/>
 </div>
 <div class="ctrl"><label><span>Sample proportion p̂</span> = <span class="val" id="ptTPVal">0.60</span></label>
-<input id="ptTP" max="0.99" min="0.01" step="0.01" type="range" value="0.60"/>
+<input aria-label="Sample proportion" id="ptTP" max="0.99" min="0.01" step="0.01" type="range" value="0.60"/>
 </div>
 <div class="ctrl"><label><span>Null hypothesis p₀</span> = <span class="val" id="ptTP0Val">0.50</span></label>
-<input id="ptTP0" max="0.99" min="0.01" step="0.01" type="range" value="0.50"/>
+<input aria-label="Null hypothesis p0" id="ptTP0" max="0.99" min="0.01" step="0.01" type="range" value="0.50"/>
 </div>
 <div class="ctrl"><label><span>Significance level α</span> = <span class="val" id="ptTAVal">0.050</span></label>
-<input id="ptTA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
+<input aria-label="Significance alpha" id="ptTA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
 </div>
 <div class="ctrl"><label><span>Test type</span></label>
-<select id="ptTType">
+<select aria-label="Test type" id="ptTType">
 <option value="two">Two-sided</option>
 <option value="right">Right</option>
 <option value="left">Left</option>
@@ -1209,22 +1209,22 @@
   </br></p>
 <div class="controls">
 <div class="ctrl"><label>n₁ = <span class="val" id="ptTwoN1Val">100</span></label>
-<input id="ptTwoN1" max="500" min="10" step="1" type="range" value="100"/>
+<input aria-label="Sample size n1" id="ptTwoN1" max="500" min="10" step="1" type="range" value="100"/>
 </div>
 <div class="ctrl"><label>p̂₁ = <span class="val" id="ptTwoP1Val">0.60</span></label>
-<input id="ptTwoP1" max="0.99" min="0.01" step="0.01" type="range" value="0.60"/>
+<input aria-label="Sample proportion p1" id="ptTwoP1" max="0.99" min="0.01" step="0.01" type="range" value="0.60"/>
 </div>
 <div class="ctrl"><label>n₂ = <span class="val" id="ptTwoN2Val">100</span></label>
-<input id="ptTwoN2" max="500" min="10" step="1" type="range" value="100"/>
+<input aria-label="Sample size n2" id="ptTwoN2" max="500" min="10" step="1" type="range" value="100"/>
 </div>
 <div class="ctrl"><label>p̂₂ = <span class="val" id="ptTwoP2Val">0.45</span></label>
-<input id="ptTwoP2" max="0.99" min="0.01" step="0.01" type="range" value="0.45"/>
+<input aria-label="Sample proportion p2" id="ptTwoP2" max="0.99" min="0.01" step="0.01" type="range" value="0.45"/>
 </div>
 <div class="ctrl"><label><span>Significance level α</span> = <span class="val" id="ptTwoAVal">0.050</span></label>
-<input id="ptTwoA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
+<input aria-label="Significance alpha" id="ptTwoA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
 </div>
 <div class="ctrl"><label><span>Test type</span></label>
-<select id="ptTwoType">
+<select aria-label="Test type" id="ptTwoType">
 <option value="two">Two-sided</option>
 <option value="right">Right</option>
 <option value="left">Left</option>
@@ -1288,7 +1288,7 @@
 <b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df→∞.
       </div>
 <div class="ctrl" style="margin-bottom:12px"><label><span>Sample size n = </span><span class="val" id="tNVal">5</span> <span style="color:var(--dim);font-size:11px">(df = <span id="tdVal">4</span>)</span></label>
-<input id="tN" max="100" min="3" type="range" value="5"/>
+<input aria-label="Sample size n" id="tN" max="100" min="3" type="range" value="5"/>
 </div>
 <div style="display:flex;gap:16px;align-items:center;white-space:nowrap;font-family:'Courier New',monospace;font-size:12px;margin-bottom:12px">
 <span style="color:var(--dim)"><span>Confidence:</span></span>
@@ -1337,10 +1337,10 @@
       </div>
 <div class="controls" style="gap:8px;margin-bottom:12px">
 <div class="ctrl"><label><span>Rolls n = </span><span class="val" id="chiRollsVal">60</span></label>
-<input id="chiRolls" max="300" min="12" type="range" value="60"/>
+<input aria-label="Rolls n" id="chiRolls" max="300" min="12" type="range" value="60"/>
 </div>
 <div class="ctrl" style="min-width:auto">
-<select id="chiDieType" style="background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+<select aria-label="Die type" id="chiDieType" style="background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
 <option value="fair">Fair die</option>
 <option value="loaded">Loaded (⚅ heavy)</option>
 </select>
@@ -1349,7 +1349,7 @@
 </div>
 <canvas aria-busy="true" aria-label="Dice roll distribution" height="140" id="diceBarCanvas" style="width:100%;height:140px;display:block"></canvas>
 <div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
-<input id="chiDf" max="30" min="1" type="range" value="5"/>
+<input aria-label="Degrees of freedom df" id="chiDf" max="30" min="1" type="range" value="5"/>
 </div>
 <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change df</span></div>
 <canvas aria-busy="true" aria-label="Chi-squared distribution PDF. See how shape changes with degrees of freedom" height="360" id="chiCanvas" style="width:100%;display:block"></canvas>
@@ -1390,13 +1390,13 @@
 <b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
       </div>
 <div class="ctrl" style="margin-bottom:4px"><label><span>Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
-<input id="fSdA" max="20" min="1" type="range" value="8"/>
+<input aria-label="Group A standard deviation" id="fSdA" max="20" min="1" type="range" value="8"/>
 </div>
 <div class="ctrl" style="margin-bottom:4px"><label><span>Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
-<input id="fSdB" max="20" min="1" type="range" value="15"/>
+<input aria-label="Group B standard deviation" id="fSdB" max="20" min="1" type="range" value="15"/>
 </div>
 <div class="ctrl" style="margin-bottom:12px"><label><span>Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span style="color:var(--dim);font-size:11px">(df₁ = df₂ = <span id="fDfLabel">19</span>)</span></label>
-<input id="fGroupN" max="100" min="5" type="range" value="20"/>
+<input aria-label="Sample size n per group" id="fGroupN" max="100" min="5" type="range" value="20"/>
 </div>
 <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change n</span></div>
 <canvas aria-busy="true" aria-label="F distribution PDF. Visualize the variance ratio between two groups" height="360" id="fCanvas" style="width:100%;display:block"></canvas>
@@ -1460,10 +1460,10 @@
 <span>Significance α</span>
           = <span class="val" id="gofAVal">0.05</span>
 </label>
-<input id="gofA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
+<input aria-label="Significance alpha" id="gofA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
 </div>
 <div class="ctrl" style="min-width:auto">
-<select id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+<select aria-label="Die type" id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
 <option value="fair">Fair die</option>
 <option value="loaded">Loaded (⚅ heavy)</option>
 </select>
@@ -1508,7 +1508,7 @@
 <span>Significance α</span>
           = <span class="val" id="indAVal">0.05</span>
 </label>
-<input id="indA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
+<input aria-label="Significance alpha" id="indA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
 </div>
 <button class="btn magenta" id="indReset"><span>↺ Reset</span></button>
 </div>
@@ -1604,7 +1604,7 @@
 <span>Between-group diff</span>
           = <span class="val" id="anovaEffectVal">1.5</span>
 </label>
-<input id="anovaEffect" max="5" min="0" step="0.1" type="range" value="1.5"/>
+<input aria-label="Between-group difference" id="anovaEffect" max="5" min="0" step="0.1" type="range" value="1.5"/>
 </div>
 <div class="ctrl">
 <label>
@@ -1612,7 +1612,7 @@
 <span>Within-group spread (σ)</span>
           = <span class="val" id="anovaWithinVal">1.5</span>
 </label>
-<input id="anovaWithin" max="5" min="0.3" step="0.1" type="range" value="1.5"/>
+<input aria-label="Within-group spread sigma" id="anovaWithin" max="5" min="0.3" step="0.1" type="range" value="1.5"/>
 </div>
 <div class="ctrl">
 <label>
@@ -1620,7 +1620,7 @@
 <span>n per group</span>
           = <span class="val" id="anovaNkVal">20</span>
 </label>
-<input id="anovaNk" max="80" min="5" step="1" type="range" value="20"/>
+<input aria-label="n per group" id="anovaNk" max="80" min="5" step="1" type="range" value="20"/>
 </div>
 <button class="btn" id="anovaGen"><span>↻ Regenerate</span></button>
 </div>
@@ -1701,13 +1701,13 @@
 <label><span>Target r</span>
           = <span class="val" id="corrTargetR">0.80</span>
 </label>
-<input id="corrR" max="1" min="-1" step="0.01" type="range" value="0.80"/>
+<input aria-label="Target r" id="corrR" max="1" min="-1" step="0.01" type="range" value="0.80"/>
 </div>
 <div class="ctrl">
 <label><span>Points n</span>
           = <span class="val" id="corrTargetN">50</span>
 </label>
-<input id="corrN" max="200" min="10" step="1" type="range" value="50"/>
+<input aria-label="Points n" id="corrN" max="200" min="10" step="1" type="range" value="50"/>
 </div>
 <button class="btn" id="corrGen"><span>▶ Generate</span></button>
 <button class="btn magenta" id="corrClear"><span>↺ Reset</span></button>
@@ -1850,7 +1850,7 @@
 <span>Study↔Sleep correlation</span>
           = <span class="val" id="mvCorrVal">−0.50</span>
 </label>
-<input id="mvCorr" max="0.8" min="-0.8" step="0.05" type="range" value="-0.5"/>
+<input aria-label="Study-Sleep correlation" id="mvCorr" max="0.8" min="-0.8" step="0.05" type="range" value="-0.5"/>
 </div>
 <div class="ctrl">
 <label>
@@ -1858,7 +1858,7 @@
 <span>Sample size n</span>
           = <span class="val" id="mvNVal">50</span>
 </label>
-<input id="mvN" max="100" min="20" step="5" type="range" value="50"/>
+<input aria-label="Sample size n" id="mvN" max="100" min="20" step="5" type="range" value="50"/>
 </div>
 <button class="btn" id="mvGen"><span>↻ Regenerate</span></button>
 </div>
@@ -1891,10 +1891,10 @@
 <div class="panel">
 <div class="controls">
 <div class="ctrl"><label><span>Study hours x₁</span> = <span class="val" id="mStudyVal">5.0</span><span>h</span></label>
-<input id="mStudy" max="9" min="1" step="0.1" type="range" value="5"/>
+<input aria-label="Study hours x1" id="mStudy" max="9" min="1" step="0.1" type="range" value="5"/>
 </div>
 <div class="ctrl"><label><span>Sleep hours x₂</span> = <span class="val" id="mSleepVal">7.0</span><span>h</span></label>
-<input id="mSleep" max="10" min="4" step="0.1" type="range" value="7"/>
+<input aria-label="Sleep hours x2" id="mSleep" max="10" min="4" step="0.1" type="range" value="7"/>
 </div>
 <button class="btn" id="mGen"><span>↺ Resample</span></button>
 </div>

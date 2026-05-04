@@ -181,13 +181,13 @@
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Interactive Venn Diagram</h3>
 <div class="controls">
 <div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
-<input id="probPA" max="0.95" min="0.05" step="0.01" type="range" value="0.4"/>
+<input aria-label="P(A)" id="probPA" max="0.95" min="0.05" step="0.01" type="range" value="0.4"/>
 </div>
 <div class="ctrl"><label>P(B) = <span class="val" id="probPBVal">0.30</span></label>
-<input id="probPB" max="0.95" min="0.05" step="0.01" type="range" value="0.3"/>
+<input aria-label="P(B)" id="probPB" max="0.95" min="0.05" step="0.01" type="range" value="0.3"/>
 </div>
 <div class="ctrl"><label>P(A∩B) = <span class="val" id="probPABVal">0.12</span></label>
-<input id="probPAB" max="0.30" min="0" step="0.01" type="range" value="0.12"/>
+<input aria-label="P(A intersect B)" id="probPAB" max="0.30" min="0" step="0.01" type="range" value="0.12"/>
 </div>
 <button class="btn yellow" id="probIndep"><span>Set Independent</span></button>
 </div>

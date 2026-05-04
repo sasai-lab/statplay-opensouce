@@ -12,13 +12,13 @@
         <b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
       </div>
       <div class="ctrl" style="margin-bottom:4px"><label><span data-lang="ja">グループA SD = </span><span data-lang="en">Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
-        <input type="range" id="fSdA" min="1" max="20" value="8">
+        <input type="range" id="fSdA" min="1" max="20" value="8" aria-label="Group A standard deviation">
       </div>
       <div class="ctrl" style="margin-bottom:4px"><label><span data-lang="ja">グループB SD = </span><span data-lang="en">Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
-        <input type="range" id="fSdB" min="1" max="20" value="15">
+        <input type="range" id="fSdB" min="1" max="20" value="15" aria-label="Group B standard deviation">
       </div>
       <div class="ctrl" style="margin-bottom:12px"><label><span data-lang="ja">各グループ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span style="color:var(--dim);font-size:11px">(df&#x2081; = df&#x2082; = <span id="fDfLabel">19</span>)</span></label>
-        <input type="range" id="fGroupN" min="5" max="100" value="20">
+        <input type="range" id="fGroupN" min="5" max="100" value="20" aria-label="Sample size n per group">
       </div>
       <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
       <canvas id="fCanvas" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" data-aria-label-en="F distribution PDF. Visualize the variance ratio between two groups" height="360" style="width:100%;display:block" aria-busy="true"></canvas>

@@ -2,15 +2,15 @@
     <div class="controls">
       <div class="ctrl">
         <label><span data-lang="ja">有病率 &#x2014; 1000人のうち何人が病気？</span><span data-lang="en">Prevalence &#x2014; how many of 1,000 are sick?</span> = <span class="val" id="bPdVal"><span data-lang="ja">10人 / 1000</span><span data-lang="en">10 / 1,000</span></span></label>
-        <input type="range" id="bPd" min="0.001" max="0.5" step="0.001" value="0.01">
+        <input type="range" id="bPd" min="0.001" max="0.5" step="0.001" value="0.01" aria-label="Prevalence">
       </div>
       <div class="ctrl">
         <label><span data-lang="ja">感度 &#x2014; 病気の人を「陽性」と当てる割合</span><span data-lang="en">Sensitivity &#x2014; % of sick people the test correctly flags</span> = <span class="val" id="bSensVal">99%</span></label>
-        <input type="range" id="bSens" min="0.5" max="0.999" step="0.001" value="0.99">
+        <input type="range" id="bSens" min="0.5" max="0.999" step="0.001" value="0.99" aria-label="Sensitivity">
       </div>
       <div class="ctrl">
         <label><span data-lang="ja">特異度 &#x2014; 健康な人を「陰性」と判定する割合</span><span data-lang="en">Specificity &#x2014; % of healthy people correctly cleared</span> = <span class="val" id="bSpecVal">95%</span></label>
-        <input type="range" id="bSpec" min="0.5" max="0.999" step="0.001" value="0.95">
+        <input type="range" id="bSpec" min="0.5" max="0.999" step="0.001" value="0.95" aria-label="Specificity">
       </div>
     </div>
     <canvas id="bayesCanvas" aria-label="Bayes theorem visualization" style="width:100%;display:block;height:380px" aria-busy="true"></canvas>

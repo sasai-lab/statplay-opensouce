@@ -1,10 +1,10 @@
 <div class="panel" data-autorun="ciRun">
     <div class="controls">
       <div class="ctrl"><label>n = <span class="val" id="ciNVal">30</span></label>
-        <input type="range" id="ciN" min="5" max="200" step="1" value="30">
+        <input type="range" id="ciN" min="5" max="200" step="1" value="30" aria-label="Sample size n">
       </div>
       <div class="ctrl"><label><span data-lang="ja">信頼度</span><span data-lang="en">Confidence</span> = <span class="val" id="ciLvlVal">95%</span></label>
-        <input type="range" id="ciLvl" min="80" max="99" step="1" value="95">
+        <input type="range" id="ciLvl" min="80" max="99" step="1" value="95" aria-label="Confidence level">
       </div>
       <button class="btn" id="ciRun"><span data-lang="ja">&#x25B6; 300回 生成</span><span data-lang="en">&#x25B6; Generate 300</span></button>
       <button class="btn magenta" id="ciReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>

@@ -482,7 +482,7 @@ body.theme-light .hero-scroll { color: #4a5568; }
 <h2>// まず予想してみよう</h2>
 <p>50%の確率で誕生日が被るには、<b style="color:var(--yellow)">最低何人</b>必要だと思う？</p>
 <div class="guess-wrap">
-<input id="guessSlider" max="200" min="2" step="1" type="range" value="50"/>
+<input aria-label="Guess number of people" id="guessSlider" max="200" min="2" step="1" type="range" value="50"/>
 <span class="guess-val" id="guessVal">50</span>
 <span class="guess-unit">人</span>
 </div>
@@ -522,7 +522,7 @@ body.theme-light .hero-scroll { color: #4a5568; }
   </p>
 <div class="sim-ctrl">
 <label>人数 n</label>
-<input id="pairN" max="20" min="2" step="1" type="range" value="5"/>
+<input aria-label="Number of people n" id="pairN" max="20" min="2" step="1" type="range" value="5"/>
 <span class="val" id="pairNVal">5</span>
 </div>
 <canvas aria-label="n人のペア数を視覚化するネットワーク図。ノード間の線がペアを表す" id="pairCanvas"></canvas>
@@ -548,7 +548,7 @@ body.theme-light .hero-scroll { color: #4a5568; }
 <p>横軸が人数、縦軸が「少なくとも1組一致する確率」。<b style="color:var(--yellow)">23人で50%ライン</b>を超える瞬間を確認しよう。</p>
 <div class="sim-ctrl">
 <label>人数 n</label>
-<input id="bdayN" max="50" min="1" step="1" type="range" value="23"/>
+<input aria-label="Number of people n" id="bdayN" max="50" min="1" step="1" type="range" value="23"/>
 <span class="val" id="bdayNVal">23</span>
 </div>
 <canvas aria-label="人数nに対する誕生日一致確率のグラフ。23人で50%を超える" id="bdayCurve"></canvas>

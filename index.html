@@ -380,7 +380,7 @@
     </p>
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">範囲 &#xB1;k &#x03C3;</span><span data-lang="en">Range &#xB1;k &#x03C3;</span> = <span class="val" id="snKVal">1.0</span></label>
-        <input type="range" id="snK" min="0.1" max="3.5" step="0.1" value="1.0">
+        <input type="range" id="snK" min="0.1" max="3.5" step="0.1" value="1.0" aria-label="Range plus-minus k sigma">
       </div>
     </div>
     <canvas id="snCanvas" aria-label="Standard normal N(0,1) PDF" height="240" aria-busy="true"></canvas>
@@ -431,13 +431,13 @@
     </p>
     <div class="controls">
       <div class="ctrl"><label>&#x03BC; = <span class="val" id="snMuVal">2.0</span></label>
-        <input type="range" id="snMu" min="-3" max="3" step="0.1" value="2.0">
+        <input type="range" id="snMu" min="-3" max="3" step="0.1" value="2.0" aria-label="mu">
       </div>
       <div class="ctrl"><label>&#x03C3; = <span class="val" id="snSdVal">1.5</span></label>
-        <input type="range" id="snSd" min="0.3" max="3" step="0.1" value="1.5">
+        <input type="range" id="snSd" min="0.3" max="3" step="0.1" value="1.5" aria-label="sigma">
       </div>
       <div class="ctrl"><label><span data-lang="ja">進度</span><span data-lang="en">Progress</span> = <span class="val" id="snTVal">0</span></label>
-        <input type="range" id="snT" min="0" max="100" value="0">
+        <input type="range" id="snT" min="0" max="100" value="0" aria-label="Progress">
       </div>
       <button class="btn" id="snAnim"><span data-lang="ja">&#x25B6; 標準化する</span><span data-lang="en">&#x25B6; Standardize</span></button>
     </div>
@@ -528,16 +528,16 @@
 <div class="panel">
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">&#x03BC; (平均)</span><span data-lang="en">&#x03BC; (mean)</span> = <span class="val" id="nMuVal">0</span></label>
-        <input type="range" id="nMu" min="-4" max="4" step="0.1" value="0">
+        <input type="range" id="nMu" min="-4" max="4" step="0.1" value="0" aria-label="mu (mean)">
       </div>
       <div class="ctrl"><label><span data-lang="ja">&#x03C3; (標準偏差)</span><span data-lang="en">&#x03C3; (std dev)</span> = <span class="val" id="nSdVal">1</span></label>
-        <input type="range" id="nSd" min="0.3" max="3" step="0.1" value="1">
+        <input type="range" id="nSd" min="0.3" max="3" step="0.1" value="1" aria-label="sigma (std dev)">
       </div>
       <div class="ctrl"><label><span data-lang="ja">区間 [a,b] : a</span><span data-lang="en">Interval [a,b] : a</span> = <span class="val" id="nAVal">-1</span></label>
-        <input type="range" id="nA" min="-5" max="5" step="0.1" value="-1">
+        <input type="range" id="nA" min="-5" max="5" step="0.1" value="-1" aria-label="Interval a">
       </div>
       <div class="ctrl"><label>b = <span class="val" id="nBVal">1</span></label>
-        <input type="range" id="nB" min="-5" max="5" step="0.1" value="1">
+        <input type="range" id="nB" min="-5" max="5" step="0.1" value="1" aria-label="Interval b">
       </div>
     </div>
     <canvas id="normalCanvas" aria-label="Normal distribution N(&#x03BC;,&#x03C3;&#xB2;) PDF" height="260" aria-busy="true"></canvas>
@@ -630,13 +630,13 @@
     <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px" data-lang="en">&#x25B6; Interactive Venn Diagram</h3>
     <div class="controls">
       <div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
-        <input id="probPA" min="0.05" max="0.95" step="0.01" type="range" value="0.4">
+        <input id="probPA" min="0.05" max="0.95" step="0.01" type="range" value="0.4" aria-label="P(A)">
       </div>
       <div class="ctrl"><label>P(B) = <span class="val" id="probPBVal">0.30</span></label>
-        <input id="probPB" min="0.05" max="0.95" step="0.01" type="range" value="0.3">
+        <input id="probPB" min="0.05" max="0.95" step="0.01" type="range" value="0.3" aria-label="P(B)">
       </div>
       <div class="ctrl"><label>P(A&#x2229;B) = <span class="val" id="probPABVal">0.12</span></label>
-        <input id="probPAB" min="0" max="0.30" step="0.01" type="range" value="0.12">
+        <input id="probPAB" min="0" max="0.30" step="0.01" type="range" value="0.12" aria-label="P(A intersect B)">
       </div>
       <button class="btn yellow" id="probIndep"><span data-lang="ja">独立にする</span><span data-lang="en">Set Independent</span></button>
     </div>
@@ -715,15 +715,15 @@
     <div class="controls">
       <div class="ctrl">
         <label><span data-lang="ja">有病率 &#x2014; 1000人のうち何人が病気？</span><span data-lang="en">Prevalence &#x2014; how many of 1,000 are sick?</span> = <span class="val" id="bPdVal"><span data-lang="ja">10人 / 1000</span><span data-lang="en">10 / 1,000</span></span></label>
-        <input type="range" id="bPd" min="0.001" max="0.5" step="0.001" value="0.01">
+        <input type="range" id="bPd" min="0.001" max="0.5" step="0.001" value="0.01" aria-label="Prevalence">
       </div>
       <div class="ctrl">
         <label><span data-lang="ja">感度 &#x2014; 病気の人を「陽性」と当てる割合</span><span data-lang="en">Sensitivity &#x2014; % of sick people the test correctly flags</span> = <span class="val" id="bSensVal">99%</span></label>
-        <input type="range" id="bSens" min="0.5" max="0.999" step="0.001" value="0.99">
+        <input type="range" id="bSens" min="0.5" max="0.999" step="0.001" value="0.99" aria-label="Sensitivity">
       </div>
       <div class="ctrl">
         <label><span data-lang="ja">特異度 &#x2014; 健康な人を「陰性」と判定する割合</span><span data-lang="en">Specificity &#x2014; % of healthy people correctly cleared</span> = <span class="val" id="bSpecVal">95%</span></label>
-        <input type="range" id="bSpec" min="0.5" max="0.999" step="0.001" value="0.95">
+        <input type="range" id="bSpec" min="0.5" max="0.999" step="0.001" value="0.95" aria-label="Specificity">
       </div>
     </div>
     <canvas id="bayesCanvas" aria-label="Bayes theorem visualization" style="width:100%;display:block;height:380px" aria-busy="true"></canvas>
@@ -789,9 +789,9 @@
       <div class="panel-title" data-lang="en">Binomial B(n, p)</div>
       <canvas id="binomCanvas" aria-label="Binomial distribution simulation" height="180" aria-busy="true"></canvas>
       <div class="controls">
-        <div class="ctrl"><label data-lang="ja">試行回数 n</label><label data-lang="en">trials n</label><input id="binomN" type="range" min="1" max="50" step="1" value="20">
+        <div class="ctrl"><label data-lang="ja">試行回数 n</label><label data-lang="en">trials n</label><input id="binomN" type="range" min="1" max="50" step="1" value="20" aria-label="Trials n">
 <span class="val" id="binomNVal">20</span></div>
-        <div class="ctrl"><label data-lang="ja">成功確率 p</label><label data-lang="en">success p</label><input id="binomP" type="range" min="0.01" max="0.99" step="0.01" value="0.35">
+        <div class="ctrl"><label data-lang="ja">成功確率 p</label><label data-lang="en">success p</label><input id="binomP" type="range" min="0.01" max="0.99" step="0.01" value="0.35" aria-label="Success probability p">
 <span class="val" id="binomPVal">0.35</span></div>
       </div>
       <div class="sec-bridge" data-lang="ja">n &#x2192; &#x221E; かつ np &#x2192; &#x03BB; で、二項はポアソンへ。</div>
@@ -827,7 +827,7 @@
       <div class="panel-title" data-lang="en">Poisson(&#x03BB;)</div>
       <canvas id="poissonCanvas" aria-label="Poisson distribution simulation" height="180" aria-busy="true"></canvas>
       <div class="controls">
-        <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="poisL" type="range" min="0.5" max="20" step="0.1" value="3">
+        <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="poisL" type="range" min="0.5" max="20" step="0.1" value="3" aria-label="Rate lambda">
 <span class="val" id="poisLVal">3</span></div>
       </div>
       <div class="sec-bridge" data-lang="ja">&#x03BB; が大きくなるにつれ、ポアソンは正規分布に近づく。</div>
@@ -863,7 +863,7 @@
       <div class="panel-title" data-lang="en">Exponential(&#x03BB;) &#x2014; waiting time</div>
       <canvas id="expCanvas" aria-label="Exponential distribution PDF" height="180" aria-busy="true"></canvas>
       <div class="controls">
-        <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="expL" type="range" min="0.1" max="3" step="0.05" value="1">
+        <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="expL" type="range" min="0.1" max="3" step="0.05" value="1" aria-label="Rate lambda">
 <span class="val" id="expLVal">1</span></div>
       </div>
       <div class="sec-bridge" data-lang="ja">無記憶性：バスを10分待っても、あと何分待つかは今来た人と同じ。過去の待ち時間は将来に影響しない。</div>
@@ -894,8 +894,8 @@
     </div>
   </div>
   <div class="controls">
-    <div class="ctrl"><label data-lang="ja">すでに待った時間 t</label><label data-lang="en">already waited t</label><input id="memT" type="range" min="0" max="30" step="0.5" value="0"><span class="val" id="memTVal">0</span></div>
-    <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="memL" type="range" min="0.1" max="1" step="0.05" value="0.2"><span class="val" id="memLVal">0.20</span></div>
+    <div class="ctrl"><label data-lang="ja">すでに待った時間 t</label><label data-lang="en">already waited t</label><input id="memT" type="range" min="0" max="30" step="0.5" value="0" aria-label="Already waited time t"><span class="val" id="memTVal">0</span></div>
+    <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="memL" type="range" min="0.1" max="1" step="0.05" value="0.2" aria-label="Rate lambda"><span class="val" id="memLVal">0.20</span></div>
   </div>
 </div>
 <!-- /@panel -->
@@ -907,7 +907,7 @@
   <div class="sec-bridge" data-lang="ja">「1時間にλ件電話が来る」を3つの分布で同時に見る。λスライダーを動かすと3つとも変わる。同じ現象を「回数で数える」か「時間で測る」かの違い。</div>
   <div class="sec-bridge" data-lang="en">One process — "λ calls per hour" — viewed through three distributions simultaneously. Move λ and all three update. Same phenomenon, different angles.</div>
   <div class="controls" style="margin-bottom:12px">
-    <div class="ctrl"><label data-lang="ja">1時間あたりの件数 &#x03BB;</label><label data-lang="en">calls per hour &#x03BB;</label><input id="ccLambda" type="range" min="0.5" max="15" step="0.5" value="3"><span class="val" id="ccLambdaVal">3.0</span></div>
+    <div class="ctrl"><label data-lang="ja">1時間あたりの件数 &#x03BB;</label><label data-lang="en">calls per hour &#x03BB;</label><input id="ccLambda" type="range" min="0.5" max="15" step="0.5" value="3" aria-label="Calls per hour lambda"><span class="val" id="ccLambdaVal">3.0</span></div>
   </div>
   <div class="cc-trio">
     <div class="cc-col">
@@ -1024,14 +1024,14 @@
 <div class="panel" data-autorun="cltRun">
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">元の分布（歪んでるやつ）</span><span data-lang="en">Base distribution (the skewed one)</span></label>
-        <select id="cltDist">
+        <select id="cltDist" aria-label="Base distribution">
           <option value="exp" selected data-ja="指数分布 &#x03BB;=1（右に超歪み）" data-en="Exponential &#x03BB;=1 (heavy right-skew)">指数分布 &#x03BB;=1（右に超歪み）</option>
           <option value="uniform" data-ja="一様分布 [0,1]（平ら）" data-en="Uniform [0,1] (flat)">一様分布 [0,1]（平ら）</option>
           <option value="bimodal" data-ja="二峰分布（山が2つ）" data-en="Bimodal (two peaks)">二峰分布（山が2つ）</option>
         </select>
       </div>
       <div class="ctrl"><label><span data-lang="ja">サンプルサイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="cltNVal">30</span></label>
-        <input type="range" id="cltN" min="1" max="50" value="30">
+        <input type="range" id="cltN" min="1" max="50" value="30" aria-label="Sample size n">
       </div>
       <button class="btn" id="cltRun"><span data-lang="ja">&#x25B6; 3000回 試行</span><span data-lang="en">&#x25B6; Run 3000 trials</span></button>
       <button class="btn magenta" id="cltClear"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
@@ -1109,7 +1109,7 @@
 <div class="panel" data-autorun="llnRun">
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">確率 p</span><span data-lang="en">Probability p</span> = <span class="val" id="llnPVal">0.5</span></label>
-        <input type="range" id="llnP" min="0.05" max="0.95" step="0.01" value="0.5">
+        <input type="range" id="llnP" min="0.05" max="0.95" step="0.01" value="0.5" aria-label="Probability p">
       </div>
       <button class="btn" id="llnRun"><span data-lang="ja">&#x25B6; シミュレート</span><span data-lang="en">&#x25B6; Simulate</span></button>
       <button class="btn magenta" id="llnReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
@@ -1188,10 +1188,10 @@
 <div class="panel" data-autorun="ciRun">
     <div class="controls">
       <div class="ctrl"><label>n = <span class="val" id="ciNVal">30</span></label>
-        <input type="range" id="ciN" min="5" max="200" step="1" value="30">
+        <input type="range" id="ciN" min="5" max="200" step="1" value="30" aria-label="Sample size n">
       </div>
       <div class="ctrl"><label><span data-lang="ja">信頼度</span><span data-lang="en">Confidence</span> = <span class="val" id="ciLvlVal">95%</span></label>
-        <input type="range" id="ciLvl" min="80" max="99" step="1" value="95">
+        <input type="range" id="ciLvl" min="80" max="99" step="1" value="95" aria-label="Confidence level">
       </div>
       <button class="btn" id="ciRun"><span data-lang="ja">&#x25B6; 300回 生成</span><span data-lang="en">&#x25B6; Generate 300</span></button>
       <button class="btn magenta" id="ciReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
@@ -1265,13 +1265,13 @@
   <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; Basics: z-statistic &amp; rejection region</h3>
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">観測 z</span><span data-lang="en">Observed z</span> = <span class="val" id="tZVal">1.96</span></label>
-        <input type="range" id="tZ" min="-4" max="4" step="0.01" value="1.96">
+        <input type="range" id="tZ" min="-4" max="4" step="0.01" value="1.96" aria-label="Observed z">
       </div>
       <div class="ctrl"><label>&#x03B1; = <span class="val" id="tAVal">0.05</span></label>
-        <input type="range" id="tA" min="0.001" max="0.2" step="0.001" value="0.05">
+        <input type="range" id="tA" min="0.001" max="0.2" step="0.001" value="0.05" aria-label="Significance alpha">
       </div>
       <div class="ctrl"><label><span data-lang="ja">検定タイプ</span><span data-lang="en">Test type</span></label>
-        <select id="tType">
+        <select id="tType" aria-label="Test type">
           <option value="two" data-ja="両側" data-en="Two-sided">両側</option>
           <option value="right" data-ja="右側" data-en="Right">右側</option>
           <option value="left" data-ja="左側" data-en="Left">左側</option>
@@ -1335,10 +1335,10 @@
     </p>
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">効果量 &#x03B4;</span><span data-lang="en">Effect size &#x03B4;</span> = <span class="val" id="eDVal">2.0</span></label>
-        <input type="range" id="eD" min="0" max="5" step="0.1" value="2">
+        <input type="range" id="eD" min="0" max="5" step="0.1" value="2" aria-label="Effect size delta">
       </div>
       <div class="ctrl"><label>&#x03B1; = <span class="val" id="eAVal">0.050</span></label>
-        <input type="range" id="eA" min="0.001" max="0.3" step="0.001" value="0.05">
+        <input type="range" id="eA" min="0.001" max="0.3" step="0.001" value="0.05" aria-label="Significance alpha">
       </div>
     </div>
     <canvas id="errCanvas" aria-label="第一種・第二種の過誤と検出力の関係を可視化" data-aria-label-en="Visualize the relationship between Type I/II errors and statistical power" height="260" aria-busy="true"></canvas>
@@ -1411,13 +1411,13 @@
 
   <div class="controls">
     <div class="ctrl"><label><span data-lang="ja">標本サイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="ptCiNVal">15</span></label>
-      <input type="range" id="ptCiN" min="10" max="200" step="1" value="15">
+      <input type="range" id="ptCiN" min="10" max="200" step="1" value="15" aria-label="Sample size n">
     </div>
     <div class="ctrl"><label><span data-lang="ja">標本比率 p&#x0302;</span><span data-lang="en">Sample proportion p&#x0302;</span> = <span class="val" id="ptCiPVal">0.50</span></label>
-      <input type="range" id="ptCiP" min="0.01" max="0.99" step="0.01" value="0.50">
+      <input type="range" id="ptCiP" min="0.01" max="0.99" step="0.01" value="0.50" aria-label="Sample proportion">
     </div>
     <div class="ctrl"><label><span data-lang="ja">信頼水準</span><span data-lang="en">Confidence level</span></label>
-      <select id="ptCiLvl">
+      <select id="ptCiLvl" aria-label="Confidence level">
         <option value="90" data-ja="90%" data-en="90%">90%</option>
         <option value="95" data-ja="95%" data-en="95%" selected>95%</option>
         <option value="99" data-ja="99%" data-en="99%">99%</option>
@@ -1456,13 +1456,13 @@
 
   <div class="controls">
     <div class="ctrl"><label><span data-lang="ja">母比率 p（真の値）</span><span data-lang="en">True proportion p</span> = <span class="val" id="ptCiSimPVal">0.50</span></label>
-      <input type="range" id="ptCiSimP" min="0.05" max="0.95" step="0.01" value="0.50">
+      <input type="range" id="ptCiSimP" min="0.05" max="0.95" step="0.01" value="0.50" aria-label="True proportion p">
     </div>
     <div class="ctrl"><label><span data-lang="ja">標本サイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="ptCiSimNVal">30</span></label>
-      <input type="range" id="ptCiSimN" min="10" max="200" step="1" value="30">
+      <input type="range" id="ptCiSimN" min="10" max="200" step="1" value="30" aria-label="Sample size n">
     </div>
     <div class="ctrl"><label><span data-lang="ja">信頼水準</span><span data-lang="en">Confidence level</span></label>
-      <select id="ptCiSimLvl">
+      <select id="ptCiSimLvl" aria-label="Confidence level">
         <option value="90" data-ja="90%" data-en="90%">90%</option>
         <option value="95" data-ja="95%" data-en="95%" selected>95%</option>
         <option value="99" data-ja="99%" data-en="99%">99%</option>
@@ -1517,19 +1517,19 @@
 
   <div class="controls">
     <div class="ctrl"><label><span data-lang="ja">標本サイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="ptTNVal">100</span></label>
-      <input type="range" id="ptTN" min="10" max="1000" step="1" value="100">
+      <input type="range" id="ptTN" min="10" max="1000" step="1" value="100" aria-label="Sample size n">
     </div>
     <div class="ctrl"><label><span data-lang="ja">標本比率 p&#x0302;</span><span data-lang="en">Sample proportion p&#x0302;</span> = <span class="val" id="ptTPVal">0.60</span></label>
-      <input type="range" id="ptTP" min="0.01" max="0.99" step="0.01" value="0.60">
+      <input type="range" id="ptTP" min="0.01" max="0.99" step="0.01" value="0.60" aria-label="Sample proportion">
     </div>
     <div class="ctrl"><label><span data-lang="ja">帰無仮説 p&#x2080;</span><span data-lang="en">Null hypothesis p&#x2080;</span> = <span class="val" id="ptTP0Val">0.50</span></label>
-      <input type="range" id="ptTP0" min="0.01" max="0.99" step="0.01" value="0.50">
+      <input type="range" id="ptTP0" min="0.01" max="0.99" step="0.01" value="0.50" aria-label="Null hypothesis p0">
     </div>
     <div class="ctrl"><label><span data-lang="ja">有意水準 &#x03B1;</span><span data-lang="en">Significance level &#x03B1;</span> = <span class="val" id="ptTAVal">0.050</span></label>
-      <input type="range" id="ptTA" min="0.001" max="0.2" step="0.001" value="0.05">
+      <input type="range" id="ptTA" min="0.001" max="0.2" step="0.001" value="0.05" aria-label="Significance alpha">
     </div>
     <div class="ctrl"><label><span data-lang="ja">検定タイプ</span><span data-lang="en">Test type</span></label>
-      <select id="ptTType">
+      <select id="ptTType" aria-label="Test type">
         <option value="two" data-ja="両側" data-en="Two-sided">両側</option>
         <option value="right" data-ja="右側" data-en="Right">右側</option>
         <option value="left" data-ja="左側" data-en="Left">左側</option>
@@ -1585,22 +1585,22 @@
 
   <div class="controls">
     <div class="ctrl"><label>n&#x2081; = <span class="val" id="ptTwoN1Val">100</span></label>
-      <input type="range" id="ptTwoN1" min="10" max="500" step="1" value="100">
+      <input type="range" id="ptTwoN1" min="10" max="500" step="1" value="100" aria-label="Sample size n1">
     </div>
     <div class="ctrl"><label>p&#x0302;&#x2081; = <span class="val" id="ptTwoP1Val">0.60</span></label>
-      <input type="range" id="ptTwoP1" min="0.01" max="0.99" step="0.01" value="0.60">
+      <input type="range" id="ptTwoP1" min="0.01" max="0.99" step="0.01" value="0.60" aria-label="Sample proportion p1">
     </div>
     <div class="ctrl"><label>n&#x2082; = <span class="val" id="ptTwoN2Val">100</span></label>
-      <input type="range" id="ptTwoN2" min="10" max="500" step="1" value="100">
+      <input type="range" id="ptTwoN2" min="10" max="500" step="1" value="100" aria-label="Sample size n2">
     </div>
     <div class="ctrl"><label>p&#x0302;&#x2082; = <span class="val" id="ptTwoP2Val">0.45</span></label>
-      <input type="range" id="ptTwoP2" min="0.01" max="0.99" step="0.01" value="0.45">
+      <input type="range" id="ptTwoP2" min="0.01" max="0.99" step="0.01" value="0.45" aria-label="Sample proportion p2">
     </div>
     <div class="ctrl"><label><span data-lang="ja">有意水準 &#x03B1;</span><span data-lang="en">Significance level &#x03B1;</span> = <span class="val" id="ptTwoAVal">0.050</span></label>
-      <input type="range" id="ptTwoA" min="0.001" max="0.2" step="0.001" value="0.05">
+      <input type="range" id="ptTwoA" min="0.001" max="0.2" step="0.001" value="0.05" aria-label="Significance alpha">
     </div>
     <div class="ctrl"><label><span data-lang="ja">検定タイプ</span><span data-lang="en">Test type</span></label>
-      <select id="ptTwoType">
+      <select id="ptTwoType" aria-label="Test type">
         <option value="two" data-ja="両側" data-en="Two-sided">両側</option>
         <option value="right" data-ja="右側" data-en="Right">右側</option>
         <option value="left" data-ja="左側" data-en="Left">左側</option>
@@ -1692,7 +1692,7 @@
         <b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df&#x2192;&#x221E;.
       </div>
       <div class="ctrl" style="margin-bottom:12px"><label><span data-lang="ja">サンプルサイズ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="tNVal">5</span> <span style="color:var(--dim);font-size:11px">(df = <span id="tdVal">4</span>)</span></label>
-        <input type="range" id="tN" min="3" max="100" value="5">
+        <input type="range" id="tN" min="3" max="100" value="5" aria-label="Sample size n">
       </div>
       <div style="display:flex;gap:16px;align-items:center;white-space:nowrap;font-family:'Courier New',monospace;font-size:12px;margin-bottom:12px">
         <span style="color:var(--dim)"><span data-lang="ja">信頼水準:</span><span data-lang="en">Confidence:</span></span>
@@ -1755,10 +1755,10 @@
       </div>
       <div class="controls" style="gap:8px;margin-bottom:12px">
         <div class="ctrl"><label><span data-lang="ja">試行回数 n = </span><span data-lang="en">Rolls n = </span><span class="val" id="chiRollsVal">60</span></label>
-          <input type="range" id="chiRolls" min="12" max="300" value="60">
+          <input type="range" id="chiRolls" min="12" max="300" value="60" aria-label="Rolls n">
         </div>
         <div class="ctrl" style="min-width:auto">
-          <select id="chiDieType" style="background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+          <select id="chiDieType" style="background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px" aria-label="Die type">
             <option value="fair" data-ja="公正なサイコロ" data-en="Fair die">公正なサイコロ</option>
             <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
           </select>
@@ -1767,7 +1767,7 @@
       </div>
       <canvas id="diceBarCanvas" height="140" style="width:100%;height:140px;display:block" aria-label="サイコロの出目分布" data-aria-label-en="Dice roll distribution" aria-busy="true"></canvas>
       <div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
-        <input type="range" id="chiDf" min="1" max="30" value="5">
+        <input type="range" id="chiDf" min="1" max="30" value="5" aria-label="Degrees of freedom df">
       </div>
       <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
       <canvas id="chiCanvas" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" data-aria-label-en="Chi-squared distribution PDF. See how shape changes with degrees of freedom" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
@@ -1821,13 +1821,13 @@
         <b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
       </div>
       <div class="ctrl" style="margin-bottom:4px"><label><span data-lang="ja">グループA SD = </span><span data-lang="en">Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
-        <input type="range" id="fSdA" min="1" max="20" value="8">
+        <input type="range" id="fSdA" min="1" max="20" value="8" aria-label="Group A standard deviation">
       </div>
       <div class="ctrl" style="margin-bottom:4px"><label><span data-lang="ja">グループB SD = </span><span data-lang="en">Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
-        <input type="range" id="fSdB" min="1" max="20" value="15">
+        <input type="range" id="fSdB" min="1" max="20" value="15" aria-label="Group B standard deviation">
       </div>
       <div class="ctrl" style="margin-bottom:12px"><label><span data-lang="ja">各グループ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span style="color:var(--dim);font-size:11px">(df&#x2081; = df&#x2082; = <span id="fDfLabel">19</span>)</span></label>
-        <input type="range" id="fGroupN" min="5" max="100" value="20">
+        <input type="range" id="fGroupN" min="5" max="100" value="20" aria-label="Sample size n per group">
       </div>
       <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
       <canvas id="fCanvas" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" data-aria-label-en="F distribution PDF. Visualize the variance ratio between two groups" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
@@ -1911,10 +1911,10 @@
           <span data-lang="en">Significance &#x03B1;</span>
           = <span class="val" id="gofAVal">0.05</span>
         </label>
-        <input type="range" id="gofA" min="0.01" max="0.10" step="0.01" value="0.05">
+        <input type="range" id="gofA" min="0.01" max="0.10" step="0.01" value="0.05" aria-label="Significance alpha">
       </div>
       <div class="ctrl" style="min-width:auto">
-        <select id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+        <select id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px" aria-label="Die type">
           <option value="fair" data-ja="公正なサイコロ" data-en="Fair die">公正なサイコロ</option>
           <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
         </select>
@@ -1973,7 +1973,7 @@
           <span data-lang="en">Significance &#x03B1;</span>
           = <span class="val" id="indAVal">0.05</span>
         </label>
-        <input type="range" id="indA" min="0.01" max="0.10" step="0.01" value="0.05">
+        <input type="range" id="indA" min="0.01" max="0.10" step="0.01" value="0.05" aria-label="Significance alpha">
       </div>
       <button class="btn magenta" id="indReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
@@ -2099,7 +2099,7 @@
           <span data-lang="en">Between-group diff</span>
           = <span class="val" id="anovaEffectVal">1.5</span>
         </label>
-        <input type="range" id="anovaEffect" min="0" max="5" step="0.1" value="1.5">
+        <input type="range" id="anovaEffect" min="0" max="5" step="0.1" value="1.5" aria-label="Between-group difference">
       </div>
       <div class="ctrl">
         <label>
@@ -2107,7 +2107,7 @@
           <span data-lang="en">Within-group spread (&#x03C3;)</span>
           = <span class="val" id="anovaWithinVal">1.5</span>
         </label>
-        <input type="range" id="anovaWithin" min="0.3" max="5" step="0.1" value="1.5">
+        <input type="range" id="anovaWithin" min="0.3" max="5" step="0.1" value="1.5" aria-label="Within-group spread sigma">
       </div>
       <div class="ctrl">
         <label>
@@ -2115,7 +2115,7 @@
           <span data-lang="en">n per group</span>
           = <span class="val" id="anovaNkVal">20</span>
         </label>
-        <input type="range" id="anovaNk" min="5" max="80" step="1" value="20">
+        <input type="range" id="anovaNk" min="5" max="80" step="1" value="20" aria-label="n per group">
       </div>
       <button class="btn" id="anovaGen"><span data-lang="ja">&#x21BB; 再生成</span><span data-lang="en">&#x21BB; Regenerate</span></button>
     </div>
@@ -2226,13 +2226,13 @@
         <label><span data-lang="ja">目標 r</span><span data-lang="en">Target r</span>
           = <span class="val" id="corrTargetR">0.80</span>
         </label>
-        <input type="range" id="corrR" min="-1" max="1" step="0.01" value="0.80">
+        <input type="range" id="corrR" min="-1" max="1" step="0.01" value="0.80" aria-label="Target r">
       </div>
       <div class="ctrl">
         <label><span data-lang="ja">点の数 n</span><span data-lang="en">Points n</span>
           = <span class="val" id="corrTargetN">50</span>
         </label>
-        <input type="range" id="corrN" min="10" max="200" step="1" value="50">
+        <input type="range" id="corrN" min="10" max="200" step="1" value="50" aria-label="Points n">
       </div>
       <button class="btn" id="corrGen"><span data-lang="ja">&#x25B6; 生成</span><span data-lang="en">&#x25B6; Generate</span></button>
       <button class="btn magenta" id="corrClear"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
@@ -2424,7 +2424,7 @@
           <span data-lang="en">Study&#x2194;Sleep correlation</span>
           = <span class="val" id="mvCorrVal">&#x2212;0.50</span>
         </label>
-        <input type="range" id="mvCorr" min="-0.8" max="0.8" step="0.05" value="-0.5">
+        <input type="range" id="mvCorr" min="-0.8" max="0.8" step="0.05" value="-0.5" aria-label="Study-Sleep correlation">
       </div>
       <div class="ctrl">
         <label>
@@ -2432,7 +2432,7 @@
           <span data-lang="en">Sample size n</span>
           = <span class="val" id="mvNVal">50</span>
         </label>
-        <input type="range" id="mvN" min="20" max="100" step="5" value="50">
+        <input type="range" id="mvN" min="20" max="100" step="5" value="50" aria-label="Sample size n">
       </div>
       <button class="btn" id="mvGen"><span data-lang="ja">&#x21BB; &#x518D;&#x751F;&#x6210;</span><span data-lang="en">&#x21BB; Regenerate</span></button>
     </div>
@@ -2475,10 +2475,10 @@
 <div class="panel">
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">勉強時間 x&#x2081;</span><span data-lang="en">Study hours x&#x2081;</span> = <span class="val" id="mStudyVal">5.0</span><span data-lang="ja">時間</span><span data-lang="en">h</span></label>
-        <input type="range" id="mStudy" min="1" max="9" step="0.1" value="5">
+        <input type="range" id="mStudy" min="1" max="9" step="0.1" value="5" aria-label="Study hours x1">
       </div>
       <div class="ctrl"><label><span data-lang="ja">睡眠時間 x&#x2082;</span><span data-lang="en">Sleep hours x&#x2082;</span> = <span class="val" id="mSleepVal">7.0</span><span data-lang="ja">時間</span><span data-lang="en">h</span></label>
-        <input type="range" id="mSleep" min="4" max="10" step="0.1" value="7">
+        <input type="range" id="mSleep" min="4" max="10" step="0.1" value="7" aria-label="Sleep hours x2">
       </div>
       <button class="btn" id="mGen"><span data-lang="ja">&#x21BA; 再サンプリング</span><span data-lang="en">&#x21BA; Resample</span></button>
     </div>

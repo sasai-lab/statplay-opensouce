@@ -13,19 +13,19 @@
 
   <div class="controls">
     <div class="ctrl"><label><span data-lang="ja">標本サイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="ptTNVal">100</span></label>
-      <input type="range" id="ptTN" min="10" max="1000" step="1" value="100">
+      <input type="range" id="ptTN" min="10" max="1000" step="1" value="100" aria-label="Sample size n">
     </div>
     <div class="ctrl"><label><span data-lang="ja">標本比率 p&#x0302;</span><span data-lang="en">Sample proportion p&#x0302;</span> = <span class="val" id="ptTPVal">0.60</span></label>
-      <input type="range" id="ptTP" min="0.01" max="0.99" step="0.01" value="0.60">
+      <input type="range" id="ptTP" min="0.01" max="0.99" step="0.01" value="0.60" aria-label="Sample proportion">
     </div>
     <div class="ctrl"><label><span data-lang="ja">帰無仮説 p&#x2080;</span><span data-lang="en">Null hypothesis p&#x2080;</span> = <span class="val" id="ptTP0Val">0.50</span></label>
-      <input type="range" id="ptTP0" min="0.01" max="0.99" step="0.01" value="0.50">
+      <input type="range" id="ptTP0" min="0.01" max="0.99" step="0.01" value="0.50" aria-label="Null hypothesis p0">
     </div>
     <div class="ctrl"><label><span data-lang="ja">有意水準 &#x03B1;</span><span data-lang="en">Significance level &#x03B1;</span> = <span class="val" id="ptTAVal">0.050</span></label>
-      <input type="range" id="ptTA" min="0.001" max="0.2" step="0.001" value="0.05">
+      <input type="range" id="ptTA" min="0.001" max="0.2" step="0.001" value="0.05" aria-label="Significance alpha">
     </div>
     <div class="ctrl"><label><span data-lang="ja">検定タイプ</span><span data-lang="en">Test type</span></label>
-      <select id="ptTType">
+      <select id="ptTType" aria-label="Test type">
         <option value="two" data-ja="両側" data-en="Two-sided">両側</option>
         <option value="right" data-ja="右側" data-en="Right">右側</option>
         <option value="left" data-ja="左側" data-en="Left">左側</option>

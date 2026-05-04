@@ -173,15 +173,15 @@
 <div class="controls">
 <div class="ctrl">
 <label><span>有病率 — 1000人のうち何人が病気？</span> = <span class="val" id="bPdVal"><span>10人 / 1000</span></span></label>
-<input id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.01"/>
+<input aria-label="Prevalence" id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.01"/>
 </div>
 <div class="ctrl">
 <label><span>感度 — 病気の人を「陽性」と当てる割合</span> = <span class="val" id="bSensVal">99%</span></label>
-<input id="bSens" max="0.999" min="0.5" step="0.001" type="range" value="0.99"/>
+<input aria-label="Sensitivity" id="bSens" max="0.999" min="0.5" step="0.001" type="range" value="0.99"/>
 </div>
 <div class="ctrl">
 <label><span>特異度 — 健康な人を「陰性」と判定する割合</span> = <span class="val" id="bSpecVal">95%</span></label>
-<input id="bSpec" max="0.999" min="0.5" step="0.001" type="range" value="0.95"/>
+<input aria-label="Specificity" id="bSpec" max="0.999" min="0.5" step="0.001" type="range" value="0.95"/>
 </div>
 </div>
 <canvas aria-busy="true" aria-label="Bayes theorem visualization" id="bayesCanvas" style="width:100%;display:block;height:380px"></canvas>

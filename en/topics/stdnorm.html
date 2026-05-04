@@ -179,7 +179,7 @@
     </p>
 <div class="controls">
 <div class="ctrl"><label><span>Range ±k σ</span> = <span class="val" id="snKVal">1.0</span></label>
-<input id="snK" max="3.5" min="0.1" step="0.1" type="range" value="1.0"/>
+<input aria-label="Range plus-minus k sigma" id="snK" max="3.5" min="0.1" step="0.1" type="range" value="1.0"/>
 </div>
 </div>
 <canvas aria-busy="true" aria-label="Standard normal N(0,1) PDF" height="240" id="snCanvas"></canvas>
@@ -231,13 +231,13 @@
     </p>
 <div class="controls">
 <div class="ctrl"><label>μ = <span class="val" id="snMuVal">2.0</span></label>
-<input id="snMu" max="3" min="-3" step="0.1" type="range" value="2.0"/>
+<input aria-label="mu" id="snMu" max="3" min="-3" step="0.1" type="range" value="2.0"/>
 </div>
 <div class="ctrl"><label>σ = <span class="val" id="snSdVal">1.5</span></label>
-<input id="snSd" max="3" min="0.3" step="0.1" type="range" value="1.5"/>
+<input aria-label="sigma" id="snSd" max="3" min="0.3" step="0.1" type="range" value="1.5"/>
 </div>
 <div class="ctrl"><label><span>Progress</span> = <span class="val" id="snTVal">0</span></label>
-<input id="snT" max="100" min="0" type="range" value="0"/>
+<input aria-label="Progress" id="snT" max="100" min="0" type="range" value="0"/>
 </div>
 <button class="btn" id="snAnim"><span>▶ Standardize</span></button>
 </div>

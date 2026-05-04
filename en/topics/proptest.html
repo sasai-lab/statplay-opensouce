@@ -170,13 +170,13 @@
 
 <div class="controls">
 <div class="ctrl"><label>Sample size n = <span class="val" id="ptCiNVal">15</span></label>
-<input id="ptCiN" max="200" min="10" step="1" type="range" value="15"/>
+<input id="ptCiN" max="200" min="10" step="1" type="range" value="15" aria-label="Sample size n"/>
 </div>
 <div class="ctrl"><label>Sample proportion p&#x0302; = <span class="val" id="ptCiPVal">0.50</span></label>
-<input id="ptCiP" max="0.99" min="0.01" step="0.01" type="range" value="0.50"/>
+<input id="ptCiP" max="0.99" min="0.01" step="0.01" type="range" value="0.50" aria-label="Sample proportion"/>
 </div>
 <div class="ctrl"><label>Confidence level</label>
-<select id="ptCiLvl">
+<select id="ptCiLvl" aria-label="Confidence level">
 <option value="90">90%</option>
 <option selected value="95">95%</option>
 <option value="99">99%</option>
@@ -209,13 +209,13 @@ Run it 200 times and see whether that 95% claim holds up.</p>
 
 <div class="controls">
 <div class="ctrl"><label>True proportion p = <span class="val" id="ptCiSimPVal">0.50</span></label>
-<input id="ptCiSimP" max="0.95" min="0.05" step="0.01" type="range" value="0.50"/>
+<input id="ptCiSimP" max="0.95" min="0.05" step="0.01" type="range" value="0.50" aria-label="True proportion p"/>
 </div>
 <div class="ctrl"><label>Sample size n = <span class="val" id="ptCiSimNVal">30</span></label>
-<input id="ptCiSimN" max="200" min="10" step="1" type="range" value="30"/>
+<input id="ptCiSimN" max="200" min="10" step="1" type="range" value="30" aria-label="Sample size n"/>
 </div>
 <div class="ctrl"><label>Confidence level</label>
-<select id="ptCiSimLvl">
+<select id="ptCiSimLvl" aria-label="Confidence level">
 <option value="90">90%</option>
 <option selected value="95">95%</option>
 <option value="99">99%</option>
@@ -256,19 +256,19 @@ Run it 200 times and see whether that 95% claim holds up.</p>
 
 <div class="controls">
 <div class="ctrl"><label>Sample size n = <span class="val" id="ptTNVal">100</span></label>
-<input id="ptTN" max="1000" min="10" step="1" type="range" value="100"/>
+<input id="ptTN" max="1000" min="10" step="1" type="range" value="100" aria-label="Sample size n"/>
 </div>
 <div class="ctrl"><label>Sample proportion p&#x0302; = <span class="val" id="ptTPVal">0.60</span></label>
-<input id="ptTP" max="0.99" min="0.01" step="0.01" type="range" value="0.60"/>
+<input id="ptTP" max="0.99" min="0.01" step="0.01" type="range" value="0.60" aria-label="Sample proportion"/>
 </div>
 <div class="ctrl"><label>Null hypothesis p&#x2080; = <span class="val" id="ptTP0Val">0.50</span></label>
-<input id="ptTP0" max="0.99" min="0.01" step="0.01" type="range" value="0.50"/>
+<input id="ptTP0" max="0.99" min="0.01" step="0.01" type="range" value="0.50" aria-label="Null hypothesis p0"/>
 </div>
 <div class="ctrl"><label>Significance level &#x03B1; = <span class="val" id="ptTAVal">0.050</span></label>
-<input id="ptTA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
+<input id="ptTA" max="0.2" min="0.001" step="0.001" type="range" value="0.05" aria-label="Significance alpha"/>
 </div>
 <div class="ctrl"><label>Test type</label>
-<select id="ptTType">
+<select id="ptTType" aria-label="Test type">
 <option value="two">Two-sided</option>
 <option value="right">Right</option>
 <option value="left">Left</option>
@@ -310,22 +310,22 @@ Run it 200 times and see whether that 95% claim holds up.</p>
 
 <div class="controls">
 <div class="ctrl"><label>n&#x2081; = <span class="val" id="ptTwoN1Val">100</span></label>
-<input id="ptTwoN1" max="500" min="10" step="1" type="range" value="100"/>
+<input id="ptTwoN1" max="500" min="10" step="1" type="range" value="100" aria-label="Sample size n1"/>
 </div>
 <div class="ctrl"><label>p&#x0302;&#x2081; = <span class="val" id="ptTwoP1Val">0.60</span></label>
-<input id="ptTwoP1" max="0.99" min="0.01" step="0.01" type="range" value="0.60"/>
+<input id="ptTwoP1" max="0.99" min="0.01" step="0.01" type="range" value="0.60" aria-label="Sample proportion p1"/>
 </div>
 <div class="ctrl"><label>n&#x2082; = <span class="val" id="ptTwoN2Val">100</span></label>
-<input id="ptTwoN2" max="500" min="10" step="1" type="range" value="100"/>
+<input id="ptTwoN2" max="500" min="10" step="1" type="range" value="100" aria-label="Sample size n2"/>
 </div>
 <div class="ctrl"><label>p&#x0302;&#x2082; = <span class="val" id="ptTwoP2Val">0.45</span></label>
-<input id="ptTwoP2" max="0.99" min="0.01" step="0.01" type="range" value="0.45"/>
+<input id="ptTwoP2" max="0.99" min="0.01" step="0.01" type="range" value="0.45" aria-label="Sample proportion p2"/>
 </div>
 <div class="ctrl"><label>Significance level &#x03B1; = <span class="val" id="ptTwoAVal">0.050</span></label>
-<input id="ptTwoA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
+<input id="ptTwoA" max="0.2" min="0.001" step="0.001" type="range" value="0.05" aria-label="Significance alpha"/>
 </div>
 <div class="ctrl"><label>Test type</label>
-<select id="ptTwoType">
+<select id="ptTwoType" aria-label="Test type">
 <option value="two">Two-sided</option>
 <option value="right">Right</option>
 <option value="left">Left</option>

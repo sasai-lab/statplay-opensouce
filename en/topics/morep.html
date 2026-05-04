@@ -171,9 +171,9 @@
 <div class="panel-title">Binomial B(n, p)</div>
 <canvas aria-busy="true" aria-label="Binomial distribution simulation" height="180" id="binomCanvas"></canvas>
 <div class="controls">
-<div class="ctrl"><label>trials n</label><input id="binomN" max="50" min="1" step="1" type="range" value="20"/>
+<div class="ctrl"><label>trials n</label><input aria-label="Trials n" id="binomN" max="50" min="1" step="1" type="range" value="20"/>
 <span class="val" id="binomNVal">20</span></div>
-<div class="ctrl"><label>success p</label><input id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
+<div class="ctrl"><label>success p</label><input aria-label="Success probability p" id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
 <span class="val" id="binomPVal">0.35</span></div>
 </div>
 
@@ -216,7 +216,7 @@
 <div class="panel-title">Poisson(λ)</div>
 <canvas aria-busy="true" aria-label="Poisson distribution simulation" height="180" id="poissonCanvas"></canvas>
 <div class="controls">
-<div class="ctrl"><label>rate λ</label><input id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
+<div class="ctrl"><label>rate λ</label><input aria-label="Rate lambda" id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
 <span class="val" id="poisLVal">3</span></div>
 </div>
 
@@ -259,7 +259,7 @@
 <div class="panel-title">Exponential(λ) — waiting time</div>
 <canvas aria-busy="true" aria-label="Exponential distribution PDF" height="180" id="expCanvas"></canvas>
 <div class="controls">
-<div class="ctrl"><label>rate λ</label><input id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
+<div class="ctrl"><label>rate λ</label><input aria-label="Rate lambda" id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
 <span class="val" id="expLVal">1</span></div>
 </div>
 
@@ -353,8 +353,8 @@ Normal approximation           Exponential</div>
 </div>
 </div>
 <div class="controls">
-<div class="ctrl"><label>already waited t</label><input id="memT" max="30" min="0" step="0.5" type="range" value="0"/><span class="val" id="memTVal">0</span></div>
-<div class="ctrl"><label>rate λ</label><input id="memL" max="1" min="0.1" step="0.05" type="range" value="0.2"/><span class="val" id="memLVal">0.20</span></div>
+<div class="ctrl"><label>already waited t</label><input aria-label="Already waited time t" id="memT" max="30" min="0" step="0.5" type="range" value="0"/><span class="val" id="memTVal">0</span></div>
+<div class="ctrl"><label>rate λ</label><input aria-label="Rate lambda" id="memL" max="1" min="0.1" step="0.05" type="range" value="0.2"/><span class="val" id="memLVal">0.20</span></div>
 </div>
 </div>
 <!-- /@panel -->
@@ -366,7 +366,7 @@ Normal approximation           Exponential</div>
 
 <div class="sec-bridge">One process — "λ calls per hour" — viewed through three distributions simultaneously. Move λ and all three update. Same phenomenon, different angles.</div>
 <div class="controls" style="margin-bottom:12px">
-<div class="ctrl"><label>calls per hour λ</label><input id="ccLambda" max="15" min="0.5" step="0.5" type="range" value="3"/><span class="val" id="ccLambdaVal">3.0</span></div>
+<div class="ctrl"><label>calls per hour λ</label><input aria-label="Calls per hour lambda" id="ccLambda" max="15" min="0.5" step="0.5" type="range" value="3"/><span class="val" id="ccLambdaVal">3.0</span></div>
 </div>
 <div class="cc-trio">
 <div class="cc-col">

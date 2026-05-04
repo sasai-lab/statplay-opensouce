@@ -452,7 +452,7 @@ body.theme-light .hero-scroll { color: #4a5568; }
 <h2>// Guess First</h2>
 <p>For a <b style="color:var(--yellow)">50% chance</b> of a shared birthday, how many people do you need?</p>
 <div class="guess-wrap">
-<input id="guessSlider" max="200" min="2" step="1" type="range" value="50"/>
+<input aria-label="Guess number of people" id="guessSlider" max="200" min="2" step="1" type="range" value="50"/>
 <span class="guess-val" id="guessVal">50</span>
 <span class="guess-unit">people</span>
 </div>
@@ -490,7 +490,7 @@ body.theme-light .hero-scroll { color: #4a5568; }
   </p>
 <div class="sim-ctrl">
 <label>People n</label>
-<input id="pairN" max="20" min="2" step="1" type="range" value="5"/>
+<input aria-label="Number of people n" id="pairN" max="20" min="2" step="1" type="range" value="5"/>
 <span class="val" id="pairNVal">5</span>
 </div>
 <canvas aria-label="Network diagram showing all possible pairs among n people" id="pairCanvas"></canvas>
@@ -515,7 +515,7 @@ body.theme-light .hero-scroll { color: #4a5568; }
 <p>X-axis: people. Y-axis: P(at least one match). Watch the curve <b style="color:var(--yellow)">cross 50% at n = 23</b>.</p>
 <div class="sim-ctrl">
 <label>People n</label>
-<input id="bdayN" max="50" min="1" step="1" type="range" value="23"/>
+<input aria-label="Number of people n" id="bdayN" max="50" min="1" step="1" type="range" value="23"/>
 <span class="val" id="bdayNVal">23</span>
 </div>
 <canvas aria-label="Probability curve of birthday matches vs. number of people" id="bdayCurve"></canvas>
