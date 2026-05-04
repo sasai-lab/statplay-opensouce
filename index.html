@@ -61,18 +61,22 @@
       "educationalLevel": "intermediate",
       "learningResourceType": "interactive visualization",
       "teaches": [
+        "確率の基本法則・条件付き確率",
         "標準正規分布",
-        "中心極限定理",
         "正規分布と標準化",
+        "二項分布・ポアソン分布・指数分布",
+        "ベイズ定理",
+        "中心極限定理",
         "大数の法則",
         "信頼区間",
+        "母比率の検定と推定",
         "仮説検定",
-        "t分布",
-        "カイ二乗分布",
-        "F分布",
+        "t分布・カイ二乗分布・F分布",
+        "カイ二乗検定",
+        "分散分析（ANOVA）",
+        "相関係数",
         "単回帰分析",
-        "重回帰分析",
-        "ベイズ定理"
+        "重回帰分析"
       ],
       "audience": {
         "@type": "EducationalAudience",
@@ -108,8 +112,8 @@
 <link rel="preload" href="css/stat_cyber.css" as="style">
 <link rel="stylesheet" href="css/stat_cyber.css">
 <!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
 <script defer src="./js/katex-render.js"></script>
 </head>
 <body>
@@ -365,13 +369,13 @@
     <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; "68 - 95 - 99.7" &#x2014; no memorization, just see it</h3>
     <p class="sec-desc" data-lang="ja" style="margin-bottom:14px;font-size:13px">
       スライダーで幅 <code>k</code> を伸び縮みさせると、青く塗られた面積がそのまま"確率"。
-      &#xB1; 1&#x03C3; ですでに約7割、&#xB1; 2&#x03C3; で95%、&#xB1; 3&#x03C3; でほぼ全部。<br>
+      &#xB1; 1&#x03C3; ですでに約7割、&#xB1; 2&#x03C3; で約95%、&#xB1; 3&#x03C3; でほぼ全部。<br>
       <b>z = 1.96</b> という数字に見覚えがあれば、それは"両側5%"の臨界値。
       検定も信頼区間もこの 1.96 から出発する &#x2014; それくらい、この曲線が主役なのだ。
     </p>
     <p class="sec-desc" data-lang="en" style="margin-bottom:14px;font-size:13px">
       Slide the width <code>k</code>; the blue-filled area IS the probability.
-      &#xB1; 1&#x03C3; already covers ~68%, &#xB1; 2&#x03C3; is 95%, &#xB1; 3&#x03C3; is nearly everything.<br>
+      &#xB1; 1&#x03C3; already covers ~68%, &#xB1; 2&#x03C3; is ~95%, &#xB1; 3&#x03C3; is nearly everything.<br>
       That famous number <b>z = 1.96</b>? It's the two-tail 5% critical value &#x2014; hypothesis tests and confidence intervals all start there.
     </p>
     <div class="controls">
@@ -416,12 +420,12 @@
     <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; 正規分布、ぜんぶ"あの一本"に化ける瞬間</h3>
     <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; Watch every normal collapse onto "that one curve"</h3>
     <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
-      身長、IQ、株価の日次リターン、工場の部品誤差 &#x2014; 世の中にある正規分布っぽいものは平均も広がりもバラバラ。
+      身長、IQ、血圧の測定値、工場の部品誤差 &#x2014; 世の中にある正規分布っぽいものは平均も広がりもバラバラ。
       でも <b>z = (x &#x2212; &#x03BC;) / &#x03C3;</b> をかませるだけで、全部まとめて<b>ピンクのあの曲線</b>にピタッと重なる。<br>
       スクロールしたら自動で変身していく（もう一度見たい時は &#x25B6; ボタン）。これが、すべての統計公式が "標準正規表" 一枚で済む理由。
     </p>
     <p class="sec-desc" data-lang="en" style="margin-bottom:14px">
-      Height, IQ, daily stock returns, factory part errors &#x2014; real-world normal-ish things all have different means and spreads.
+      Height, IQ, blood pressure readings, factory part errors &#x2014; real-world normal-ish things all have different means and spreads.
       Yet apply <b>z = (x &#x2212; &#x03BC;) / &#x03C3;</b> and they all snap onto <b>that pink curve</b>.<br>
       It auto-plays on scroll (&#x25B6; to replay). That's why every statistical formula needs only one standard-normal table.
     </p>
@@ -1221,7 +1225,7 @@
 <section id="test" class="reveal">
   <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/test.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/test.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I4 / 仮説検定</div>
-  <h2 class="sec-title" data-lang="ja">仮説検定 <span class="sec-sub">— 棄却か採択か</span></h2>
+  <h2 class="sec-title" data-lang="ja">仮説検定 <span class="sec-sub">— 棄却か、棄却できないか</span></h2>
   <h2 class="sec-title" data-lang="en">Hypothesis Testing <span class="sec-sub">— Reject or Fail to Reject</span></h2>
 
   <div class="story-bridge" data-lang="ja">信頼区間が「幅として」不確実性を出す道具なら、<span class="next">仮説検定</span>は「YES/NO として」それを使う道具。<b>帰無仮説の世界</b>でこのデータは起こりえるか？ 起こりにくいなら reject——同じ分布、同じ σ／n、<b>質問が違うだけ</b>。</div>
@@ -1633,7 +1637,7 @@
 
 <section id="dists" class="reveal">
   <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/dists.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/dists.html">▸ Dedicated page for this topic</a></div>
-  <div class="sec-tag">I5 / t · χ² · F 分布</div>
+  <div class="sec-tag">I6 / t · χ² · F 分布</div>
   <h2 class="sec-title" data-lang="ja">三大検定分布 <span class="sec-sub">— t・χ²・F の素顔</span></h2>
   <h2 class="sec-title" data-lang="en">Three Test Distributions <span class="sec-sub">— Meet t, χ² & F</span></h2>
 
@@ -1848,8 +1852,8 @@
     <a data-lang="ja" href="topics/dists.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/dists.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
-<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>「ズレ」を数値化して検定する <span class="story-arrow">▸</span> <a href="#chitest">I6 カイ二乗検定</a></div>
-  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>quantifying "deviation" and testing it <span class="story-arrow">▸</span> <a href="#chitest">I6 Chi-Squared Test</a></div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>「ズレ」を数値化して検定する <span class="story-arrow">▸</span> <a href="#chitest">I7 カイ二乗検定</a></div>
+  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>quantifying "deviation" and testing it <span class="story-arrow">▸</span> <a href="#chitest">I7 Chi-Squared Test</a></div>
 </section>
 
 
@@ -1857,7 +1861,7 @@
 
 <section id="chitest" class="reveal">
   <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/chitest.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/chitest.html">▸ Dedicated page for this topic</a></div>
-  <div class="sec-tag">I6 / カイ二乗検定</div>
+  <div class="sec-tag">I7 / カイ二乗検定</div>
   <h2 class="sec-title" data-lang="ja">カイ二乗検定 <span class="sec-sub">— ズレを数値化する</span></h2>
   <h2 class="sec-title" data-lang="en">Chi-Squared Test <span class="sec-sub">— Quantifying the Gap</span></h2>
 
@@ -1995,8 +1999,8 @@
     <a data-lang="ja" href="topics/chitest.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/chitest.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
-<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>3群以上を一度に比較する <span class="story-arrow">▸</span> <a href="#anova">I.07 分散分析（ANOVA）</a></div>
-  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>comparing three or more groups at once <span class="story-arrow">▸</span> <a href="#anova">I.07 ANOVA</a></div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>3群以上を一度に比較する <span class="story-arrow">▸</span> <a href="#anova">I8 分散分析（ANOVA）</a></div>
+  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>comparing three or more groups at once <span class="story-arrow">▸</span> <a href="#anova">I8 ANOVA</a></div>
 </section>
 
 
@@ -2004,7 +2008,7 @@
 
 <section id="anova" class="reveal">
   <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/anova.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/anova.html">▸ Dedicated page for this topic</a></div>
-  <div class="sec-tag">I.07 / ANOVA</div>
+  <div class="sec-tag">I8 / ANOVA</div>
   <h2 class="sec-title" data-lang="ja">分散分析（ANOVA） <span class="sec-sub">— F値の直感を掴む</span></h2>
   <h2 class="sec-title" data-lang="en">ANOVA <span class="sec-sub">— Feel What the F-Statistic Really Means</span></h2>
 

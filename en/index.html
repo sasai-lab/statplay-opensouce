@@ -24,7 +24,7 @@
 
   gtag('config', 'G-KSDDV3KMKL');
 </script>
-<meta content="Can’t picture a 95% confidence interval? Struggling with the Central Limit Theorem? Interactive visualizations let you drag sliders to build statistical intuition — covering normal distributions, the Central Limit Theorem, confidence intervals, hypothesis testing, t/χ²/F distributions, regression, and Bayes’ theorem." name="description"/>
+<meta content="Can’t picture a 95% confidence interval? Struggling with the Central Limit Theorem? Interactive visualizations let you drag sliders to build statistical intuition — covering normal distributions, CLT, confidence intervals, hypothesis testing, t/χ²/F distributions, regression, and Bayes’ theorem." name="description"/>
 <meta content="statistics, visualization, confidence interval, hypothesis testing, central limit theorem, t-distribution, chi-squared distribution, F-distribution, regression, Bayes theorem, interactive learning" name="keywords"/>
 <meta content="Sasai Lab" name="author"/>
 <meta content="index, follow, max-image-preview:large" name="robots"/>
@@ -106,8 +106,8 @@
 <link as="style" href="../css/stat_cyber.css" rel="preload"/>
 <link href="../css/stat_cyber.css" rel="stylesheet"/>
 <!-- KaTeX -->
-<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" rel="stylesheet"/>
-<script crossorigin="anonymous" defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" rel="stylesheet"/>
+<script crossorigin="anonymous" defer="" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
 <script defer="" src="../js/katex-render.js"></script>
 </head>
 <body>
@@ -207,9 +207,9 @@
 <span style="margin-top:8px;display:inline-block">
 <a href="#stdnorm" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">What even is a normal distribution?</a>
 <span style="color:var(--dim);margin:0 8px">|</span>
-<a href="#ci" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">What does "95% confidence" mean?</a>
+<a href="#normal" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">What is standardization actually doing?</a>
 <span style="color:var(--dim);margin:0 8px">|</span>
-<a href="#test" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">I don't get p-values</a>
+<a href="#test" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">How do I actually run a test?</a>
 <span style="color:var(--dim);margin:0 8px">|</span>
 <a href="#bayes" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">Bayes' theorem makes no sense</a>
 <span style="color:var(--dim);margin:0 8px">|</span>
@@ -294,7 +294,7 @@
 
 <p class="sec-desc" style="margin-bottom:14px;font-size:13px">
       Slide the width <code>k</code>; the blue-filled area IS the probability.
-      ± 1σ already covers ~68%, ± 2σ is 95%, ± 3σ is nearly everything.<br/>
+      ± 1σ already covers ~68%, ± 2σ is ~95%, ± 3σ is nearly everything.<br/>
       That famous number <b>z = 1.96</b>? It's the two-tail 5% critical value — hypothesis tests and confidence intervals all start there.
     </p>
 <div class="controls">
@@ -331,7 +331,7 @@
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Watch every normal collapse onto "that one curve"</h3>
 
 <p class="sec-desc" style="margin-bottom:14px">
-      Height, IQ, daily stock returns, factory part errors — real-world normal-ish things all have different means and spreads.
+      Height, IQ, blood pressure readings, factory part errors — real-world normal-ish things all have different means and spreads.
       Yet apply <b>z = (x − μ) / σ</b> and they all snap onto <b>that pink curve</b>.<br/>
       It auto-plays on scroll (▶ to replay). That's why every statistical formula needs only one standard-normal table.
     </p>
@@ -1254,7 +1254,7 @@
 <!-- ============ DISTS ============ -->
 <section class="reveal" id="dists">
 <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/dists.html">▸ Dedicated page for this topic</a></div>
-<div class="sec-tag">I5 / t · χ² · F Distributions</div>
+<div class="sec-tag">I6 / t · χ² · F 分布</div>
 
 <h2 class="sec-title">Three Test Distributions <span class="sec-sub">— Meet t, χ² &amp; F</span></h2>
 
@@ -1421,12 +1421,12 @@
 <a href="topics/dists.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
 
-<div class="story-next"><span class="lbl">UP NEXT —</span>quantifying "deviation" and testing it <span class="story-arrow">▸</span> <a href="#chitest">I6 Chi-Squared Test</a></div>
+<div class="story-next"><span class="lbl">UP NEXT —</span>quantifying "deviation" and testing it <span class="story-arrow">▸</span> <a href="#chitest">I7 Chi-Squared Test</a></div>
 </section>
 <!-- ============ CHI-SQUARED TEST ============ -->
 <section class="reveal" id="chitest">
 <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/chitest.html">▸ Dedicated page for this topic</a></div>
-<div class="sec-tag">I6 / Chi-Squared Test</div>
+<div class="sec-tag">I7 / カイ二乗検定</div>
 
 <h2 class="sec-title">Chi-Squared Test <span class="sec-sub">— Quantifying the Gap</span></h2>
 
@@ -1531,12 +1531,12 @@
 <a href="topics/chitest.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
 
-<div class="story-next"><span class="lbl">UP NEXT —</span>comparing three or more groups at once <span class="story-arrow">▸</span> <a href="#anova">I.07 ANOVA</a></div>
+<div class="story-next"><span class="lbl">UP NEXT —</span>comparing three or more groups at once <span class="story-arrow">▸</span> <a href="#anova">I8 ANOVA</a></div>
 </section>
 <!-- ============ ANOVA ============ -->
 <section class="reveal" id="anova">
 <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/anova.html">▸ Dedicated page for this topic</a></div>
-<div class="sec-tag">I.07 / ANOVA</div>
+<div class="sec-tag">I8 / ANOVA</div>
 
 <h2 class="sec-title">ANOVA <span class="sec-sub">— Feel What the F-Statistic Really Means</span></h2>
 

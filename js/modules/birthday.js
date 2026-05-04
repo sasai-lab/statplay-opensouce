@@ -203,7 +203,7 @@ export function initBirthday() {
         startAuto();
       });
 
-      window.addEventListener('resize', drawCal);
+      window.addEventListener('resize', _debResize(drawCal));
       reset();
     }
   }

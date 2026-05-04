@@ -2,7 +2,7 @@
  * StatPlay — income prediction column module
  * Copyright (c) 2026 Sasai Lab * Licensed under CC BY-NC 4.0.
  */
-import { $, resizeCanvas, drawGrid, neonLine, neonFill, themeColors } from '../utils.js';
+import { $, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, debouncedResize } from '../utils.js';
 
 const isEn = () => (window.__LANG || document.documentElement.lang || 'ja') === 'en';
 const L = (ja, en) => isEn() ? en : ja;
@@ -170,11 +170,9 @@ function initPredictor() {
     ctx.clearRect(0, 0, w * 2, h * 2);
     drawGrid(ctx, w, h);
 
-    const dpr = window.devicePixelRatio || 1;
-    const cw = w / dpr, ch = h / dpr;
     const pad = { l: 52, r: 12, t: 22, b: 36 };
-    const pw = cw - pad.l - pad.r;
-    const ph = ch - pad.t - pad.b;
+    const pw = w - pad.l - pad.r;
+    const ph = h - pad.t - pad.b;
     plotPadL = pad.l; plotW = pw;
 
     const aMin = 22, aMax = 65, yMin = 0, yMax = 1100;
@@ -343,7 +341,7 @@ function initPredictor() {
   update();
   const mo = new MutationObserver(() => renderFrame(animAge ?? targetAge, animEffect ?? targetEffect));
   mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-  window.addEventListener('resize', () => renderFrame(animAge ?? targetAge, animEffect ?? targetEffect));
+  window.addEventListener('resize', debouncedResize(() => renderFrame(animAge ?? targetAge, animEffect ?? targetEffect)));
 }
 
 /* ── Toast ── */
@@ -351,11 +349,11 @@ function toast(msg) {
   let el = $('colToast');
   if (!el) {
     el = document.createElement('div'); el.id = 'colToast';
-    el.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:10px 24px;border:1px solid rgba(0,243,255,.4);background:rgba(5,6,15,.9);color:#00f3ff;font:13px "Courier New",monospace;z-index:999;opacity:0;transition:opacity .3s';
+    el.className = 'toast';
     document.body.appendChild(el);
   }
-  el.textContent = msg; el.style.opacity = '1';
-  setTimeout(() => { el.style.opacity = '0'; }, 2200);
+  el.textContent = msg; el.classList.add('show');
+  setTimeout(() => { el.classList.remove('show'); }, 2200);
 }
 
 /* ── Share ── */

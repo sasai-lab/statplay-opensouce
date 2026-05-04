@@ -29,6 +29,9 @@ export function initA11y(){
     ['chitestCanvas',  'gofA',null,    'Goodness-of-fit test alpha (click bars to add data)'],
     ['indCanvas',      'indA',null,    'Independence test alpha (click cells to add data)'],
     ['anovaCanvas',    'anovaEffect','anovaWithin','ANOVA effect / within SD (Shift for SD)'],
+    ['ptCiCanvas',     'ptCiN',  'ptCiP',  'Proportion CI: n / p̂ (Shift for p̂)'],
+    ['ptTestCanvas',   'ptTN',   'ptTP',   'Proportion test: n / p̂ (Shift for p̂)'],
+    ['ptTwoCanvas',    'ptTwoN1','ptTwoP1','Two-proportion test: n₁ / p̂₁ (Shift for p̂₁)'],
   ];
 
   function step(slider, dir, big){

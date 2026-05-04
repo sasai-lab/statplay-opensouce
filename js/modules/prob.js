@@ -1,5 +1,5 @@
 // StatPlay — module: Probability Rules (Venn Diagram)
-import { $, TAU, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw } from '../utils.js';
+import { $, TAU, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
 
 export function initProb(){
   if(!document.getElementById('probCanvas')) return;
@@ -188,5 +188,5 @@ export function initProb(){
   draw();
 
   // redraw on resize
-  window.addEventListener('resize',()=>{draw();});
+  window.addEventListener('resize',debouncedResize(draw));
 }

@@ -1,5 +1,7 @@
 // StatPlay — module: ANOVA (one-way analysis of variance)
-import { $, TAU, rng_normal, lgamma, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
+import { $, TAU, rng_normal, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, fPval, fCritVal, tCDF } from '../utils.js';
+
+const fCritical = fCritVal;
 
 export function initAnova(){
   initAnovaMain();
@@ -18,43 +20,6 @@ function initAnovaMain(){
   let dotJitters=[];
   let dotOrder=[];
   const K=3;
-
-  // --- regularized incomplete beta (continued fraction, Lentz) ---
-  function lnBeta(a,b){return lgamma(a)+lgamma(b)-lgamma(a+b);}
-  function regBetaI(x,a,b){
-    if(x<=0) return 0;
-    if(x>=1) return 1;
-    if(x>(a+1)/(a+b+2)) return 1-regBetaI(1-x,b,a);
-    const lnPre=a*Math.log(x)+b*Math.log(1-x)-Math.log(a)-lnBeta(a,b);
-    const pre=Math.exp(lnPre);
-    let num=1,den=1-((a+b)*x)/(a+1);
-    if(Math.abs(den)<1e-30) den=1e-30;
-    den=1/den; let cf=den;
-    for(let m=1;m<=200;m++){
-      let am=m*(b-m)*x/((a+2*m-1)*(a+2*m));
-      den=1+am*den; if(Math.abs(den)<1e-30) den=1e-30; den=1/den;
-      num=1+am/num; if(Math.abs(num)<1e-30) num=1e-30;
-      cf*=den*num;
-      am=-(a+m)*(a+b+m)*x/((a+2*m)*(a+2*m+1));
-      den=1+am*den; if(Math.abs(den)<1e-30) den=1e-30; den=1/den;
-      num=1+am/num; if(Math.abs(num)<1e-30) num=1e-30;
-      cf*=den*num;
-      if(Math.abs(den*num-1)<1e-10) break;
-    }
-    return pre*cf;
-  }
-  function fCDF(x,d1,d2){
-    if(x<=0) return 0;
-    return regBetaI(d1*x/(d1*x+d2), d1/2, d2/2);
-  }
-  function fCritical(alpha,d1,d2){
-    let lo=0,hi=100;
-    for(let i=0;i<80;i++){
-      const m=(lo+hi)/2;
-      if(1-fCDF(m,d1,d2)>alpha) lo=m; else hi=m;
-    }
-    return (lo+hi)/2;
-  }
 
   function stableJitter(seed){
     const x=Math.sin(seed*12.9898+78.233)*43758.5453;
@@ -103,7 +68,7 @@ function initAnovaMain(){
     const dfB=k-1, dfW=N-k;
     const MSB=SSB/dfB, MSW=SSW/dfW;
     const F=MSB/MSW;
-    const pval=1-fCDF(F,dfB,dfW);
+    const pval=fPval(F,dfB,dfW);
     const Fcrit=fCritical(0.05,dfB,dfW);
     const SST=SSB+SSW;
     const eta2=SST>0?SSB/SST:0;
@@ -348,34 +313,6 @@ function initAnovaSim(){
     return tPval(Math.abs(t),df);
   }
 
-  // t-distribution CDF approximation via regularized incomplete beta
-  function lnBeta(a,b){return lgamma(a)+lgamma(b)-lgamma(a+b);}
-  function regBetaI(x,a,b){
-    if(x<=0) return 0;
-    if(x>=1) return 1;
-    if(x>(a+1)/(a+b+2)) return 1-regBetaI(1-x,b,a);
-    const lnPre=a*Math.log(x)+b*Math.log(1-x)-Math.log(a)-lnBeta(a,b);
-    const pre=Math.exp(lnPre);
-    let num=1,den=1-((a+b)*x)/(a+1);
-    if(Math.abs(den)<1e-30) den=1e-30;
-    den=1/den; let cf=den;
-    for(let m=1;m<=200;m++){
-      let am=m*(b-m)*x/((a+2*m-1)*(a+2*m));
-      den=1+am*den;if(Math.abs(den)<1e-30)den=1e-30;den=1/den;
-      num=1+am/num;if(Math.abs(num)<1e-30)num=1e-30;
-      cf*=den*num;
-      am=-(a+m)*(a+b+m)*x/((a+2*m)*(a+2*m+1));
-      den=1+am*den;if(Math.abs(den)<1e-30)den=1e-30;den=1/den;
-      num=1+am/num;if(Math.abs(num)<1e-30)num=1e-30;
-      cf*=den*num;
-      if(Math.abs(den*num-1)<1e-10) break;
-    }
-    return pre*cf;
-  }
-  function tCDF(t,df){
-    const x=df/(df+t*t);
-    return 1-0.5*regBetaI(x,df/2,0.5);
-  }
   function tPval(absT,df){
     return 2*(1-tCDF(absT,df));
   }

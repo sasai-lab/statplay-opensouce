@@ -38,7 +38,8 @@ Also works out of the box on GitHub Pages (`Settings → Pages → main / root`)
 | 7 | `lln` | 大数の法則 | Law of Large Numbers |
 | 8 | `ci` | 信頼区間 | Confidence Intervals |
 | 9 | `test` | 仮説検定 | Hypothesis Testing |
-| 10 | `dists` | t / χ² / F 分布 | Three Test Distributions |
+| 10 | `proptest` | 母比率の検定と推定 | Proportion Test & Estimation |
+| 11 | `dists` | t / χ² / F 分布 | Three Test Distributions |
 | 11 | `chitest` | カイ二乗検定 | Chi-Squared Test |
 | 12 | `anova` | 分散分析 | One-Way ANOVA |
 | 13 | `corr` | 相関係数 | Correlation |
@@ -58,8 +59,8 @@ Also works out of the box on GitHub Pages (`Settings → Pages → main / root`)
 index.html                    Hub page / ハブページ
 about.html                    About page (JA)
 en/about.html                 About page (EN)
-topics/<slug>.html            Per-topic pages (JA) × 15
-en/topics/<slug>.html         Per-topic pages (EN) × 15
+topics/<slug>.html            Per-topic pages (JA) × 16
+en/topics/<slug>.html         Per-topic pages (EN) × 16
 columns/<slug>.html           Columns (JA) × 4
 en/columns/<slug>.html        Columns (EN) × 4
 tables/index.html             Statistical tables (JA)
@@ -73,7 +74,7 @@ js/
   modules/
     ├── Topics ────────────────────────────────────
     stdnorm.js  normal.js  prob.js  bayes.js  morep.js
-    clt.js  lln.js  ci.js  htest.js  dist.js  chitest.js
+    clt.js  lln.js  ci.js  htest.js  proptest.js  dist.js  chitest.js
     corr.js  reg.js  mreg.js  errs.js  descriptive.js  anova.js
     ├── Columns ───────────────────────────────────
     deviation.js  birthday.js  income_prediction.js

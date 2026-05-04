@@ -3,14 +3,14 @@ import {themeColors} from '../utils.js';
 
 export function initShare(){
   const toastEl=document.createElement('div');
-  toastEl.style.cssText='position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:rgba(0,8,20,.92);color:#d8f7ff;border:1px solid rgba(0,243,255,.45);padding:10px 18px;font-family:"Courier New",monospace;font-size:13px;letter-spacing:1px;opacity:0;transition:.3s;z-index:10000;pointer-events:none;box-shadow:0 0 20px rgba(0,243,255,.35)';
+  toastEl.className='toast';
   document.body.appendChild(toastEl);
   let toastT=null;
   function toast(msg){
     toastEl.textContent=msg;
-    toastEl.style.opacity='1';toastEl.style.transform='translateX(-50%) translateY(0)';
+    toastEl.classList.add('show');
     clearTimeout(toastT);
-    toastT=setTimeout(()=>{toastEl.style.opacity='0';toastEl.style.transform='translateX(-50%) translateY(20px)';},2200);
+    toastT=setTimeout(()=>{toastEl.classList.remove('show');},2200);
   }
   function buildImage(srcId){
     const src=document.getElementById(srcId);

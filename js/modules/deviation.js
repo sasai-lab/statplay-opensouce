@@ -2,7 +2,7 @@
  * StatPlay — deviation column module
  * Copyright (c) 2026 Sasai Lab * Licensed under CC BY-NC 4.0.
  */
-import { $, normPDF, normCDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, throttledDraw } from '../utils.js';
+import { $, normPDF, normCDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, throttledDraw, debouncedResize } from '../utils.js';
 
 const isEn = () => (window.__LANG || document.documentElement.lang || 'ja') === 'en';
 const L = (ja, en) => isEn() ? en : ja;
@@ -174,7 +174,7 @@ function initSimulator() {
 
   const mo = new MutationObserver(draw);
   mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-  window.addEventListener('resize', draw);
+  window.addEventListener('resize', debouncedResize(draw));
 }
 
 /* ── Skewed distribution comparison (interactive) ── */
@@ -324,7 +324,7 @@ function initSkewDemo() {
 
   const mo = new MutationObserver(draw);
   mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-  window.addEventListener('resize', draw);
+  window.addEventListener('resize', debouncedResize(draw));
 }
 
 /* ── URL sync ── */
@@ -366,16 +366,14 @@ let toastEl = null, toastT = null;
 function toast(msg) {
   if (!toastEl) {
     toastEl = document.createElement('div');
-    toastEl.style.cssText = 'position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:rgba(0,8,20,.92);color:#d8f7ff;border:1px solid rgba(0,243,255,.45);padding:10px 18px;font-family:"Courier New",monospace;font-size:13px;letter-spacing:1px;opacity:0;transition:.3s;z-index:10000;pointer-events:none;box-shadow:0 0 20px rgba(0,243,255,.35)';
+    toastEl.className = 'toast';
     document.body.appendChild(toastEl);
   }
   toastEl.textContent = msg;
-  toastEl.style.opacity = '1';
-  toastEl.style.transform = 'translateX(-50%) translateY(0)';
+  toastEl.classList.add('show');
   clearTimeout(toastT);
   toastT = setTimeout(() => {
-    toastEl.style.opacity = '0';
-    toastEl.style.transform = 'translateX(-50%) translateY(20px)';
+    toastEl.classList.remove('show');
   }, 2200);
 }
 

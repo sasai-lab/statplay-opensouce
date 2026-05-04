@@ -3,6 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://statplay.sasailab.com/</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/"/>
@@ -11,6 +12,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/"/>
@@ -19,6 +21,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/stdnorm.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/stdnorm.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/stdnorm.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/stdnorm.html"/>
@@ -27,6 +30,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/normal.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/normal.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/normal.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/normal.html"/>
@@ -35,6 +39,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/prob.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/prob.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/prob.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/prob.html"/>
@@ -43,6 +48,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/bayes.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/bayes.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/bayes.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/bayes.html"/>
@@ -51,6 +57,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/morep.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/morep.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/morep.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/morep.html"/>
@@ -59,6 +66,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/clt.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/clt.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/clt.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/clt.html"/>
@@ -67,6 +75,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/lln.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/lln.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/lln.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/lln.html"/>
@@ -75,6 +84,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/ci.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/ci.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/ci.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/ci.html"/>
@@ -83,6 +93,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/test.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/test.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/test.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/test.html"/>
@@ -91,6 +102,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/proptest.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/proptest.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/proptest.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/proptest.html"/>
@@ -99,6 +111,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/dists.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/dists.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/dists.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/dists.html"/>
@@ -107,6 +120,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/chitest.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/chitest.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/chitest.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/chitest.html"/>
@@ -115,6 +129,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/anova.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/anova.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/anova.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/anova.html"/>
@@ -123,6 +138,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/corr.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/corr.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/corr.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/corr.html"/>
@@ -131,6 +147,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/reg.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/reg.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/reg.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/reg.html"/>
@@ -139,6 +156,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/topics/mreg.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/mreg.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/mreg.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/mreg.html"/>
@@ -147,6 +165,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/stdnorm.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/stdnorm.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/stdnorm.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/stdnorm.html"/>
@@ -155,6 +174,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/normal.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/normal.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/normal.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/normal.html"/>
@@ -163,6 +183,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/prob.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/prob.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/prob.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/prob.html"/>
@@ -171,6 +192,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/bayes.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/bayes.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/bayes.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/bayes.html"/>
@@ -179,6 +201,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/morep.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/morep.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/morep.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/morep.html"/>
@@ -187,6 +210,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/clt.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/clt.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/clt.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/clt.html"/>
@@ -195,6 +219,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/lln.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/lln.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/lln.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/lln.html"/>
@@ -203,6 +228,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/ci.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/ci.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/ci.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/ci.html"/>
@@ -211,6 +237,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/test.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/test.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/test.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/test.html"/>
@@ -219,6 +246,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/proptest.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/proptest.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/proptest.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/proptest.html"/>
@@ -227,6 +255,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/dists.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/dists.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/dists.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/dists.html"/>
@@ -235,6 +264,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/chitest.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/chitest.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/chitest.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/chitest.html"/>
@@ -243,6 +273,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/anova.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/anova.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/anova.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/anova.html"/>
@@ -251,6 +282,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/corr.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/corr.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/corr.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/corr.html"/>
@@ -259,6 +291,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/reg.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/reg.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/reg.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/reg.html"/>
@@ -267,6 +300,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/topics/mreg.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/mreg.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/mreg.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/mreg.html"/>
@@ -275,6 +309,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/columns/deviation.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/columns/deviation.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/columns/deviation.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/columns/deviation.html"/>
@@ -283,6 +318,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/columns/deviation.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/columns/deviation.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/columns/deviation.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/columns/deviation.html"/>
@@ -291,6 +327,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/columns/birthday.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/columns/birthday.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/columns/birthday.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/columns/birthday.html"/>
@@ -299,6 +336,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/columns/birthday.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/columns/birthday.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/columns/birthday.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/columns/birthday.html"/>
@@ -307,6 +345,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/columns/standardization.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/columns/standardization.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/columns/standardization.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/columns/standardization.html"/>
@@ -315,6 +354,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/columns/standardization.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/columns/standardization.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/columns/standardization.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/columns/standardization.html"/>
@@ -323,6 +363,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/columns/income_prediction.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/columns/income_prediction.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/columns/income_prediction.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/columns/income_prediction.html"/>
@@ -331,6 +372,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/columns/income_prediction.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/columns/income_prediction.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/columns/income_prediction.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/columns/income_prediction.html"/>
@@ -339,6 +381,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/about.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/about.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/about.html"/>
@@ -347,6 +390,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/about.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/about.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/about.html"/>
@@ -355,6 +399,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/tables/index.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/tables/index.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/tables/index.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/tables/index.html"/>
@@ -363,6 +408,7 @@
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/tables/index.html</loc>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/tables/index.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/tables/index.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/tables/index.html"/>

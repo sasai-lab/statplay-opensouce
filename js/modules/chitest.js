@@ -1,5 +1,7 @@
 // StatPlay — module: CHI-SQUARED TEST (click-to-add interaction)
-import { $, lgamma, chi2PDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
+import { $, chi2PDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, chi2CDF, chi2CritVal, debouncedResize } from '../utils.js';
+
+const chi2Critical = chi2CritVal;
 
 export function initChitest(){
   if(!document.getElementById('chitestCanvas')) return;
@@ -33,35 +35,6 @@ export function initChitest(){
       ctx.restore();
     }
     return clickFx.length>0;
-  }
-
-  // --- Shared math ---
-  function lowerGammaP(a, x){
-    if(x<=0) return 0;
-    if(x>a+40) return 1-upperGammaQ(a,x);
-    let sum=0, term=1/a;
-    for(let n=0;n<200;n++){
-      sum+=term; term*=x/(a+n+1);
-      if(Math.abs(term)<1e-14*Math.abs(sum)) break;
-    }
-    return sum*Math.exp(-x+a*Math.log(x)-lgamma(a));
-  }
-  function upperGammaQ(a, x){
-    let f=x+1-a, c=1/1e-30, d=1/f, h=d;
-    for(let i=1;i<=200;i++){
-      const an=-i*(i-a), bn=x+2*i+1-a;
-      d=bn+an*d; if(Math.abs(d)<1e-30) d=1e-30;
-      c=bn+an/c; if(Math.abs(c)<1e-30) c=1e-30;
-      d=1/d; const del=d*c; h*=del;
-      if(Math.abs(del-1)<1e-14) break;
-    }
-    return Math.exp(-x+a*Math.log(x)-lgamma(a))*h;
-  }
-  function chi2CDF(x, df){ return x<=0?0:lowerGammaP(df/2, x/2); }
-  function chi2Critical(alpha, df){
-    let lo=0, hi=Math.max(10,df*4);
-    for(let i=0;i<60;i++){ const m=(lo+hi)/2; if(1-chi2CDF(m,df)>alpha) lo=m; else hi=m; }
-    return (lo+hi)/2;
   }
 
   // ===================== GOODNESS-OF-FIT =====================
@@ -328,7 +301,7 @@ export function initChitest(){
     }
 
     draw();
-    window.addEventListener('resize',draw);
+    window.addEventListener('resize',debouncedResize(draw));
   })();
 
   // ===================== INDEPENDENCE =====================
@@ -605,7 +578,7 @@ export function initChitest(){
     }
 
     draw();
-    window.addEventListener('resize',draw);
+    window.addEventListener('resize',debouncedResize(draw));
   })();
 
   // ===================== SHARED: chi2 distribution curve =====================

@@ -1,5 +1,5 @@
 // StatPlay — module: 8) BAYES
-import { $, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw } from '../utils.js';
+import { $, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
 
 export function initBayes(){
   if(!document.getElementById('bayesCanvas')) return;
@@ -206,5 +206,5 @@ export function initBayes(){
     $('bFp').textContent=Math.round(FP);
   }
   draw();
-  window.addEventListener('resize',()=>{clearTimeout(window.__bayesTimer);window.__bayesTimer=setTimeout(draw,150);});
+  window.addEventListener('resize',debouncedResize(draw));
 }

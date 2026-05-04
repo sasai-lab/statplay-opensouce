@@ -30,6 +30,7 @@
 <meta name="twitter:title" content="仮説検定 — p値・α・棄却域を可視化">
 <meta name="twitter:description" content="両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気にイメージする。">
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image:alt" content="StatPlay — 仮説検定">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
@@ -140,7 +141,7 @@
   <section class="reveal in" id="test">
 
 <div class="sec-tag">I.04 / HYPOTHESIS TESTING</div>
-<h2 class="sec-title">仮説検定 <span class="sec-sub">— 棄却か採択か</span></h2>
+<h2 class="sec-title">仮説検定 <span class="sec-sub">— 棄却か、棄却できないか</span></h2>
 
 <div class="story-bridge">信頼区間が「幅として」不確実性を出す道具なら、<span class="next">仮説検定</span>は「YES/NO として」それを使う道具。<b>帰無仮説の世界</b>でこのデータは起こりえるか？ 起こりにくいなら reject——同じ分布、同じ σ／n、<b>質問が違うだけ</b>。</div>
 
@@ -302,7 +303,7 @@
 <h3>// 試験での出方</h3>
 <ul>
 <li><b>p値と判定</b>：「p=0.03, α=0.01 のとき？」→ 0.03 &gt; 0.01 なので棄却できない</li>
-<li><b>両側 vs 片側</b>：「薬に効果があるか」= 片側、「薬に効果があるかないか」= 両側</li>
+<li><b>両側 vs 片側</b>：「薬で平均が上がるか」= 片側（方向が決まっている）、「薬で平均が変わるか（上下どちらでも）」= 両側（方向を問わない）</li>
 <li><b>誤りの分類</b>：「H₀ が正しいのに棄却した → 第1種の誤り」「H₀ が間違っているのに棄却できなかった → 第2種の誤り」</li>
 <li><b>検出力</b>：1 − β。「本当に差があるときに、ちゃんと検出できる確率」</li>
 </ul>

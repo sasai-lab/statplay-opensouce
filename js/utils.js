@@ -162,3 +162,111 @@ export function expPDF(x, lam){
   if(x < 0) return 0;
   return lam * Math.exp(-lam * x);
 }
+
+// --- CDF / p-value / critical-value helpers (moved from dist.js) ---
+
+export function regGammaP(a, x) {
+  if (x <= 0) return 0;
+  if (x < a + 1) {
+    let s = 1 / a, t = 1 / a;
+    for (let n = 1; n < 200; n++) {
+      t *= x / (a + n); s += t;
+      if (Math.abs(t) < 1e-10 * Math.abs(s)) break;
+    }
+    return Math.min(1, s * Math.exp(-x + a * Math.log(x) - lgamma(a)));
+  }
+  return 1 - regGammaQ(a, x);
+}
+
+export function regGammaQ(a, x) {
+  const TINY = 1e-30;
+  let b0 = x + 1 - a, cf = 1 / TINY, df = 1 / b0, hh = df;
+  for (let i = 1; i <= 200; i++) {
+    const an = -i * (i - a); b0 += 2;
+    df = b0 + an * df; if (Math.abs(df) < TINY) df = TINY; df = 1 / df;
+    cf = b0 + an / cf; if (Math.abs(cf) < TINY) cf = TINY;
+    hh *= df * cf;
+    if (Math.abs(df * cf - 1) < 1e-10) break;
+  }
+  return Math.min(1, Math.max(0, hh * Math.exp(-x + a * Math.log(x) - lgamma(a))));
+}
+
+export function betaCF(x, a, b) {
+  const TINY = 1e-30;
+  const qab = a + b, qap = a + 1, qam = a - 1;
+  let cc = 1, dd = 1 - qab * x / qap;
+  if (Math.abs(dd) < TINY) dd = TINY;
+  dd = 1 / dd; let hh = dd;
+  for (let m = 1; m <= 200; m++) {
+    const m2 = 2 * m;
+    let aa = m * (b - m) * x / ((qam + m2) * (a + m2));
+    dd = 1 + aa * dd; if (Math.abs(dd) < TINY) dd = TINY; dd = 1 / dd;
+    cc = 1 + aa / cc; if (Math.abs(cc) < TINY) cc = TINY;
+    hh *= dd * cc;
+    aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2));
+    dd = 1 + aa * dd; if (Math.abs(dd) < TINY) dd = TINY; dd = 1 / dd;
+    cc = 1 + aa / cc; if (Math.abs(cc) < TINY) cc = TINY;
+    hh *= dd * cc;
+    if (Math.abs(dd * cc - 1) < 1e-10) break;
+  }
+  return hh;
+}
+
+export function regBetaI(x, a, b) {
+  if (x <= 0) return 0;
+  if (x >= 1) return 1;
+  const bt = Math.exp(lgamma(a + b) - lgamma(a) - lgamma(b) + a * Math.log(x) + b * Math.log(1 - x));
+  if (x < (a + 1) / (a + b + 2)) return bt * betaCF(x, a, b) / a;
+  return 1 - bt * betaCF(1 - x, b, a) / b;
+}
+
+export function tCDF(x, df) {
+  if (x <= -30) return 0;
+  if (x >= 30) return 1;
+  const N = 500, lo = -30, step = (x - lo) / N;
+  let s = tPDF(lo, df) + tPDF(x, df);
+  for (let i = 1; i < N; i++) s += (i & 1 ? 4 : 2) * tPDF(lo + i * step, df);
+  return Math.max(0, Math.min(1, s * step / 3));
+}
+
+export function tCrit(alpha, df) {
+  let lo = 0, hi = 50;
+  for (let i = 0; i < 60; i++) {
+    const m = (lo + hi) / 2;
+    if (2 * (1 - tCDF(m, df)) > alpha) lo = m; else hi = m;
+  }
+  return (lo + hi) / 2;
+}
+
+export function chi2CDF(x, k) {
+  if (x <= 0) return 0;
+  return regGammaP(k / 2, x / 2);
+}
+
+export function chi2Pval(x, k) {
+  if (x <= 0) return 1;
+  return 1 - regGammaP(k / 2, x / 2);
+}
+
+export function chi2CritVal(alpha, k) {
+  let lo = 0, hi = Math.max(60, k * 4);
+  for (let i = 0; i < 60; i++) {
+    const m = (lo + hi) / 2;
+    if (chi2Pval(m, k) > alpha) lo = m; else hi = m;
+  }
+  return (lo + hi) / 2;
+}
+
+export function fPval(x, d1, d2) {
+  if (x <= 0) return 1;
+  return 1 - regBetaI(d1 * x / (d1 * x + d2), d1 / 2, d2 / 2);
+}
+
+export function fCritVal(alpha, d1, d2) {
+  let lo = 0, hi = 40;
+  for (let i = 0; i < 60; i++) {
+    const m = (lo + hi) / 2;
+    if (fPval(m, d1, d2) > alpha) lo = m; else hi = m;
+  }
+  return (lo + hi) / 2;
+}

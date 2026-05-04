@@ -1,19 +1,9 @@
 // StatPlay — module: Interactive Distribution Tables
-import { $, normCDF, normPDF, tPDF, chi2PDF, fPDF, lgamma,
+import { $, normCDF, normPDF, tPDF, chi2PDF, fPDF,
          resizeCanvas, drawGrid, neonLine, neonFill, themeColors,
-         withAlpha, throttledDraw } from '../utils.js';
+         withAlpha, throttledDraw, tCDF, chi2CritVal, fCritVal } from '../utils.js';
 
 /* ─── CDF / critical-value helpers ─── */
-
-function tCDF(x, df) {
-  if (df > 1e6) return normCDF(x);
-  if (x <= -30) return 0;
-  if (x >= 30) return 1;
-  const N = 500, lo = -30, step = (x - lo) / N;
-  let s = tPDF(lo, df) + tPDF(x, df);
-  for (let i = 1; i < N; i++) s += (i & 1 ? 4 : 2) * tPDF(lo + i * step, df);
-  return Math.max(0, Math.min(1, s * step / 3));
-}
 
 function tCritOne(alpha, df) {
   if (df > 1e6) {
@@ -26,60 +16,8 @@ function tCritOne(alpha, df) {
   return (lo + hi) / 2;
 }
 
-function regGammaP(a, x) {
-  if (x <= 0) return 0;
-  if (x < a + 1) {
-    let s = 1 / a, t = 1 / a;
-    for (let n = 1; n < 200; n++) { t *= x / (a + n); s += t; if (Math.abs(t) < 1e-10 * Math.abs(s)) break; }
-    return Math.min(1, s * Math.exp(-x + a * Math.log(x) - lgamma(a)));
-  }
-  return 1 - regGammaQ(a, x);
-}
-function regGammaQ(a, x) {
-  const TINY = 1e-30;
-  let b0 = x + 1 - a, cf = 1 / TINY, d = 1 / b0, hh = d;
-  for (let i = 1; i <= 200; i++) {
-    const an = -i * (i - a); b0 += 2;
-    d = b0 + an * d; if (Math.abs(d) < TINY) d = TINY; d = 1 / d;
-    cf = b0 + an / cf; if (Math.abs(cf) < TINY) cf = TINY;
-    hh *= d * cf; if (Math.abs(d * cf - 1) < 1e-10) break;
-  }
-  return Math.min(1, Math.max(0, hh * Math.exp(-x + a * Math.log(x) - lgamma(a))));
-}
-function chi2Pval(x, k) { return x <= 0 ? 1 : 1 - regGammaP(k / 2, x / 2); }
-function chi2Crit(alpha, k) {
-  let lo = 0, hi = Math.max(60, k * 4);
-  for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2; if (chi2Pval(m, k) > alpha) lo = m; else hi = m; }
-  return (lo + hi) / 2;
-}
-
-function betaCF(x, a, b) {
-  const TINY = 1e-30, qab = a + b, qap = a + 1, qam = a - 1;
-  let cc = 1, dd = 1 - qab * x / qap;
-  if (Math.abs(dd) < TINY) dd = TINY; dd = 1 / dd; let hh = dd;
-  for (let m = 1; m <= 200; m++) {
-    const m2 = 2 * m;
-    let aa = m * (b - m) * x / ((qam + m2) * (a + m2));
-    dd = 1 + aa * dd; if (Math.abs(dd) < TINY) dd = TINY; dd = 1 / dd;
-    cc = 1 + aa / cc; if (Math.abs(cc) < TINY) cc = TINY; hh *= dd * cc;
-    aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2));
-    dd = 1 + aa * dd; if (Math.abs(dd) < TINY) dd = TINY; dd = 1 / dd;
-    cc = 1 + aa / cc; if (Math.abs(cc) < TINY) cc = TINY; hh *= dd * cc;
-    if (Math.abs(dd * cc - 1) < 1e-10) break;
-  }
-  return hh;
-}
-function regBetaI(x, a, b) {
-  if (x <= 0) return 0; if (x >= 1) return 1;
-  const bt = Math.exp(lgamma(a + b) - lgamma(a) - lgamma(b) + a * Math.log(x) + b * Math.log(1 - x));
-  return x < (a + 1) / (a + b + 2) ? bt * betaCF(x, a, b) / a : 1 - bt * betaCF(1 - x, b, a) / b;
-}
-function fPval(x, d1, d2) { return x <= 0 ? 1 : 1 - regBetaI(d1 * x / (d1 * x + d2), d1 / 2, d2 / 2); }
-function fCrit(alpha, d1, d2) {
-  let lo = 0, hi = 100;
-  for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2; if (fPval(m, d1, d2) > alpha) lo = m; else hi = m; }
-  return (lo + hi) / 2;
-}
+const chi2Crit = chi2CritVal;
+const fCrit = fCritVal;
 
 /* ─── Constants ─── */
 const ALPHAS = [0.10, 0.05, 0.025, 0.01, 0.005];
@@ -103,12 +41,12 @@ let _tEl, _tT;
 function toast(msg) {
   if (!_tEl) {
     _tEl = document.createElement('div');
-    _tEl.style.cssText = 'position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:rgba(0,8,20,.92);color:#d8f7ff;border:1px solid rgba(0,243,255,.45);padding:10px 18px;font-family:"Courier New",monospace;font-size:13px;opacity:0;transition:.3s;z-index:10000;pointer-events:none';
+    _tEl.className = 'toast';
     document.body.appendChild(_tEl);
   }
-  _tEl.textContent = msg; _tEl.style.opacity = '1'; _tEl.style.transform = 'translateX(-50%) translateY(0)';
+  _tEl.textContent = msg; _tEl.classList.add('show');
   clearTimeout(_tT);
-  _tT = setTimeout(() => { _tEl.style.opacity = '0'; _tEl.style.transform = 'translateX(-50%) translateY(20px)'; }, 2200);
+  _tT = setTimeout(() => { _tEl.classList.remove('show'); }, 2200);
 }
 async function clip(text) {
   try { if (navigator.clipboard) { await navigator.clipboard.writeText(text); return true; } } catch (_) {}

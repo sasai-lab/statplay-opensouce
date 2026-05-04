@@ -1,6 +1,6 @@
 // StatPlay - Service Worker
 // Cache-first for static assets; bumps version to invalidate on deploy.
-const CACHE = 'sp-v3.10.0.1777855909';
+const CACHE = 'sp-v3.11.1.1777864803';
 const COLUMN_SLUGS = ["deviation", "birthday", "standardization", "income_prediction"];
 const TOPIC_SLUGS = /* __TOPIC_SLUGS__ */ ["stdnorm", "normal", "prob", "bayes", "morep", "clt", "lln", "ci", "test", "proptest", "dists", "chitest", "anova", "corr", "reg", "mreg"];
 const MODULE_FILES = [
@@ -18,6 +18,7 @@ const ASSETS = [
   './css/stat_cyber.css',
   './js/main.js',
   './js/utils.js',
+  './js/katex-render.js',
   ...MODULE_FILES.map(f => `./js/modules/${f}`),
   './stat_cyber_og.png',
   './manifest.webmanifest',
@@ -46,8 +47,11 @@ self.addEventListener('activate', (e) => {
 });
 self.addEventListener('fetch', (e) => {
   const req = e.request;
-  if(req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
+  if(req.method !== 'GET') return;
   const url = new URL(req.url);
+  const isLocal = url.origin === self.location.origin;
+  const isCDN = url.hostname === 'cdn.jsdelivr.net';
+  if(!isLocal && !isCDN) return;
   const isNav = req.mode === 'navigate'
     || url.pathname.endsWith('.html')
     || url.pathname.endsWith('/');
