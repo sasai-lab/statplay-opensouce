@@ -289,13 +289,37 @@
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>A handful of recurring shapes surround the correlation coefficient.</p>
 <ul>
-<li><b>Computing r by hand</b>: Σ(xᵢ−x̄)(yᵢ−ȳ) / √{Σ(xᵢ−x̄)² · Σ(yᵢ−ȳ)²}</li>
-<li><b>r and R² conversion</b>: "R² = 0.49 → r = ±0.7" (sign matches the scatter plot's slope)</li>
-<li><b>Test of zero correlation</b>: t = r√(n−2) / √(1−r²), df = n−2</li>
-<li><b>Covariance and correlation</b>: r = Cov(X,Y) / (s<sub>x</sub> · s<sub>y</sub>)</li>
+<li><b>How r is assembled</b>: Σ(xᵢ−x̄)(yᵢ−ȳ) / √{Σ(xᵢ−x̄)² · Σ(yᵢ−ȳ)²}. "Co-variation divided by the geometric mean of each side's variation" — the same shape that the scatter slope above traces</li>
+<li><b>r and R² correspondence</b>: when R² = 0.49, r = ±0.7. The sign aligns with the scatter slope's direction</li>
+<li><b>The shape of the zero-correlation test</b>: t = r√(n−2) / √(1−r²), df = n−2. "Larger r and larger n both push t up" is built into the structure</li>
+<li><b>How covariance becomes correlation</b>: r = Cov(X,Y) / (s<sub>x</sub>·s<sub>y</sub>). Dividing covariance by the two standard deviations is the shape that strips out units</li>
 </ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./reg.html">Simple Regression</a> &mdash; r and β₁ link via r = β₁(s_x/s_y) — the same relationship from another angle</li>
+<li><a href="./dists.html#dists-t">Three Test Distributions</a> &mdash; the test of zero correlation sits on a t-distribution via t = r√(n−2)/√(1−r²)</li>
+<li><a href="./mreg.html">Multiple Regression</a> &mdash; the cause of β₁ shifting between simple and multiple regression is correlation between predictors — understanding correlation underpins confounding</li>
+<li><a href="../../en/columns/income_prediction.html">"Predicting Income" column</a> &mdash; correlation and regression in action — read as a story how predictor entanglement reshapes the model</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/income_prediction.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">💰</span>
+  <span class="fr-body">
+    <span class="fr-title">How Far Can Statistics Predict Your Income?</span>
+    <span class="fr-desc">Reading income ranges from age, gender, and prefecture — multiple regression as a story</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>turning relationships into predictions <span class="story-arrow">▸</span> <a href="./reg.html">M1 Simple Regression</a></div>

@@ -51,20 +51,22 @@
 </div>
 </div>
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>相関係数のまわりでは、いくつかの定型の形が繰り返し顔を出します。</p>
 <ul>
-<li><b>r の手計算</b>：Σ(xᵢ−x̄)(yᵢ−ȳ) / √{Σ(xᵢ−x̄)² · Σ(yᵢ−ȳ)²}</li>
-<li><b>r と R² の換算</b>：「R² = 0.49 → r = ±0.7」（符号は散布図の傾きで判断）</li>
-<li><b>無相関の検定</b>：t = r√(n−2) / √(1−r²), df = n−2</li>
-<li><b>共分散と相関係数</b>：r = Cov(X,Y) / (s<sub>x</sub> · s<sub>y</sub>)</li>
+<li><b>r の組み立ての形</b>：Σ(xᵢ−x̄)(yᵢ−ȳ) / √{Σ(xᵢ−x̄)² · Σ(yᵢ−ȳ)²}。「共変動を、それぞれの変動の幾何平均で割る」という構造で、上の散布図の傾きと連動して動いている</li>
+<li><b>r と R² の対応</b>：R² = 0.49 のとき r = ±0.7。符号は散布図の傾きの向きと同じ形で揃う</li>
+<li><b>無相関の検定の形</b>：t = r√(n−2) / √(1−r²), df = n−2。「r が大きいほど、n が大きいほど、t が大きくなる」という形がそのまま入っている</li>
+<li><b>共分散と相関係数の関係</b>：r = Cov(X,Y) / (s<sub>x</sub>·s<sub>y</sub>)。共分散をそれぞれの標準偏差で割ると単位がなくなる、という形になっている</li>
 </ul>
 </div>
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>A handful of recurring shapes surround the correlation coefficient.</p>
 <ul>
-<li><b>Computing r by hand</b>: Σ(xᵢ−x̄)(yᵢ−ȳ) / √{Σ(xᵢ−x̄)² · Σ(yᵢ−ȳ)²}</li>
-<li><b>r and R² conversion</b>: "R² = 0.49 → r = ±0.7" (sign matches the scatter plot's slope)</li>
-<li><b>Test of zero correlation</b>: t = r√(n−2) / √(1−r²), df = n−2</li>
-<li><b>Covariance and correlation</b>: r = Cov(X,Y) / (s<sub>x</sub> · s<sub>y</sub>)</li>
+<li><b>How r is assembled</b>: Σ(xᵢ−x̄)(yᵢ−ȳ) / √{Σ(xᵢ−x̄)² · Σ(yᵢ−ȳ)²}. "Co-variation divided by the geometric mean of each side's variation" — the same shape that the scatter slope above traces</li>
+<li><b>r and R² correspondence</b>: when R² = 0.49, r = ±0.7. The sign aligns with the scatter slope's direction</li>
+<li><b>The shape of the zero-correlation test</b>: t = r√(n−2) / √(1−r²), df = n−2. "Larger r and larger n both push t up" is built into the structure</li>
+<li><b>How covariance becomes correlation</b>: r = Cov(X,Y) / (s<sub>x</sub>·s<sub>y</sub>). Dividing covariance by the two standard deviations is the shape that strips out units</li>
 </ul>
 </div>

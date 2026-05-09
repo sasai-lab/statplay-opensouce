@@ -172,8 +172,8 @@
 <div class="panel">
 <div class="controls">
 <div class="ctrl">
-<label><span>Prevalence — how many of 1,000 are sick?</span> = <span class="val" id="bPdVal"><span>10 / 1,000</span></span></label>
-<input aria-label="Prevalence" id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.01"/>
+<label><span>Prevalence — how many of 1,000 are sick?</span> = <span class="val" id="bPdVal"><span>50 / 1,000</span></span></label>
+<input aria-label="Prevalence" id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.05"/>
 </div>
 <div class="ctrl">
 <label><span>Sensitivity — % of sick people the test correctly flags</span> = <span class="val" id="bSensVal">99%</span></label>
@@ -225,12 +225,36 @@ When prevalence is tiny the numerator shrinks while the denominator, swollen wit
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Bayes' theorem keeps reappearing in the same handful of shapes.</p>
 <ul>
-<li><b>Standard calculation</b>: "Prevalence p%, sensitivity a%, specificity b%. Given a positive test, what's the probability of disease?"</li>
-<li><b>Law of total probability</b>: use <span class="math" data-tex="P(B) = P(B|A)\,P(A) + P(B|\bar{A})\,P(\bar{A})"></span> as the denominator</li>
-<li><b>Natural frequency approach</b>: draw a table of 1,000 people and count directly — often faster than memorizing the formula</li>
+<li><b>The classic scenario shape</b>: "Prevalence p%, sensitivity a%, specificity b%. Given a positive test, what's the probability of disease?" — the numbers change, the structure doesn't</li>
+<li><b>Total probability sitting in the denominator</b>: <span class="math" data-tex="P(B) = P(B|A)\,P(A) + P(B|\bar{A})\,P(\bar{A})"></span> is the shape Bayes' denominator always takes. The "true positives + false positives" picture above is this same equation</li>
+<li><b>The natural-frequency picture</b>: split 1,000 people into a table and the same problem looks like simple counting instead of fractions</li>
 </ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./prob.html">Probability Rules</a> &mdash; conditional probability and the law of total probability assemble Bayes' denominator directly</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; "positive yet not diseased" lives in the same space as Type I error α</li>
+<li><a href="./morep.html">Discrete & Exponential</a> &mdash; modelling sensitivity, specificity, and base rates pulls binomial and Poisson into the picture</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; a single-page integration of the error 2×2 and PPV</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Makes It Click</span>
+    <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>discrete and exponential distributions <span class="story-arrow">▸</span> <a href="./morep.html">P5 Discrete &amp; Exponential</a></div>

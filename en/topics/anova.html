@@ -337,14 +337,37 @@ Check critical values in the <a href="../../en/tables/index.html?dist=f" style="
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
-<p>These patterns come up over and over whenever you work with ANOVA.</p>
+<h3>// Shapes you'll meet again</h3>
+<p>The same structure shows up again and again whenever ANOVA is around.</p>
 <ul>
-<li><b>Fill in an ANOVA table</b> — given SS and df, compute MS → F → compare with critical value. The worked example above is the exact template</li>
-<li><b>Degrees of freedom</b> — between = k−1, within = N−k, total = N−1</li>
-<li><b>"Why not repeat t-tests?"</b> — explain the multiple-comparisons problem. The 14.3% from the simulation is a concrete talking point</li>
-<li><b>Assumptions</b> — normality, homogeneity of variance, independence</li>
+<li><b>The shape of an ANOVA table</b> — once SS and df are lined up, MS and F fall into the next columns automatically. The worked example above traces this exact shape</li>
+<li><b>How degrees of freedom slot in</b> — between = k−1, within = N−k, total = N−1. These three always appear together</li>
+<li><b>Why repeated t-tests inflate</b> — the multiple-comparisons story. The 14.3% from the simulation reappears in this same shape</li>
+<li><b>The three assumptions in the background</b> — normality, homogeneity of variance, independence. The F-distribution picture above only takes shape when these three are in place</li>
 </ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; ANOVA is testing's natural extension — folding repeated t-tests into one F-test</li>
+<li><a href="./dists.html#dists-f">Three Test Distributions</a> &mdash; the F-distribution is ANOVA's protagonist — MSB/MSW critical values are read here</li>
+<li><a href="./mreg.html">Multiple Regression</a> &mdash; multiple regression's F-test (overall model significance) shares the same equation structure as ANOVA</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; why α inflates under multiple comparisons, plus effect size and power, all collected in one place</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Makes It Click</span>
+    <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>measuring the "link" between two variables <span class="story-arrow">▸</span> <a href="./corr.html">M0 Correlation</a></div>

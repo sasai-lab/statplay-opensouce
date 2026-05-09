@@ -129,24 +129,24 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 </div>
 </div>
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>重回帰のまわりでは、係数の解釈と検定の対比が同じ形で繰り返し顔を出します。</p>
 <ul>
-<li><b>偏回帰係数の解釈</b>：「β₁=3 → x₂を固定したとき、x₁が1増えるとyは平均3増える」</li>
-<li><b>単回帰と重回帰でβ₁が変わる理由</b>：交絡（変数間の相関）により、単回帰は直接効果と間接効果を混同する</li>
-<li><b>R² と自由度調整済み R²</b>：変数を追加して調整済みが下がったら、その変数は不要</li>
-<li><b>F検定</b>：「すべての偏回帰係数が0」を一括で検定（モデル全体の有意性）</li>
-<li><b>t検定</b>：「各係数が個別に0かどうか」の検定</li>
-<li><b>多重共線性</b>：VIF の意味と目安（VIF > 10 で要注意）</li>
+<li><b>偏回帰係数の絵</b>：β₁ = 3 のとき、「x₂ を固定したまま x₁ を1増やすと y が平均3増える」という形に読める。「他の変数を止める」という条件付きが、いつもこの絵に張り付いている</li>
+<li><b>単回帰と重回帰でβ₁がずれる場面</b>：変数間に相関があると、単回帰は直接効果と間接効果を一つの数字に混ぜてしまう。上のパネルで相関をゼロにすると両者が一致する形になる</li>
+<li><b>R² と自由度調整済み R² の対比</b>：変数を足したときに、R² は必ず上がるが、調整済みは下がることがある。「下がったら、その変数は分の悪い追加だった」という形がここに現れる</li>
+<li><b>F検定と t検定の役割分担</b>：F検定は「すべての偏回帰係数 = 0」を一括で見る形、t検定は「個別に 0 か」を見る形。モデル全体と個別係数で問いが分かれている</li>
+<li><b>多重共線性のシグナル</b>：VIF > 10 が目安として顔を出し、係数がガタつく場面の前触れになる</li>
 </ul>
 </div>
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around multiple regression, the same coefficient-interpretation and test-comparison shapes keep returning.</p>
 <ul>
-<li><b>Interpreting partial coefficients</b>: "β₁ = 3 → holding x₂ constant, a 1-unit increase in x₁ raises y by 3 on average"</li>
-<li><b>Why β₁ changes between simple and multiple regression</b>: confounding (correlation between variables) causes simple regression to mix direct and indirect effects</li>
-<li><b>R² vs. adjusted R²</b>: if adjusted R² drops when you add a variable, that variable hurts the model</li>
-<li><b>F-test</b>: tests "all partial coefficients = 0" simultaneously (overall model significance)</li>
-<li><b>t-test</b>: tests each coefficient individually for zero</li>
-<li><b>Multicollinearity</b>: know what VIF measures and the rule of thumb (VIF > 10 = concern)</li>
+<li><b>The partial-coefficient picture</b>: with β₁ = 3, the reading "holding x₂ constant, raising x₁ by 1 lifts y by 3 on average" appears. "Hold the others fixed" is the conditional clause that travels with this picture</li>
+<li><b>When β₁ shifts between simple and multiple regression</b>: with correlated predictors, simple regression fuses direct and indirect effects into one number. Setting correlation to 0 in the panel above brings the two estimates back into alignment</li>
+<li><b>R² vs. adjusted R² as a pair</b>: adding a variable always raises R², but adjusted R² can fall. The shape "if adjusted drops, the new variable wasn't worth its cost" lives here</li>
+<li><b>How F-tests and t-tests divide the labor</b>: the F-test takes "all partial coefficients = 0" at once; the t-test asks "is this one coefficient = 0?" — the model-wide and per-coefficient questions split along these two shapes</li>
+<li><b>The multicollinearity signal</b>: VIF > 10 appears as the rule-of-thumb threshold, foreshadowing scenes where coefficients become erratic</li>
 </ul>
 </div>

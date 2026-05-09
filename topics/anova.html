@@ -339,16 +339,38 @@ ANOVAは、この「偽陽性の膨張」を防いで全体の α を5%に保て
 </div>
 
 <div class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
-<p>分散分析を扱う場面で繰り返し出てくる定番パターンを並べておきます。</p>
+<h3>// よく出会う形</h3>
+<p>分散分析を扱うとき、繰り返し見える同じ構造があります。</p>
 <ul>
-<li><b>分散分析表の穴埋め</b> — SS と df が与えられて「MSとF値を求めよ」。上の具体例をなぞれば解ける計算問題です</li>
-<li><b>自由度の公式</b> — 群間 = k−1、群内 = N−k、全体 = N−1</li>
-<li><b>「t検定を繰り返すと何が問題か」</b> — 多重比較の問題を論述させる問題。シミュレーションの14.3%の話がそのまま使えます</li>
-<li><b>前提条件</b> — 正規性・等分散性・独立性の3つ</li>
+<li><b>分散分析表の構造</b> — SS と df が並ぶと、その横に MS と F が自動的に埋まっていく形になっている。上の具体例がそのままこの形のテンプレート</li>
+<li><b>自由度の決まり方</b> — 群間 = k−1、群内 = N−k、全体 = N−1。この三つが必ずセットで顔を出す</li>
+<li><b>t検定の繰り返しが膨らむ理由</b> — 多重比較の話。上のシミュレーションの14.3%という数字が、この形のまま再現されている</li>
+<li><b>前提となる3条件</b> — 正規性・等分散性・独立性。この三つが揃っているときに、上のF分布の絵が成立している</li>
 </ul>
 </div>
 
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./test.html">仮説検定</a> &mdash; ANOVA は検定の自然な拡張。t を繰り返さず F で 1 回に集約する設計の理由</li>
+<li><a href="./dists.html#dists-f">三大検定分布</a> &mdash; F 分布が ANOVA の主役。MSB/MSW の臨界値はここで読む</li>
+<li><a href="./mreg.html">重回帰分析</a> &mdash; 重回帰の F 検定（モデル全体の有意性）も ANOVA と同じ式の構造を共有している</li>
+<li><a href="../columns/error_types.html">『過誤の2×2』コラム</a> &mdash; 多重比較で α が膨張する話、効果量と検出力の整理がここに集約されている</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">第一種・第二種の過誤って何が違うの？ — 2×2の表で全部見える</span>
+    <span class="fr-desc">第一種・第二種の誤りと検出力を、別々ではなく同じ 2×2 上で同時に追える</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>2変数の「つながり」を測る <span class="story-arrow">▸</span> <a href="./corr.html">M0 相関係数</a></div>
 

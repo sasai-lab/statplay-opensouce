@@ -331,15 +331,39 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around multiple regression, the same coefficient-interpretation and test-comparison shapes keep returning.</p>
 <ul>
-<li><b>Interpreting partial coefficients</b>: "β₁ = 3 → holding x₂ constant, a 1-unit increase in x₁ raises y by 3 on average"</li>
-<li><b>Why β₁ changes between simple and multiple regression</b>: confounding (correlation between variables) causes simple regression to mix direct and indirect effects</li>
-<li><b>R² vs. adjusted R²</b>: if adjusted R² drops when you add a variable, that variable hurts the model</li>
-<li><b>F-test</b>: tests "all partial coefficients = 0" simultaneously (overall model significance)</li>
-<li><b>t-test</b>: tests each coefficient individually for zero</li>
-<li><b>Multicollinearity</b>: know what VIF measures and the rule of thumb (VIF &gt; 10 = concern)</li>
+<li><b>The partial-coefficient picture</b>: with β₁ = 3, the reading "holding x₂ constant, raising x₁ by 1 lifts y by 3 on average" appears. "Hold the others fixed" is the conditional clause that travels with this picture</li>
+<li><b>When β₁ shifts between simple and multiple regression</b>: with correlated predictors, simple regression fuses direct and indirect effects into one number. Setting correlation to 0 in the panel above brings the two estimates back into alignment</li>
+<li><b>R² vs. adjusted R² as a pair</b>: adding a variable always raises R², but adjusted R² can fall. The shape "if adjusted drops, the new variable wasn't worth its cost" lives here</li>
+<li><b>How F-tests and t-tests divide the labor</b>: the F-test takes "all partial coefficients = 0" at once; the t-test asks "is this one coefficient = 0?" — the model-wide and per-coefficient questions split along these two shapes</li>
+<li><b>The multicollinearity signal</b>: VIF &gt; 10 appears as the rule-of-thumb threshold, foreshadowing scenes where coefficients become erratic</li>
 </ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./reg.html">Simple Regression</a> &mdash; the baseline for reading the gap between simple and multiple regression's β₁</li>
+<li><a href="./corr.html">Correlation</a> &mdash; correlation among predictors (multicollinearity, confounding) is what destabilises β₁</li>
+<li><a href="./anova.html">ANOVA</a> &mdash; multiple regression's F-test uses the same framework as ANOVA to judge overall model significance</li>
+<li><a href="./dists.html#dists-f">Three Test Distributions</a> &mdash; the F-distribution supplies the critical values for testing "all partial coefficients = 0"</li>
+<li><a href="../../en/columns/income_prediction.html">"Predicting Income" column</a> &mdash; a hands-on column reading income ranges from age, gender, and prefecture — multiple regression in practice</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/income_prediction.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">💰</span>
+  <span class="fr-body">
+    <span class="fr-title">How Far Can Statistics Predict Your Income?</span>
+    <span class="fr-desc">Reading income ranges from age, gender, and prefecture — multiple regression as a story</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 </section>

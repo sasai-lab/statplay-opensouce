@@ -222,13 +222,37 @@
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around simple regression, the slope's construction and R²'s interpretation always travel together.</p>
 <ul>
-<li><b>Computing β₁ by hand</b>: co-variation / x-variation = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)²</li>
-<li><b>Interpreting R²</b>: "R² = 0.64 → 64% of y's variance is explained by x"</li>
-<li><b>r and R²</b>: "R² = 0.64 ⇒ r = ±0.8" (sign matches β₁)</li>
-<li><b>Residual assumptions</b>: homoscedasticity, normality, independence — the big three</li>
+<li><b>How β₁ is assembled</b>: β₁ = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)² = co-variation / x-variation. "More spread in x makes the denominator larger and the slope estimate steadier" is woven into the shape</li>
+<li><b>How R² is read</b>: with R² = 0.64, the reading "64% of y's variance is explained by x" appears in this shape</li>
+<li><b>r and R² correspondence</b>: R² = 0.64 ⇒ r = ±0.8. The sign matches β₁'s direction — that's the consistent shape between them</li>
+<li><b>The three residual conditions</b>: homoscedasticity, normality, independence. These three need to be in place for the least-squares picture above to back up the intervals and tests built on it</li>
 </ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./corr.html">Correlation</a> &mdash; r and β₁ connect via r = β₁(s_x/s_y), with R² = r² — the slope's sign and the correlation's sign align</li>
+<li><a href="./mreg.html">Multiple Regression</a> &mdash; adding predictors shifts β₁ — the extension that separates direct and indirect effects</li>
+<li><a href="./dists.html#dists-t">Three Test Distributions</a> &mdash; tests on regression coefficients ride on the t distribution — the base for t-values, p-values, and intervals</li>
+<li><a href="../../en/columns/income_prediction.html">"Predicting Income" column</a> &mdash; where the limits of simple regression (can age alone predict income?) make the case for multiple regression</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/income_prediction.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">💰</span>
+  <span class="fr-body">
+    <span class="fr-title">How Far Can Statistics Predict Your Income?</span>
+    <span class="fr-desc">Reading income ranges from age, gender, and prefecture — multiple regression as a story</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>controlling for everything else <span class="story-arrow">▸</span> <a href="./mreg.html">M2 Multiple Regression</a></div>

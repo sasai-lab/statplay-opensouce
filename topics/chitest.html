@@ -315,16 +315,38 @@
 </div>
 
 <div class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>χ²検定にまつわる場面では、繰り返し同じ部品が顔を出します。</p>
 <ul>
-<li><b>自由度の計算</b>：「2×3 表の独立性検定の自由度は？」→ (2−1)(3−1) = 2</li>
-<li><b>期待度数の手計算</b>：行合計×列合計÷総数を電卓で計算</li>
-<li><b>適合度の計算問題</b>：各カテゴリで (O−E)²/E を求めて合計 → 臨界値と比較</li>
-<li><b>「期待度数5未満のとき」</b>：小頻度向けの正確検定（exact test）またはカテゴリの統合</li>
+<li><b>自由度の形</b>：独立性検定では (r−1)(c−1) が必ず出てくる。2×3 表なら (2−1)(3−1) = 2 という形に収まる</li>
+<li><b>期待度数の形</b>：「行合計 × 列合計 ÷ 総数」が分母に総数を置く絵で、独立を仮定した世界での期待値として現れる</li>
+<li><b>χ² の組み立て方</b>：各カテゴリの (O−E)²/E を足し上げる形。「ズレの二乗を期待値で割って合計」という同じ手順が、適合度でも独立性でも繰り返し顔を出す</li>
+<li><b>期待度数5未満の場面</b>：小頻度向けの正確検定（exact test）に切り替えるか、カテゴリを統合する形に持ち込む、という分岐がついて回る</li>
 </ul>
 <p style="margin:10px 0 0">χ²臨界値は<a href="../tables/index.html?dist=chi2" style="color:var(--cyan)">インタラクティブ確率分布表</a>で自由度を変えながら確認できる</p>
 </div>
 
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./dists.html#dists-chi">三大検定分布</a> &mdash; χ² 分布の作り方（標準正規の二乗和）と臨界値の読み方</li>
+<li><a href="./test.html">仮説検定</a> &mdash; 仮説検定の5ステップ・棄却域・α の枠組みはカイ二乗検定でも同じ</li>
+<li><a href="./prob.html">確率の基本法則</a> &mdash; 期待度数の組み立てや独立性の検定は、確率の基本法則がそのまま土台になる</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/birthday.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🎂</span>
+  <span class="fr-body">
+    <span class="fr-title">誕生日のパラドックス — 23人で50%超え</span>
+    <span class="fr-desc">余事象の絵で「直感が裏切られる確率」を一発で読み解く古典コラム</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>3群以上を一度に比較する <span class="story-arrow">▸</span> <a href="./anova.html">I8 分散分析（ANOVA）</a></div>
 

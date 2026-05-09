@@ -1,6 +1,11 @@
 <div data-lang="ja" class="detail-section">
 <h3>// ここで使われる公式</h3>
 
+<p style="margin:8px 0 16px;padding:12px 16px;background:rgba(255,230,0,.08);border-left:3px solid var(--yellow);line-height:1.75">
+<b style="color:var(--yellow);font-family:'Courier New',monospace">&#x2605; 推定と検定で SE の中身が違う</b><br/>
+<b>推定では SE = &#x221A;(p&#x0302;(1&#x2212;p&#x0302;)/n)、検定では SE = &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n)。</b> 同じ「比率の SE」という名前でも、<b>推定は標本の世界</b>（手元のデータが基準）、<b>検定は H&#x2080; の世界</b>（仮定した母比率が基準）を基準にする。下の最初の2式の分母を見比べると、ここだけが違う。
+</p>
+
 <h4 style="color:var(--cyan);margin:16px 0 8px">母比率の区間推定（Wald型信頼区間）</h4>
 <div class="formula" data-tex="\hat{p} \;\pm\; z_{\alpha/2}\,\sqrt{\frac{\hat{p}\,(1-\hat{p})}{n}}"></div>
 <p>
@@ -27,6 +32,11 @@
 
 <div data-lang="en" class="detail-section">
 <h3>// Formulas used here</h3>
+
+<p style="margin:8px 0 16px;padding:12px 16px;background:rgba(255,230,0,.08);border-left:3px solid var(--yellow);line-height:1.75">
+<b style="color:var(--yellow);font-family:'Courier New',monospace">&#x2605; Estimation and testing put different content inside SE</b><br/>
+<b>Estimation uses SE = &#x221A;(p&#x0302;(1&#x2212;p&#x0302;)/n); testing uses SE = &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n).</b> The label "SE of a proportion" is shared, but <b>estimation grounds the SE in the sample world</b> (your data is the reference) while <b>testing grounds it in the H&#x2080; world</b> (the hypothesized proportion is the reference). Compare the denominators of the first two formulas below &#x2014; that's the only line that changes.
+</p>
 
 <h4 style="color:var(--cyan);margin:16px 0 8px">Confidence interval for a proportion (Wald interval)</h4>
 <div class="formula" data-tex="\hat{p} \;\pm\; z_{\alpha/2}\,\sqrt{\frac{\hat{p}\,(1-\hat{p})}{n}}"></div>
@@ -143,21 +153,23 @@ Flip between panels &#x2460; and &#x2461; with the same n and p&#x0302; to see t
 </div>
 
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>比率の検定・推定では、推定の SE と検定の SE の使い分けと、正規近似の条件チェックが繰り返し顔を出します。</p>
 <ul>
-<li><b>区間推定の計算</b>：「200人中120人が賛成。母比率の95%信頼区間は？」&#x2192; p&#x0302;=0.6, SE=&#x221A;(0.6&#x00D7;0.4/200), CI = 0.6 &#x00B1; 1.96&#x00D7;SE</li>
-<li><b>検定の判定</b>：「不良品率は5%か？ 500個中35個が不良」&#x2192; p&#x0302;=0.07, p&#x2080;=0.05, z = (0.07&#x2212;0.05)/&#x221A;(0.05&#x00D7;0.95/500)</li>
-<li><b>正規近似の条件</b>：「n=20, p&#x2080;=0.1 でz検定は使えるか？」&#x2192; np&#x2080;=2 &lt; 5 なので使えない</li>
-<li><b>2標本の出題</b>：「薬A群は100人中60人改善、薬B群は100人中45人改善。差は有意か？」</li>
+<li><b>区間推定の組み立ての形</b>：200人中120人賛成のとき、p&#x0302;=0.6, SE=&#x221A;(0.6&#x00D7;0.4/200), 95%CI = 0.6 &#x00B1; 1.96&#x00D7;SE。「中心 &#x00B1; 倍率 &#x00D7; 標準誤差」という三層構造が、比率でもそのまま顔を出している</li>
+<li><b>検定統計量の形</b>：500個中35個不良なら、p&#x0302;=0.07, p&#x2080;=0.05, z = (0.07&#x2212;0.05)/&#x221A;(0.05&#x00D7;0.95/500)。分母に「H&#x2080; の世界の SE」が入る、という違いが推定との対比で見える</li>
+<li><b>正規近似が成立する条件</b>：np ≥ 5 かつ n(1&#x2212;p) ≥ 5。n=20, p&#x2080;=0.1 だと np&#x2080;=2 で条件を外れる、という形でチェックポイントが登場する</li>
+<li><b>2標本の差の検定の形</b>：「A群 60/100 改善、B群 45/100 改善」のような場面では、プール比率を分母の SE に使うという特徴的な構造が顔を出す</li>
 </ul>
 </div>
 
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Across proportion tests and intervals, the swap between the estimation SE and the testing SE — plus the normal-approximation check — keeps reappearing.</p>
 <ul>
-<li><b>CI calculation</b>: "120 out of 200 people agree. Find the 95% CI for the population proportion." &#x2192; p&#x0302; = 0.6, SE = &#x221A;(0.6 &#x00D7; 0.4 / 200), CI = 0.6 &#x00B1; 1.96 &#x00D7; SE</li>
-<li><b>Test decision</b>: "Is the defect rate 5%? 35 defects out of 500." &#x2192; p&#x0302; = 0.07, p&#x2080; = 0.05, z = (0.07 &#x2212; 0.05) / &#x221A;(0.05 &#x00D7; 0.95 / 500)</li>
-<li><b>Normal approximation check</b>: "Can we use a z-test with n = 20, p&#x2080; = 0.1?" &#x2192; np&#x2080; = 2 &lt; 5, so no</li>
-<li><b>Two-sample problem</b>: "Drug A: 60 of 100 improved. Drug B: 45 of 100 improved. Is the difference significant?"</li>
+<li><b>The CI assembly shape</b>: with 120 of 200 in favor, p&#x0302; = 0.6, SE = &#x221A;(0.6 &#x00D7; 0.4 / 200), and the 95% CI lands at 0.6 &#x00B1; 1.96 &#x00D7; SE. The "center &#x00B1; multiplier &#x00D7; standard error" three-layer structure carries straight over to proportions</li>
+<li><b>The test-statistic shape</b>: with 35 defects in 500, p&#x0302; = 0.07, p&#x2080; = 0.05, z = (0.07 &#x2212; 0.05) / &#x221A;(0.05 &#x00D7; 0.95 / 500). The "H&#x2080;-world SE in the denominator" is the distinguishing detail against the estimation case</li>
+<li><b>The normal-approximation condition</b>: np ≥ 5 and n(1&#x2212;p) ≥ 5. With n = 20 and p&#x2080; = 0.1, np&#x2080; = 2 falls below the threshold — that's the shape this checkpoint takes</li>
+<li><b>The two-sample difference shape</b>: scenarios like "Group A: 60/100 improved, Group B: 45/100 improved" carry a distinctive structure — pooled proportion sitting inside the SE in the denominator</li>
 </ul>
 </div>

@@ -296,14 +296,40 @@
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Across hypothesis tests, the same cast keeps returning: comparing p with α, choosing one-sided vs. two-sided, and the 2×2 of error types.</p>
 <ul>
-<li><b>p-value and decision</b>: "p = 0.03, α = 0.01?" → 0.03 &gt; 0.01, fail to reject</li>
-<li><b>Two-sided vs. one-sided</b>: "Does the drug raise the mean?" = one-sided (direction specified); "Does the drug change the mean (either way)?" = two-sided (direction unspecified)</li>
-<li><b>Error classification</b>: "Rejecting a true H₀ → Type I error"; "Failing to reject a false H₀ → Type II error"</li>
-<li><b>Power</b>: 1 − β = probability of detecting a real effect</li>
+<li><b>The p-value-vs-α comparison</b>: with p = 0.03, α = 0.01, the relation 0.03 &gt; 0.01 lands on "fail to reject." "Is the observed p inside α or not?" is the recurring decision shape</li>
+<li><b>One-sided vs. two-sided sorting</b>: "does the drug raise the mean?" calls for one-sided; "does it change in either direction?" calls for two-sided. The question's orientation forks into this shape</li>
+<li><b>The 2×2 of errors</b>: rejecting a true H₀ is Type I, failing to reject a false H₀ is Type II. Wherever a test lives, this 2×2 table tags along</li>
+<li><b>Where power sits</b>: 1 − β = "the probability of detecting a real difference when one exists." It appears in this same shape, as the flip side of Type II error</li>
 </ul>
 <p style="margin:10px 0 0">Look up critical values in the <a href="../../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — z and t values with live graph sync</p>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; tests and CIs are two views of one decision — the verdicts always agree</li>
+<li><a href="./dists.html">Three Test Distributions</a> &mdash; t / χ² / F critical values get read in the test statistic's world — the toolbox of the testing family</li>
+<li><a href="./proptest.html">Proportion Test</a> &mdash; for proportion tests, the SE quietly swaps p̂ for p₀ — a structure unique to testing</li>
+<li><a href="./anova.html">ANOVA</a> &mdash; comparing 3+ group means via one F-test instead of repeated t-tests — testing's natural extension</li>
+<li><a href="./chitest.html">Chi-Squared Test</a> &mdash; for categorical data, the test statistic switches to chi-squared — a different branch of the same family</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; ties together the error 2×2, power, and the α-β trade-off</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Makes It Click</span>
+    <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>from means to proportions <span class="story-arrow">▸</span> <a href="./proptest.html">I5 Proportion Test</a></div>

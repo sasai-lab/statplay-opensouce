@@ -91,20 +91,22 @@ Normal approximation           Exponential</div>
 </div>
 </div>
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>離散分布まわりでは、同じ書き換えや同じ平均・分散の組がよく顔を出します。</p>
 <ul>
-<li><b>余事象パターン</b>：「3回以上成功する確率は？」→ P(X≥3) = 1 − P(0) − P(1) − P(2) のほうが速い</li>
-<li><b>ポアソン近似</b>：「不良品率2%, 100個中3個以上不良品の確率」→ λ=2 でポアソン計算させる</li>
-<li><b>指数分布の計算</b>：「平均寿命1000時間の電球。500時間以上もつ確率は？」→ e⁻⁰·⁵ ≈ 0.607</li>
-<li><b>平均と分散のセット</b>：「次のうち正しいものを選べ」→ ポアソンは平均=分散=λ、二項の分散は np(1−p)</li>
+<li><b>余事象の形</b>：「3回以上成功する確率」が、1 − P(0) − P(1) − P(2) と書き換えられる場面が頻繁に現れる。「全体から下側を引く」という同じ絵</li>
+<li><b>ポアソン近似の形</b>：不良品率2%, 100個 のような「n が大きく p が小さい」場面で、λ = np = 2 のポアソンが二項の代わりに顔を出す</li>
+<li><b>指数分布の生存確率の形</b>：平均寿命1000時間の電球で500時間以上もつ確率は e⁻⁰·⁵ ≈ 0.607。P(X > t) = e⁻λt という形が、寿命や待ち時間で繰り返し見える</li>
+<li><b>平均と分散のセット</b>：ポアソンでは平均 = 分散 = λ、二項では分散 = np(1−p)。それぞれの分布が固有のセットを持っているという形になっている</li>
 </ul>
 </div>
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around discrete distributions, the same rewrites and the same mean/variance pairings keep showing up.</p>
 <ul>
-<li><b>Complement trick</b>: "P(3 or more successes)" → P(X≥3) = 1 − P(0) − P(1) − P(2) is usually faster</li>
-<li><b>Poisson approximation</b>: "defect rate 2%, 100 items, P(3+ defective)?" → λ=2, use Poisson</li>
-<li><b>Exponential calculation</b>: "mean life 1000 hours. P(lasts more than 500 hours)?" → e⁻⁰·⁵ ≈ 0.607</li>
-<li><b>Mean and variance pairs</b>: "Which is correct?" → Poisson: mean = variance = λ; binomial variance = np(1−p)</li>
+<li><b>The complement shape</b>: "probability of 3 or more successes" reappears as 1 − P(0) − P(1) − P(2). "Subtract the lower tail from the whole" is the same picture each time</li>
+<li><b>The Poisson-approximation shape</b>: in regimes where n is large and p is small (defect rate 2%, n = 100), Poisson with λ = np = 2 stands in for the binomial</li>
+<li><b>The exponential survival shape</b>: a 1000-hour mean lifetime with P(X > 500) = e⁻⁰·⁵ ≈ 0.607. P(X > t) = e⁻λt is the same shape that returns whenever lifetimes or waiting times are involved</li>
+<li><b>Mean–variance pairs</b>: Poisson carries mean = variance = λ, while binomial carries variance = np(1−p). Each distribution travels with its own paired shape</li>
 </ul>
 </div>

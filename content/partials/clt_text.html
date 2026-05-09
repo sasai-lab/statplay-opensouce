@@ -103,20 +103,22 @@
 </div>
 </div>
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>中心極限定理がからむ場面では、同じ三つ組がいつもセットで顔を出します。</p>
 <ul>
-<li><b>定理名を問う</b>：「母集団の分布に関係なく、標本平均の分布が正規分布に近づく定理は？」→ 中心極限定理</li>
-<li><b>SE の計算</b>：「σ=10, n=25 のとき標準誤差は？」→ 10/√25 = 2</li>
-<li><b>n と精度</b>：「標準誤差を半分にするには n を何倍に？」→ 4倍</li>
-<li><b>平均の期待値</b>：「標本平均の期待値は？」→ μ（元の分布の平均と同じ。不偏性）</li>
+<li><b>定理が描く絵</b>：「元の分布が何でも、平均を取ると分布の形が正規分布に近づく」 — この一行が中心極限定理の輪郭で、上のシミュレーションがその絵そのもの</li>
+<li><b>SE = σ/√n の形</b>：σ=10, n=25 なら SE = 10/√25 = 2 と並ぶ。√n が分母にいる構造が、推測統計のあちこちでこの形のまま顔を出す</li>
+<li><b>n と精度の比例</b>：SE を半分にするには n が4倍。√ がいるせいで「精度を上げるコストは二乗で効く」という形が現れる</li>
+<li><b>標本平均の期待値</b>：E(X̄) = μ。元の分布の平均と一致するという形が、不偏性として顔を出す</li>
 </ul>
 </div>
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>The same trio of parts shows up wherever the Central Limit Theorem lives.</p>
 <ul>
-<li><b>Name the theorem</b>: "Regardless of the population, the sample mean's distribution approaches normal. Which theorem?" → Central Limit Theorem</li>
-<li><b>SE calculation</b>: "σ = 10, n = 25. Standard error?" → 10/√25 = 2</li>
-<li><b>n and precision</b>: "To halve the standard error, multiply n by?" → 4</li>
-<li><b>Expected value of the mean</b>: "E(X̄) = ?" → μ (same as the population mean — unbiasedness)</li>
+<li><b>The picture the theorem draws</b>: "no matter the original distribution, the average's distribution drifts toward normal" — this one-liner is the outline of the Central Limit Theorem, and the simulator above traces that exact picture</li>
+<li><b>The SE = σ/√n shape</b>: with σ = 10 and n = 25, SE lands at 10/√25 = 2. √n sitting in the denominator is a structure that reappears across inferential statistics</li>
+<li><b>How n trades against precision</b>: halving SE means quadrupling n. The √ makes "the cost of precision grows quadratically" appear as a shape</li>
+<li><b>Expected value of the sample mean</b>: E(X̄) = μ. Matching the population mean is the shape of unbiasedness</li>
 </ul>
 </div>

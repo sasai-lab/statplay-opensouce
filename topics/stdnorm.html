@@ -285,16 +285,49 @@
 </div>
 
 <div class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>標準正規分布のまわりでは、「標準化 → 表引き」の流れと、その変奏がいつも繰り返し顔を出します。</p>
 <ul>
-<li><b>表の読み方</b>：問題の表が「上側確率」か「累積確率」か確認。間違えると答えが全然違う</li>
-<li><b>引き算パターン</b>：P(0.5 ≤ Z ≤ 1.5) = Φ(1.5) − Φ(0.5)</li>
-<li><b>標準化してから表を引く</b>：「N(170, 6²) で 180 以上の確率」→ z = (180−170)/6 ≈ 1.67 → 表を引く</li>
-<li><b>逆引き</b>：「上側5%点は？」→ z = 1.645</li>
+<li><b>表のスタイルの違い</b>：同じ z 値でも、表が「上側確率」なのか「累積確率」なのかで読み取る数字が変わる、という形がここに住んでいる</li>
+<li><b>区間確率は引き算の形</b>：P(0.5 ≤ Z ≤ 1.5) = Φ(1.5) − Φ(0.5)。「累積どうしの差」で区間が出るという同じ絵が、いろんな問題で繰り返し顔を出す</li>
+<li><b>標準化してから表を引く流れ</b>：N(170, 6²) で X ≥ 180 なら、z = (180−170)/6 ≈ 1.67 という形に揃えてから表へ向かう。一般正規はいつも、この経路を通る</li>
+<li><b>逆引きの形</b>：「上側5%点は？」と聞かれると、z = 1.645 という値が出る。表を逆向きに使う、という同じ動きの形がここに見える</li>
 </ul>
 <p style="margin:10px 0 0"><a href="../tables/index.html?dist=norm" style="color:var(--cyan)">インタラクティブ確率分布表</a>で累積・上側・両側を切り替えながら値を確認できる</p>
 </div>
 
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./normal.html">正規分布と標準化</a> &mdash; 一般正規 N(μ, σ²) を z = (x−μ)/σ で標準正規に翻訳する流れの本拠地</li>
+<li><a href="./ci.html">信頼区間</a> &mdash; 「中心 ± 1.96 × SE」の倍率はここで読んだ z の値。標準正規の表が幅を決めている</li>
+<li><a href="./test.html">仮説検定</a> &mdash; z検定の臨界値・棄却域はすべて標準正規の上で測られる</li>
+<li><a href="./dists.html#dists-t">三大検定分布</a> &mdash; t 分布は自由度大で標準正規に重なる、その極限を載せた家族</li>
+<li><a href="../columns/deviation.html">『偏差値って何？』コラム</a> &mdash; 偏差値 = z × 10 + 50。標準正規の最も身近な応用例</li>
+<li><a href="../columns/standardization.html">『標準化って何？』コラム</a> &mdash; 単位の違うものを z で揃えて比較する翻訳機としての標準正規</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/deviation.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">📊</span>
+  <span class="fr-body">
+    <span class="fr-title">偏差値って何？ — 3秒で「上位何%」が見える</span>
+    <span class="fr-desc">偏差値60と70の差はたった10、でもレア度は5倍。z = (X−μ)/σ の最も身近な応用例</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a href="../columns/standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">標準化って何？ — 世界中の「ふつう」を比べる翻訳機</span>
+    <span class="fr-desc">身長 182cm と TOEIC 860、どっちが「ふつう」から遠い？ z で単位を超えて比べる</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>正規分布そのものを扱う <span class="story-arrow">▸</span> <a href="./normal.html">P2 正規分布</a></div>
 

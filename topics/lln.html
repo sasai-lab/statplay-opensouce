@@ -247,14 +247,37 @@
 </div>
 
 <div class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>大数の法則のまわりでは、上限の式と「双子の定理」との対比が繰り返し顔を出します。</p>
 <ul>
-<li><b>チェビシェフの不等式の計算</b>：「σ²=4, n=100 のとき P(|X̄−μ|≥1) の上限は？」→ 4/(100×1) = 0.04</li>
-<li><b>正誤判定</b>：「標本平均が母平均に収束することを保証する定理は（ア）大数の法則（イ）中心極限定理」→ ア</li>
-<li><b>LLN vs 中心極限定理の区別</b>：「分布の形について述べている定理は？」→ 中心極限定理</li>
+<li><b>チェビシェフの上限の形</b>：σ²=4, n=100 のとき P(|X̄−μ|≥1) ≤ 4/(100×1) = 0.04 と並ぶ。「分散 ÷（n × ε²）」の形が、n が大きいほど上限を細らせていく構造になっている</li>
+<li><b>LLN が答える問い</b>：「標本平均は母平均に近づくのか？」 — この問いに対する答えとして、LLN が顔を出す。「どこに向かうか」を保証する定理という形</li>
+<li><b>LLN と中心極限定理の住み分け</b>：「平均の値が真値に近づく」のが LLN、「平均の分布の形が正規になる」のが中心極限定理。役割の違いがこの一対の形で見えてくる</li>
 </ul>
 </div>
 
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./clt.html">中心極限定理</a> &mdash; LLN が「ゴールの場所」、CLT が「道の形」。両者が組になって統計の根幹を支える</li>
+<li><a href="./normal.html">正規分布と標準化</a> &mdash; 「平均の収束先」は元の分布の真の平均。LLN の収束先と正規分布の中心は同じ場所</li>
+<li><a href="./ci.html">信頼区間</a> &mdash; LLN なしには「サンプルから母数を推定する」が正当化されない。CI はこの土台の上に建つ</li>
+<li><a href="../columns/standardization.html">『標準化って何？』コラム</a> &mdash; 標準化は LLN が保証する「平均が真値に近づく」を前提に成立する翻訳機</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">標準化って何？ — 世界中の「ふつう」を比べる翻訳機</span>
+    <span class="fr-desc">身長 182cm と TOEIC 860、どっちが「ふつう」から遠い？ z で単位を超えて比べる</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>有限サンプルで不確実性をどう表す？ <span class="story-arrow">▸</span> <a href="./ci.html">I3 信頼区間</a></div>
 

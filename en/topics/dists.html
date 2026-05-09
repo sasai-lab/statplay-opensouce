@@ -176,7 +176,7 @@
 </ol>
 </div>
 <!-- @panel:dists_t -->
-<div class="panel">
+<div class="panel" id="dists-t">
 
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t distribution</h3>
 
@@ -229,7 +229,7 @@
 </ol>
 </div>
 <!-- @panel:dists_chi -->
-<div class="panel">
+<div class="panel" id="dists-chi">
 
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² distribution</h3>
 
@@ -288,7 +288,7 @@
 </ol>
 </div>
 <!-- @panel:dists_f -->
-<div class="panel">
+<div class="panel" id="dists-f">
 
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ F distribution</h3>
 
@@ -391,13 +391,38 @@
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>The t, χ², and F families show up in linked, recurring shapes.</p>
 <ul>
-<li><b>df calculation</b>: "One-sample t-test with n = 20. df = ?" → 19</li>
-<li><b>df → ∞ behavior</b>: "What happens to the t distribution as df increases?" → approaches N(0,1)</li>
-<li><b>χ² formula</b>: "(n−1)S²/σ² follows which distribution?" → χ²(n−1)</li>
-<li><b>Relationships</b>: "t² is equivalent to which distribution?" → F(1, k)</li>
+<li><b>How df slides into place</b>: a one-sample t-test with n = 20 gives df = n−1 = 19. The shape "estimate one mean, lose one degree of freedom" appears here</li>
+<li><b>t distribution's limit shape</b>: push df up and the t curve melts into N(0,1). Moving the slider above shows that overlap as an image</li>
+<li><b>How χ²(n−1) enters</b>: the form (n−1)S²/σ² ~ χ²(n−1) keeps reappearing in variance tests and intervals</li>
+<li><b>The link across families</b>: t² and F(1, k) coincide. The three distributions aren't separate creatures — they're a family descended from the same N(0,1)</li>
 </ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; t / z / F / χ² test statistics are all measured against these distributions</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; when σ is unknown, CIs use t instead of z — the t distribution's body sets the interval width directly</li>
+<li><a href="./anova.html">ANOVA</a> &mdash; the F-distribution is ANOVA's lead actor — critical values for F = MSB/MSW are read here</li>
+<li><a href="./chitest.html">Chi-Squared Test</a> &mdash; the χ² distribution backs the chi-squared test — different df gives different distributions, directly shaping which test to use</li>
+<li><a href="./corr.html">Correlation</a> &mdash; testing zero correlation rides on t = r√(n−2)/√(1−r²), pulling correlation tests into this family too</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Makes It Click</span>
+    <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>quantifying "deviation" and testing it <span class="story-arrow">▸</span> <a href="./chitest.html">I7 Chi-Squared Test</a></div>

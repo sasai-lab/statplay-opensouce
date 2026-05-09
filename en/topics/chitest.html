@@ -322,14 +322,37 @@
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>The same parts keep showing up whenever χ² tests are involved.</p>
 <ul>
-<li><b>df calculation</b>: "2×3 table, independence test. df = ?" → (2−1)(3−1) = 2</li>
-<li><b>Expected frequency by hand</b>: row total × column total ÷ grand total</li>
-<li><b>Goodness-of-fit calculation</b>: compute (O−E)²/E for each category, sum, compare with critical value</li>
-<li><b>"When E &lt; 5"</b>: use an exact test for small frequencies or merge categories</li>
+<li><b>The shape of df</b>: independence tests always carry (r−1)(c−1). For a 2×3 table that lands at (2−1)(3−1) = 2</li>
+<li><b>The shape of expected frequencies</b>: "row total × column total ÷ grand total" — the same picture appears as the expected value under independence</li>
+<li><b>How χ² is built</b>: each category's (O−E)²/E gets added up. "Square the gap, divide by what was expected, sum" is the same shape across goodness-of-fit and independence</li>
+<li><b>The "E &lt; 5" branch</b>: the path forks toward an exact test for small frequencies or toward merging categories — this fork tags along whenever χ² is in play</li>
 </ul>
 <p style="margin:10px 0 0">Look up χ² critical values by df in the <a href="../../en/tables/index.html?dist=chi2" style="color:var(--cyan)">Interactive Distribution Tables</a></p>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./dists.html#dists-chi">Three Test Distributions</a> &mdash; how χ² is built (sum of squared standard normals) and how critical values are read</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; the 5-step recipe — α, rejection region, decision — applies to chi-squared tests just the same</li>
+<li><a href="./prob.html">Probability Rules</a> &mdash; expected frequencies and the independence test sit directly on the basic probability rules</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/birthday.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🎂</span>
+  <span class="fr-body">
+    <span class="fr-title">The Birthday Paradox — 50% with Just 23 People</span>
+    <span class="fr-desc">The complement-event picture exposes how badly intuition fails on probability</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>comparing three or more groups at once <span class="story-arrow">▸</span> <a href="./anova.html">I8 ANOVA</a></div>

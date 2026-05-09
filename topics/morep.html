@@ -318,15 +318,38 @@
 </div>
 
 <div class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>離散分布まわりでは、同じ書き換えや同じ平均・分散の組がよく顔を出します。</p>
 <ul>
-<li><b>余事象パターン</b>：「3回以上成功する確率は？」→ P(X≥3) = 1 − P(0) − P(1) − P(2) のほうが速い</li>
-<li><b>ポアソン近似</b>：「不良品率2%, 100個中3個以上不良品の確率」→ λ=2 でポアソン計算させる</li>
-<li><b>指数分布の計算</b>：「平均寿命1000時間の電球。500時間以上もつ確率は？」→ e⁻⁰·⁵ ≈ 0.607</li>
-<li><b>平均と分散のセット</b>：「次のうち正しいものを選べ」→ ポアソンは平均=分散=λ、二項の分散は np(1−p)</li>
+<li><b>余事象の形</b>：「3回以上成功する確率」が、1 − P(0) − P(1) − P(2) と書き換えられる場面が頻繁に現れる。「全体から下側を引く」という同じ絵</li>
+<li><b>ポアソン近似の形</b>：不良品率2%, 100個 のような「n が大きく p が小さい」場面で、λ = np = 2 のポアソンが二項の代わりに顔を出す</li>
+<li><b>指数分布の生存確率の形</b>：平均寿命1000時間の電球で500時間以上もつ確率は e⁻⁰·⁵ ≈ 0.607。P(X &gt; t) = e⁻λt という形が、寿命や待ち時間で繰り返し見える</li>
+<li><b>平均と分散のセット</b>：ポアソンでは平均 = 分散 = λ、二項では分散 = np(1−p)。それぞれの分布が固有のセットを持っているという形になっている</li>
 </ul>
 </div>
 
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./normal.html">正規分布と標準化</a> &mdash; n が大きい場面では二項を正規で近似する。CLT の最初の応用例の一つ</li>
+<li><a href="./prob.html">確率の基本法則</a> &mdash; 独立試行と「成功 or 失敗」の構造が、二項・ポアソン分布の出発点</li>
+<li><a href="./clt.html">中心極限定理</a> &mdash; 二項の正規近似は CLT そのもの。離散分布が連続に乗り換える橋</li>
+<li><a href="../columns/birthday.html">『誕生日のパラドックス』コラム</a> &mdash; 「少なくとも1人」の余事象計算が活躍する古典例。離散確率の直感破壊版</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/birthday.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🎂</span>
+  <span class="fr-body">
+    <span class="fr-title">誕生日のパラドックス — 23人で50%超え</span>
+    <span class="fr-desc">余事象の絵で「直感が裏切られる確率」を一発で読み解く古典コラム</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
 <!-- /@panel -->
 
 <!-- @panel:morep_memoryless -->

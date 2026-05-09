@@ -292,16 +292,41 @@
 </div>
 
 <div class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>仮説検定のまわりでは、p値と α の比較、両側／片側の選び方、二種類の誤りの整理、という同じ役者が繰り返し顔を出します。</p>
 <ul>
-<li><b>p値と判定</b>：「p=0.03, α=0.01 のとき？」→ 0.03 &gt; 0.01 なので棄却できない</li>
-<li><b>両側 vs 片側</b>：「薬で平均が上がるか」= 片側（方向が決まっている）、「薬で平均が変わるか（上下どちらでも）」= 両側（方向を問わない）</li>
-<li><b>誤りの分類</b>：「H₀ が正しいのに棄却した → 第1種の誤り」「H₀ が間違っているのに棄却できなかった → 第2種の誤り」</li>
-<li><b>検出力</b>：1 − β。「本当に差があるときに、ちゃんと検出できる確率」</li>
+<li><b>p値と α の比較の形</b>：p=0.03, α=0.01 なら 0.03 &gt; 0.01 なので棄却できない側。「観測されたp値が α 以下に入っているか」という同じ判定の形が、検定のたびに現れる</li>
+<li><b>両側と片側の使い分け</b>：「平均が上がるか」を見たい場面は片側、「上下どちらでもいいから変わるか」を見たい場面は両側、という形で問いの向きが分かれる</li>
+<li><b>誤りの2×2の形</b>：H₀ が正しいのに棄却したら第1種、H₀ が間違っているのに棄却できなかったら第2種。検定のあるところには必ずこの2×2の表がついて回る</li>
+<li><b>検出力の位置づけ</b>：1 − β =「本当に差があるときに、ちゃんと検出できる確率」。第2種の裏側として、いつもこの形で顔を出す</li>
 </ul>
 <p style="margin:10px 0 0">臨界値の確認は<a href="../tables/index.html?dist=norm" style="color:var(--cyan)">インタラクティブ確率分布表</a>で — z値・t値をグラフと同期しながら調べられる</p>
 </div>
 
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./ci.html">信頼区間</a> &mdash; 検定と CI は同じ判定を別の絵で見る双子。判定の結論は必ず一致する</li>
+<li><a href="./dists.html">三大検定分布</a> &mdash; t / χ² / F の臨界値は検定統計量の世界で読まれる。検定の家族の道具箱</li>
+<li><a href="./proptest.html">母比率の検定と推定</a> &mdash; 母比率の検定では SE の中身が p̂ から p₀ に入れ替わる、検定固有の構造が見える</li>
+<li><a href="./anova.html">分散分析（ANOVA）</a> &mdash; 3群以上の平均比較を t の繰り返しではなく F の一発で扱う、検定の拡張</li>
+<li><a href="./chitest.html">カイ二乗検定</a> &mdash; カテゴリデータの検定では検定統計量がカイ二乗に切り替わる、家族の別の枝</li>
+<li><a href="../columns/error_types.html">『過誤の2×2』コラム</a> &mdash; 過誤の2×2、検出力、α と β のトレードオフをまとめたコラム</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">第一種・第二種の過誤って何が違うの？ — 2×2の表で全部見える</span>
+    <span class="fr-desc">第一種・第二種の誤りと検出力を、別々ではなく同じ 2×2 上で同時に追える</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>平均から比率へ <span class="story-arrow">▸</span> <a href="./proptest.html">I5 母比率の検定と推定</a></div>
 

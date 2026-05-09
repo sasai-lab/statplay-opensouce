@@ -358,6 +358,10 @@ Run it 200 times and see whether that 95% claim holds up.</p>
 
 <div class="detail-section">
 <h3>// Formulas used here</h3>
+<p style="margin:8px 0 16px;padding:12px 16px;background:rgba(255,230,0,.08);border-left:3px solid var(--yellow);line-height:1.75">
+<b style="color:var(--yellow);font-family:'Courier New',monospace">★ Estimation and testing put different content inside SE</b><br/>
+<b>Estimation uses SE = √(p̂(1−p̂)/n); testing uses SE = √(p₀(1−p₀)/n).</b> The label "SE of a proportion" is shared, but <b>estimation grounds the SE in the sample world</b> (your data is the reference) while <b>testing grounds it in the H₀ world</b> (the hypothesized proportion is the reference). Compare the denominators of the first two formulas below — that's the only line that changes.
+</p>
 <h4 style="color:var(--cyan);margin:16px 0 8px">Confidence interval for a proportion (Wald interval)</h4>
 <div class="formula" data-tex="\hat{p} \;\pm\; z_{\alpha/2}\,\sqrt{\frac{\hat{p}\,(1-\hat{p})}{n}}"></div>
 <p>
@@ -426,13 +430,37 @@ Flip between panels ① and ② with the same n and p̂ to see this relationship
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Across proportion tests and intervals, the swap between the estimation SE and the testing SE — plus the normal-approximation check — keeps reappearing.</p>
 <ul>
-<li><b>CI calculation</b>: "120 out of 200 people agree. Find the 95% CI for the population proportion." → p̂ = 0.6, SE = √(0.6 × 0.4 / 200), CI = 0.6 ± 1.96 × SE</li>
-<li><b>Test decision</b>: "Is the defect rate 5%? 35 defects out of 500." → p̂ = 0.07, p₀ = 0.05, z = (0.07 − 0.05) / √(0.05 × 0.95 / 500)</li>
-<li><b>Normal approximation check</b>: "Can we use a z-test with n = 20, p₀ = 0.1?" → np₀ = 2 &lt; 5, so no</li>
-<li><b>Two-sample problem</b>: "Drug A: 60 of 100 improved. Drug B: 45 of 100 improved. Is the difference significant?"</li>
+<li><b>The CI assembly shape</b>: with 120 of 200 in favor, p̂ = 0.6, SE = √(0.6 × 0.4 / 200), and the 95% CI lands at 0.6 ± 1.96 × SE. The "center ± multiplier × standard error" three-layer structure carries straight over to proportions</li>
+<li><b>The test-statistic shape</b>: with 35 defects in 500, p̂ = 0.07, p₀ = 0.05, z = (0.07 − 0.05) / √(0.05 × 0.95 / 500). The "H₀-world SE in the denominator" is the distinguishing detail against the estimation case</li>
+<li><b>The normal-approximation condition</b>: np ≥ 5 and n(1−p) ≥ 5. With n = 20 and p₀ = 0.1, np₀ = 2 falls below the threshold — that's the shape this checkpoint takes</li>
+<li><b>The two-sample difference shape</b>: scenarios like "Group A: 60/100 improved, Group B: 45/100 improved" carry a distinctive structure — pooled proportion sitting inside the SE in the denominator</li>
 </ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; the "center ± multiplier × SE" three-layer structure carries straight over to proportions</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; testing's skeleton — using the H₀-world SE, judging via the rejection region — transplants directly into the proportion case</li>
+<li><a href="./dists.html">Three Test Distributions</a> &mdash; when the normal approximation breaks, the exact binomial test takes over — a position within the distribution family</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; the α / β / power framework applies to proportion tests too — the error 2×2 carries over directly</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Makes It Click</span>
+    <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>into the world where σ is unknown <span class="story-arrow">▸</span> <a href="./dists.html">I6 t, χ², F</a></div>

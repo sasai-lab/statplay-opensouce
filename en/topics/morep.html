@@ -320,13 +320,37 @@ Normal approximation           Exponential</div>
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around discrete distributions, the same rewrites and the same mean/variance pairings keep showing up.</p>
 <ul>
-<li><b>Complement trick</b>: "P(3 or more successes)" → P(X≥3) = 1 − P(0) − P(1) − P(2) is usually faster</li>
-<li><b>Poisson approximation</b>: "defect rate 2%, 100 items, P(3+ defective)?" → λ=2, use Poisson</li>
-<li><b>Exponential calculation</b>: "mean life 1000 hours. P(lasts more than 500 hours)?" → e⁻⁰·⁵ ≈ 0.607</li>
-<li><b>Mean and variance pairs</b>: "Which is correct?" → Poisson: mean = variance = λ; binomial variance = np(1−p)</li>
+<li><b>The complement shape</b>: "probability of 3 or more successes" reappears as 1 − P(0) − P(1) − P(2). "Subtract the lower tail from the whole" is the same picture each time</li>
+<li><b>The Poisson-approximation shape</b>: in regimes where n is large and p is small (defect rate 2%, n = 100), Poisson with λ = np = 2 stands in for the binomial</li>
+<li><b>The exponential survival shape</b>: a 1000-hour mean lifetime with P(X &gt; 500) = e⁻⁰·⁵ ≈ 0.607. P(X &gt; t) = e⁻λt is the same shape that returns whenever lifetimes or waiting times are involved</li>
+<li><b>Mean–variance pairs</b>: Poisson carries mean = variance = λ, while binomial carries variance = np(1−p). Each distribution travels with its own paired shape</li>
 </ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./normal.html">Normal Distribution</a> &mdash; the binomial-to-normal approximation is one of CLT's earliest applications</li>
+<li><a href="./prob.html">Probability Rules</a> &mdash; independent trials with success/failure outcomes form the launching pad for binomial and Poisson</li>
+<li><a href="./clt.html">Central Limit Theorem</a> &mdash; the binomial→normal approximation is CLT in action — a discrete distribution stepping onto a continuous bridge</li>
+<li><a href="../../en/columns/birthday.html">"Birthday Paradox" column</a> &mdash; a classic showcase for the "at least one" complement rewrite — discrete probability vs. intuition</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/birthday.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🎂</span>
+  <span class="fr-body">
+    <span class="fr-title">The Birthday Paradox — 50% with Just 23 People</span>
+    <span class="fr-desc">The complement-event picture exposes how badly intuition fails on probability</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 

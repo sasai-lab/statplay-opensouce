@@ -258,13 +258,39 @@
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>The same trio of parts shows up wherever the Central Limit Theorem lives.</p>
 <ul>
-<li><b>Name the theorem</b>: "Regardless of the population, the sample mean's distribution approaches normal. Which theorem?" → Central Limit Theorem</li>
-<li><b>SE calculation</b>: "σ = 10, n = 25. Standard error?" → 10/√25 = 2</li>
-<li><b>n and precision</b>: "To halve the standard error, multiply n by?" → 4</li>
-<li><b>Expected value of the mean</b>: "E(X̄) = ?" → μ (same as the population mean — unbiasedness)</li>
+<li><b>The picture the theorem draws</b>: "no matter the original distribution, the average's distribution drifts toward normal" — this one-liner is the outline of the Central Limit Theorem, and the simulator above traces that exact picture</li>
+<li><b>The SE = σ/√n shape</b>: with σ = 10 and n = 25, SE lands at 10/√25 = 2. √n sitting in the denominator is a structure that reappears across inferential statistics</li>
+<li><b>How n trades against precision</b>: halving SE means quadrupling n. The √ makes "the cost of precision grows quadratically" appear as a shape</li>
+<li><b>Expected value of the sample mean</b>: E(X̄) = μ. Matching the population mean is the shape of unbiasedness</li>
 </ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./normal.html">Normal Distribution</a> &mdash; whatever the original distribution, the sample mean approaches normal — the normal is CLT's destination</li>
+<li><a href="./lln.html">Law of Large Numbers</a> &mdash; LLN says "the mean's value approaches the truth"; CLT says "its distribution shape becomes normal" — twin theorems</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; SE = σ/√n is the spread CLT guarantees, and the CI multiplier is assembled from there</li>
+<li><a href="./dists.html">Three Test Distributions</a> &mdash; after CLT lands you on the normal, swapping σ for s pulls the t / χ² / F family into view</li>
+<li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; a column on z-scores that views CLT through the "set everything to common mean and SD" lens</li>
+<li><a href="../../en/columns/deviation.html">"What Is Deviation?" column</a> &mdash; Japan's Hensachi (deviation value) stands on CLT's guarantee that "averages go normal"</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">What Is Standardization? — The Universal Translator for "Normal"</span>
+    <span class="fr-desc">182 cm vs. TOEIC 860 — which is further from "average"? Compare across units via z</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>does the sample mean really converge? <span class="story-arrow">▸</span> <a href="./lln.html">I2 Law of Large Numbers</a></div>

@@ -234,13 +234,47 @@
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around the normal distribution, the same standardize-and-look-up flow keeps reappearing.</p>
 <ul>
-<li><b>z-transform → table lookup</b>: "P(X ≥ 65) where X ~ N(50, 10²)" → z = (65−50)/10 = 1.5 → look up the table</li>
-<li><b>Upper/lower α% points</b>: x = μ + z_α · σ</li>
-<li><b>Additivity of normals</b>: if X ~ N(μ₁, σ₁²) and Y ~ N(μ₂, σ₂²) are independent → X+Y ~ N(μ₁+μ₂, σ₁²+σ₂²)</li>
-<li><b>Standardization calculation</b>: can you reliably compute z = (x−μ)/σ?</li>
+<li><b>The z-transform to table-lookup flow</b>: for X ~ N(50, 10²), looking at X ≥ 65 reshapes into z = (65−50)/10 = 1.5. "Translate a general normal onto the z-scale" is the same motion that returns whenever probabilities are in play</li>
+<li><b>The shape of upper/lower α-points</b>: x = μ + z_α·σ. The "center + multiplier × spread" three-layer structure shows up here too</li>
+<li><b>Additivity of normals</b>: with independent X ~ N(μ₁,σ₁²) and Y ~ N(μ₂,σ₂²), X+Y ~ N(μ₁+μ₂, σ₁²+σ₂²). Means add, variances add (standard deviations don't) — this pairing is its shape</li>
+<li><b>The standardization picture</b>: z = (x−μ)/σ. "Measure the gap from center in units of spread" is the same picture that carries over into t-statistics and test statistics</li>
 </ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./stdnorm.html">Standard Normal</a> &mdash; the destination of z = (x−μ)/σ — where tables get read</li>
+<li><a href="./clt.html">Central Limit Theorem</a> &mdash; "any distribution's sample mean approaches normal" — the bridge that broadens the normal's reach</li>
+<li><a href="./dists.html#dists-t">Three Test Distributions</a> &mdash; the family that takes over for the normal when σ is unknown</li>
+<li><a href="./morep.html">Discrete & Exponential</a> &mdash; with large n, the normal approximation reappears for binomial and exponential</li>
+<li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; a familiar application — comparing heights and TOEIC scores on the same yardstick</li>
+<li><a href="../../en/columns/deviation.html">"What Is Deviation?" column</a> &mdash; Japan's Hensachi (deviation value) — reading the meaning of a 10-point gap through z</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">What Is Standardization? — The Universal Translator for "Normal"</span>
+    <span class="fr-desc">182 cm vs. TOEIC 860 — which is further from "average"? Compare across units via z</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a href="../../en/columns/deviation.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">📊</span>
+  <span class="fr-body">
+    <span class="fr-title">What Is a Deviation Value? — See "Top X%" in 3 Seconds</span>
+    <span class="fr-desc">Japan's Hensachi (deviation value): a 10-point gap holds 5× the rarity. The standard normal in everyday clothes</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <!-- ═══ Related Column ═══ -->

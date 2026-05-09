@@ -63,20 +63,22 @@ Two mutually exclusive events (with P > 0) are never independent. If A happens, 
 </div>
 </div>
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>確率の基本まわりでは、ベン図の三領域と少数の同じ書き換えが繰り返し顔を出します。</p>
 <ul>
-<li><b>ベン図の読み取り</b>：3つの領域の数値から P(A|B), P(A∪B) を計算</li>
-<li><b>独立の判定</b>：「P(A)=0.3, P(B)=0.4, P(A∩B)=0.12 → 独立か？」→ 0.3×0.4=0.12 → 独立</li>
-<li><b>余事象</b>：「少なくとも1回当たる確率」= 1 − (全部はずれる確率)</li>
-<li><b>排反と独立の違い</b>を正誤問題で問われる</li>
+<li><b>ベン図の三領域の形</b>：A だけ、B だけ、A∩B の三つの数字が揃うと、P(A|B) や P(A∪B) はこの三つの並び替えで読める形になっている</li>
+<li><b>独立の判定の形</b>：P(A)=0.3, P(B)=0.4, P(A∩B)=0.12 のとき、0.3×0.4 = 0.12 と一致する。「掛け算で復元できれば独立」というチェックの形が、いつもこの一行で見える</li>
+<li><b>余事象の書き換え</b>：「少なくとも1回当たる確率」は 1 − (全部はずれる確率) という形になる。場合分けが多いときに、裏返すと一発で見える絵</li>
+<li><b>排反と独立の対比</b>：「同時に起きない」と「片方を知っても確率が変わらない」は別の構造。両者がしばしば取り違えられる、というのも一つの定型の形</li>
 </ul>
 </div>
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around basic probability, the three Venn regions and a small set of recurring rewrites keep reappearing.</p>
 <ul>
-<li><b>Venn diagram reading</b>: given three region values, compute P(A|B) and P(A∪B)</li>
-<li><b>Independence check</b>: "P(A)=0.3, P(B)=0.4, P(A∩B)=0.12 — independent?" → 0.3×0.4 = 0.12 → yes</li>
-<li><b>Complement trick</b>: "probability of at least one hit" = 1 − P(all misses)</li>
-<li><b>Mutually exclusive vs. independent</b>: true/false questions test whether you confuse the two</li>
+<li><b>The three-region Venn shape</b>: once "A only," "B only," and "A∩B" are pinned down, P(A|B) and P(A∪B) become rearrangements of those three numbers</li>
+<li><b>The independence-check shape</b>: with P(A)=0.3, P(B)=0.4, P(A∩B)=0.12, the product 0.3 × 0.4 lands at 0.12. "If multiplication recovers the joint, they're independent" is a check that appears on this single line</li>
+<li><b>The complement rewrite</b>: "probability of at least one hit" reshapes into 1 − P(all misses). When cases pile up, flipping to the complement collapses them into one picture</li>
+<li><b>Mutually exclusive vs. independent as a contrast</b>: "they don't co-occur" and "knowing one doesn't change the other" describe different structures. The very fact that they get confused is itself a recurring shape</li>
 </ul>
 </div>

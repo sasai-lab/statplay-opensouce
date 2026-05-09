@@ -20,7 +20,46 @@
         "68-95-99.7 rule",
         "z-scores and interval probability"
       ],
-      "category": "probability"
+      "category": "probability",
+      "related_topics": [
+        {
+          "slug": "normal",
+          "ja_why": "一般正規 N(μ, σ²) を z = (x−μ)/σ で標準正規に翻訳する流れの本拠地",
+          "en_why": "home of the \"translate N(μ, σ²) onto the z scale via z = (x−μ)/σ\" flow"
+        },
+        {
+          "slug": "ci",
+          "ja_why": "「中心 ± 1.96 × SE」の倍率はここで読んだ z の値。標準正規の表が幅を決めている",
+          "en_why": "the 1.96 in \"center ± 1.96 × SE\" is the z value read off the standard normal — the table sets the width"
+        },
+        {
+          "slug": "test",
+          "ja_why": "z検定の臨界値・棄却域はすべて標準正規の上で測られる",
+          "en_why": "z-test critical values and rejection regions all sit on the standard normal"
+        },
+        {
+          "slug": "dists",
+          "anchor": "dists-t",
+          "ja_why": "t 分布は自由度大で標準正規に重なる、その極限を載せた家族",
+          "en_why": "as df → ∞ the t curve melts back into N(0,1) — this family carries that limit"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "deviation",
+          "ja_why": "偏差値 = z × 10 + 50。標準正規の最も身近な応用例",
+          "en_why": "Japan's Hensachi (deviation value) = z × 10 + 50 — the most familiar everyday use of the standard normal"
+        },
+        {
+          "slug": "standardization",
+          "ja_why": "単位の違うものを z で揃えて比較する翻訳機としての標準正規",
+          "en_why": "the standard normal as a universal translator — comparing scores across different units"
+        }
+      ],
+      "featured_columns": [
+        "deviation",
+        "standardization"
+      ]
     },
     {
       "slug": "normal",
@@ -42,7 +81,46 @@
         "Standardization Z=(X-μ)/σ",
         "Interval probability P(a≤X≤b)"
       ],
-      "category": "probability"
+      "category": "probability",
+      "related_topics": [
+        {
+          "slug": "stdnorm",
+          "ja_why": "z = (x−μ)/σ で着地する先。表を引くのはここ",
+          "en_why": "the destination of z = (x−μ)/σ — where tables get read"
+        },
+        {
+          "slug": "clt",
+          "ja_why": "どんな分布の平均でも正規へ近づく、という橋渡しが正規分布の裾野を広げる",
+          "en_why": "\"any distribution's sample mean approaches normal\" — the bridge that broadens the normal's reach"
+        },
+        {
+          "slug": "dists",
+          "anchor": "dists-t",
+          "ja_why": "σ が分からないときに正規の代わりに顔を出す t、χ²、F の家族",
+          "en_why": "the family that takes over for the normal when σ is unknown"
+        },
+        {
+          "slug": "morep",
+          "ja_why": "二項や指数を扱うとき、n が大きい場面では正規近似が顔を出す",
+          "en_why": "with large n, the normal approximation reappears for binomial and exponential"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "standardization",
+          "ja_why": "正規分布の応用として、身長と TOEIC を同じ物差しで比べる方法",
+          "en_why": "a familiar application — comparing heights and TOEIC scores on the same yardstick"
+        },
+        {
+          "slug": "deviation",
+          "ja_why": "正規分布の身近な応用例。10 点差の意味を z で読み解く",
+          "en_why": "Japan's Hensachi (deviation value) — reading the meaning of a 10-point gap through z"
+        }
+      ],
+      "featured_columns": [
+        "standardization",
+        "deviation"
+      ]
     },
     {
       "slug": "prob",
@@ -64,7 +142,39 @@
         "Conditional probability P(A|B)",
         "Event independence"
       ],
-      "category": "probability"
+      "category": "probability",
+      "related_topics": [
+        {
+          "slug": "bayes",
+          "ja_why": "条件付き確率 P(A|B) と事前→事後の更新が、ここでの基本法則を土台にする",
+          "en_why": "conditional probability P(A|B) and prior→posterior updating sit on these basic rules"
+        },
+        {
+          "slug": "normal",
+          "ja_why": "確率分布の本格運用への入口。連続分布の基礎が標準化の話に接続する",
+          "en_why": "the gateway into continuous distributions, connecting probability rules to standardization"
+        },
+        {
+          "slug": "morep",
+          "ja_why": "独立試行と排反事象の組み立てを応用すると、二項・ポアソン・指数が顔を出す",
+          "en_why": "applying independent-trial and mutual-exclusion reasoning produces the binomial, Poisson, and exponential"
+        },
+        {
+          "slug": "stdnorm",
+          "ja_why": "確率を計算する道具として、まず標準正規が採用される",
+          "en_why": "the standard normal becomes the first concrete tool for computing probabilities"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "birthday",
+          "ja_why": "余事象と独立試行の組み立てが、直感を裏切る確率を生む代表例",
+          "en_why": "a classic where complement-events and independent trials produce a probability that defies intuition"
+        }
+      ],
+      "featured_columns": [
+        "birthday"
+      ]
     },
     {
       "slug": "bayes",
@@ -86,7 +196,34 @@
         "Conditional probability",
         "Positive predictive value"
       ],
-      "category": "probability"
+      "category": "probability",
+      "related_topics": [
+        {
+          "slug": "prob",
+          "ja_why": "条件付き確率と全確率の公式がベイズの分母をそのまま組み立てている",
+          "en_why": "conditional probability and the law of total probability assemble Bayes' denominator directly"
+        },
+        {
+          "slug": "test",
+          "ja_why": "「陽性なのに病気じゃない」のような偽陽性は、第1種の誤り α と同じ場所にいる",
+          "en_why": "\"positive yet not diseased\" lives in the same space as Type I error α"
+        },
+        {
+          "slug": "morep",
+          "ja_why": "検査の母比率や感度・特異度を確率モデルとして扱うとき、二項・ポアソンが顔を出す",
+          "en_why": "modelling sensitivity, specificity, and base rates pulls binomial and Poisson into the picture"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "error_types",
+          "ja_why": "過誤の 2×2 と PPV の関係を 1 枚絵で整理したコラム",
+          "en_why": "a single-page integration of the error 2×2 and PPV"
+        }
+      ],
+      "featured_columns": [
+        "error_types"
+      ]
     },
     {
       "slug": "morep",
@@ -108,7 +245,34 @@
         "Poisson distribution Pois(λ)",
         "Exponential distribution Exp(λ)"
       ],
-      "category": "probability"
+      "category": "probability",
+      "related_topics": [
+        {
+          "slug": "normal",
+          "ja_why": "n が大きい場面では二項を正規で近似する。CLT の最初の応用例の一つ",
+          "en_why": "the binomial-to-normal approximation is one of CLT's earliest applications"
+        },
+        {
+          "slug": "prob",
+          "ja_why": "独立試行と「成功 or 失敗」の構造が、二項・ポアソン分布の出発点",
+          "en_why": "independent trials with success/failure outcomes form the launching pad for binomial and Poisson"
+        },
+        {
+          "slug": "clt",
+          "ja_why": "二項の正規近似は CLT そのもの。離散分布が連続に乗り換える橋",
+          "en_why": "the binomial→normal approximation is CLT in action — a discrete distribution stepping onto a continuous bridge"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "birthday",
+          "ja_why": "「少なくとも1人」の余事象計算が活躍する古典例。離散確率の直感破壊版",
+          "en_why": "a classic showcase for the \"at least one\" complement rewrite — discrete probability vs. intuition"
+        }
+      ],
+      "featured_columns": [
+        "birthday"
+      ]
     },
     {
       "slug": "clt",
@@ -130,7 +294,44 @@
         "Distribution of sample means",
         "Convergence to normal"
       ],
-      "category": "inference"
+      "category": "inference",
+      "related_topics": [
+        {
+          "slug": "normal",
+          "ja_why": "元の分布が何でも、平均は正規に近づく。正規分布が CLT の「ゴール」",
+          "en_why": "whatever the original distribution, the sample mean approaches normal — the normal is CLT's destination"
+        },
+        {
+          "slug": "lln",
+          "ja_why": "LLN は「平均の値」、CLT は「平均の分布の形」を扱う。双子の定理",
+          "en_why": "LLN says \"the mean's value approaches the truth\"; CLT says \"its distribution shape becomes normal\" — twin theorems"
+        },
+        {
+          "slug": "ci",
+          "ja_why": "SE = σ/√n は CLT が保証する分布の幅。CI の倍率もここから組み立てられる",
+          "en_why": "SE = σ/√n is the spread CLT guarantees, and the CI multiplier is assembled from there"
+        },
+        {
+          "slug": "dists",
+          "ja_why": "CLT で正規に乗った後、σ を s に置き換える段で t / χ² / F の家族が顔を出す",
+          "en_why": "after CLT lands you on the normal, swapping σ for s pulls the t / χ² / F family into view"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "standardization",
+          "ja_why": "z スコアと CLT の関係を「平均と SD で世界を揃える」視点で扱うコラム",
+          "en_why": "a column on z-scores that views CLT through the \"set everything to common mean and SD\" lens"
+        },
+        {
+          "slug": "deviation",
+          "ja_why": "CLT が保証する「平均は正規」を前提に、偏差値が成立している",
+          "en_why": "Japan's Hensachi (deviation value) stands on CLT's guarantee that \"averages go normal\""
+        }
+      ],
+      "featured_columns": [
+        "standardization"
+      ]
     },
     {
       "slug": "lln",
@@ -152,7 +353,34 @@
         "Convergence of sample means",
         "Expected value"
       ],
-      "category": "inference"
+      "category": "inference",
+      "related_topics": [
+        {
+          "slug": "clt",
+          "ja_why": "LLN が「ゴールの場所」、CLT が「道の形」。両者が組になって統計の根幹を支える",
+          "en_why": "LLN provides the destination, CLT the road — together they anchor inferential statistics"
+        },
+        {
+          "slug": "normal",
+          "ja_why": "「平均の収束先」は元の分布の真の平均。LLN の収束先と正規分布の中心は同じ場所",
+          "en_why": "the convergence target is the original distribution's true mean — the same location as the normal's center"
+        },
+        {
+          "slug": "ci",
+          "ja_why": "LLN なしには「サンプルから母数を推定する」が正当化されない。CI はこの土台の上に建つ",
+          "en_why": "without the LLN, \"infer the population from a sample\" has no justification — CIs are built on this foundation"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "standardization",
+          "ja_why": "標準化は LLN が保証する「平均が真値に近づく」を前提に成立する翻訳機",
+          "en_why": "standardization works precisely because LLN guarantees the sample mean converges to the truth"
+        }
+      ],
+      "featured_columns": [
+        "standardization"
+      ]
     },
     {
       "slug": "ci",
@@ -174,7 +402,40 @@
         "Coverage probability",
         "Correct interpretation of 95%"
       ],
-      "category": "inference"
+      "category": "inference",
+      "related_topics": [
+        {
+          "slug": "test",
+          "ja_why": "CI と検定は同じ判定を別の絵で見る双子。CI に μ₀ が入らないことと α=0.05 で棄却することが対応する",
+          "en_why": "CIs and tests are two views of one decision — μ₀ outside the 95% CI matches rejection at α = 0.05"
+        },
+        {
+          "slug": "dists",
+          "anchor": "dists-t",
+          "ja_why": "σ が分からないとき、z の代わりに t の臨界値を使う。n が小さいほど t 分布が顔を出す",
+          "en_why": "with σ unknown, z gives way to t — the smaller n is, the more visible the t distribution becomes"
+        },
+        {
+          "slug": "clt",
+          "ja_why": "CI の根拠になる「平均が正規に近づく」前提。CLT が SE = σ/√n の絵を保証する",
+          "en_why": "the \"sample mean approaches normal\" foundation that CIs rest on — CLT guarantees the SE = σ/√n picture"
+        },
+        {
+          "slug": "proptest",
+          "ja_why": "比率版の CI と検定。「中心 ± 倍率 × SE」という同じ三層構造が比率でも顔を出す",
+          "en_why": "the proportion version of CIs and tests — the same \"center ± multiplier × SE\" structure carries over"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "error_types",
+          "ja_why": "CI の信頼度 95% は「外す確率 5%」。α と同じ確率空間にいる",
+          "en_why": "95% confidence means a 5% miss rate — it lives in the same probability space as α"
+        }
+      ],
+      "featured_columns": [
+        "error_types"
+      ]
     },
     {
       "slug": "test",
@@ -196,7 +457,44 @@
         "p-value and significance level",
         "Rejection region"
       ],
-      "category": "inference"
+      "category": "inference",
+      "related_topics": [
+        {
+          "slug": "ci",
+          "ja_why": "検定と CI は同じ判定を別の絵で見る双子。判定の結論は必ず一致する",
+          "en_why": "tests and CIs are two views of one decision — the verdicts always agree"
+        },
+        {
+          "slug": "dists",
+          "ja_why": "t / χ² / F の臨界値は検定統計量の世界で読まれる。検定の家族の道具箱",
+          "en_why": "t / χ² / F critical values get read in the test statistic's world — the toolbox of the testing family"
+        },
+        {
+          "slug": "proptest",
+          "ja_why": "母比率の検定では SE の中身が p̂ から p₀ に入れ替わる、検定固有の構造が見える",
+          "en_why": "for proportion tests, the SE quietly swaps p̂ for p₀ — a structure unique to testing"
+        },
+        {
+          "slug": "anova",
+          "ja_why": "3群以上の平均比較を t の繰り返しではなく F の一発で扱う、検定の拡張",
+          "en_why": "comparing 3+ group means via one F-test instead of repeated t-tests — testing's natural extension"
+        },
+        {
+          "slug": "chitest",
+          "ja_why": "カテゴリデータの検定では検定統計量がカイ二乗に切り替わる、家族の別の枝",
+          "en_why": "for categorical data, the test statistic switches to chi-squared — a different branch of the same family"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "error_types",
+          "ja_why": "過誤の2×2、検出力、α と β のトレードオフをまとめたコラム",
+          "en_why": "ties together the error 2×2, power, and the α-β trade-off"
+        }
+      ],
+      "featured_columns": [
+        "error_types"
+      ]
     },
     {
       "slug": "proptest",
@@ -220,7 +518,34 @@
         "Two-proportion test",
         "Normal approximation conditions"
       ],
-      "category": "inference"
+      "category": "inference",
+      "related_topics": [
+        {
+          "slug": "ci",
+          "ja_why": "「中心 ± 倍率 × SE」の三層構造が比率でも同じ並びで顔を出す",
+          "en_why": "the \"center ± multiplier × SE\" three-layer structure carries straight over to proportions"
+        },
+        {
+          "slug": "test",
+          "ja_why": "H₀ の世界の SE を使う、棄却域で判定する、という検定の骨格はそのまま比率に移植される",
+          "en_why": "testing's skeleton — using the H₀-world SE, judging via the rejection region — transplants directly into the proportion case"
+        },
+        {
+          "slug": "dists",
+          "ja_why": "正規近似で扱える領域を出ると、二項分布の正確検定が顔を出す。分布の家族の中での位置取り",
+          "en_why": "when the normal approximation breaks, the exact binomial test takes over — a position within the distribution family"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "error_types",
+          "ja_why": "比率の検定でも α・β・検出力の枠組みは同じ。誤りの 2×2 がそのまま当てはまる",
+          "en_why": "the α / β / power framework applies to proportion tests too — the error 2×2 carries over directly"
+        }
+      ],
+      "featured_columns": [
+        "error_types"
+      ]
     },
     {
       "slug": "dists",
@@ -244,7 +569,37 @@
         "F-distribution",
         "Degrees of freedom"
       ],
-      "category": "inference"
+      "category": "inference",
+      "related_topics": [
+        {
+          "slug": "test",
+          "ja_why": "t / z / F / χ² の検定統計量はすべてこれらの分布の上で測られる",
+          "en_why": "t / z / F / χ² test statistics are all measured against these distributions"
+        },
+        {
+          "slug": "ci",
+          "ja_why": "σ が分からないときの CI は z の代わりに t を使う。t 分布の中身がそのまま信頼区間の幅を決める",
+          "en_why": "when σ is unknown, CIs use t instead of z — the t distribution's body sets the interval width directly"
+        },
+        {
+          "slug": "anova",
+          "ja_why": "F 分布が分散分析の主役。F = MSB/MSW の臨界値がここで読まれる",
+          "en_why": "the F-distribution is ANOVA's lead actor — critical values for F = MSB/MSW are read here"
+        },
+        {
+          "slug": "chitest",
+          "ja_why": "χ² 分布がカイ二乗検定の根拠。自由度ごとに分布が違うことがそのまま検定の選び方に効く",
+          "en_why": "the χ² distribution backs the chi-squared test — different df gives different distributions, directly shaping which test to use"
+        },
+        {
+          "slug": "corr",
+          "ja_why": "無相関の検定は t = r√(n−2)/√(1−r²) で t 分布に乗る。相関の検定もこの家族",
+          "en_why": "testing zero correlation rides on t = r√(n−2)/√(1−r²), pulling correlation tests into this family too"
+        }
+      ],
+      "featured_columns": [
+        "error_types"
+      ]
     },
     {
       "slug": "chitest",
@@ -268,7 +623,28 @@
         "Test of independence",
         "Contingency table"
       ],
-      "category": "inference"
+      "category": "inference",
+      "related_topics": [
+        {
+          "slug": "dists",
+          "anchor": "dists-chi",
+          "ja_why": "χ² 分布の作り方（標準正規の二乗和）と臨界値の読み方",
+          "en_why": "how χ² is built (sum of squared standard normals) and how critical values are read"
+        },
+        {
+          "slug": "test",
+          "ja_why": "仮説検定の5ステップ・棄却域・α の枠組みはカイ二乗検定でも同じ",
+          "en_why": "the 5-step recipe — α, rejection region, decision — applies to chi-squared tests just the same"
+        },
+        {
+          "slug": "prob",
+          "ja_why": "期待度数の組み立てや独立性の検定は、確率の基本法則がそのまま土台になる",
+          "en_why": "expected frequencies and the independence test sit directly on the basic probability rules"
+        }
+      ],
+      "featured_columns": [
+        "birthday"
+      ]
     },
     {
       "slug": "anova",
@@ -292,7 +668,35 @@
         "Between- and within-group variance",
         "Multiple comparisons problem"
       ],
-      "category": "inference"
+      "category": "inference",
+      "related_topics": [
+        {
+          "slug": "test",
+          "ja_why": "ANOVA は検定の自然な拡張。t を繰り返さず F で 1 回に集約する設計の理由",
+          "en_why": "ANOVA is testing's natural extension — folding repeated t-tests into one F-test"
+        },
+        {
+          "slug": "dists",
+          "anchor": "dists-f",
+          "ja_why": "F 分布が ANOVA の主役。MSB/MSW の臨界値はここで読む",
+          "en_why": "the F-distribution is ANOVA's protagonist — MSB/MSW critical values are read here"
+        },
+        {
+          "slug": "mreg",
+          "ja_why": "重回帰の F 検定（モデル全体の有意性）も ANOVA と同じ式の構造を共有している",
+          "en_why": "multiple regression's F-test (overall model significance) shares the same equation structure as ANOVA"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "error_types",
+          "ja_why": "多重比較で α が膨張する話、効果量と検出力の整理がここに集約されている",
+          "en_why": "why α inflates under multiple comparisons, plus effect size and power, all collected in one place"
+        }
+      ],
+      "featured_columns": [
+        "error_types"
+      ]
     },
     {
       "slug": "corr",
@@ -316,7 +720,35 @@
         "R²",
         "Anscombe's quartet"
       ],
-      "category": "modeling"
+      "category": "modeling",
+      "related_topics": [
+        {
+          "slug": "reg",
+          "ja_why": "相関係数 r と回帰係数 β₁ は r = β₁(s_x/s_y) で結ばれる。同じ関係を別の角度から見ている",
+          "en_why": "r and β₁ link via r = β₁(s_x/s_y) — the same relationship from another angle"
+        },
+        {
+          "slug": "dists",
+          "anchor": "dists-t",
+          "ja_why": "無相関の検定は t = r√(n−2)/√(1−r²) で t 分布に乗る",
+          "en_why": "the test of zero correlation sits on a t-distribution via t = r√(n−2)/√(1−r²)"
+        },
+        {
+          "slug": "mreg",
+          "ja_why": "単回帰の β₁ と重回帰の β₁ がずれる原因 ＝ 変数間の相関。相関の理解が交絡の理解につながる",
+          "en_why": "the cause of β₁ shifting between simple and multiple regression is correlation between predictors — understanding correlation underpins confounding"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "income_prediction",
+          "ja_why": "相関と回帰の実応用。「変数同士がどれくらい絡んでいるか」がモデルに与える影響を物語で読む",
+          "en_why": "correlation and regression in action — read as a story how predictor entanglement reshapes the model"
+        }
+      ],
+      "featured_columns": [
+        "income_prediction"
+      ]
     },
     {
       "slug": "reg",
@@ -340,7 +772,35 @@
         "Coefficient of determination R²",
         "Residuals"
       ],
-      "category": "modeling"
+      "category": "modeling",
+      "related_topics": [
+        {
+          "slug": "corr",
+          "ja_why": "r と β₁ は r = β₁(s_x/s_y)、R² = r² で繋がる。傾きの符号と相関の符号が揃う",
+          "en_why": "r and β₁ connect via r = β₁(s_x/s_y), with R² = r² — the slope's sign and the correlation's sign align"
+        },
+        {
+          "slug": "mreg",
+          "ja_why": "説明変数を増やすと β₁ がずれる。交絡を統計的に切り分けるための拡張",
+          "en_why": "adding predictors shifts β₁ — the extension that separates direct and indirect effects"
+        },
+        {
+          "slug": "dists",
+          "anchor": "dists-t",
+          "ja_why": "回帰係数の検定は t 分布に乗る。t 値・p 値・信頼区間の基盤",
+          "en_why": "tests on regression coefficients ride on the t distribution — the base for t-values, p-values, and intervals"
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "income_prediction",
+          "ja_why": "単回帰の限界（年齢だけで年収は説明できるか）が、重回帰の必要性を浮かび上がらせる物語",
+          "en_why": "where the limits of simple regression (can age alone predict income?) make the case for multiple regression"
+        }
+      ],
+      "featured_columns": [
+        "income_prediction"
+      ]
     },
     {
       "slug": "mreg",
@@ -364,7 +824,40 @@
         "Controlling for confounders",
         "Simple vs. multiple regression comparison"
       ],
-      "category": "modeling"
+      "category": "modeling",
+      "related_topics": [
+        {
+          "slug": "reg",
+          "ja_why": "単回帰の β₁ と重回帰の β₁ が違う数字になる現象を読み解くベースライン",
+          "en_why": "the baseline for reading the gap between simple and multiple regression's β₁"
+        },
+        {
+          "slug": "corr",
+          "ja_why": "説明変数同士の相関（多重共線性、交絡）が β₁ を不安定にする原因",
+          "en_why": "correlation among predictors (multicollinearity, confounding) is what destabilises β₁"
+        },
+        {
+          "slug": "anova",
+          "ja_why": "重回帰の F 検定はモデル全体の有意性を ANOVA と同じ枠組みで判定する",
+          "en_why": "multiple regression's F-test uses the same framework as ANOVA to judge overall model significance"
+        },
+        {
+          "slug": "dists",
+          "anchor": "dists-f",
+          "ja_why": "F 分布が「すべての偏回帰係数 = 0」の検定の臨界値を提供する",
+          "en_why": "the F-distribution supplies the critical values for testing \"all partial coefficients = 0\""
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "income_prediction",
+          "ja_why": "年齢・性別・都道府県の3変数で年収の幅を読む、重回帰の実践コラム",
+          "en_why": "a hands-on column reading income ranges from age, gender, and prefecture — multiple regression in practice"
+        }
+      ],
+      "featured_columns": [
+        "income_prediction"
+      ]
     }
   ],
   "columns": [
@@ -375,7 +868,15 @@
       "ja_path": "/columns/deviation.html",
       "en_path": "/en/columns/deviation.html",
       "ja_nav": "偏差値って何？",
-      "en_nav": "What Is Deviation?"
+      "en_nav": "What Is Deviation?",
+      "icon": "📊",
+      "ja_lead": "偏差値60と70の差はたった10、でもレア度は5倍。z = (X−μ)/σ の最も身近な応用例",
+      "en_lead": "Japan's Hensachi (deviation value): a 10-point gap holds 5× the rarity. The standard normal in everyday clothes",
+      "related_topic_slugs": [
+        "stdnorm",
+        "normal",
+        "clt"
+      ]
     },
     {
       "slug": "birthday",
@@ -384,7 +885,14 @@
       "ja_path": "/columns/birthday.html",
       "en_path": "/en/columns/birthday.html",
       "ja_nav": "誕生日のパラドックス",
-      "en_nav": "Birthday Paradox"
+      "en_nav": "Birthday Paradox",
+      "icon": "🎂",
+      "ja_lead": "余事象の絵で「直感が裏切られる確率」を一発で読み解く古典コラム",
+      "en_lead": "The complement-event picture exposes how badly intuition fails on probability",
+      "related_topic_slugs": [
+        "prob",
+        "morep"
+      ]
     },
     {
       "slug": "standardization",
@@ -393,7 +901,16 @@
       "ja_path": "/columns/standardization.html",
       "en_path": "/en/columns/standardization.html",
       "ja_nav": "標準化って何？",
-      "en_nav": "What Is Standardization?"
+      "en_nav": "What Is Standardization?",
+      "icon": "🌍",
+      "ja_lead": "身長 182cm と TOEIC 860、どっちが「ふつう」から遠い？ z で単位を超えて比べる",
+      "en_lead": "182 cm vs. TOEIC 860 — which is further from \"average\"? Compare across units via z",
+      "related_topic_slugs": [
+        "stdnorm",
+        "normal",
+        "clt",
+        "lln"
+      ]
     },
     {
       "slug": "income_prediction",
@@ -402,7 +919,15 @@
       "ja_path": "/columns/income_prediction.html",
       "en_path": "/en/columns/income_prediction.html",
       "ja_nav": "年収と統計",
-      "en_nav": "Predicting Income"
+      "en_nav": "Predicting Income",
+      "icon": "💰",
+      "ja_lead": "年齢・性別・都道府県の3変数で年収の幅を読む、重回帰分析の物語版",
+      "en_lead": "Reading income ranges from age, gender, and prefecture — multiple regression as a story",
+      "related_topic_slugs": [
+        "reg",
+        "mreg",
+        "corr"
+      ]
     },
     {
       "slug": "error_types",
@@ -411,7 +936,17 @@
       "ja_path": "/columns/error_types.html",
       "en_path": "/en/columns/error_types.html",
       "ja_nav": "過誤の2×2",
-      "en_nav": "Type I vs Type II"
+      "en_nav": "Type I vs Type II",
+      "icon": "⚠️",
+      "ja_lead": "第一種・第二種の誤りと検出力を、別々ではなく同じ 2×2 上で同時に追える",
+      "en_lead": "α, β, power, and effect size all live on a single 2×2 picture — confusion disappears",
+      "related_topic_slugs": [
+        "test",
+        "ci",
+        "bayes",
+        "anova",
+        "proptest"
+      ]
     }
   ],
   "title_translations": {

@@ -105,18 +105,20 @@
 </div>
 </div>
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>大数の法則のまわりでは、上限の式と「双子の定理」との対比が繰り返し顔を出します。</p>
 <ul>
-<li><b>チェビシェフの不等式の計算</b>：「σ²=4, n=100 のとき P(|X̄−μ|≥1) の上限は？」→ 4/(100×1) = 0.04</li>
-<li><b>正誤判定</b>：「標本平均が母平均に収束することを保証する定理は（ア）大数の法則（イ）中心極限定理」→ ア</li>
-<li><b>LLN vs 中心極限定理の区別</b>：「分布の形について述べている定理は？」→ 中心極限定理</li>
+<li><b>チェビシェフの上限の形</b>：σ²=4, n=100 のとき P(|X̄−μ|≥1) ≤ 4/(100×1) = 0.04 と並ぶ。「分散 ÷（n × ε²）」の形が、n が大きいほど上限を細らせていく構造になっている</li>
+<li><b>LLN が答える問い</b>：「標本平均は母平均に近づくのか？」 — この問いに対する答えとして、LLN が顔を出す。「どこに向かうか」を保証する定理という形</li>
+<li><b>LLN と中心極限定理の住み分け</b>：「平均の値が真値に近づく」のが LLN、「平均の分布の形が正規になる」のが中心極限定理。役割の違いがこの一対の形で見えてくる</li>
 </ul>
 </div>
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around the Law of Large Numbers, the same upper-bound formula and the same comparison with its "twin" theorem keep reappearing.</p>
 <ul>
-<li><b>Chebyshev's inequality calculation</b>: "σ²=4, n=100. Upper bound for P(|X̄−μ| ≥ 1)?" → 4/(100×1) = 0.04</li>
-<li><b>True/false</b>: "The theorem guaranteeing sample mean convergence is (a) LLN (b) Central Limit Theorem" → (a)</li>
-<li><b>LLN vs. Central Limit Theorem distinction</b>: "Which theorem describes the distribution's shape?" → Central Limit Theorem</li>
+<li><b>Chebyshev's upper bound shape</b>: with σ²=4 and n=100, P(|X̄−μ|≥1) ≤ 4/(100×1) = 0.04. "Variance ÷ (n × ε²)" is the structure, and n in the denominator drains the bound as n grows</li>
+<li><b>The question LLN answers</b>: "Does the sample mean approach the population mean?" — LLN appears as the answer to that question. Its shape is "guaranteeing the destination"</li>
+<li><b>How LLN and the Central Limit Theorem split the work</b>: "the value of the mean approaches the truth" belongs to LLN; "the shape of the mean's distribution becomes normal" belongs to the Central Limit Theorem. The two roles appear together as a paired shape</li>
 </ul>
 </div>

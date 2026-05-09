@@ -113,20 +113,22 @@
 </div>
 </div>
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>t・χ²・F の三つは、互いに連動した形でよく現れます。</p>
 <ul>
-<li><b>自由度の計算</b>：「標本サイズ20の1標本t検定の自由度は？」→ 19</li>
-<li><b>df→∞ の挙動</b>：「自由度を大きくすると t分布はどうなるか？」→ N(0,1) に近づく</li>
-<li><b>χ²の公式</b>：「(n−1)S²/σ² はどの分布に従うか？」→ χ²(n−1)</li>
-<li><b>関係性</b>：「t² はどの分布に一致するか？」→ F(1, k)</li>
+<li><b>自由度がスライドする場面</b>：1標本 t検定で n=20 なら df = n−1 = 19。「平均をひとつ推定するごとに自由度が1減る」という形がここに現れる</li>
+<li><b>t分布の極限の形</b>：自由度を大きくしていくと、t分布は N(0,1) に重なっていく。上のシミュレーションでスライダーを動かすと、その重なる過程が絵として見える</li>
+<li><b>χ²(n−1) の登場の仕方</b>：(n−1)S²/σ² が χ²(n−1) に従う、という形は分散の検定や信頼区間で繰り返し顔を出す</li>
+<li><b>三分布のつながり</b>：t² は F(1, k) と同じ分布になる。三つの分布が独立にあるのではなく、同じ N(0,1) から派生した家族だという形が透けて見える</li>
 </ul>
 </div>
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>The t, χ², and F families show up in linked, recurring shapes.</p>
 <ul>
-<li><b>df calculation</b>: "One-sample t-test with n = 20. df = ?" → 19</li>
-<li><b>df → ∞ behavior</b>: "What happens to the t distribution as df increases?" → approaches N(0,1)</li>
-<li><b>χ² formula</b>: "(n−1)S²/σ² follows which distribution?" → χ²(n−1)</li>
-<li><b>Relationships</b>: "t² is equivalent to which distribution?" → F(1, k)</li>
+<li><b>How df slides into place</b>: a one-sample t-test with n = 20 gives df = n−1 = 19. The shape "estimate one mean, lose one degree of freedom" appears here</li>
+<li><b>t distribution's limit shape</b>: push df up and the t curve melts into N(0,1). Moving the slider above shows that overlap as an image</li>
+<li><b>How χ²(n−1) enters</b>: the form (n−1)S²/σ² ~ χ²(n−1) keeps reappearing in variance tests and intervals</li>
+<li><b>The link across families</b>: t² and F(1, k) coincide. The three distributions aren't separate creatures — they're a family descended from the same N(0,1)</li>
 </ul>
 </div>

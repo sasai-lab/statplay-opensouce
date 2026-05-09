@@ -235,15 +235,48 @@
 </div>
 
 <div class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>正規分布のまわりでは、標準化と表引きを軸にした同じ流れが何度も顔を出します。</p>
 <ul>
-<li><b>z変換→表引き</b>：「N(50, 10²) で 65 以上になる確率」→ z = (65−50)/10 = 1.5 → 表を引く</li>
-<li><b>上側・下側のα%点</b>：x = μ + z_α · σ で計算</li>
-<li><b>正規分布の加法性</b>：X〜N(μ₁,σ₁²), Y〜N(μ₂,σ₂²) が独立 → X+Y 〜 N(μ₁+μ₂, σ₁²+σ₂²)</li>
-<li><b>標準化の計算</b>：z = (x−μ)/σ を確実に使えるかどうか</li>
+<li><b>z 変換から表引きへの流れ</b>：N(50, 10²) で X ≥ 65 を見るなら、z = (65−50)/10 = 1.5 という形に揃える。「一般正規 → z スケールに翻訳」という同じ動きが、確率を扱うときに繰り返し顔を出す</li>
+<li><b>上側・下側のα%点の形</b>：x = μ + z_α·σ。「中心 + 倍率 × ばらつき」という三層構造が、ここでも姿を現す</li>
+<li><b>正規分布の加法性</b>：独立な X〜N(μ₁,σ₁²), Y〜N(μ₂,σ₂²) を足すと X+Y〜N(μ₁+μ₂, σ₁²+σ₂²)。平均は素直に足し算、分散も素直に足し算（標準偏差は足し算でない）という形になっている</li>
+<li><b>標準化の絵</b>：z = (x−μ)/σ。「中心からのズレを、ばらつきの単位で測る」という同じ絵が、t統計量や検定統計量にも引き継がれていく</li>
 </ul>
 </div>
 
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./stdnorm.html">標準正規分布</a> &mdash; z = (x−μ)/σ で着地する先。表を引くのはここ</li>
+<li><a href="./clt.html">中心極限定理</a> &mdash; どんな分布の平均でも正規へ近づく、という橋渡しが正規分布の裾野を広げる</li>
+<li><a href="./dists.html#dists-t">三大検定分布</a> &mdash; σ が分からないときに正規の代わりに顔を出す t、χ²、F の家族</li>
+<li><a href="./morep.html">二項・ポアソン・指数分布</a> &mdash; 二項や指数を扱うとき、n が大きい場面では正規近似が顔を出す</li>
+<li><a href="../columns/standardization.html">『標準化って何？』コラム</a> &mdash; 正規分布の応用として、身長と TOEIC を同じ物差しで比べる方法</li>
+<li><a href="../columns/deviation.html">『偏差値って何？』コラム</a> &mdash; 正規分布の身近な応用例。10 点差の意味を z で読み解く</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">標準化って何？ — 世界中の「ふつう」を比べる翻訳機</span>
+    <span class="fr-desc">身長 182cm と TOEIC 860、どっちが「ふつう」から遠い？ z で単位を超えて比べる</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a href="../columns/deviation.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">📊</span>
+  <span class="fr-body">
+    <span class="fr-title">偏差値って何？ — 3秒で「上位何%」が見える</span>
+    <span class="fr-desc">偏差値60と70の差はたった10、でもレア度は5倍。z = (X−μ)/σ の最も身近な応用例</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
 <!-- /@panel -->
 <!-- ═══ 関連コラム ═══ -->
 <div class="related-column" style="margin:32px 0 16px;padding:20px 24px;border:1px solid rgba(255,230,0,.2);background:rgba(255,230,0,.03)">

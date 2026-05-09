@@ -177,7 +177,7 @@
 </ol>
 </div>
 <!-- @panel:dists_t -->
-<div class="panel">
+<div class="panel" id="dists-t">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t 分布</h3>
 
 <div class="dist-card">
@@ -230,7 +230,7 @@
 </ol>
 </div>
 <!-- @panel:dists_chi -->
-<div class="panel">
+<div class="panel" id="dists-chi">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² 分布</h3>
 
 <div class="dist-card">
@@ -289,7 +289,7 @@
 </ol>
 </div>
 <!-- @panel:dists_f -->
-<div class="panel">
+<div class="panel" id="dists-f">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ F 分布</h3>
 
 <div class="dist-card">
@@ -386,15 +386,39 @@
 </div>
 
 <div class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>t・χ²・F の三つは、互いに連動した形でよく現れます。</p>
 <ul>
-<li><b>自由度の計算</b>：「標本サイズ20の1標本t検定の自由度は？」→ 19</li>
-<li><b>df→∞ の挙動</b>：「自由度を大きくすると t分布はどうなるか？」→ N(0,1) に近づく</li>
-<li><b>χ²の公式</b>：「(n−1)S²/σ² はどの分布に従うか？」→ χ²(n−1)</li>
-<li><b>関係性</b>：「t² はどの分布に一致するか？」→ F(1, k)</li>
+<li><b>自由度がスライドする場面</b>：1標本 t検定で n=20 なら df = n−1 = 19。「平均をひとつ推定するごとに自由度が1減る」という形がここに現れる</li>
+<li><b>t分布の極限の形</b>：自由度を大きくしていくと、t分布は N(0,1) に重なっていく。上のシミュレーションでスライダーを動かすと、その重なる過程が絵として見える</li>
+<li><b>χ²(n−1) の登場の仕方</b>：(n−1)S²/σ² が χ²(n−1) に従う、という形は分散の検定や信頼区間で繰り返し顔を出す</li>
+<li><b>三分布のつながり</b>：t² は F(1, k) と同じ分布になる。三つの分布が独立にあるのではなく、同じ N(0,1) から派生した家族だという形が透けて見える</li>
 </ul>
 </div>
 
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./test.html">仮説検定</a> &mdash; t / z / F / χ² の検定統計量はすべてこれらの分布の上で測られる</li>
+<li><a href="./ci.html">信頼区間</a> &mdash; σ が分からないときの CI は z の代わりに t を使う。t 分布の中身がそのまま信頼区間の幅を決める</li>
+<li><a href="./anova.html">分散分析（ANOVA）</a> &mdash; F 分布が分散分析の主役。F = MSB/MSW の臨界値がここで読まれる</li>
+<li><a href="./chitest.html">カイ二乗検定</a> &mdash; χ² 分布がカイ二乗検定の根拠。自由度ごとに分布が違うことがそのまま検定の選び方に効く</li>
+<li><a href="./corr.html">相関係数</a> &mdash; 無相関の検定は t = r√(n−2)/√(1−r²) で t 分布に乗る。相関の検定もこの家族</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">第一種・第二種の過誤って何が違うの？ — 2×2の表で全部見える</span>
+    <span class="fr-desc">第一種・第二種の誤りと検出力を、別々ではなく同じ 2×2 上で同時に追える</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>「ズレ」を数値化して検定する <span class="story-arrow">▸</span> <a href="./chitest.html">I7 カイ二乗検定</a></div>
 

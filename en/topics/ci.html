@@ -228,14 +228,39 @@ The formula above assumes the population standard deviation σ is known. In prac
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Confidence intervals keep rearranging the same set of parts.</p>
 <ul>
-<li><b>Calculation</b>: "x̄=50, σ=10, n=25. 95% CI?" → 50 ± 1.96×(10/5) = [46.08, 53.92]</li>
-<li><b>Width and n</b>: "To halve the width, multiply n by?" → 4 (width ∝ 1/√n)</li>
-<li><b>Link to hypothesis testing</b>: "95% CI = [2.1, 4.3], test H₀: μ=2 at α=0.05?" → 2 is outside → reject</li>
-<li><b>Confidence level and width</b>: "Switch to 99%?" → z goes from 1.96 to 2.576, so the interval widens</li>
+<li><b>The "center ± multiplier × standard error" shape</b>: with x̄=50, σ=10, n=25, the 95% CI is 50 ± 1.96×(10/5) = [46.08, 53.92]. The numbers vary, the three-layer structure doesn't</li>
+<li><b>How width and n relate</b>: width shrinks as 1/√n. "Halve the width → quadruple n" is this proportional shape in disguise</li>
+<li><b>The CI–test twin relationship</b>: when 95% CI = [2.1, 4.3], μ₀ = 2 sits outside, and the two-sided test at α=0.05 lands on "reject." The two views are flip sides of the same decision</li>
+<li><b>Confidence level mirrors the multiplier</b>: switching 95% → 99% shifts the multiplier 1.96 → 2.576, and the wider interval follows directly</li>
 </ul>
 <p style="margin:10px 0 0">See where z = 1.96 and 2.576 come from in <a href="../../en/tables/index.html?dist=norm&amp;mode=twosided" style="color:var(--cyan)">Interactive Distribution Tables</a> (two-sided mode)</p>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; CIs and tests are two views of one decision — μ₀ outside the 95% CI matches rejection at α = 0.05</li>
+<li><a href="./dists.html#dists-t">Three Test Distributions</a> &mdash; with σ unknown, z gives way to t — the smaller n is, the more visible the t distribution becomes</li>
+<li><a href="./clt.html">Central Limit Theorem</a> &mdash; the "sample mean approaches normal" foundation that CIs rest on — CLT guarantees the SE = σ/√n picture</li>
+<li><a href="./proptest.html">Proportion Test</a> &mdash; the proportion version of CIs and tests — the same "center ± multiplier × SE" structure carries over</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; 95% confidence means a 5% miss rate — it lives in the same probability space as α</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Makes It Click</span>
+    <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>from width to yes/no <span class="story-arrow">▸</span> <a href="./test.html">I4 Hypothesis Testing</a></div>

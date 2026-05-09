@@ -222,15 +222,38 @@
 </div>
 
 <div class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>単回帰のまわりでは、傾きの組み立てと R² の読み方が、いつもセットで顔を出します。</p>
 <ul>
-<li><b>β₁ の手計算</b>：共変動/x の変動 = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)²</li>
-<li><b>R² の解釈</b>：「R²=0.64 → y の分散の64%がxで説明できる」</li>
-<li><b>r と R²</b>：「R²=0.64 なら r=±0.8」（符号は β₁ と一致）</li>
-<li><b>残差の仮定</b>：等分散性・正規性・独立性の3つ</li>
+<li><b>β₁ の組み立ての形</b>：β₁ = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)² = 共変動 / x の変動。「x のバラつきが大きいほど分母が大きく、傾きの推定が安定する」という形が、ここに織り込まれている</li>
+<li><b>R² の読み方の形</b>：R² = 0.64 のとき、「y の分散のうち 64% が x で説明されている」と読める形になっている</li>
+<li><b>r と R² の対応</b>：R² = 0.64 のとき r = ±0.8。符号は β₁ の向きと揃う、という形でいつも対応がついている</li>
+<li><b>残差の三条件</b>：等分散性・正規性・独立性。この三つが揃っているときに、上の最小二乗の絵が信頼区間や検定の根拠として機能する</li>
 </ul>
 </div>
 
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./corr.html">相関係数</a> &mdash; r と β₁ は r = β₁(s_x/s_y)、R² = r² で繋がる。傾きの符号と相関の符号が揃う</li>
+<li><a href="./mreg.html">重回帰分析</a> &mdash; 説明変数を増やすと β₁ がずれる。交絡を統計的に切り分けるための拡張</li>
+<li><a href="./dists.html#dists-t">三大検定分布</a> &mdash; 回帰係数の検定は t 分布に乗る。t 値・p 値・信頼区間の基盤</li>
+<li><a href="../columns/income_prediction.html">『年収と統計』コラム</a> &mdash; 単回帰の限界（年齢だけで年収は説明できるか）が、重回帰の必要性を浮かび上がらせる物語</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/income_prediction.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">💰</span>
+  <span class="fr-body">
+    <span class="fr-title">あなたの年収は、統計でどこまで当てられるか</span>
+    <span class="fr-desc">年齢・性別・都道府県の3変数で年収の幅を読む、重回帰分析の物語版</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>他の影響を取り除く <span class="story-arrow">▸</span> <a href="./mreg.html">M2 重回帰分析</a></div>
 

@@ -99,22 +99,24 @@
 </div>
 </div>
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>χ²検定にまつわる場面では、繰り返し同じ部品が顔を出します。</p>
 <ul>
-<li><b>自由度の計算</b>：「2×3 表の独立性検定の自由度は？」→ (2−1)(3−1) = 2</li>
-<li><b>期待度数の手計算</b>：行合計×列合計÷総数を電卓で計算</li>
-<li><b>適合度の計算問題</b>：各カテゴリで (O−E)²/E を求めて合計 → 臨界値と比較</li>
-<li><b>「期待度数5未満のとき」</b>：小頻度向けの正確検定（exact test）またはカテゴリの統合</li>
+<li><b>自由度の形</b>：独立性検定では (r−1)(c−1) が必ず出てくる。2×3 表なら (2−1)(3−1) = 2 という形に収まる</li>
+<li><b>期待度数の形</b>：「行合計 × 列合計 ÷ 総数」が分母に総数を置く絵で、独立を仮定した世界での期待値として現れる</li>
+<li><b>χ² の組み立て方</b>：各カテゴリの (O−E)²/E を足し上げる形。「ズレの二乗を期待値で割って合計」という同じ手順が、適合度でも独立性でも繰り返し顔を出す</li>
+<li><b>期待度数5未満の場面</b>：小頻度向けの正確検定（exact test）に切り替えるか、カテゴリを統合する形に持ち込む、という分岐がついて回る</li>
 </ul>
 <p style="margin:10px 0 0">χ²臨界値は<a href="../tables/index.html?dist=chi2" style="color:var(--cyan)">インタラクティブ確率分布表</a>で自由度を変えながら確認できる</p>
 </div>
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>The same parts keep showing up whenever χ² tests are involved.</p>
 <ul>
-<li><b>df calculation</b>: "2×3 table, independence test. df = ?" → (2−1)(3−1) = 2</li>
-<li><b>Expected frequency by hand</b>: row total × column total ÷ grand total</li>
-<li><b>Goodness-of-fit calculation</b>: compute (O−E)²/E for each category, sum, compare with critical value</li>
-<li><b>"When E &lt; 5"</b>: use an exact test for small frequencies or merge categories</li>
+<li><b>The shape of df</b>: independence tests always carry (r−1)(c−1). For a 2×3 table that lands at (2−1)(3−1) = 2</li>
+<li><b>The shape of expected frequencies</b>: "row total × column total ÷ grand total" — the same picture appears as the expected value under independence</li>
+<li><b>How χ² is built</b>: each category's (O−E)²/E gets added up. "Square the gap, divide by what was expected, sum" is the same shape across goodness-of-fit and independence</li>
+<li><b>The "E &lt; 5" branch</b>: the path forks toward an exact test for small frequencies or toward merging categories — this fork tags along whenever χ² is in play</li>
 </ul>
 <p style="margin:10px 0 0">Look up χ² critical values by df in the <a href="../../en/tables/index.html?dist=chi2" style="color:var(--cyan)">Interactive Distribution Tables</a></p>
 </div>

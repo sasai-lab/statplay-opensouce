@@ -242,13 +242,38 @@ Two mutually exclusive events (with P &gt; 0) are never independent. If A happen
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around basic probability, the three Venn regions and a small set of recurring rewrites keep reappearing.</p>
 <ul>
-<li><b>Venn diagram reading</b>: given three region values, compute P(A|B) and P(A∪B)</li>
-<li><b>Independence check</b>: "P(A)=0.3, P(B)=0.4, P(A∩B)=0.12 — independent?" → 0.3×0.4 = 0.12 → yes</li>
-<li><b>Complement trick</b>: "probability of at least one hit" = 1 − P(all misses)</li>
-<li><b>Mutually exclusive vs. independent</b>: true/false questions test whether you confuse the two</li>
+<li><b>The three-region Venn shape</b>: once "A only," "B only," and "A∩B" are pinned down, P(A|B) and P(A∪B) become rearrangements of those three numbers</li>
+<li><b>The independence-check shape</b>: with P(A)=0.3, P(B)=0.4, P(A∩B)=0.12, the product 0.3 × 0.4 lands at 0.12. "If multiplication recovers the joint, they're independent" is a check that appears on this single line</li>
+<li><b>The complement rewrite</b>: "probability of at least one hit" reshapes into 1 − P(all misses). When cases pile up, flipping to the complement collapses them into one picture</li>
+<li><b>Mutually exclusive vs. independent as a contrast</b>: "they don't co-occur" and "knowing one doesn't change the other" describe different structures. The very fact that they get confused is itself a recurring shape</li>
 </ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./bayes.html">Bayes' Theorem</a> &mdash; conditional probability P(A|B) and prior→posterior updating sit on these basic rules</li>
+<li><a href="./normal.html">Normal Distribution</a> &mdash; the gateway into continuous distributions, connecting probability rules to standardization</li>
+<li><a href="./morep.html">Discrete & Exponential</a> &mdash; applying independent-trial and mutual-exclusion reasoning produces the binomial, Poisson, and exponential</li>
+<li><a href="./stdnorm.html">Standard Normal</a> &mdash; the standard normal becomes the first concrete tool for computing probabilities</li>
+<li><a href="../../en/columns/birthday.html">"Birthday Paradox" column</a> &mdash; a classic where complement-events and independent trials produce a probability that defies intuition</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/birthday.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🎂</span>
+  <span class="fr-body">
+    <span class="fr-title">The Birthday Paradox — 50% with Just 23 People</span>
+    <span class="fr-desc">The complement-event picture exposes how badly intuition fails on probability</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <!-- ═══ Related Column ═══ -->

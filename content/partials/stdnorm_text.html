@@ -29,22 +29,24 @@
 </div>
 </div>
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>標準正規分布のまわりでは、「標準化 → 表引き」の流れと、その変奏がいつも繰り返し顔を出します。</p>
 <ul>
-<li><b>表の読み方</b>：問題の表が「上側確率」か「累積確率」か確認。間違えると答えが全然違う</li>
-<li><b>引き算パターン</b>：P(0.5 ≤ Z ≤ 1.5) = Φ(1.5) − Φ(0.5)</li>
-<li><b>標準化してから表を引く</b>：「N(170, 6²) で 180 以上の確率」→ z = (180−170)/6 ≈ 1.67 → 表を引く</li>
-<li><b>逆引き</b>：「上側5%点は？」→ z = 1.645</li>
+<li><b>表のスタイルの違い</b>：同じ z 値でも、表が「上側確率」なのか「累積確率」なのかで読み取る数字が変わる、という形がここに住んでいる</li>
+<li><b>区間確率は引き算の形</b>：P(0.5 ≤ Z ≤ 1.5) = Φ(1.5) − Φ(0.5)。「累積どうしの差」で区間が出るという同じ絵が、いろんな問題で繰り返し顔を出す</li>
+<li><b>標準化してから表を引く流れ</b>：N(170, 6²) で X ≥ 180 なら、z = (180−170)/6 ≈ 1.67 という形に揃えてから表へ向かう。一般正規はいつも、この経路を通る</li>
+<li><b>逆引きの形</b>：「上側5%点は？」と聞かれると、z = 1.645 という値が出る。表を逆向きに使う、という同じ動きの形がここに見える</li>
 </ul>
 <p style="margin:10px 0 0"><a href="../tables/index.html?dist=norm" style="color:var(--cyan)">インタラクティブ確率分布表</a>で累積・上側・両側を切り替えながら値を確認できる</p>
 </div>
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around the standard normal, the "standardize then look up" flow and its variations keep returning.</p>
 <ul>
-<li><b>Reading the table</b>: check whether the table gives "upper-tail" or "cumulative" probabilities — mixing them up changes the answer completely</li>
-<li><b>Subtraction pattern</b>: P(0.5 ≤ Z ≤ 1.5) = Φ(1.5) − Φ(0.5)</li>
-<li><b>Standardize then look up</b>: "P(X ≥ 180) where X ~ N(170, 6²)" → z = (180−170)/6 ≈ 1.67 → look up the table</li>
-<li><b>Reverse lookup</b>: "What is the upper 5% point?" → z = 1.645</li>
+<li><b>Two table styles</b>: the same z value reads differently depending on whether the table reports "upper tail" or "cumulative" probability — that distinction lives here</li>
+<li><b>Interval probability as a subtraction</b>: P(0.5 ≤ Z ≤ 1.5) = Φ(1.5) − Φ(0.5). The "difference of two cumulatives" picture recurs across many problems</li>
+<li><b>The standardize-then-look-up flow</b>: for X ~ N(170, 6²) with X ≥ 180, the form lines up as z = (180−170)/6 ≈ 1.67 before reaching the table. General normals always pass through this route</li>
+<li><b>The reverse-lookup shape</b>: "what is the upper 5% point?" returns z = 1.645. The same motion — using the table in reverse — appears as a shape</li>
 </ul>
 <p style="margin:10px 0 0"><a href="../../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — switch between CDF / upper-tail / two-sided and look up values</p>
 </div>

@@ -257,15 +257,40 @@
 </div>
 
 <div class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>中心極限定理がからむ場面では、同じ三つ組がいつもセットで顔を出します。</p>
 <ul>
-<li><b>定理名を問う</b>：「母集団の分布に関係なく、標本平均の分布が正規分布に近づく定理は？」→ 中心極限定理</li>
-<li><b>SE の計算</b>：「σ=10, n=25 のとき標準誤差は？」→ 10/√25 = 2</li>
-<li><b>n と精度</b>：「標準誤差を半分にするには n を何倍に？」→ 4倍</li>
-<li><b>平均の期待値</b>：「標本平均の期待値は？」→ μ（元の分布の平均と同じ。不偏性）</li>
+<li><b>定理が描く絵</b>：「元の分布が何でも、平均を取ると分布の形が正規分布に近づく」 — この一行が中心極限定理の輪郭で、上のシミュレーションがその絵そのもの</li>
+<li><b>SE = σ/√n の形</b>：σ=10, n=25 なら SE = 10/√25 = 2 と並ぶ。√n が分母にいる構造が、推測統計のあちこちでこの形のまま顔を出す</li>
+<li><b>n と精度の比例</b>：SE を半分にするには n が4倍。√ がいるせいで「精度を上げるコストは二乗で効く」という形が現れる</li>
+<li><b>標本平均の期待値</b>：E(X̄) = μ。元の分布の平均と一致するという形が、不偏性として顔を出す</li>
 </ul>
 </div>
 
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./normal.html">正規分布と標準化</a> &mdash; 元の分布が何でも、平均は正規に近づく。正規分布が CLT の「ゴール」</li>
+<li><a href="./lln.html">大数の法則</a> &mdash; LLN は「平均の値」、CLT は「平均の分布の形」を扱う。双子の定理</li>
+<li><a href="./ci.html">信頼区間</a> &mdash; SE = σ/√n は CLT が保証する分布の幅。CI の倍率もここから組み立てられる</li>
+<li><a href="./dists.html">三大検定分布</a> &mdash; CLT で正規に乗った後、σ を s に置き換える段で t / χ² / F の家族が顔を出す</li>
+<li><a href="../columns/standardization.html">『標準化って何？』コラム</a> &mdash; z スコアと CLT の関係を「平均と SD で世界を揃える」視点で扱うコラム</li>
+<li><a href="../columns/deviation.html">『偏差値って何？』コラム</a> &mdash; CLT が保証する「平均は正規」を前提に、偏差値が成立している</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">標準化って何？ — 世界中の「ふつう」を比べる翻訳機</span>
+    <span class="fr-desc">身長 182cm と TOEIC 860、どっちが「ふつう」から遠い？ z で単位を超えて比べる</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>平均は本当に真値に近づく？ <span class="story-arrow">▸</span> <a href="./lln.html">I2 大数の法則</a></div>
 

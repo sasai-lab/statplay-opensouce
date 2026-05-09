@@ -53,20 +53,22 @@
 </div>
 </div>
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>単回帰のまわりでは、傾きの組み立てと R² の読み方が、いつもセットで顔を出します。</p>
 <ul>
-<li><b>β₁ の手計算</b>：共変動/x の変動 = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)²</li>
-<li><b>R² の解釈</b>：「R²=0.64 → y の分散の64%がxで説明できる」</li>
-<li><b>r と R²</b>：「R²=0.64 なら r=±0.8」（符号は β₁ と一致）</li>
-<li><b>残差の仮定</b>：等分散性・正規性・独立性の3つ</li>
+<li><b>β₁ の組み立ての形</b>：β₁ = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)² = 共変動 / x の変動。「x のバラつきが大きいほど分母が大きく、傾きの推定が安定する」という形が、ここに織り込まれている</li>
+<li><b>R² の読み方の形</b>：R² = 0.64 のとき、「y の分散のうち 64% が x で説明されている」と読める形になっている</li>
+<li><b>r と R² の対応</b>：R² = 0.64 のとき r = ±0.8。符号は β₁ の向きと揃う、という形でいつも対応がついている</li>
+<li><b>残差の三条件</b>：等分散性・正規性・独立性。この三つが揃っているときに、上の最小二乗の絵が信頼区間や検定の根拠として機能する</li>
 </ul>
 </div>
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around simple regression, the slope's construction and R²'s interpretation always travel together.</p>
 <ul>
-<li><b>Computing β₁ by hand</b>: co-variation / x-variation = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)²</li>
-<li><b>Interpreting R²</b>: "R² = 0.64 → 64% of y's variance is explained by x"</li>
-<li><b>r and R²</b>: "R² = 0.64 ⇒ r = ±0.8" (sign matches β₁)</li>
-<li><b>Residual assumptions</b>: homoscedasticity, normality, independence — the big three</li>
+<li><b>How β₁ is assembled</b>: β₁ = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)² = co-variation / x-variation. "More spread in x makes the denominator larger and the slope estimate steadier" is woven into the shape</li>
+<li><b>How R² is read</b>: with R² = 0.64, the reading "64% of y's variance is explained by x" appears in this shape</li>
+<li><b>r and R² correspondence</b>: R² = 0.64 ⇒ r = ±0.8. The sign matches β₁'s direction — that's the consistent shape between them</li>
+<li><b>The three residual conditions</b>: homoscedasticity, normality, independence. These three need to be in place for the least-squares picture above to back up the intervals and tests built on it</li>
 </ul>
 </div>

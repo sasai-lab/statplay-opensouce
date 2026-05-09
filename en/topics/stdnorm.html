@@ -285,14 +285,48 @@
 </div>
 
 <div class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around the standard normal, the "standardize then look up" flow and its variations keep returning.</p>
 <ul>
-<li><b>Reading the table</b>: check whether the table gives "upper-tail" or "cumulative" probabilities — mixing them up changes the answer completely</li>
-<li><b>Subtraction pattern</b>: P(0.5 ≤ Z ≤ 1.5) = Φ(1.5) − Φ(0.5)</li>
-<li><b>Standardize then look up</b>: "P(X ≥ 180) where X ~ N(170, 6²)" → z = (180−170)/6 ≈ 1.67 → look up the table</li>
-<li><b>Reverse lookup</b>: "What is the upper 5% point?" → z = 1.645</li>
+<li><b>Two table styles</b>: the same z value reads differently depending on whether the table reports "upper tail" or "cumulative" probability — that distinction lives here</li>
+<li><b>Interval probability as a subtraction</b>: P(0.5 ≤ Z ≤ 1.5) = Φ(1.5) − Φ(0.5). The "difference of two cumulatives" picture recurs across many problems</li>
+<li><b>The standardize-then-look-up flow</b>: for X ~ N(170, 6²) with X ≥ 180, the form lines up as z = (180−170)/6 ≈ 1.67 before reaching the table. General normals always pass through this route</li>
+<li><b>The reverse-lookup shape</b>: "what is the upper 5% point?" returns z = 1.645. The same motion — using the table in reverse — appears as a shape</li>
 </ul>
 <p style="margin:10px 0 0"><a href="../../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — switch between CDF / upper-tail / two-sided and look up values</p>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./normal.html">Normal Distribution</a> &mdash; home of the "translate N(μ, σ²) onto the z scale via z = (x−μ)/σ" flow</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; the 1.96 in "center ± 1.96 × SE" is the z value read off the standard normal — the table sets the width</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; z-test critical values and rejection regions all sit on the standard normal</li>
+<li><a href="./dists.html#dists-t">Three Test Distributions</a> &mdash; as df → ∞ the t curve melts back into N(0,1) — this family carries that limit</li>
+<li><a href="../../en/columns/deviation.html">"What Is Deviation?" column</a> &mdash; Japan's Hensachi (deviation value) = z × 10 + 50 — the most familiar everyday use of the standard normal</li>
+<li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; the standard normal as a universal translator — comparing scores across different units</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/deviation.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">📊</span>
+  <span class="fr-body">
+    <span class="fr-title">What Is a Deviation Value? — See "Top X%" in 3 Seconds</span>
+    <span class="fr-desc">Japan's Hensachi (deviation value): a 10-point gap holds 5× the rarity. The standard normal in everyday clothes</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a href="../../en/columns/standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">What Is Standardization? — The Universal Translator for "Normal"</span>
+    <span class="fr-desc">182 cm vs. TOEIC 860 — which is further from "average"? Compare across units via z</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>the normal as a tool <span class="story-arrow">▸</span> <a href="./normal.html">P2 Normal Distribution</a></div>

@@ -43,18 +43,20 @@ When prevalence is tiny the numerator shrinks while the denominator, swollen wit
 </div>
 </div>
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>ベイズの定理は、形を変えて何度も同じ場所に顔を出します。</p>
 <ul>
-<li><b>定番計算</b>：「有病率 p%, 感度 a%, 特異度 b%。検査陽性のとき病気の確率は？」</li>
-<li><b>全確率の公式</b>：<span class="math" data-tex="P(B) = P(B|A)\,P(A) + P(B|\bar{A})\,P(\bar{A})"></span> を分母に使う</li>
-<li><b>自然頻度で解く</b>：1000人の表を書いて直接数えるのが確実。公式を暗記するより速い</li>
+<li><b>典型的なシナリオの形</b>：「有病率 p%, 感度 a%, 特異度 b%。検査陽性のとき病気の確率は？」 — 数値は変わっても、構造はいつもこの形</li>
+<li><b>分母にいる全確率</b>：<span class="math" data-tex="P(B) = P(B|A)\,P(A) + P(B|\bar{A})\,P(\bar{A})"></span> がベイズの分母として顔を出す。上の「真陽性 + 偽陽性」を足すという絵がこの式そのもの</li>
+<li><b>自然頻度の絵</b>：1000人の表に分けて数えると、同じ問題が割り算なしの数え上げに見える形に変わる</li>
 </ul>
 </div>
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Bayes' theorem keeps reappearing in the same handful of shapes.</p>
 <ul>
-<li><b>Standard calculation</b>: "Prevalence p%, sensitivity a%, specificity b%. Given a positive test, what's the probability of disease?"</li>
-<li><b>Law of total probability</b>: use <span class="math" data-tex="P(B) = P(B|A)\,P(A) + P(B|\bar{A})\,P(\bar{A})"></span> as the denominator</li>
-<li><b>Natural frequency approach</b>: draw a table of 1,000 people and count directly — often faster than memorizing the formula</li>
+<li><b>The classic scenario shape</b>: "Prevalence p%, sensitivity a%, specificity b%. Given a positive test, what's the probability of disease?" — the numbers change, the structure doesn't</li>
+<li><b>Total probability sitting in the denominator</b>: <span class="math" data-tex="P(B) = P(B|A)\,P(A) + P(B|\bar{A})\,P(\bar{A})"></span> is the shape Bayes' denominator always takes. The "true positives + false positives" picture above is this same equation</li>
+<li><b>The natural-frequency picture</b>: split 1,000 people into a table and the same problem looks like simple counting instead of fractions</li>
 </ul>
 </div>

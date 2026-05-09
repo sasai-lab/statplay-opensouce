@@ -53,20 +53,22 @@
 </div>
 </div>
 <div data-lang="ja" class="pattern-note">
-<h3>// 型として頭に残しておきたいこと</h3>
+<h3>// よく出会う形</h3>
+<p>正規分布のまわりでは、標準化と表引きを軸にした同じ流れが何度も顔を出します。</p>
 <ul>
-<li><b>z変換→表引き</b>：「N(50, 10²) で 65 以上になる確率」→ z = (65−50)/10 = 1.5 → 表を引く</li>
-<li><b>上側・下側のα%点</b>：x = μ + z_α · σ で計算</li>
-<li><b>正規分布の加法性</b>：X〜N(μ₁,σ₁²), Y〜N(μ₂,σ₂²) が独立 → X+Y 〜 N(μ₁+μ₂, σ₁²+σ₂²)</li>
-<li><b>標準化の計算</b>：z = (x−μ)/σ を確実に使えるかどうか</li>
+<li><b>z 変換から表引きへの流れ</b>：N(50, 10²) で X ≥ 65 を見るなら、z = (65−50)/10 = 1.5 という形に揃える。「一般正規 → z スケールに翻訳」という同じ動きが、確率を扱うときに繰り返し顔を出す</li>
+<li><b>上側・下側のα%点の形</b>：x = μ + z_α·σ。「中心 + 倍率 × ばらつき」という三層構造が、ここでも姿を現す</li>
+<li><b>正規分布の加法性</b>：独立な X〜N(μ₁,σ₁²), Y〜N(μ₂,σ₂²) を足すと X+Y〜N(μ₁+μ₂, σ₁²+σ₂²)。平均は素直に足し算、分散も素直に足し算（標準偏差は足し算でない）という形になっている</li>
+<li><b>標準化の絵</b>：z = (x−μ)/σ。「中心からのズレを、ばらつきの単位で測る」という同じ絵が、t統計量や検定統計量にも引き継がれていく</li>
 </ul>
 </div>
 <div data-lang="en" class="pattern-note">
-<h3>// Patterns to keep in mind</h3>
+<h3>// Shapes you'll meet again</h3>
+<p>Around the normal distribution, the same standardize-and-look-up flow keeps reappearing.</p>
 <ul>
-<li><b>z-transform → table lookup</b>: "P(X ≥ 65) where X ~ N(50, 10²)" → z = (65−50)/10 = 1.5 → look up the table</li>
-<li><b>Upper/lower α% points</b>: x = μ + z_α · σ</li>
-<li><b>Additivity of normals</b>: if X ~ N(μ₁, σ₁²) and Y ~ N(μ₂, σ₂²) are independent → X+Y ~ N(μ₁+μ₂, σ₁²+σ₂²)</li>
-<li><b>Standardization calculation</b>: can you reliably compute z = (x−μ)/σ?</li>
+<li><b>The z-transform to table-lookup flow</b>: for X ~ N(50, 10²), looking at X ≥ 65 reshapes into z = (65−50)/10 = 1.5. "Translate a general normal onto the z-scale" is the same motion that returns whenever probabilities are in play</li>
+<li><b>The shape of upper/lower α-points</b>: x = μ + z_α·σ. The "center + multiplier × spread" three-layer structure shows up here too</li>
+<li><b>Additivity of normals</b>: with independent X ~ N(μ₁,σ₁²) and Y ~ N(μ₂,σ₂²), X+Y ~ N(μ₁+μ₂, σ₁²+σ₂²). Means add, variances add (standard deviations don't) — this pairing is its shape</li>
+<li><b>The standardization picture</b>: z = (x−μ)/σ. "Measure the gap from center in units of spread" is the same picture that carries over into t-statistics and test statistics</li>
 </ul>
 </div>
