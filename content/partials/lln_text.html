@@ -32,7 +32,7 @@
 </div>
 <div data-lang="ja" class="detail-section">
 <h3>// なぜこの定理が統計学の「免許証」なのか</h3>
-<p>これ、最初ピンと来なかったんだけど——大数の法則がないと「サンプルから全体を推測する」が正当化できない。つまり統計の根っこが折れる。</p>
+<p>地味に見える定理だが、大数の法則がないと「サンプルから全体を推測する」が正当化できない。つまり統計の根っこが折れる。</p>
 <ul>
 <li>世論調査で1000人に聞いて「支持率48%」と出ても、それが全体に近い保証がない</li>
 <li>新薬の治験で「改善率が高い」と出ても、偶然かもしれない</li>
@@ -43,7 +43,7 @@
 <h3>// 「ギャンブラーの誤謬」に注意</h3>
 <p>コインで5回連続で表が出ても、6回目に裏が出る確率は 0.5 のまま。LLN は「次の1回を当てられる」とは言っていない。「何万回も平均すれば 0.5 に近づく」と言っているだけ。個々の試行は相変わらずランダム。</p>
 
-<h3>// LLN と 中心極限定理の違い — ここ、試験に出る</h3>
+<h3>// LLN と 中心極限定理の違い — ここは混同しやすい</h3>
 <table>
 <tr><th></th><th>LLN（大数の法則）</th><th>中心極限定理</th></tr>
 <tr><td>何の話？</td><td>平均の<b>値</b>が真値に近づく</td><td>平均の<b>分布の形</b>が正規分布に近づく</td></tr>
@@ -54,7 +54,7 @@
 </div>
 <div data-lang="en" class="detail-section">
 <h3>// Why this theorem is statistics' "license to operate"</h3>
-<p>This didn't click for me at first, but without the LLN, "inferring the whole from a sample" has no justification. The foundation of statistics crumbles.</p>
+<p>It looks unassuming, but without the LLN, "inferring the whole from a sample" has no justification. The foundation of statistics crumbles.</p>
 <ul>
 <li>A poll asks 1,000 people and reports "48% approval" — but without the LLN, there's no guarantee this is close to the real number</li>
 <li>A drug trial shows "high improvement rate" — could be pure chance</li>
@@ -65,7 +65,7 @@
 <h3>// Watch out for the gambler's fallacy</h3>
 <p>Five heads in a row doesn't make tails more likely on the sixth flip — it's still 0.5. The LLN doesn't say "the next one will balance things out." It says "over thousands of flips, the proportion converges to 0.5." Individual trials remain random.</p>
 
-<h3>// LLN vs. Central Limit Theorem — this comes up in exams</h3>
+<h3>// LLN vs. Central Limit Theorem — easy to mix these up</h3>
 <table>
 <tr><th></th><th>LLN (Law of Large Numbers)</th><th>Central Limit Theorem</th></tr>
 <tr><td>About what?</td><td>The mean's <b>value</b> approaches the truth</td><td>The mean's <b>distribution shape</b> approaches normal</td></tr>
@@ -104,16 +104,16 @@
 <p>It requires the mean to exist. For the Cauchy distribution, the mean is undefined, and the sample mean doesn't converge no matter how much data you collect.</p>
 </div>
 </div>
-<div data-lang="ja" class="exam-note">
-<h3>// 試験での出方</h3>
+<div data-lang="ja" class="pattern-note">
+<h3>// 型として頭に残しておきたいこと</h3>
 <ul>
 <li><b>チェビシェフの不等式の計算</b>：「σ²=4, n=100 のとき P(|X̄−μ|≥1) の上限は？」→ 4/(100×1) = 0.04</li>
 <li><b>正誤判定</b>：「標本平均が母平均に収束することを保証する定理は（ア）大数の法則（イ）中心極限定理」→ ア</li>
 <li><b>LLN vs 中心極限定理の区別</b>：「分布の形について述べている定理は？」→ 中心極限定理</li>
 </ul>
 </div>
-<div data-lang="en" class="exam-note">
-<h3>// How it shows up in exams</h3>
+<div data-lang="en" class="pattern-note">
+<h3>// Patterns to keep in mind</h3>
 <ul>
 <li><b>Chebyshev's inequality calculation</b>: "σ²=4, n=100. Upper bound for P(|X̄−μ| ≥ 1)?" → 4/(100×1) = 0.04</li>
 <li><b>True/false</b>: "The theorem guaranteeing sample mean convergence is (a) LLN (b) Central Limit Theorem" → (a)</li>

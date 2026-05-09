@@ -7,7 +7,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
 <meta name="description" content="コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。">
-<meta name="keywords" content="大数の法則, LLN, 試行回数, 標本平均, 期待値への収束, 統計検定2級">
+<meta name="keywords" content="大数の法則, LLN, 試行回数, 標本平均, 期待値への収束">
 <meta name="author" content="Sasai Lab">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <title>大数の法則 — 試行回数と真の平均 — StatPlay</title>
@@ -211,7 +211,7 @@
 
 <div class="detail-section">
 <h3>// なぜこの定理が統計学の「免許証」なのか</h3>
-<p>これ、最初ピンと来なかったんだけど——大数の法則がないと「サンプルから全体を推測する」が正当化できない。つまり統計の根っこが折れる。</p>
+<p>地味に見える定理だが、大数の法則がないと「サンプルから全体を推測する」が正当化できない。つまり統計の根っこが折れる。</p>
 <ul>
 <li>世論調査で1000人に聞いて「支持率48%」と出ても、それが全体に近い保証がない</li>
 <li>新薬の治験で「改善率が高い」と出ても、偶然かもしれない</li>
@@ -220,7 +220,7 @@
 <p>LLN が「n を大きくすれば標本平均は母平均に近づく」と保証してくれてるから、上のぜんぶが正当化される。地味だけど、ないと困る定理。</p>
 <h3>// 「ギャンブラーの誤謬」に注意</h3>
 <p>コインで5回連続で表が出ても、6回目に裏が出る確率は 0.5 のまま。LLN は「次の1回を当てられる」とは言っていない。「何万回も平均すれば 0.5 に近づく」と言っているだけ。個々の試行は相変わらずランダム。</p>
-<h3>// LLN と 中心極限定理の違い — ここ、試験に出る</h3>
+<h3>// LLN と 中心極限定理の違い — ここは混同しやすい</h3>
 <table>
 <tr><th></th><th>LLN（大数の法則）</th><th>中心極限定理</th></tr>
 <tr><td>何の話？</td><td>平均の<b>値</b>が真値に近づく</td><td>平均の<b>分布の形</b>が正規分布に近づく</td></tr>
@@ -246,8 +246,8 @@
 </div>
 </div>
 
-<div class="exam-note">
-<h3>// 試験での出方</h3>
+<div class="pattern-note">
+<h3>// 型として頭に残しておきたいこと</h3>
 <ul>
 <li><b>チェビシェフの不等式の計算</b>：「σ²=4, n=100 のとき P(|X̄−μ|≥1) の上限は？」→ 4/(100×1) = 0.04</li>
 <li><b>正誤判定</b>：「標本平均が母平均に収束することを保証する定理は（ア）大数の法則（イ）中心極限定理」→ ア</li>

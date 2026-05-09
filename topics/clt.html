@@ -7,7 +7,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
 <meta name="description" content="歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 の威力をアニメーションで可視化する。">
-<meta name="keywords" content="中心極限定理, CLT, 標本平均, 正規分布への収束, 統計検定2級, 推測統計, 標本サイズ">
+<meta name="keywords" content="中心極限定理, 標本平均, 正規分布への収束, 推測統計, 標本サイズ">
 <meta name="author" content="Sasai Lab">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <title>中心極限定理を目で見てイメージを掴む — StatPlay</title>
@@ -165,7 +165,7 @@
 <ol>
 <li><b>Step 1:</b> 元の分布を「指数分布」にして n=<b>1</b> で ▶ → 右に歪んだまま。まだ全然ベルじゃない。</li>
 <li><b>Step 2:</b> n を <b>5</b> にして ▶ → 少しベルっぽくなるが、まだ歪み。</li>
-<li><b>Step 3:</b> n を <b>30</b> にして ▶ → ほぼ正規分布。「n≥30」は定理ではなく実務上の目安。元の分布が極端に歪んでいると、もっと必要なこともある。</li>
+<li><b>Step 3:</b> n を <b>30</b> にして ▶ → ほぼ正規分布。「n≥30」は定理が保証する値ではなく、経験的な目安。元の分布が極端に歪んでいると、もっと必要なこともある。</li>
 <li><b>Step 4:</b> 「二峰分布」に切り替えて同じことをやる → 山2つのやつですらベルに化ける衝撃。</li>
 </ol>
 </div>
@@ -256,8 +256,8 @@
 </div>
 </div>
 
-<div class="exam-note">
-<h3>// 試験での出方</h3>
+<div class="pattern-note">
+<h3>// 型として頭に残しておきたいこと</h3>
 <ul>
 <li><b>定理名を問う</b>：「母集団の分布に関係なく、標本平均の分布が正規分布に近づく定理は？」→ 中心極限定理</li>
 <li><b>SE の計算</b>：「σ=10, n=25 のとき標準誤差は？」→ 10/√25 = 2</li>

@@ -7,7 +7,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
 <meta name="description" content="サイコロの公正さを確かめる適合度検定と、クロス集計表で2変数の独立性を調べる独立性検定。観測値と期待値のズレをχ²統計量として数値化し、棄却域との関係をインタラクティブに可視化する。">
-<meta name="keywords" content="カイ二乗検定, 適合度検定, 独立性検定, クロス集計表, χ²統計量, 期待度数, 統計検定2級">
+<meta name="keywords" content="カイ二乗検定, 適合度検定, 独立性検定, クロス集計表, χ²統計量, 期待度数">
 <meta name="author" content="Sasai Lab">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <title>カイ二乗検定 — 適合度と独立性 — StatPlay</title>
@@ -274,7 +274,7 @@
 ・2×2 表：行合計と列合計が決まれば、1つのセルの値を決めると残り3つは自動的に決まる → df=1<br/>
 ・3×4 表：df = 2×3 = 6</p>
 <p><b>注意：期待度数が5未満のセルが多いと</b><br/>
-・χ²近似が不正確になる。目安として「Eが5未満のセルが全体の20%以上」なら、フィッシャーの正確検定を使うか、カテゴリを統合する</p>
+・χ²近似が不正確になる。目安として「Eが5未満のセルが全体の20%以上」なら、小頻度向けの正確検定（exact test）を使うか、カテゴリを統合する</p>
 </div>
 
 <div class="detail-section">
@@ -314,13 +314,13 @@
 </div>
 </div>
 
-<div class="exam-note">
-<h3>// 試験での出方</h3>
+<div class="pattern-note">
+<h3>// 型として頭に残しておきたいこと</h3>
 <ul>
 <li><b>自由度の計算</b>：「2×3 表の独立性検定の自由度は？」→ (2−1)(3−1) = 2</li>
 <li><b>期待度数の手計算</b>：行合計×列合計÷総数を電卓で計算</li>
 <li><b>適合度の計算問題</b>：各カテゴリで (O−E)²/E を求めて合計 → 臨界値と比較</li>
-<li><b>「期待度数5未満のとき」</b>：フィッシャーの正確検定またはカテゴリの統合</li>
+<li><b>「期待度数5未満のとき」</b>：小頻度向けの正確検定（exact test）またはカテゴリの統合</li>
 </ul>
 <p style="margin:10px 0 0">χ²臨界値は<a href="../tables/index.html?dist=chi2" style="color:var(--cyan)">インタラクティブ確率分布表</a>で自由度を変えながら確認できる</p>
 </div>

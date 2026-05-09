@@ -281,7 +281,7 @@
 ・In a 2×2 table: once row and column totals are fixed, choosing one cell determines the rest → df = 1<br/>
 ・A 3×4 table: df = 2 × 3 = 6</p>
 <p><b>Caution: expected counts below 5</b><br/>
-・The χ² approximation becomes unreliable. Rule of thumb: if more than 20% of cells have E &lt; 5, use Fisher's exact test or merge categories</p>
+・The χ² approximation becomes unreliable. Rule of thumb: if more than 20% of cells have E &lt; 5, use an exact test for small frequencies or merge categories</p>
 </div>
 
 <div class="detail-section">
@@ -321,13 +321,13 @@
 </div>
 </div>
 
-<div class="exam-note">
-<h3>// How it shows up in exams</h3>
+<div class="pattern-note">
+<h3>// Patterns to keep in mind</h3>
 <ul>
 <li><b>df calculation</b>: "2×3 table, independence test. df = ?" → (2−1)(3−1) = 2</li>
 <li><b>Expected frequency by hand</b>: row total × column total ÷ grand total</li>
 <li><b>Goodness-of-fit calculation</b>: compute (O−E)²/E for each category, sum, compare with critical value</li>
-<li><b>"When E &lt; 5"</b>: use Fisher's exact test or merge categories</li>
+<li><b>"When E &lt; 5"</b>: use an exact test for small frequencies or merge categories</li>
 </ul>
 <p style="margin:10px 0 0">Look up χ² critical values by df in the <a href="../../en/tables/index.html?dist=chi2" style="color:var(--cyan)">Interactive Distribution Tables</a></p>
 </div>

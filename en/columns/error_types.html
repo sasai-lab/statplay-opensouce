@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta content="Type I errors, Type II errors, and statistical power tend to tangle the moment you try to use them. Sorting them into the four cases on a 2×2 table — H₀ true/false crossed with reject/fail-to-reject — makes α, β, power, and effect size easier to keep straight." name="description"/>
+<meta content="type I error, type II error, alpha, beta, statistical power, significance level, hypothesis testing, false positive, false negative" name="keywords"/>
+<meta content="Sasai Lab" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<title>Type I vs Type II Errors — One 2×2 Table Makes It Click | StatPlay</title>
+<link href="https://statplay.sasailab.com/en/columns/error_types.html" rel="canonical"/>
+<link href="https://statplay.sasailab.com/columns/error_types.html" hreflang="ja" rel="alternate"/>
+<link href="https://statplay.sasailab.com/en/columns/error_types.html" hreflang="en" rel="alternate"/>
+<link href="https://statplay.sasailab.com/columns/error_types.html" hreflang="x-default" rel="alternate"/>
+<meta content="article" property="og:type"/>
+<meta content="StatPlay" property="og:site_name"/>
+<meta content="A false alarm and a missed detection — they sound alike. They aren't the same." property="og:title"/>
+<meta content="α, β, power, effect size, sample size — sorted into four cases on one 2×2 table, the tangle becomes easier to keep straight." property="og:description"/>
+<meta content="https://statplay.sasailab.com/en/columns/error_types.html" property="og:url"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
+<meta content="StatPlay — Type I vs Type II Errors" property="og:image:alt"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="ja_JP" property="og:locale:alternate"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="A false alarm and a missed detection — they sound alike. They aren't the same." name="twitter:title"/>
+<meta content="α, β, power, effect size, sample size — sorted into four cases on one 2×2 table, the tangle becomes easier to keep straight." name="twitter:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<meta content="#00f3ff" name="theme-color"/>
+<link href="../../icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="../../icons/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../../icons/icon-192.png" rel="icon" type="image/png"/>
+<link href="../../css/stat_cyber.css" rel="stylesheet"/>
+<style>
+body.column-page #mainNav .nav-links a,
+body.column-page #mainNav .nav-links button { font-size: 12px; }
+body.column-page section { padding-top: 0; }
+body.column-page .col-breadcrumb {
+  max-width: 800px; margin: 48px auto 4px; padding: 0 24px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.column-page .col-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.column-page .col-breadcrumb a:hover { text-decoration: underline; }
+body.column-page .col-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.column-page main { padding-top: 4px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+.hero-cinema {
+  position: relative; width: 100%; min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; z-index: 2;
+  background:
+    radial-gradient(ellipse at center, rgba(0,243,255,.05) 0%, transparent 70%),
+    repeating-linear-gradient(0deg, rgba(0,243,255,.04) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(90deg, rgba(0,243,255,.04) 0 1px, transparent 1px 40px);
+}
+body.theme-light .hero-cinema {
+  background:
+    radial-gradient(ellipse at center, rgba(0,140,180,.06) 0%, transparent 70%),
+    repeating-linear-gradient(0deg, rgba(0,140,180,.05) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(90deg, rgba(0,140,180,.05) 0 1px, transparent 1px 40px);
+}
+.hero-content {
+  position: relative; z-index: 2; text-align: center;
+  max-width: 760px; padding: 0 24px;
+  text-shadow: 0 0 30px var(--bg), 0 0 60px var(--bg);
+}
+body.theme-light .hero-content {
+  text-shadow: 0 0 30px rgba(240,243,250,.9), 0 0 60px rgba(240,243,250,.8);
+}
+.hero-eyebrow {
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+  letter-spacing: 3px; margin-bottom: 18px; opacity: 0;
+}
+.hero-eyebrow.hero-in { opacity: 1; transition: opacity .8s ease; }
+.hero-impact {
+  font-family:'Courier New', monospace;
+  font-size: clamp(48px, 12vw, 96px); font-weight: 900;
+  color: var(--yellow); letter-spacing: -2px;
+  text-shadow: 0 0 40px rgba(255,230,0,.6), 0 0 80px rgba(255,230,0,.3);
+  opacity: 0; transform: scale(2); margin-bottom: 12px;
+}
+.hero-impact.hero-in {
+  opacity: 1; transform: scale(1);
+  transition: opacity .4s ease, transform .5s cubic-bezier(.17,.67,.3,1.3);
+}
+.hero-impact .hi-alpha { color: var(--cyan); margin-right: 18px; }
+.hero-impact .hi-beta  { color: var(--magenta); }
+body.theme-light .hero-impact { text-shadow: 0 0 20px rgba(180,140,0,.3); }
+
+.hero-content h1 {
+  font-family:'Courier New', monospace; font-size: clamp(22px, 4.5vw, 36px);
+  line-height: 1.4; color: var(--text); margin-bottom: 16px;
+  opacity: 0; transform: translateY(20px);
+}
+.hero-content h1.hero-in {
+  opacity: 1; transform: translateY(0);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.hero-content h1 em {
+  font-style: normal; color: var(--yellow);
+  text-shadow: 0 0 24px rgba(255,230,0,.5);
+}
+body.theme-light .hero-content h1 em { text-shadow: none; }
+.hero-content .hook-sub {
+  color: var(--dim); font-size: 15px; line-height: 1.7; opacity: 0;
+}
+.hero-content .hook-sub.hero-in { opacity: 1; transition: opacity .8s ease .3s; }
+.hero-content .hook-sub strong { color: var(--magenta); }
+
+.hero-mat {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  width: min(420px, 88vw); margin: 0 auto 28px;
+  border: 1px solid rgba(0,243,255,.25);
+  background: rgba(0,243,255,.05);
+  font-family:'Courier New', monospace;
+}
+.hero-mat-cell {
+  background: var(--bg);
+  padding: 18px 12px; min-height: 90px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  opacity: .15; transition: opacity .6s ease, box-shadow .6s ease, color .6s ease;
+}
+.hero-mat-cell.cell-revealed { opacity: 1; }
+.hero-mat-cell .hm-tag { font-size: 10px; color: var(--dim); letter-spacing: 1.5px; }
+.hero-mat-cell .hm-prob { font-size: clamp(18px, 3.5vw, 24px); font-weight: 700; line-height: 1.1; margin: 4px 0; }
+.hero-mat-cell .hm-note { font-size: 10px; color: var(--dim); }
+.hero-mat-cell.phase-1 .hm-prob { color: var(--yellow); text-shadow: 0 0 14px rgba(255,230,0,.45); }
+.hero-mat-cell.phase-1.cell-revealed { box-shadow: inset 0 0 0 1px rgba(255,230,0,.45); }
+.hero-mat-cell.phase-2 .hm-prob { color: var(--text); }
+.hero-mat-cell.phase-2 .hm-prob .hm-power { color: var(--green); }
+body.theme-light .hero-mat-cell.phase-1 .hm-prob { text-shadow: 0 0 8px rgba(180,140,0,.3); }
+
+.hero-scroll {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: none; border: none; cursor: pointer;
+  font-family:'Courier New', monospace; font-size: 10px; color: var(--dim);
+  letter-spacing: 3px; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  opacity: 0; animation: fadeIn 1s ease 2s forwards;
+}
+.hero-scroll .chevron {
+  width: 12px; height: 12px; border-right: 1.5px solid var(--dim);
+  border-bottom: 1.5px solid var(--dim); transform: rotate(45deg);
+  animation: bounce 1.5s ease infinite;
+}
+@keyframes fadeIn { to { opacity: .5; } }
+@keyframes bounce { 0%,100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(4px); } }
+body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
+
+.article-meta {
+  display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+  margin-top: 14px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+  opacity: 0;
+}
+.article-meta.hero-in { opacity: 1; transition: opacity .8s ease .6s; }
+.article-meta span::before {
+  content: ''; display: inline-block;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--cyan); margin-right: 6px; vertical-align: middle;
+}
+
+.col-section { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.col-section.visible { opacity: 1; transform: translateY(0); }
+
+.col-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 56px 0 32px; position: relative; z-index: 2;
+}
+.col-divider::before, .col-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,243,255,.2), transparent);
+}
+.col-divider .divider-num {
+  font-family:'Courier New', monospace; font-size: 11px; color: var(--cyan);
+  letter-spacing: 2px; white-space: nowrap; opacity: .6;
+}
+
+.col-formula {
+  font-family:'Courier New', monospace; font-size: clamp(15px, 3vw, 19px);
+  text-align: center; padding: 18px 16px; margin: 18px 0;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  color: var(--cyan); line-height: 1.6;
+}
+code, .inline-code {
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 2px 6px; border: 1px solid rgba(0,243,255,.15);
+  background: rgba(0,243,255,.04); color: var(--cyan); border-radius: 2px;
+}
+blockquote.col-quote {
+  margin: 20px 0; padding: 14px 20px;
+  border-left: 3px solid var(--magenta);
+  background: rgba(255,43,214,.04);
+  font-family:'Courier New', monospace; color: var(--text);
+  font-size: 15px; line-height: 1.7;
+}
+
+/* ── Small aside note (independent from main flow) ── */
+aside.col-aside {
+  margin: 18px 0; padding: 10px 14px;
+  border: 1px dashed rgba(0,243,255,.25);
+  background: rgba(0,243,255,.02);
+  font-family:'Courier New', monospace;
+  font-size: 12px; line-height: 1.7; color: var(--dim);
+}
+aside.col-aside .col-aside-tag {
+  display: inline-block; margin-right: 8px;
+  font-size: 11px; letter-spacing: 1.5px; color: var(--cyan);
+}
+
+.error-matrix {
+  width: 100%; border-collapse: collapse; margin: 24px 0 8px;
+  font-family:'Courier New', monospace; table-layout: fixed;
+}
+.error-matrix th, .error-matrix td {
+  border: 1px solid rgba(0,243,255,.18);
+  padding: 18px 14px; vertical-align: middle; text-align: center;
+}
+.error-matrix thead th {
+  font-size: 12px; color: var(--dim); letter-spacing: 1px;
+  background: rgba(0,243,255,.04);
+}
+.error-matrix tbody th {
+  font-size: 13px; color: var(--text); text-align: left; width: 30%;
+  background: rgba(0,243,255,.03);
+}
+.error-matrix tbody th .row-sub { color: var(--dim); font-size: 11px; }
+.error-matrix td .cell-tag  { font-size: 11px; color: var(--dim); letter-spacing: 1px; margin-bottom: 6px; }
+.error-matrix td .cell-prob { font-size: 26px; font-weight: 700; line-height: 1.1; }
+.error-matrix td .cell-note { font-size: 11px; color: var(--dim); margin-top: 6px; }
+.cell-correct .cell-prob { color: var(--text); }
+.cell-power   .cell-prob { color: var(--green); }
+.cell-error {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255,230,0,.06) 0 6px,
+      transparent 6px 12px),
+    rgba(255,230,0,.04);
+  border-color: rgba(255,230,0,.35) !important;
+}
+.cell-error .cell-prob { color: var(--yellow); text-shadow: 0 0 12px rgba(255,230,0,.35); }
+.error-alpha .cell-tag::before, .error-beta .cell-tag::before { content: '⚠ '; color: var(--yellow); }
+.row-h0 { box-shadow: inset 3px 0 0 var(--cyan); }
+.row-h1 { box-shadow: inset 3px 0 0 var(--magenta); }
+body.theme-light .cell-error {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(140,100,0,.10) 0 6px,
+      transparent 6px 12px),
+    rgba(255,230,0,.06);
+  border-color: rgba(140,100,0,.5) !important;
+}
+body.theme-light .cell-error .cell-prob { text-shadow: 0 0 6px rgba(140,100,0,.3); }
+
+@media (max-width: 560px) {
+  .error-matrix, .error-matrix thead, .error-matrix tbody,
+  .error-matrix tr, .error-matrix th, .error-matrix td { display: block; width: 100% !important; }
+  .error-matrix thead { display: none; }
+  .error-matrix tbody th {
+    border: none; padding: 16px 0 4px;
+    font-size: 12px; color: var(--cyan); letter-spacing: 2px;
+    box-shadow: none;
+  }
+  .error-matrix tbody th::before { content: '// '; }
+  .error-matrix td {
+    margin: 0 0 8px; padding: 16px;
+    border: 1px solid rgba(0,243,255,.18);
+  }
+  .error-matrix td .cell-tag { display: inline-block; margin-right: 8px; }
+  .error-matrix td .cell-prob { display: inline-block; font-size: 20px; }
+  .error-matrix td .cell-note { display: block; }
+}
+
+.judge-block { margin: 16px 0; }
+.judge-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 16px; align-items: start; }
+@media (max-width: 720px) { .judge-grid { grid-template-columns: 1fr; } }
+.judge-mat { width: 100%; border-collapse: collapse; font-family:'Courier New', monospace; table-layout: fixed; }
+.judge-mat th, .judge-mat td {
+  border: 1px solid rgba(0,243,255,.18);
+  padding: 12px 8px; text-align: center; font-size: 13px;
+}
+.judge-mat thead th { font-size: 10px; color: var(--dim); letter-spacing: 1px; background: rgba(0,243,255,.04); }
+.judge-mat tbody th { font-size: 11px; color: var(--text); text-align: left; width: 32%; background: rgba(0,243,255,.03); }
+.cell-clickable { cursor: pointer; transition: background .2s, box-shadow .2s, transform .1s; }
+.cell-clickable:hover { background-color: rgba(0,243,255,.08); }
+.cell-clickable:focus-visible { outline: 2px solid var(--cyan); outline-offset: -2px; }
+.cell-clickable.cell-active {
+  background-color: rgba(255,230,0,.10);
+  box-shadow: inset 0 0 0 2px var(--yellow), 0 0 16px rgba(255,230,0,.25);
+  transform: scale(1.01);
+}
+.cell-clickable.cell-active .cb-prob { text-shadow: 0 0 16px rgba(255,230,0,.6); }
+.cb-tag { font-size: 10px; color: var(--dim); letter-spacing: 1px; }
+.cb-prob { font-size: 16px; font-weight: 700; line-height: 1.1; margin-top: 4px; }
+.judge-cell-error .cb-prob { color: var(--yellow); }
+.judge-cell-power .cb-prob { color: var(--green); }
+#judgeCanvas { width: 100%; height: 280px; border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03); }
+@media (max-width: 720px) { #judgeCanvas { height: 240px; } }
+.judge-narration {
+  margin-top: 14px; padding: 14px 16px;
+  border-left: 3px solid var(--cyan);
+  background: rgba(0,243,255,.04);
+  color: var(--text); font-size: 14px; line-height: 1.7;
+  font-family:'Courier New', monospace;
+}
+.judge-narration::before { content: '// '; color: var(--cyan); }
+
+.slider-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+@media (max-width: 600px) { .slider-pair { grid-template-columns: 1fr; } }
+.slider-cell {
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  padding: 12px 16px; transition: opacity .3s, border-color .3s;
+}
+.slider-cell .slider-status {
+  font-size: 10px; letter-spacing: 2px; font-family:'Courier New', monospace;
+  color: var(--cyan); margin-bottom: 6px;
+}
+.slider-cell .slider-label {
+  font-size: 13px; color: var(--text); margin-bottom: 8px;
+  font-family:'Courier New', monospace;
+}
+.slider-cell .slider-label .slider-val { color: var(--yellow); margin-left: 6px; }
+.slider-cell input[type="range"] { width: 100%; }
+.slider-cell.is-fixed { opacity: .55; border-color: rgba(148,163,187,.25); }
+.slider-cell.is-fixed .slider-status::before { content: 'FIXED · '; color: var(--dim); }
+.slider-cell.is-fixed .slider-status { color: var(--dim); }
+.slider-cell.is-active .slider-status::before { content: 'ACTIVE · '; color: var(--magenta); }
+.slider-cell.is-active { border-color: rgba(255,43,214,.30); }
+#deltaAlphaCanvas, #nCanvas {
+  width: 100%; height: 280px;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+}
+.iso-buttons { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 14px; }
+.iso-buttons button {
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3); background: transparent;
+  color: var(--cyan); cursor: pointer;
+  font-family:'Courier New', monospace; font-size: 12px; transition: .2s;
+}
+.iso-buttons button:hover { background: rgba(0,243,255,.08); }
+
+.live-stats {
+  display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+  padding: 14px 16px; margin-top: 16px;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  font-family:'Courier New', monospace;
+}
+.live-stats .stat { text-align: center; min-width: 80px; }
+.live-stats .stat-label { font-size: 11px; color: var(--dim); letter-spacing: 1px; }
+.live-stats .stat-val { font-size: 22px; font-weight: 700; color: var(--cyan); display: block; margin-top: 4px; }
+.live-stats .stat-val.is-locked { color: var(--dim); }
+.live-stats .stat-val.is-changing { color: var(--yellow); animation: statPulse .25s ease; }
+@keyframes statPulse { 0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); } }
+
+.n-slider-row {
+  margin-top: 16px;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  padding: 12px 16px;
+}
+.n-slider-row label {
+  display: block; font-family:'Courier New', monospace;
+  font-size: 13px; color: var(--text); margin-bottom: 8px;
+}
+.n-slider-row .slider-val { color: var(--yellow); margin-left: 6px; }
+.n-slider-row input[type="range"] { width: 100%; }
+.n-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+@media (max-width: 600px) { .n-cards { grid-template-columns: 1fr; } }
+.n-card {
+  border: 1px solid rgba(0,243,255,.15); padding: 12px 14px;
+  font-family:'Courier New', monospace; text-align: center;
+  background: rgba(0,243,255,.03);
+}
+.n-card[data-card="alpha"] { border-color: rgba(148,163,187,.30); }
+.n-card[data-card="beta"]  { border-color: rgba(255,230,0,.30); }
+.n-card[data-card="power"] { border-color: rgba(0,255,156,.30); }
+.n-card-label { font-size: 11px; color: var(--dim); letter-spacing: 1px; }
+.n-card-val { font-size: 22px; font-weight: 700; display: block; margin: 4px 0; }
+.n-card[data-card="alpha"] .n-card-val { color: var(--dim); }
+.n-card[data-card="beta"]  .n-card-val { color: var(--yellow); }
+.n-card[data-card="power"] .n-card-val { color: var(--green); }
+.n-card-arrow { font-size: 12px; color: var(--dim); letter-spacing: 1px; }
+.n-card-arrow.arrow-active { animation: arrowPulse .8s ease infinite; }
+@keyframes arrowPulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
+.n-card.is-changing { animation: cardPulse .25s ease; }
+@keyframes cardPulse { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
+.n-takeaway {
+  margin-top: 16px; padding: 14px 18px;
+  border-left: 3px solid var(--magenta);
+  background: rgba(255,43,214,.04);
+  font-size: 14px; line-height: 1.7; color: var(--text);
+  font-family:'Courier New', monospace;
+}
+.n-takeaway::before { content: '// '; color: var(--magenta); }
+
+.takeaway {
+  position: relative; z-index: 2;
+  border: 1px solid rgba(255,230,0,.2);
+  background: rgba(255,230,0,.03);
+  padding: 24px 28px; margin: 48px 0 32px;
+}
+.takeaway h3 { font-family:'Courier New', monospace; font-size: 14px; color: var(--yellow); margin-bottom: 12px; letter-spacing: 1px; }
+.takeaway ul { list-style: none; padding: 0; }
+.takeaway li {
+  color: var(--text); font-size: 14px; line-height: 1.8;
+  padding-left: 16px; position: relative; margin-bottom: 6px;
+}
+.takeaway li::before { content: '▸'; position: absolute; left: 0; color: var(--yellow); }
+body.theme-light .takeaway { border-color: rgba(140,100,0,.2); background: rgba(255,230,0,.05); }
+
+.faq-item { margin-bottom: 12px; }
+.faq-q {
+  display: block; width: 100%; text-align: left; padding: 12px 16px;
+  background: rgba(0,243,255,.03); border: 1px solid rgba(0,243,255,.1);
+  color: var(--text); font-size: 14px; cursor: pointer;
+  font-family:'Courier New', monospace; transition: .2s;
+}
+.faq-q:hover { background: rgba(0,243,255,.06); }
+.faq-q::before { content: '▸ '; color: var(--cyan); }
+.faq-q.open::before { content: '▾ '; }
+.faq-a {
+  display: none; padding: 12px 16px; font-size: 14px;
+  line-height: 1.8; color: var(--text);
+  border: 1px solid rgba(0,243,255,.06); border-top: none;
+}
+
+.col-cta { text-align: center; padding: 32px 0 48px; padding-bottom: 16px; }
+.cta-headline { font-family:'Courier New', monospace; font-size: 18px; color: var(--text); margin-bottom: 8px; }
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.col-cta .cta-links a {
+  padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px; transition: .2s;
+}
+.col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
+.share-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  width: 0%; transition: width .1s linear;
+  box-shadow: 0 0 8px var(--cyan);
+}
+body.theme-light .progress-bar { box-shadow: none; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Type I vs Type II Errors — One 2×2 Table Makes It Click",
+      "description": "Type I errors, Type II errors, and statistical power tend to tangle the moment they appear in a real problem. Sorting them into four cases on a 2×2 table — H₀ true/false crossed with reject/fail-to-reject — is one way to keep α, β, power, and effect size straight.",
+      "inLanguage": "en",
+      "isPartOf": { "@type": "WebSite", "name": "StatPlay", "url": "https://statplay.sasailab.com/" },
+      "url": "https://statplay.sasailab.com/en/columns/error_types.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": { "@type": "Organization", "name": "Sasai Lab" },
+      "publisher": { "@type": "Organization", "name": "Sasai Lab" },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does α + β equal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sorting this by cases makes it easier to keep straight. α is the rejection rate in the H₀-true world; β is the non-rejection rate in the H₁-true world. They are probabilities of different worlds, defined under different assumptions, so adding them doesn't produce an interpretable quantity. Within each world, reject + fail to reject = 1, and that's the relation the table is showing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does small n affect the errors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sorting by cases helps. α does not move — it's a value committed to in advance. What moves is β: a small n means a large standard error σ/√n, which makes the H₀ and H₁ distributions overlap more, which raises β. Power 1−β drops correspondingly. That is what's underneath the saying that 'a real effect can fail to reach significance when n is small.'"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does 'not significant' not mean 'no difference'?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sorting by cases makes the trap visible. The output 'not significant' arises both when there really is no difference and when a real difference exists but n was too small to detect it (β large = insufficient power). Two distinct causes produce the same fail-to-reject outcome. That is why claiming 'no difference' requires an additional showing — adequate power, or a confidence interval narrow enough to rule out meaningful effects."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Columns", "item": "https://statplay.sasailab.com/en/" },
+        { "@type": "ListItem", "position": 3, "name": "Type I vs Type II Errors" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="column-page">
+<div class="progress-bar" id="progressBar"></div>
+<nav id="mainNav">
+<a class="logo" href="../../index.html" title="Back to hub">StatPlay</a>
+<div class="nav-links" id="navLinks">
+<a href="../../index.html">← StatPlay</a>
+<a href="../../columns/error_types.html" style="font-size:12px">JA</a>
+<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
+</div>
+</nav>
+<!-- ═══ HERO ═══ -->
+<div class="hero-cinema" id="etHero">
+<div class="hero-content">
+<div class="hero-eyebrow hero-in-target">// CASE FILE — TYPE I vs TYPE II</div>
+<div class="hero-impact hero-in-target" id="heroImpact"><span class="hi-alpha">α</span><span class="hi-beta">β</span></div>
+<div aria-hidden="true" class="hero-mat">
+<div class="hero-mat-cell phase-2"><span class="hm-tag">1−α</span><span class="hm-prob">Correct</span><span class="hm-note">confidence</span></div>
+<div class="hero-mat-cell phase-1"><span class="hm-tag">α</span><span class="hm-prob">False alarm</span><span class="hm-note">Type I</span></div>
+<div class="hero-mat-cell phase-1"><span class="hm-tag">β</span><span class="hm-prob">Missed</span><span class="hm-note">Type II</span></div>
+<div class="hero-mat-cell phase-2"><span class="hm-tag">1−β</span><span class="hm-prob"><span class="hm-power">Power</span></span><span class="hm-note">detection</span></div>
+</div>
+<h1 class="hero-in-target" id="heroTitle">A false alarm and a missed detection.<br/><em>They sound alike. They aren't the same.</em></h1>
+<p class="hook-sub hero-in-target" id="heroSub">
+"Type I error." "Type II error." The names are familiar; the formulas are not unfamiliar either.<br/>
+Yet <strong>the moment a real problem shows up, the labels start to swap</strong>.<br/>
+This column tries <strong>sorting that tangle into four cases</strong> on a single 2×2 table.
+</p>
+<div class="article-meta hero-in-target" id="heroMeta">
+<span>5-minute read</span>
+<span>3 interactives</span>
+<span>Sasai Lab</span>
+</div>
+</div>
+<button aria-label="Scroll to content" class="hero-scroll" id="heroScroll" type="button">
+<span>SCROLL</span>
+<div class="chevron"></div>
+</button>
+<div id="heroMatrixSentinel" style="position:absolute;bottom:-1px;width:1px;height:1px"></div>
+</div>
+<div aria-label="Breadcrumb" class="col-breadcrumb" style="margin-top:16px">
+<a href="../../index.html">StatPlay</a><span class="sep">›</span>
+<span>Columns</span><span class="sep">›</span>
+<span>Type I vs Type II Errors</span>
+</div>
+<main>
+<!-- ═══ 01 ═══ -->
+<div class="col-divider"><span class="divider-num">01</span></div>
+<div class="col-section">
+<h2>// α, β, and power tend to tangle, don't they</h2>
+<p>Type I errors. Type II errors. Power. The formulas are not the problem; <b style="color:var(--yellow)">the moment a real problem shows up</b>, α and β and "reject / fail to reject" and "true / false" all start dancing at once, and which one is which gets hard to keep track of. That kind of moment, surely most readers know it.</p>
+<p>StatPlay also has a section that handles these errors. But "α is here, β is here, watch them move" only labels the parts; it doesn't touch the wobble itself. <b style="color:var(--cyan)">A page like that is easy to scroll past</b>.</p>
+<p>This column is an attempt to revisit that wobble in the direction of <b style="color:var(--text)">"sort it into cases."</b> Crossing two axes — "H₀ is true / false" and "reject / fail to reject" — gives <b style="color:var(--magenta)">four cases</b>. That single move alone may make the whole picture much easier to keep straight. Worth a try, perhaps.</p>
+</div>
+<!-- ═══ 02 ═══ -->
+<div class="col-divider"><span class="divider-num">02</span></div>
+<div class="col-section">
+<h2>// One axis isn't enough</h2>
+<p>The reason error questions stay slippery is simple: an error gets talked about as <b style="color:var(--cyan)">a single probability on one axis</b>.</p>
+<p>For instance, "the Type II error is the probability of failing to reject" is a tempting line. Not exactly wrong, but a critical piece is missing — <b style="color:var(--magenta)">whether the underlying world has H₀ true, or H₁ true</b>.</p>
+<p>Work through an actual problem and the answer turns out to come in <i>pairs</i>:</p>
+<ul style="color:var(--dim); line-height:2; margin:16px 0;">
+<li><b style="color:var(--text)">Type I</b>: in the world where <b>H₀ is true</b>, the probability of <i>rejecting</i> anyway.</li>
+<li><b style="color:var(--text)">Type II</b>: in the world where <b>H₁ is true</b>, the probability of <i>failing to reject</i>.</li>
+</ul>
+<p>An error is therefore determined by <b style="color:var(--yellow)">two coordinates: the world (H₀ true / H₁ true) and the decision (reject / fail to reject)</b>. Drop the world axis, and the description is guaranteed to wobble somewhere.</p>
+<p>The next section pins both axes down inside one table.</p>
+</div>
+<!-- ═══ 03 ═══ -->
+<div class="col-divider"><span class="divider-num">03</span></div>
+<div class="col-section">
+<h2>// The 2×2 matrix — the spine of this column</h2>
+<p>The whole story collapses into this single table.</p>
+<table aria-label="2×2 matrix of Type I and Type II errors" class="error-matrix">
+<thead>
+<tr>
+<th></th>
+<th scope="col">Fail to reject H₀</th>
+<th scope="col">Reject H₀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="row-h0" scope="row">H₀ is true<br/><span class="row-sub">(no real difference)</span></th>
+<td class="cell-correct">
+<div class="cell-tag">Correct</div>
+<div class="cell-prob">1 − α</div>
+<div class="cell-note">confidence</div>
+</td>
+<td class="cell-error error-alpha">
+<div class="cell-tag">Type I error</div>
+<div class="cell-prob">α</div>
+<div class="cell-note">≒ false alarm</div>
+</td>
+</tr>
+<tr>
+<th class="row-h1" scope="row">H₀ is false<br/><span class="row-sub">(a real difference)</span></th>
+<td class="cell-error error-beta">
+<div class="cell-tag">Type II error</div>
+<div class="cell-prob">β</div>
+<div class="cell-note">≒ missed detection</div>
+</td>
+<td class="cell-correct cell-power">
+<div class="cell-tag">Correct</div>
+<div class="cell-prob">1 − β</div>
+<div class="cell-note">power</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The vertical axis is <i>which world is actually true</i>. The horizontal axis is <i>the decision being made</i>. Two of the four cells are correct outcomes; the other two are errors.</p>
+<p>Pause for a moment and study the table. The point to notice is that <b style="color:var(--cyan)">the four probabilities are not summed across the table</b>. Reading along a row gives <i>"in the H₀-true world, fail to reject + reject = 1"</i>; the other row says <i>"in the H₀-false world, fail to reject + reject = 1."</i> In other words, <b style="color:var(--text)">each row sums to 1</b>, and α and β live in different rows.</p>
+<p>That "different rows" fact is the next twist.</p>
+</div>
+<!-- ═══ 04 INTERACTIVE 1 ═══ -->
+<div class="col-divider"><span class="divider-num">04 · INTERACTIVE</span></div>
+<div class="col-section">
+<h2>// Try it — where does each cell sit on the distributions?</h2>
+<p>The frame is in place: errors are 2×2. But the table alone doesn't show <i>where</i> on the distributions each cell lives. In the mini-visualization below, clicking any cell of the 2×2 lights up the matching region of the distribution. <b style="color:var(--cyan)">Predict first</b>, then click. Calling the shot in advance — "α is probably here, β over there" — is what makes the rest land.</p>
+<div class="judge-block">
+<div class="judge-grid">
+<div aria-label="Pick one cell of the 2×2 matrix" id="judgeMatrix" role="radiogroup">
+<table class="judge-mat">
+<thead>
+<tr><th></th><th>Fail to reject</th><th>Reject</th></tr>
+</thead>
+<tbody>
+<tr>
+<th class="row-h0" scope="row">H₀ true</th>
+<td aria-pressed="true" class="cell-clickable judge-cell-correct" data-cell="00" role="button" tabindex="0">
+<div class="cb-tag">1−α</div><div class="cb-prob">Correct</div>
+</td>
+<td aria-pressed="false" class="cell-clickable judge-cell-error" data-cell="01" role="button" tabindex="0">
+<div class="cb-tag">α</div><div class="cb-prob">False alarm</div>
+</td>
+</tr>
+<tr>
+<th class="row-h1" scope="row">H₀ false</th>
+<td aria-pressed="false" class="cell-clickable judge-cell-error" data-cell="10" role="button" tabindex="0">
+<div class="cb-tag">β</div><div class="cb-prob">Missed</div>
+</td>
+<td aria-pressed="false" class="cell-clickable judge-cell-power" data-cell="11" role="button" tabindex="0">
+<div class="cb-tag">1−β</div><div class="cb-prob">Power</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<canvas aria-busy="true" aria-label="Distribution highlight for the selected cell" id="judgeCanvas"></canvas>
+</div>
+<p aria-live="polite" class="judge-narration" id="judgeNarration"></p>
+</div>
+<p>Once the clicks have run, two facts should be visible on the picture:</p>
+<ul style="color:var(--dim); line-height:2; margin:16px 0;">
+<li><b style="color:var(--text)">α lives in the tails of the blue mountain (the H₀-true world).</b> The purple mountain isn't involved.</li>
+<li><b style="color:var(--text)">β lives near the center of the purple mountain (the H₁-true world).</b> It's measured on a different mountain.</li>
+</ul>
+<p>That picture — <b style="color:var(--magenta)">"α and β sit on different mountains"</b> — is the topic of the next section.</p>
+</div>
+<!-- ═══ 05 ═══ -->
+<div class="col-divider"><span class="divider-num">05</span></div>
+<div class="col-section">
+<h2>// α and β are probabilities of different worlds</h2>
+<p>This is the key turn for the whole column — the point where the case-by-case sort really starts to pay off.</p>
+<p>α and β are <b style="color:var(--yellow)">probabilities defined under different assumptions</b>:</p>
+<ul style="color:var(--dim); line-height:2; margin:16px 0;">
+<li><b style="color:var(--cyan)">α</b> is the probability of rejecting <b>in the world where H₀ is true</b>.</li>
+<li><b style="color:var(--magenta)">β</b> is the probability of failing to reject <b>in the world where H₁ is true</b>.</li>
+</ul>
+<p>So they <b style="color:var(--text)">don't live in the same probability space</b>. Written out it sounds slight, but this carries serious consequences. For instance, the following question now sorts itself:</p>
+<blockquote class="col-quote">"What does α + β represent?"</blockquote>
+<p>Answer: <b style="color:var(--yellow)">nothing</b>. The 2×2 table is <b style="color:var(--text)">not built to be summed down its columns</b>. It's built so that <b style="color:var(--text)">each row sums to 1</b>: in the H₀-true world, <code>(1−α) + α = 1</code>; in the H₁-true world, <code>β + (1−β) = 1</code>. Adding numbers across two different worlds doesn't yield an interpretable quantity. Within each world, <i>fail to reject + reject = 1</i>, and that's the relation the table is showing.</p>
+<p>The familiar <b style="color:var(--cyan)">asymmetry</b> between α and β also sorts naturally from here:</p>
+<ul style="color:var(--dim); line-height:2; margin:16px 0;">
+<li><b style="color:var(--text)">α</b> can be <b style="color:var(--cyan)">drawn the moment H₀ is fixed</b> (the distribution shape is determined). That's why "α = 0.05" can be committed to before any data arrive.</li>
+<li><b style="color:var(--text)">β</b> can't be drawn until <b style="color:var(--magenta)">the position of H₁</b> is specified — that is, until an effect size δ is assumed.</li>
+</ul>
+<p>α is set up front; β only becomes drawable once a δ has been committed to. The asymmetry follows directly from having only one of the two worlds fully specified — the same case-by-case point as before.</p>
+</div>
+<!-- ═══ 06 INTERACTIVE 2 ═══ -->
+<div class="col-divider"><span class="divider-num">06 · INTERACTIVE</span></div>
+<div class="col-section">
+<h2>// Try it — β requires a δ to even exist</h2>
+<p>The claim above — <i>"β can't be drawn until H₁ is placed"</i> — is the kind of thing that's faster to feel than to argue. The control below moves α and the effect size δ independently. <b style="color:var(--cyan)">First move only α</b> and watch what happens to β. Then <b style="color:var(--magenta)">freeze α and move only δ</b>. The contrast between the two behaviors is what makes which quantity belongs to which world visible.</p>
+<canvas aria-busy="true" aria-label="α / δ independent slider distribution" id="deltaAlphaCanvas"></canvas>
+<div class="slider-pair">
+<div class="slider-cell" data-param="alpha">
+<div class="slider-status">α (significance)</div>
+<label class="slider-label">α = <span class="slider-val" id="etAlphaVal">0.050</span></label>
+<input aria-label="α (significance level)" id="etAlphaSlider" max="0.10" min="0.001" step="0.001" type="range" value="0.05"/>
+</div>
+<div class="slider-cell is-active" data-param="delta">
+<div class="slider-status">δ (effect size)</div>
+<label class="slider-label">δ = <span class="slider-val" id="etDeltaVal">2.00</span></label>
+<input aria-label="δ (effect size)" id="etDeltaSlider" max="4" min="0" step="0.05" type="range" value="2.0"/>
+</div>
+</div>
+<div class="live-stats">
+<div class="stat"><span class="stat-label">α</span><span class="stat-val" data-stat="alpha">0.050</span></div>
+<div class="stat"><span class="stat-label">β</span><span class="stat-val" data-stat="beta">—</span></div>
+<div class="stat"><span class="stat-label">power 1−β</span><span class="stat-val" data-stat="power">—</span></div>
+<div class="stat"><span class="stat-label">critical</span><span class="stat-val" data-stat="crit">—</span></div>
+</div>
+<div class="iso-buttons">
+<button id="etIsoAlpha" type="button">Move only α</button>
+<button id="etIsoDelta" type="button">Now only δ</button>
+</div>
+<p style="margin-top:24px">Pin down what just appeared on the canvas:</p>
+<ul style="color:var(--dim); line-height:2; margin:16px 0;">
+<li><b style="color:var(--cyan)">Moving α alone</b> changes the shaded area on the blue mountain. <b style="color:var(--text)">α is the protagonist</b>; β can be treated as essentially unchanged here.</li>
+<li><b style="color:var(--magenta)">Moving δ alone</b> slides the purple mountain. β (the unshaded area between the critical values, under purple) changes a lot. α doesn't budge.</li>
+</ul>
+<p>So <b style="color:var(--yellow)">α is a tool of the H₀ world; β is a tool of the H₁ world</b>. They share a screen, but they live in different worlds. The case-by-case sort is showing up directly on the canvas.</p>
+<aside aria-label="Aside" class="col-aside">
+<span class="col-aside-tag">// NOTE</span>Strictly speaking, when α moves the critical value also moves, so β picks up a small secondary shift. For now, focus on the protagonist motion; the full picture, including power, comes in the next Section 07.
+</aside>
+</div>
+<!-- ═══ 07 ═══ -->
+<div class="col-divider"><span class="divider-num">07</span></div>
+<div class="col-section">
+<h2>// Power is just β read backward — not a new concept</h2>
+<p>At first, "power" tends to look like a third character alongside α and β. Once the cases are sorted, it isn't.</p>
+<div class="col-formula">1 − β = power</div>
+<p>This is <b style="color:var(--green)">the probability of rejecting, still inside the H₁ world</b> — the other side of β. It's the bottom-right cell of the 2×2. The same fact, just read as "detection rate" instead of "miss rate."</p>
+<p>So why does power get its own name? <b style="color:var(--cyan)">It plugs straight into sample-size planning</b>:</p>
+<ul style="color:var(--dim); line-height:2; margin:16px 0;">
+<li>"Keep β at most 0.2" feels less actionable than "secure power of at least 0.8." Power is a forward-facing number that drops into the formula solving for the required n.</li>
+<li>Sliding α and n inside StatPlay shows directly how power 1−β responds — the next interactive does this.</li>
+</ul>
+<p>The takeaway: there is no need to memorize three concepts. <b style="color:var(--yellow)">The 2×2 is still just four cells.</b> Power is β phrased the other way around.</p>
+</div>
+<!-- ═══ 08 INTERACTIVE 3 ═══ -->
+<div class="col-divider"><span class="divider-num">08 · INTERACTIVE</span></div>
+<div class="col-section">
+<h2>// Try it — what shifts when you raise n?</h2>
+<p>One more quantity worth touching: the sample size <code>n</code>. <i>"α and β trade off — push one down, the other goes up"</i> is a common saying. That's only half the story. The full story is that <b style="color:var(--magenta)">increasing n loosens the trade-off itself</b>. Below, vary only n. <b style="color:var(--cyan)">α stays fixed (0.05)</b>.</p>
+<canvas aria-busy="true" aria-label="Distribution as a function of n" id="nCanvas"></canvas>
+<div class="n-slider-row">
+<label>Sample size n = <span class="slider-val" id="etNVal">30</span></label>
+<input aria-label="Sample size n" id="etNSlider" max="500" min="10" step="10" type="range" value="30"/>
+</div>
+<div class="n-cards">
+<div class="n-card" data-card="alpha">
+<div class="n-card-label">α (FIXED)</div>
+<span class="n-card-val">0.050</span>
+<div class="n-card-arrow">━━━━</div>
+</div>
+<div class="n-card" data-card="beta">
+<div class="n-card-label">β</div>
+<span class="n-card-val">—</span>
+<div class="n-card-arrow">↓↓↓</div>
+</div>
+<div class="n-card" data-card="power">
+<div class="n-card-label">power 1−β</div>
+<span class="n-card-val">—</span>
+<div class="n-card-arrow">↑↑↑</div>
+</div>
+</div>
+<p class="n-takeaway">
+At n=30, the same effect size carries a high risk (β) of being judged "no effect." At n=300, that risk drops sharply. That is what <b style="color:var(--magenta)">"a larger n is needed"</b> is really pointing at. <b style="color:var(--text)">It is the only legitimate way to reduce misses (β) without sacrificing α.</b>
+</p>
+<p style="margin-top:24px">Pin down what showed up on the canvas:</p>
+<ul style="color:var(--dim); line-height:2; margin:16px 0;">
+<li><b style="color:var(--cyan)">α doesn't move.</b> The blue area stays at 5%.</li>
+<li><b style="color:var(--yellow)">β drops</b> as the mountains thin out and the overlap shrinks.</li>
+<li>Therefore <b style="color:var(--green)">power 1−β rises</b>.</li>
+</ul>
+<p>The "α and β are a seesaw" metaphor is half right; the complete picture is that the seesaw's pivot itself moves with <code>n</code>, once everything is sorted by case.</p>
+</div>
+<!-- ═══ 09 ═══ -->
+<div class="col-divider"><span class="divider-num">09</span></div>
+<div class="col-section">
+<h2>// When you want to feel one more layer</h2>
+<p>By this point, the 2×2, the world distinction between α and β, the relationship to power, and the role of n should all be lined up.</p>
+<p>If you'd like to see how α, β, power, effect size, and n move <b style="color:var(--yellow)">simultaneously</b> during an actual test, the testing topic has a heavier-duty canvas in its "Two Errors" section.</p>
+<ul style="color:var(--dim); line-height:2; margin:16px 0;">
+<li><a href="../topics/test.html#test_err" style="color:var(--cyan)">Testing topic / Two Errors section →</a></li>
+<li>Preset effect-size links:</li>
+<li style="margin-left:1em"><a href="../topics/test.html?eD=0.5&amp;eA=0.05#test_err" style="color:var(--cyan)">Open with a small effect (δ=0.5) →</a></li>
+<li style="margin-left:1em"><a href="../topics/test.html?eD=2.0&amp;eA=0.05#test_err" style="color:var(--cyan)">Open with a moderate effect (δ=2.0) →</a></li>
+</ul>
+<p>This column is the "putting it in order" room; the other visualization is the "playing with all knobs at once" room. Order first, play second — that sequence tends to make everything click into place.</p>
+</div>
+<!-- ═══ KEY TAKEAWAY ═══ -->
+<div class="takeaway">
+<h3>// KEY TAKEAWAY</h3>
+<ul>
+<li><b style="color:var(--cyan)">Errors are easier to keep straight as a 2×2.</b> A one-axis description tends to lose the H₀-true / H₀-false coordinate.</li>
+<li><b style="color:var(--magenta)">α and β can be sorted as probabilities of different worlds.</b> One belongs to the H₀ world, the other to the H₁ world. Their sum yields no interpretable quantity.</li>
+<li><b style="color:var(--green)">Power 1−β is β read backward.</b> Not a new concept; a forward-facing rename that drops directly into sample-size formulas.</li>
+<li><b style="color:var(--yellow)">n reduces β without touching α.</b> It can be sorted as the only knob that moves the trade-off's pivot itself.</li>
+</ul>
+</div>
+<!-- ═══ FAQ ═══ -->
+<div class="col-divider"><span class="divider-num">FAQ</span></div>
+<div class="col-section">
+<h2>// Frequently asked questions</h2>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" type="button">What does α + β equal?</button>
+<div class="faq-a">
+<p>Sorting by cases makes this easier to keep straight. α is the <b style="color:var(--cyan)">rejection rate in the H₀-true world</b>; β is the <b style="color:var(--magenta)">non-rejection rate in the H₁-true world</b>. They are probabilities of different worlds, defined under different assumptions, so adding them doesn't yield an interpretable quantity. Within each world, <i>reject + fail to reject = 1</i>, and that is the relation the table is showing.</p>
+</div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" type="button">How does small n affect the errors?</button>
+<div class="faq-a">
+<p>Sorting by cases helps. α <b style="color:var(--cyan)">does not move</b> — it's a value committed to in advance. What moves is <b style="color:var(--yellow)">β</b>: a small n means a large standard error σ/√n, which makes the H₀ and H₁ distributions overlap more, which raises β. Power 1−β drops correspondingly. That is what's underneath the line that "a real effect can fail to reach significance when n is small."</p>
+</div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" type="button">Why does "not significant" not mean "no difference"?</button>
+<div class="faq-a">
+<p>Sorting by cases makes the trap visible. The output "not significant" arises both when there really is no difference and when a real difference exists but n was too small to detect it (<b style="color:var(--magenta)">β large = insufficient power</b>). Two distinct causes produce the same "fail to reject" outcome. That is why claiming "no difference" requires <b style="color:var(--text)">an additional showing</b> — adequate power, or a confidence interval narrow enough to rule out meaningful effects.</p>
+</div>
+</div>
+</div>
+<!-- ═══ CTA ═══ -->
+<div class="col-cta">
+<p class="cta-headline">Once the errors are sorted, take this back to a real test.</p>
+<p class="cta-sub">
+With α and β sorted as quantities of two different worlds, the next step is watching them move <i>together</i> inside an actual z- or t-test.<br/>
+The link with confidence intervals also looks different once the 2×2 is in place.
+</p>
+<div class="cta-links">
+<a href="../topics/test.html?eD=0.5&amp;eA=0.05#test_err">Open with small effect (δ=0.5) →</a>
+<a href="../topics/test.html?eD=2.0&amp;eA=0.05#test_err">Open with moderate effect (δ=2.0) →</a>
+<a href="../topics/ci.html">Confidence intervals →</a>
+<a href="../topics/stdnorm.html">Standard normal →</a>
+<a href="../columns/standardization.html">What is standardization? →</a>
+</div>
+<div class="share-row">
+<button class="share-btn" data-kind="dl" data-share="judgeCanvas" data-title="Type I vs Type II Errors — StatPlay">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="page" data-title="Type I vs Type II Errors — StatPlay">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="page" data-title="Type I vs Type II Errors — StatPlay">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="page" data-title="Type I vs Type II Errors — StatPlay">📤 Share</button>
+</div>
+</div>
+</main>
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+</div>
+</footer>
+<script>window.__LANG = 'en';</script>
+<script src="../../js/modules/error_types.js" type="module"></script>
+</body>
+</html>

@@ -32,7 +32,7 @@
 </div>
 <div data-lang="ja" class="detail-section">
 <h3>// 自由度 (df) って結局なに？</h3>
-<p>自分もこれ、最初まったく意味が分からなかった。今の理解はこう：「自由に値を決められるデータの個数」。</p>
+<p>「自由度」という名前から意味が浮かびにくい用語の代表格。整理すると「自由に値を決められるデータの個数」と読める。</p>
 <p>例：3人のテストの平均が60点だと分かっているとする。<br/>
 ・1人目：70点（自由）<br/>
 ・2人目：55点（自由）<br/>
@@ -58,7 +58,7 @@
 </div>
 <div data-lang="en" class="detail-section">
 <h3>// What is degrees of freedom (df), really?</h3>
-<p>This completely baffled me at first. My current understanding: "the number of data values free to vary."</p>
+<p>The name itself rarely conveys the meaning. One way to read it: "the number of data values free to vary."</p>
 <p>Example: three test scores with a known mean of 60.<br/>
 ・Student 1: 70 (free)<br/>
 ・Student 2: 55 (free)<br/>
@@ -112,8 +112,8 @@
 <p>The F distribution is asymmetric. Mix up numerator and denominator df and you get a different critical value — and potentially a different conclusion.</p>
 </div>
 </div>
-<div data-lang="ja" class="exam-note">
-<h3>// 試験での出方</h3>
+<div data-lang="ja" class="pattern-note">
+<h3>// 型として頭に残しておきたいこと</h3>
 <ul>
 <li><b>自由度の計算</b>：「標本サイズ20の1標本t検定の自由度は？」→ 19</li>
 <li><b>df→∞ の挙動</b>：「自由度を大きくすると t分布はどうなるか？」→ N(0,1) に近づく</li>
@@ -121,8 +121,8 @@
 <li><b>関係性</b>：「t² はどの分布に一致するか？」→ F(1, k)</li>
 </ul>
 </div>
-<div data-lang="en" class="exam-note">
-<h3>// How it shows up in exams</h3>
+<div data-lang="en" class="pattern-note">
+<h3>// Patterns to keep in mind</h3>
 <ul>
 <li><b>df calculation</b>: "One-sample t-test with n = 20. df = ?" → 19</li>
 <li><b>df → ∞ behavior</b>: "What happens to the t distribution as df increases?" → approaches N(0,1)</li>

@@ -7,7 +7,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
 <meta name="description" content="成功回数の二項分布、稀な事象の発生回数のポアソン分布、無記憶の待ち時間を表す指数分布。離散と連続の橋渡しをスライダーで体感する。">
-<meta name="keywords" content="二項分布, ポアソン分布, 指数分布, 離散分布, 連続分布, 無記憶性, 統計検定2級">
+<meta name="keywords" content="二項分布, ポアソン分布, 指数分布, 離散分布, 連続分布, 無記憶性">
 <meta name="author" content="Sasai Lab">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <title>二項分布・ポアソン分布・指数分布 — StatPlay</title>
@@ -234,7 +234,7 @@
 ・e⁻³ ≈ 0.050：「0件も来ない確率」が基準。λが大きいほどここが小さい<br/>
 ・5! = 120：5件の来る順番を区別しない ← メールAが先かBが先かは気にしない<br/>
 ・P(X=5) = 243 × 0.050 / 120 ≈ 0.101</p>
-<p><b>二項分布との関係 ← 試験で出る</b><br/>
+<p><b>二項分布との関係 ← ここは押さえておきたい</b><br/>
 ・二項分布で n をめちゃくちゃ大きく、p をめちゃくちゃ小さくして np=λ を保つと → ポアソンに化ける<br/>
 ・上のシミュレーションで n=50, p=0.06 にしてみよう。λ=3 のポアソンとほぼ同じ形になる<br/>
 ・最大の特徴：<b>平均 = 分散 = λ</b>。これが成り立たないデータにポアソンを当てはめると失敗する</p>
@@ -288,7 +288,7 @@
 
 <div class="detail-section">
 <h3>// 3つの分布のつながり — バラバラに覚えたら損</h3>
-<p>この3つ、参考書だと別のページに書いてあるから「3種類の独立した分布」に見えるけど、実はぜんぶつながっている。自分もこれに気づいたとき、急に頭の中が整理された。</p>
+<p>この3つ、参考書だと別のページに書いてあるから「3種類の独立した分布」に見えるけど、実はぜんぶつながっている。つながりが見えると、頭の中の整理が一段進む。</p>
 <div class="connection-diagram">二項分布 ──n大・p小──→ ポアソン分布
    │                         │
    │ np, n(1-p)ともに大      │ 「次までの
@@ -313,12 +313,12 @@
 </div>
 <div class="misc-item">
 <b>❌「二項分布の分散は np」</b>
-<p>np は平均。分散は np(1−p)。(1−p) の掛け忘れは試験の定番トラップ。p が 0 や 1 に近いほど分散は小さくなる（結果がほぼ確定するから当然）。</p>
+<p>np は平均。分散は np(1−p)。(1−p) の掛け忘れは定番のミスポイント。p が 0 や 1 に近いほど分散は小さくなる（結果がほぼ確定するから当然）。</p>
 </div>
 </div>
 
-<div class="exam-note">
-<h3>// 試験での出方</h3>
+<div class="pattern-note">
+<h3>// 型として頭に残しておきたいこと</h3>
 <ul>
 <li><b>余事象パターン</b>：「3回以上成功する確率は？」→ P(X≥3) = 1 − P(0) − P(1) − P(2) のほうが速い</li>
 <li><b>ポアソン近似</b>：「不良品率2%, 100個中3個以上不良品の確率」→ λ=2 でポアソン計算させる</li>

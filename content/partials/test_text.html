@@ -12,7 +12,7 @@
 ・p値 > α → 棄却できない。「偶然でも十分ありえる範囲」</p>
 <p><b>⚠️ p値 ≠「H₀ が正しい確率」</b><br/>
 ・p値は「H₀ が正しいと仮定した上で」計算している。H₀ の真偽そのものは分からない<br/>
-・これは統計学で最もハマりやすい誤解</p>
+・ここはよくハマるポイント</p>
 </div>
 <div data-lang="en" class="detail-section">
 <h3>// Formula used here</h3>
@@ -28,13 +28,13 @@
 ・p-value > α → fail to reject. "This could easily happen by chance"</p>
 <p><b>⚠️ p-value ≠ "probability that H₀ is true"</b><br/>
 ・The p-value is computed assuming H₀ is true. It cannot tell you whether H₀ is actually true or false<br/>
-・This is the single most common misinterpretation in statistics</p>
+・This is a common point of confusion</p>
 </div>
 <div data-lang="ja" class="detail-section">
 <h3>// 検定の5ステップ — 毎回この順番で考える</h3>
 <ol>
 <li><b>仮説を立てる</b>：H₀:「差はない」 vs H₁:「差がある」</li>
-<li><b>有意水準 α を決める</b>：実験前に決める。0.05 が慣例だが分野による</li>
+<li><b>有意水準 α を決める</b>：実験前に決める数（例: 0.05）</li>
 <li><b>検定統計量を計算</b>：z, t, χ² など。「データが H₀ からどれだけずれたか」を1つの数字にまとめる</li>
 <li><b>p値を求める</b>：統計量から確率を引く</li>
 <li><b>判定</b>：p ≤ α なら棄却。p > α なら棄却できない</li>
@@ -52,16 +52,13 @@
 <p>95%信頼区間に μ₀ が入っている ⟺ α=0.05 で H₀ を棄却できない。同じ計算を「幅」で見るか「YES/NO」で見るかの違い。結論は必ず一致する。</p>
 
 <h3>// α と β のトレードオフ</h3>
-<ul>
-<li>α を下げる（例：0.05→0.01）→ 慎重になりすぎて、本当に差があっても見逃しやすくなる（β↑）</li>
-<li>β を下げたいなら → n を増やす。これが「大規模臨床試験」が必要な理由</li>
-</ul>
+<p>α・β・検出力の整理は <a href="../columns/error_types.html" style="color:var(--cyan)">『過誤の2×2』コラム</a>で詳しく扱っています。</p>
 </div>
 <div data-lang="en" class="detail-section">
 <h3>// The 5-step testing recipe — use this order every time</h3>
 <ol>
 <li><b>State hypotheses</b>: H₀: "no difference" vs. H₁: "there is a difference"</li>
-<li><b>Choose α before collecting data</b>: 0.05 is conventional, but varies by field</li>
+<li><b>Choose α before collecting data</b> (e.g., 0.05)</li>
 <li><b>Compute the test statistic</b>: z, t, χ², etc. — a single number summarizing "how far the data is from H₀"</li>
 <li><b>Find the p-value</b>: look up the probability from the statistic</li>
 <li><b>Decide</b>: p ≤ α → reject; p > α → fail to reject</li>
@@ -79,10 +76,7 @@
 <p>μ₀ inside the 95% CI ⟺ fail to reject at α = 0.05. Same math, different lens: the CI shows "width," the test gives "yes/no." The conclusions always agree.</p>
 
 <h3>// The α-β trade-off</h3>
-<ul>
-<li>Lower α (e.g., 0.05 → 0.01) → more cautious, but you miss real effects more often (β increases)</li>
-<li>To reduce β → increase n. That's why large clinical trials are necessary</li>
-</ul>
+<p>For a full breakdown of α, β, and power, see the <a href="../../en/columns/error_types.html" style="color:var(--cyan)">"Type I &amp; II in a 2×2 table" column</a>.</p>
 </div>
 <div data-lang="ja" class="misconception-box">
 <h3>// よくある誤解</h3>
@@ -90,14 +84,7 @@
 <b>❌「p値が小さい = 効果が大きい」</b>
 <p>p値は「データが珍しいかどうか」であって「効果の大きさ」ではない。n=100万なら、ほんの少しの差でもp&lt;0.001 になる。効果の大きさは別途確認が必要。</p>
 </div>
-<div class="misc-item">
-<b>❌「有意でない = 差がない」</b>
-<p>サンプルが少ないと、実際に差があっても p > 0.05 になる（検出力不足）。「差がない」を主張するには n が十分であることを示す必要がある。</p>
-</div>
-<div class="misc-item">
-<b>❌「α を小さくすればするほど良い」</b>
-<p>α を 0.001 にしたら、本当に効く薬でも「効かない」と判定しやすくなる。αとβはシーソーの関係。</p>
-</div>
+<p style="margin:10px 0 0">過誤・検出力にまつわる誤解（「有意でない＝差がない」「α を小さくすればするほど良い」など）は <a href="../columns/error_types.html" style="color:var(--cyan)">『過誤の2×2』コラム</a>のFAQでまとめて整理しています。</p>
 </div>
 <div data-lang="en" class="misconception-box">
 <h3>// Common misconceptions</h3>
@@ -105,17 +92,10 @@
 <b>❌ "Small p-value = large effect"</b>
 <p>The p-value measures how surprising the data is, not how big the effect is. With n = 1,000,000 a tiny difference can yield p &lt; 0.001. Always check effect size separately.</p>
 </div>
-<div class="misc-item">
-<b>❌ "Not significant = no difference"</b>
-<p>With too few samples, a real difference can produce p > 0.05 (low power). "No difference" requires demonstrating that n was large enough to detect one.</p>
+<p style="margin:10px 0 0">Misconceptions about errors and power ("not significant = no difference," "smaller α is always better," etc.) are collected in the FAQ of the <a href="../../en/columns/error_types.html" style="color:var(--cyan)">"Type I &amp; II in a 2×2 table" column</a>.</p>
 </div>
-<div class="misc-item">
-<b>❌ "Smaller α is always better"</b>
-<p>Set α to 0.001 and you'll call truly effective drugs "ineffective" far too often. α and β sit on a seesaw — pushing one down raises the other.</p>
-</div>
-</div>
-<div data-lang="ja" class="exam-note">
-<h3>// 試験での出方</h3>
+<div data-lang="ja" class="pattern-note">
+<h3>// 型として頭に残しておきたいこと</h3>
 <ul>
 <li><b>p値と判定</b>：「p=0.03, α=0.01 のとき？」→ 0.03 > 0.01 なので棄却できない</li>
 <li><b>両側 vs 片側</b>：「薬で平均が上がるか」= 片側（方向が決まっている）、「薬で平均が変わるか（上下どちらでも）」= 両側（方向を問わない）</li>
@@ -124,8 +104,8 @@
 </ul>
 <p style="margin:10px 0 0">臨界値の確認は<a href="../tables/index.html?dist=norm" style="color:var(--cyan)">インタラクティブ確率分布表</a>で — z値・t値をグラフと同期しながら調べられる</p>
 </div>
-<div data-lang="en" class="exam-note">
-<h3>// How it shows up in exams</h3>
+<div data-lang="en" class="pattern-note">
+<h3>// Patterns to keep in mind</h3>
 <ul>
 <li><b>p-value and decision</b>: "p = 0.03, α = 0.01?" → 0.03 > 0.01, fail to reject</li>
 <li><b>Two-sided vs. one-sided</b>: "Does the drug raise the mean?" = one-sided (direction specified); "Does the drug change the mean (either way)?" = two-sided (direction unspecified)</li>

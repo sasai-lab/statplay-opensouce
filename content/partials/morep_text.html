@@ -34,7 +34,7 @@
 </div>
 <div data-lang="ja" class="detail-section">
 <h3>// 3つの分布のつながり — バラバラに覚えたら損</h3>
-<p>この3つ、参考書だと別のページに書いてあるから「3種類の独立した分布」に見えるけど、実はぜんぶつながっている。自分もこれに気づいたとき、急に頭の中が整理された。</p>
+<p>この3つ、参考書だと別のページに書いてあるから「3種類の独立した分布」に見えるけど、実はぜんぶつながっている。つながりが見えると、頭の中の整理が一段進む。</p>
 <div class="connection-diagram">二項分布 ──n大・p小──→ ポアソン分布
    │                         │
    │ np, n(1-p)ともに大      │ 「次までの
@@ -48,7 +48,7 @@
 </div>
 <div data-lang="en" class="detail-section">
 <h3>// How the three distributions connect — learning them separately is a waste</h3>
-<p>Textbooks place these on different pages, making them look like three unrelated distributions. In reality they're deeply connected. Once I saw the links, the whole picture snapped into focus.</p>
+<p>Textbooks place these on different pages, making them look like three unrelated distributions. In reality they're deeply connected. Once the links become visible, the whole picture snaps into focus.</p>
 <div class="connection-diagram">Binomial ──n large, p small──→ Poisson
    │                              │
    │ np, n(1-p) both large        │ "time until
@@ -72,7 +72,7 @@ Normal approximation           Exponential</div>
 </div>
 <div class="misc-item">
 <b>❌「二項分布の分散は np」</b>
-<p>np は平均。分散は np(1−p)。(1−p) の掛け忘れは試験の定番トラップ。p が 0 や 1 に近いほど分散は小さくなる（結果がほぼ確定するから当然）。</p>
+<p>np は平均。分散は np(1−p)。(1−p) の掛け忘れは定番のミスポイント。p が 0 や 1 に近いほど分散は小さくなる（結果がほぼ確定するから当然）。</p>
 </div>
 </div>
 <div data-lang="en" class="misconception-box">
@@ -87,11 +87,11 @@ Normal approximation           Exponential</div>
 </div>
 <div class="misc-item">
 <b>❌ "Binomial variance is np"</b>
-<p>np is the mean. The variance is np(1−p). Forgetting the (1−p) factor is a classic exam trap. Variance is smallest when p is near 0 or 1 (outcomes are nearly certain).</p>
+<p>np is the mean. The variance is np(1−p). Forgetting the (1−p) factor is a classic slip. Variance is smallest when p is near 0 or 1 (outcomes are nearly certain).</p>
 </div>
 </div>
-<div data-lang="ja" class="exam-note">
-<h3>// 試験での出方</h3>
+<div data-lang="ja" class="pattern-note">
+<h3>// 型として頭に残しておきたいこと</h3>
 <ul>
 <li><b>余事象パターン</b>：「3回以上成功する確率は？」→ P(X≥3) = 1 − P(0) − P(1) − P(2) のほうが速い</li>
 <li><b>ポアソン近似</b>：「不良品率2%, 100個中3個以上不良品の確率」→ λ=2 でポアソン計算させる</li>
@@ -99,8 +99,8 @@ Normal approximation           Exponential</div>
 <li><b>平均と分散のセット</b>：「次のうち正しいものを選べ」→ ポアソンは平均=分散=λ、二項の分散は np(1−p)</li>
 </ul>
 </div>
-<div data-lang="en" class="exam-note">
-<h3>// How it shows up in exams</h3>
+<div data-lang="en" class="pattern-note">
+<h3>// Patterns to keep in mind</h3>
 <ul>
 <li><b>Complement trick</b>: "P(3 or more successes)" → P(X≥3) = 1 − P(0) − P(1) − P(2) is usually faster</li>
 <li><b>Poisson approximation</b>: "defect rate 2%, 100 items, P(3+ defective)?" → λ=2, use Poisson</li>

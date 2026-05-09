@@ -17,7 +17,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="StatPlay">
 <meta property="og:title" content="Proportion Testing &amp; Estimation — Visualize the z-test for Proportions">
-<meta property="og:description" content="Visualize proportion testing and estimation. Build confidence intervals from sample proportions and experience one-sample and two-sample z-tests with interactive sliders.">
+<meta property="og:description" content="&quot;60 out of 100 agree&quot; — is that really a majority? Build confidence intervals from sample proportions and experience one-sample and two-sample z-tests with interactive sliders.">
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/proptest.html">
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 <meta property="og:image:alt" content="StatPlay — Proportion Testing &amp; Estimation">
@@ -25,7 +25,7 @@
 <meta property="og:locale:alternate" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Proportion Testing &amp; Estimation — Visualize the z-test for Proportions">
-<meta name="twitter:description" content="Visualize proportion testing and estimation. Build confidence intervals from sample proportions and experience one-sample and two-sample z-tests with interactive sliders.">
+<meta name="twitter:description" content="&quot;60 out of 100 agree&quot; — is that really a majority? Build confidence intervals from sample proportions and experience one-sample and two-sample z-tests with interactive sliders.">
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 <meta name="twitter:image:alt" content="StatPlay — Proportion Testing &amp; Estimation">
 
@@ -45,7 +45,7 @@
     {
       "@type": "LearningResource",
       "name": "Proportion Testing & Estimation — Visualize the z-test for Proportions",
-      "description": "Visualize proportion testing and estimation. Build confidence intervals from sample proportions and experience one-sample and two-sample z-tests with interactive sliders.",
+      "description": "\"60 out of 100 agree\" — is that really a majority? Build confidence intervals from sample proportions and experience one-sample and two-sample z-tests with interactive sliders.",
       "inLanguage": "en",
       "educationalLevel": "intermediate",
       "learningResourceType": "interactive visualization",
@@ -165,35 +165,37 @@
 </ol>
 </div>
 
+<!-- @panel:proptest_ci -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; Confidence interval for a proportion</h3>
 
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① Confidence interval for a proportion</h3>
 <div class="controls">
-<div class="ctrl"><label>Sample size n = <span class="val" id="ptCiNVal">15</span></label>
-<input id="ptCiN" max="200" min="10" step="1" type="range" value="15" aria-label="Sample size n"/>
+<div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="ptCiNVal">15</span></label>
+<input aria-label="Sample size n" id="ptCiN" max="200" min="10" step="1" type="range" value="15"/>
 </div>
-<div class="ctrl"><label>Sample proportion p&#x0302; = <span class="val" id="ptCiPVal">0.50</span></label>
-<input id="ptCiP" max="0.99" min="0.01" step="0.01" type="range" value="0.50" aria-label="Sample proportion"/>
+<div class="ctrl"><label><span>Sample proportion p̂</span> = <span class="val" id="ptCiPVal">0.50</span></label>
+<input aria-label="Sample proportion" id="ptCiP" max="0.99" min="0.01" step="0.01" type="range" value="0.50"/>
 </div>
-<div class="ctrl"><label>Confidence level</label>
-<select id="ptCiLvl" aria-label="Confidence level">
-<option value="90">90%</option>
-<option selected value="95">95%</option>
-<option value="99">99%</option>
+<div class="ctrl"><label><span>Confidence level</span></label>
+<select aria-label="Confidence level" id="ptCiLvl">
+<option data-en="90%" data-ja="90%" value="90">90%</option>
+<option data-en="95%" data-ja="95%" selected="" value="95">95%</option>
+<option data-en="99%" data-ja="99%" value="99">99%</option>
 </select>
 </div>
 </div>
 <canvas aria-busy="true" aria-label="Confidence interval for a proportion. Interactively see how the interval widens or narrows around the sample proportion" id="ptCiCanvas" style="aspect-ratio:16/9"></canvas>
 <div class="info">
-<div><span>Standard error SE</span><strong id="ptCiSE">&#x2014;</strong></div>
-<div><span>CI lower bound</span><strong id="ptCiLo">&#x2014;</strong></div>
-<div><span>CI upper bound</span><strong id="ptCiHi">&#x2014;</strong></div>
-<div><span>Margin of error E</span><strong id="ptCiMoe">&#x2014;</strong></div>
+<div><span>Standard error SE</span><strong id="ptCiSE">—</strong></div>
+<div><span>CI lower bound</span><strong id="ptCiLo">—</strong></div>
+<div><span>CI upper bound</span><strong id="ptCiHi">—</strong></div>
+<div><span>Margin of error E</span><strong id="ptCiMoe">—</strong></div>
 </div>
 <div class="share-row">
-<button class="share-btn dl" data-kind="dl" data-share="ptCiCanvas" data-title="Proportion CI"><span>&#x1F4BE; Save image</span></button>
+<button class="share-btn dl" data-kind="dl" data-share="ptCiCanvas" data-title="Proportion CI"><span>💾 Save image</span></button>
 </div>
 </div>
+<!-- /@panel -->
 </div>
 
 <!-- Panel 1-b: CI Simulation -->
@@ -204,34 +206,36 @@
 Run it 200 times and see whether that 95% claim holds up.</p>
 </div>
 
+<!-- @panel:proptest_sim -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460;-b CI simulation</h3>
 
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ①-b CI simulation</h3>
 <div class="controls">
-<div class="ctrl"><label>True proportion p = <span class="val" id="ptCiSimPVal">0.50</span></label>
-<input id="ptCiSimP" max="0.95" min="0.05" step="0.01" type="range" value="0.50" aria-label="True proportion p"/>
+<div class="ctrl"><label><span>True proportion p</span> = <span class="val" id="ptCiSimPVal">0.50</span></label>
+<input aria-label="True proportion p" id="ptCiSimP" max="0.95" min="0.05" step="0.01" type="range" value="0.50"/>
 </div>
-<div class="ctrl"><label>Sample size n = <span class="val" id="ptCiSimNVal">30</span></label>
-<input id="ptCiSimN" max="200" min="10" step="1" type="range" value="30" aria-label="Sample size n"/>
+<div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="ptCiSimNVal">30</span></label>
+<input aria-label="Sample size n" id="ptCiSimN" max="200" min="10" step="1" type="range" value="30"/>
 </div>
-<div class="ctrl"><label>Confidence level</label>
-<select id="ptCiSimLvl" aria-label="Confidence level">
-<option value="90">90%</option>
-<option selected value="95">95%</option>
-<option value="99">99%</option>
+<div class="ctrl"><label><span>Confidence level</span></label>
+<select aria-label="Confidence level" id="ptCiSimLvl">
+<option data-en="90%" data-ja="90%" value="90">90%</option>
+<option data-en="95%" data-ja="95%" selected="" value="95">95%</option>
+<option data-en="99%" data-ja="99%" value="99">99%</option>
 </select>
 </div>
 </div>
-<div style="display:flex;gap:10px;margin:8px 0">
-<button id="ptCiSimRun" style="background:var(--cyan);color:#000;border:none;padding:6px 20px;font-family:'Courier New',monospace;font-weight:bold;cursor:pointer;font-size:13px">&#x25B6; Run</button>
-<button id="ptCiSimReset" style="background:transparent;color:var(--dim);border:1px solid var(--dim);padding:6px 20px;font-family:'Courier New',monospace;cursor:pointer;font-size:13px">&#x21BA; Reset</button>
+<div class="controls" style="margin:8px 0">
+<button class="btn" id="ptCiSimRun"><span>▶ Run</span></button>
+<button class="btn magenta" id="ptCiSimReset"><span>↺ Reset</span></button>
 </div>
 <canvas aria-busy="true" aria-label="CI simulation. Visualize how often confidence intervals capture the true proportion across 200 samples" id="ptCiSimCanvas" style="aspect-ratio:16/9"></canvas>
 <div class="info">
 <div><span>Generated</span><strong id="ptCiSimMade">0</strong></div>
-<div><span>Coverage rate</span><strong id="ptCiSimCov">&#x2014;</strong></div>
+<div><span>Coverage rate</span><strong id="ptCiSimCov">—</strong></div>
 </div>
 </div>
+<!-- /@panel -->
 </div>
 
 <!-- Panel 2: One-sample z-test -->
@@ -246,46 +250,48 @@ Run it 200 times and see whether that 95% claim holds up.</p>
 </ol>
 </div>
 
+<!-- @panel:proptest_test -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; One-sample z-test for a proportion</h3>
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② One-sample z-test for a proportion</h3>
 
 <p class="sec-desc" style="margin-bottom:14px">
-    Same flow as testing a population mean. Set up H&#x2080;: p = p&#x2080;, compute z from the sample, and check whether it lands in the rejection region.<br/>
-    The only twist is that the standard error becomes &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n). Nail that, and the rest is familiar.
-</p>
-
+    Same flow as testing a population mean. Set up H₀: p = p₀, compute z from the sample, and check whether it lands in the rejection region.<br/>
+    The only twist is that the standard error becomes √(p₀(1−p₀)/n). Nail that, and the rest is familiar.
+  </p>
 <div class="controls">
-<div class="ctrl"><label>Sample size n = <span class="val" id="ptTNVal">100</span></label>
-<input id="ptTN" max="1000" min="10" step="1" type="range" value="100" aria-label="Sample size n"/>
+<div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="ptTNVal">100</span></label>
+<input aria-label="Sample size n" id="ptTN" max="1000" min="10" step="1" type="range" value="100"/>
 </div>
-<div class="ctrl"><label>Sample proportion p&#x0302; = <span class="val" id="ptTPVal">0.60</span></label>
-<input id="ptTP" max="0.99" min="0.01" step="0.01" type="range" value="0.60" aria-label="Sample proportion"/>
+<div class="ctrl"><label><span>Sample proportion p̂</span> = <span class="val" id="ptTPVal">0.60</span></label>
+<input aria-label="Sample proportion" id="ptTP" max="0.99" min="0.01" step="0.01" type="range" value="0.60"/>
 </div>
-<div class="ctrl"><label>Null hypothesis p&#x2080; = <span class="val" id="ptTP0Val">0.50</span></label>
-<input id="ptTP0" max="0.99" min="0.01" step="0.01" type="range" value="0.50" aria-label="Null hypothesis p0"/>
+<div class="ctrl"><label><span>Null hypothesis p₀</span> = <span class="val" id="ptTP0Val">0.50</span></label>
+<input aria-label="Null hypothesis p0" id="ptTP0" max="0.99" min="0.01" step="0.01" type="range" value="0.50"/>
 </div>
-<div class="ctrl"><label>Significance level &#x03B1; = <span class="val" id="ptTAVal">0.050</span></label>
-<input id="ptTA" max="0.2" min="0.001" step="0.001" type="range" value="0.05" aria-label="Significance alpha"/>
+<div class="ctrl"><label><span>Significance level α</span> = <span class="val" id="ptTAVal">0.050</span></label>
+<input aria-label="Significance alpha" id="ptTA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
 </div>
-<div class="ctrl"><label>Test type</label>
-<select id="ptTType" aria-label="Test type">
-<option value="two">Two-sided</option>
-<option value="right">Right</option>
-<option value="left">Left</option>
+<div class="ctrl"><label><span>Test type</span></label>
+<select aria-label="Test type" id="ptTType">
+<option data-en="Two-sided" data-ja="両側" value="two">Two-sided</option>
+<option data-en="Right" data-ja="右側" value="right">Right</option>
+<option data-en="Left" data-ja="左側" value="left">Left</option>
 </select>
 </div>
 </div>
 <canvas aria-busy="true" aria-label="Proportion test visualization. Interactively explore the relationship between the z-statistic and the rejection region" height="260" id="ptTestCanvas"></canvas>
 <div class="info">
-<div><span>Test statistic z</span><strong id="ptTZstat">&#x2014;</strong></div>
-<div><span>Critical value</span><strong id="ptTCrit">&#x2014;</strong></div>
-<div><span>p-value</span><strong id="ptTPval">&#x2014;</strong></div>
-<div><span>Decision</span><strong id="ptTDecision">&#x2014;</strong></div>
+<div><span>Test statistic z</span><strong id="ptTZstat">—</strong></div>
+<div><span>Critical value</span><strong id="ptTCrit">—</strong></div>
+<div><span>p-value</span><strong id="ptTPval">—</strong></div>
+<div><span>Decision</span><strong id="ptTDecision">—</strong></div>
 </div>
 <div class="share-row">
-<button class="share-btn dl" data-kind="dl" data-share="ptTestCanvas" data-title="Proportion Test"><span>&#x1F4BE; Save image</span></button>
+<button class="share-btn dl" data-kind="dl" data-share="ptTestCanvas" data-title="Proportion Test"><span>💾 Save image</span></button>
 </div>
 </div>
+<!-- /@panel -->
 </div>
 
 <!-- Panel 3: Two-proportion z-test -->
@@ -300,134 +306,135 @@ Run it 200 times and see whether that 95% claim holds up.</p>
 </ol>
 </div>
 
+<!-- @panel:proptest_two -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2462; Two-proportion z-test</h3>
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ③ Two-proportion z-test</h3>
 
 <p class="sec-desc" style="margin-bottom:14px">
-    "Drug A vs. Drug B &#x2014; which works better?" "Ad A vs. Ad B &#x2014; is the click-through rate really different?" This test is for comparing two groups.<br/>
-    The key idea: under H&#x2080;: p&#x2081; = p&#x2082;, we pool both samples into a single <b>pooled proportion</b> to build a shared SE. Get that, and the rest mirrors the one-sample test.
-</p>
-
+    "Drug A vs. Drug B — which works better?" "Ad A vs. Ad B — is the click-through rate really different?" This test is for comparing two groups.<br/>
+    The key idea: under H₀: p₁ = p₂, we pool both samples into a single <b>pooled proportion</b> to build a shared SE. Get that, and the rest mirrors the one-sample test.
+  </p>
 <div class="controls">
-<div class="ctrl"><label>n&#x2081; = <span class="val" id="ptTwoN1Val">100</span></label>
-<input id="ptTwoN1" max="500" min="10" step="1" type="range" value="100" aria-label="Sample size n1"/>
+<div class="ctrl"><label>n₁ = <span class="val" id="ptTwoN1Val">100</span></label>
+<input aria-label="Sample size n1" id="ptTwoN1" max="500" min="10" step="1" type="range" value="100"/>
 </div>
-<div class="ctrl"><label>p&#x0302;&#x2081; = <span class="val" id="ptTwoP1Val">0.60</span></label>
-<input id="ptTwoP1" max="0.99" min="0.01" step="0.01" type="range" value="0.60" aria-label="Sample proportion p1"/>
+<div class="ctrl"><label>p̂₁ = <span class="val" id="ptTwoP1Val">0.60</span></label>
+<input aria-label="Sample proportion p1" id="ptTwoP1" max="0.99" min="0.01" step="0.01" type="range" value="0.60"/>
 </div>
-<div class="ctrl"><label>n&#x2082; = <span class="val" id="ptTwoN2Val">100</span></label>
-<input id="ptTwoN2" max="500" min="10" step="1" type="range" value="100" aria-label="Sample size n2"/>
+<div class="ctrl"><label>n₂ = <span class="val" id="ptTwoN2Val">100</span></label>
+<input aria-label="Sample size n2" id="ptTwoN2" max="500" min="10" step="1" type="range" value="100"/>
 </div>
-<div class="ctrl"><label>p&#x0302;&#x2082; = <span class="val" id="ptTwoP2Val">0.45</span></label>
-<input id="ptTwoP2" max="0.99" min="0.01" step="0.01" type="range" value="0.45" aria-label="Sample proportion p2"/>
+<div class="ctrl"><label>p̂₂ = <span class="val" id="ptTwoP2Val">0.45</span></label>
+<input aria-label="Sample proportion p2" id="ptTwoP2" max="0.99" min="0.01" step="0.01" type="range" value="0.45"/>
 </div>
-<div class="ctrl"><label>Significance level &#x03B1; = <span class="val" id="ptTwoAVal">0.050</span></label>
-<input id="ptTwoA" max="0.2" min="0.001" step="0.001" type="range" value="0.05" aria-label="Significance alpha"/>
+<div class="ctrl"><label><span>Significance level α</span> = <span class="val" id="ptTwoAVal">0.050</span></label>
+<input aria-label="Significance alpha" id="ptTwoA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
 </div>
-<div class="ctrl"><label>Test type</label>
-<select id="ptTwoType" aria-label="Test type">
-<option value="two">Two-sided</option>
-<option value="right">Right</option>
-<option value="left">Left</option>
+<div class="ctrl"><label><span>Test type</span></label>
+<select aria-label="Test type" id="ptTwoType">
+<option data-en="Two-sided" data-ja="両側" value="two">Two-sided</option>
+<option data-en="Right" data-ja="右側" value="right">Right</option>
+<option data-en="Left" data-ja="左側" value="left">Left</option>
 </select>
 </div>
 </div>
 <canvas aria-busy="true" aria-label="Two-proportion z-test. Compute z from two sample proportions and visualize its position relative to the rejection region" height="260" id="ptTwoCanvas"></canvas>
 <div class="info">
-<div><span>Pooled proportion p&#x0302;</span><strong id="ptTwoPool">&#x2014;</strong></div>
-<div><span>Test statistic z</span><strong id="ptTwoZstat">&#x2014;</strong></div>
-<div><span>p-value</span><strong id="ptTwoPval">&#x2014;</strong></div>
-<div><span>Decision</span><strong id="ptTwoDecision">&#x2014;</strong></div>
+<div><span>Pooled proportion p̂</span><strong id="ptTwoPool">—</strong></div>
+<div><span>Test statistic z</span><strong id="ptTwoZstat">—</strong></div>
+<div><span>p-value</span><strong id="ptTwoPval">—</strong></div>
+<div><span>Decision</span><strong id="ptTwoDecision">—</strong></div>
 </div>
 <div class="share-row">
-<button class="share-btn dl" data-kind="dl" data-share="ptTwoCanvas" data-title="Two-Proportion Test"><span>&#x1F4BE; Save image</span></button>
+<button class="share-btn dl" data-kind="dl" data-share="ptTwoCanvas" data-title="Two-Proportion Test"><span>💾 Save image</span></button>
 </div>
 </div>
+<!-- /@panel -->
 </div>
 
 <!-- Formulas -->
+<!-- @panel:proptest_text -->
+
 <div class="detail-section">
 <h3>// Formulas used here</h3>
-
 <h4 style="color:var(--cyan);margin:16px 0 8px">Confidence interval for a proportion (Wald interval)</h4>
 <div class="formula" data-tex="\hat{p} \;\pm\; z_{\alpha/2}\,\sqrt{\frac{\hat{p}\,(1-\hat{p})}{n}}"></div>
 <p>
-&#x00B7; p&#x0302; = x/n: sample proportion (x successes out of n trials)<br/>
-&#x00B7; z<sub>&#x03B1;/2</sub>: upper &#x03B1;/2 quantile of the standard normal. For a 95% CI, &#x03B1; = 0.05 and z<sub>0.025</sub> = 1.96<br/>
-&#x00B7; &#x221A;(p&#x0302;(1&#x2212;p&#x0302;)/n): <b>standard error of the sample proportion</b>. Similar to SE = &#x03C3;/&#x221A;n for means, but the variance is p(1&#x2212;p) &#x2014; that's what makes proportions special
+· p̂ = x/n: sample proportion (x successes out of n trials)<br/>
+· z<sub>α/2</sub>: upper α/2 quantile of the standard normal. For a 95% CI, α = 0.05 and z<sub>0.025</sub> = 1.96<br/>
+· √(p̂(1−p̂)/n): <b>standard error of the sample proportion</b>. Similar to SE = σ/√n for means, but the variance is p(1−p) — that's what makes proportions special
 </p>
-
 <h4 style="color:var(--cyan);margin:16px 0 8px">One-sample z-test for a proportion</h4>
 <div class="formula" data-tex="z = \frac{\hat{p} - p_0}{\sqrt{\dfrac{p_0\,(1-p_0)}{n}}}"></div>
 <p>
-&#x00B7; p&#x2080;: the proportion assumed under the null hypothesis (e.g., p&#x2080; = 0.5 for "50%")<br/>
-&#x00B7; The denominator uses <b>p&#x2080;</b>, not p&#x0302; &#x2014; because in a test we work inside the H&#x2080; world<br/>
-&#x00B7; Under H&#x2080; this z follows a standard normal, which lets us compute the p-value
+· p₀: the proportion assumed under the null hypothesis (e.g., p₀ = 0.5 for "50%")<br/>
+· The denominator uses <b>p₀</b>, not p̂ — because in a test we work inside the H₀ world<br/>
+· Under H₀ this z follows a standard normal, which lets us compute the p-value
 </p>
-
 <h4 style="color:var(--cyan);margin:16px 0 8px">Two-proportion z-test</h4>
 <div class="formula" data-tex="z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}\,(1-\hat{p})\left(\dfrac{1}{n_1}+\dfrac{1}{n_2}\right)}}\,,\quad \hat{p} = \frac{x_1 + x_2}{n_1 + n_2}"></div>
 <p>
-&#x00B7; p&#x0302;: the <b>pooled proportion</b> &#x2014; both groups combined. Under H&#x2080;: p&#x2081; = p&#x2082; the true rates are the same, so pooling gives a better estimate<br/>
-&#x00B7; The denominator is the SE of the difference. The 1/n&#x2081; + 1/n&#x2082; term means the smaller sample is the bottleneck
+· p̂: the <b>pooled proportion</b> — both groups combined. Under H₀: p₁ = p₂ the true rates are the same, so pooling gives a better estimate<br/>
+· The denominator is the SE of the difference. The 1/n₁ + 1/n₂ term means the smaller sample is the bottleneck
 </p>
 </div>
 
 <div class="detail-section">
-<h3>// Normal approximation conditions &#x2014; when can you use this method?</h3>
+<h3>// Normal approximation conditions — when can you use this method?</h3>
 <p>
 The z-test and CI for proportions rely on the sample proportion following a normal distribution.<br/>
 The rule of thumb for this approximation to hold:
 </p>
 <ul>
-<li><b>np &#x2265; 5</b> and <b>n(1&#x2212;p) &#x2265; 5</b> (use p&#x2080; for tests)</li>
+<li><b>np ≥ 5</b> and <b>n(1−p) ≥ 5</b> (use p₀ for tests)</li>
 <li>Intuitively: "both successes and failures should occur at least 5 times"</li>
 <li>When p is close to 0 or 1, the distribution becomes skewed and the normal approximation breaks down</li>
 </ul>
 <p>
 If the conditions aren't met, use an <b>exact binomial test</b> or go back and collect more data.<br/>
-In panel &#x2460; above, try shrinking n or pushing p&#x0302; toward 0.01 &#x2014; the &#x26A0; warning appears for exactly this reason.
+In panel ① above, try shrinking n or pushing p̂ toward 0.01 — the ⚠ warning appears for exactly this reason.
 </p>
 </div>
 
 <div class="detail-section">
-<h3>// Estimation vs. testing &#x2014; when to use which</h3>
+<h3>// Estimation vs. testing — when to use which</h3>
 <ul>
-<li><b>Interval estimation</b>: "Roughly where is the true proportion?" &#x2192; present a confidence interval</li>
-<li><b>Hypothesis test</b>: "Is the true proportion different from p&#x2080;? Yes or no?" &#x2192; decide via the p-value</li>
-<li>They are two sides of the same coin: <b>p&#x2080; outside the 95% CI &#x27FA; reject H&#x2080; at &#x03B1; = 0.05</b></li>
+<li><b>Interval estimation</b>: "Roughly where is the true proportion?" → present a confidence interval</li>
+<li><b>Hypothesis test</b>: "Is the true proportion different from p₀? Yes or no?" → decide via the p-value</li>
+<li>They are two sides of the same coin: <b>p₀ outside the 95% CI ⟺ reject H₀ at α = 0.05</b></li>
 </ul>
 <p>
-Flip between panels &#x2460; and &#x2461; with the same n and p&#x0302; to see this relationship in action. If p&#x2080; sits outside the CI in &#x2460;, panel &#x2461; will reject.
+Flip between panels ① and ② with the same n and p̂ to see this relationship in action. If p₀ sits outside the CI in ①, panel ② will reject.
 </p>
 </div>
 
 <div class="misconception-box">
 <h3>// Common misconceptions</h3>
 <div class="misc-item">
-<b>&#x274C; "The SE for estimation and the SE for testing are the same"</b>
-<p>For estimation, SE = &#x221A;(p&#x0302;(1&#x2212;p&#x0302;)/n) uses the sample proportion; for testing, SE = &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n) uses the null value. The difference comes down to "which world are we basing our calculation on?"</p>
+<b>❌ "The SE for estimation and the SE for testing are the same"</b>
+<p>For estimation, SE = √(p̂(1−p̂)/n) uses the sample proportion; for testing, SE = √(p₀(1−p₀)/n) uses the null value. The difference comes down to "which world are we basing our calculation on?"</p>
 </div>
 <div class="misc-item">
-<b>&#x274C; "Large n means the normal approximation always works"</b>
+<b>❌ "Large n means the normal approximation always works"</b>
 <p>If p is as extreme as 0.001, even n = 1,000 gives np = 1, which fails the condition. The "rule of 5" checks both p and n together.</p>
 </div>
 <div class="misc-item">
-<b>&#x274C; "For the two-sample test, compute each group's SE separately and add them"</b>
-<p>Under H&#x2080;: p&#x2081; = p&#x2082;, the true proportions are the same, so we pool them into a single estimate to build a shared SE. You compute separate SEs only when constructing a confidence interval for the difference.</p>
+<b>❌ "For the two-sample test, compute each group's SE separately and add them"</b>
+<p>Under H₀: p₁ = p₂, the true proportions are the same, so we pool them into a single estimate to build a shared SE. You compute separate SEs only when constructing a confidence interval for the difference.</p>
 </div>
 </div>
 
-<div class="exam-note">
-<h3>// How it shows up in exams</h3>
+<div class="pattern-note">
+<h3>// Patterns to keep in mind</h3>
 <ul>
-<li><b>CI calculation</b>: "120 out of 200 people agree. Find the 95% CI for the population proportion." &#x2192; p&#x0302; = 0.6, SE = &#x221A;(0.6 &#x00D7; 0.4 / 200), CI = 0.6 &#x00B1; 1.96 &#x00D7; SE</li>
-<li><b>Test decision</b>: "Is the defect rate 5%? 35 defects out of 500." &#x2192; p&#x0302; = 0.07, p&#x2080; = 0.05, z = (0.07 &#x2212; 0.05) / &#x221A;(0.05 &#x00D7; 0.95 / 500)</li>
-<li><b>Normal approximation check</b>: "Can we use a z-test with n = 20, p&#x2080; = 0.1?" &#x2192; np&#x2080; = 2 &lt; 5, so no</li>
+<li><b>CI calculation</b>: "120 out of 200 people agree. Find the 95% CI for the population proportion." → p̂ = 0.6, SE = √(0.6 × 0.4 / 200), CI = 0.6 ± 1.96 × SE</li>
+<li><b>Test decision</b>: "Is the defect rate 5%? 35 defects out of 500." → p̂ = 0.07, p₀ = 0.05, z = (0.07 − 0.05) / √(0.05 × 0.95 / 500)</li>
+<li><b>Normal approximation check</b>: "Can we use a z-test with n = 20, p₀ = 0.1?" → np₀ = 2 &lt; 5, so no</li>
 <li><b>Two-sample problem</b>: "Drug A: 60 of 100 improved. Drug B: 45 of 100 improved. Is the difference significant?"</li>
 </ul>
 </div>
-
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>into the world where σ is unknown <span class="story-arrow">▸</span> <a href="./dists.html">I6 t, χ², F</a></div>
   </section>
 </main>

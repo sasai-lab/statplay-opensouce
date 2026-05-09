@@ -16,7 +16,7 @@ When prevalence is tiny the numerator shrinks while the denominator, swollen wit
 <h3>// よくある誤解</h3>
 <div class="misc-item">
 <b>❌「陽性 = 病気」</b>
-<p>有病率1%, 感度95%, 特異度90% だと、陽性的中率はたった 8.8%。陽性100人中、実際に病気なのは9人だけ。残りの91人は健康なのに陽性（偽陽性）。上のシミュレーションで有病率を下げていくと、この比率が目で見てじわじわ腑に落ちてきます。</p>
+<p>有病率1%, 感度95%, 特異度90% だと、陽性的中率はたった 8.8%。陽性100人中、実際に病気なのは9人だけ。残りの91人は健康なのに陽性（偽陽性）。上のシミュレーションで有病率を下げていくと、この比率が目で見てじわじわ変化していきます。</p>
 </div>
 <div class="misc-item">
 <b>❌「感度と特異度が高ければ安心」</b>
@@ -42,16 +42,16 @@ When prevalence is tiny the numerator shrinks while the denominator, swollen wit
 <p>The posterior from the first test can become the prior for the second. Two consecutive positives dramatically raise the posterior probability. This is the idea behind Bayesian updating.</p>
 </div>
 </div>
-<div data-lang="ja" class="exam-note">
-<h3>// 試験での出方</h3>
+<div data-lang="ja" class="pattern-note">
+<h3>// 型として頭に残しておきたいこと</h3>
 <ul>
 <li><b>定番計算</b>：「有病率 p%, 感度 a%, 特異度 b%。検査陽性のとき病気の確率は？」</li>
 <li><b>全確率の公式</b>：<span class="math" data-tex="P(B) = P(B|A)\,P(A) + P(B|\bar{A})\,P(\bar{A})"></span> を分母に使う</li>
 <li><b>自然頻度で解く</b>：1000人の表を書いて直接数えるのが確実。公式を暗記するより速い</li>
 </ul>
 </div>
-<div data-lang="en" class="exam-note">
-<h3>// How it shows up in exams</h3>
+<div data-lang="en" class="pattern-note">
+<h3>// Patterns to keep in mind</h3>
 <ul>
 <li><b>Standard calculation</b>: "Prevalence p%, sensitivity a%, specificity b%. Given a positive test, what's the probability of disease?"</li>
 <li><b>Law of total probability</b>: use <span class="math" data-tex="P(B) = P(B|A)\,P(A) + P(B|\bar{A})\,P(\bar{A})"></span> as the denominator</li>

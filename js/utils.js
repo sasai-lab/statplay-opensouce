@@ -35,6 +35,12 @@ export function zCritical(alpha){ // two-sided: returns z such that P(|Z|>z)=alp
   }
   return (lo+hi)/2;
 }
+// Two-sided β: P(-crit ≤ Z ≤ +crit | mean=delta, sd=1).
+// Reused by errs.js (Type I/II canvas) and the error_types column module
+// so the math has a single source of truth.
+export function betaTwoSided(crit, delta){
+  return normCDF(crit, delta, 1) - normCDF(-crit, delta, 1);
+}
 
 // log gamma (Lanczos)
 export function lgamma(z){

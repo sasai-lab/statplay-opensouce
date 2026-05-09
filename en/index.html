@@ -76,7 +76,7 @@
       "audience": {
         "@type": "EducationalAudience",
         "educationalRole": "student",
-        "audienceType": "Statistics learners — self-taught, professionals reskilling, undergraduates, and exam candidates"
+        "audienceType": "Statistics learners — self-taught, professionals reskilling, and undergraduates"
       },
       "author": {
         "@type": "Organization",
@@ -127,6 +127,7 @@
 <a href="columns/birthday.html">Birthday Paradox</a>
 <a href="columns/standardization.html">What Is Standardization?</a>
 <a href="columns/income_prediction.html">Predicting Income</a>
+<a href="columns/error_types.html">Type I vs Type II</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -193,7 +194,7 @@
 
 <div class="story-bridge" style="font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px">
 <b>▼ What this site is for</b><br/>
-    If you're learning statistics on your own and got stuck at <b>"wait, what does this formula even mean?"</b> — this is your first step back. (Studying for a stats exam? You're welcome here too.)<br/>
+    If you're learning statistics on your own and got stuck at <b>"wait, what does this formula even mean?"</b> — this is your first step back.<br/>
     This is a place to <b>rebuild intuition</b>. Systematic study and calculation drills belong to your textbook and problem set. But the "classic misreading" of the 95% confidence interval, or why the t-distribution even exists — <b>drag a slider and you'll see it</b>.<br/>
     Once "oh, that's what it means" lands, <b>go back to your textbook</b> with confidence. That's the whole point.
   </div>
@@ -228,6 +229,7 @@
 
 
 
+
 <div class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--yellow)">
 <a href="columns/deviation.html" style="color:var(--yellow);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">What Is a Deviation Value? — See "Top X%" in 3 Seconds →</a><br/>
 <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">Deviation 60 vs 70 — just 10 points apart, but 5x the rarity. Grasp the truth interactively.</span>
@@ -240,9 +242,13 @@
 <a href="columns/standardization.html" style="color:var(--green,#0f6);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">What Is Standardization? — The Universal Translator for "Normal" →</a><br/>
 <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">182 cm tall vs. TOEIC 860 — which is further from "average"? Learn how Z=(X−μ)/σ lets you compare across units in 3 minutes.</span>
 </div>
-<div class="panel" style="padding:18px 22px;margin:0;border-left:3px solid var(--cyan)">
+<div class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--cyan)">
 <a href="columns/income_prediction.html" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">Income Prediction — How Far Can Statistics Go? →</a><br/>
 <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">Age, gender, prefecture — just three inputs reveal a range of income. A hands-on column on multiple regression.</span>
+</div>
+<div class="panel" style="padding:18px 22px;margin:0;border-left:3px solid var(--yellow)">
+<a href="columns/error_types.html" style="color:var(--yellow);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">Type I vs Type II Errors — One 2×2 Table Makes It Click →</a><br/>
+<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">α, β, power, and effect size all live on a single 2×2 table. Once you see it, the confusion disappears.</span>
 </div>
 </section>
 <!-- ============ TOOL: DISTRIBUTION TABLES ============ -->
@@ -999,16 +1005,13 @@
 </ol>
 </div>
 <!-- @panel:test_err -->
-<div class="panel">
+<div class="panel" id="test_err">
 
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② Two kinds of errors: α, β, power</h3>
 
 <p class="sec-desc" style="margin-bottom:14px">
-      Testing has two kinds of mistakes.<br/>
-<b>Type I error α</b>: rejecting H₀ when it's actually true (false alarm).<br/>
-<b>Type II error β</b>: failing to reject H₀ when H₁ is actually true (a miss).<br/>
-      And <code>1 − β</code> is the <b>power</b>.
-      Change effect size δ or α: the blue (H₀) and purple (H₁) curves fight it out — you can literally see the trade-off "fewer false alarms = more misses".
+      This panel is a <b>hands-on playground</b> for the α (Type I) / β (Type II) / power trade-off.<br/>
+      Come back whenever you want to feel the trade-off. For the deeper conceptual write-up (the 2×2 matrix, why α and β live in different worlds), see the <a href="../../../en/columns/error_types.html" style="color:var(--cyan)">"Type I &amp; II in a 2×2 table" column</a>.
       <br/><i style="color:var(--dim)">Tip: drag horizontally on the chart to slide the critical boundary (α).</i>
 </p>
 <div class="controls">
@@ -1099,7 +1102,7 @@
 
 <div class="guided-steps">
 <b>Simulation — verify what "95%" really means</b>
-<p>"What does a 95% CI actually mean?" — this tripped me up at first too. The answer: "if you repeated the same survey many times, about 95% of the intervals would capture the true proportion."<br>
+<p>"What does a 95% CI actually mean?" — easy to lose the thread by chasing the words alone. Reframed: "if you repeated the same survey many times, about 95% of the intervals would capture the true proportion."<br>
     Run it 200 times and see whether that 95% claim holds up.</br></p>
 </div>
 <!-- @panel:proptest_sim -->

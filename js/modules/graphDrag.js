@@ -77,11 +77,13 @@ export function initGraphDrag(){
     const xMin = -4, xMax = 4;
     return xMin + px / w * (xMax - xMin);
   });
-  // errCanvas — drag to set α via critical line x-position
+  // errCanvas — drag to set α via critical line x-position (two-sided)
+  // Map cursor x to a critical magnitude |c|, then α = 2*(1-Φ(|c|)).
   bindHorizontal('errCanvas','eA',(px,py,w)=>{
     const lo = -4, hi = 8;
     const xCrit = lo + px / w * (hi - lo);
-    return 1 - normCDF(xCrit);
+    const c = Math.abs(xCrit);
+    return 2 * (1 - normCDF(c));
   });
 
   // --- 離散分布+指数分布 ドラッグ ------------------------------------

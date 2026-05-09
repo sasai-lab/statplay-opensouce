@@ -7,7 +7,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
 <meta name="description" content="両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気にイメージする。">
-<meta name="keywords" content="仮説検定, p値, 有意水準, 棄却域, 両側検定, 片側検定, z検定, 統計検定2級">
+<meta name="keywords" content="仮説検定, p値, 有意水準, 棄却域, 両側検定, 片側検定, z検定">
 <meta name="author" content="Sasai Lab">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <title>仮説検定 — p値・α・棄却域を可視化 — StatPlay</title>
@@ -212,16 +212,12 @@
 </ol>
 </div>
 <!-- @panel:test_err -->
-<div class="panel">
+<div class="panel" id="test_err">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② 2つの誤り：α・β・検出力</h3>
 
 <p class="sec-desc" style="margin-bottom:14px">
-      検定には2種類の間違いがある。<br/>
-<b>第1種の誤り α</b>: H₀ が本当なのに棄却してしまう（冤罪）。<br/>
-<b>第2種の誤り β</b>: H₁ が本当なのに見逃してしまう（真犯人を逃す）。<br/>
-      そして <code>1 − β</code> が<b>検出力 (Power)</b>。
-      <span class="term-gloss" title="効果量：処理の効き目を標準偏差で測った指標。0.2=小、0.5=中、0.8=大が目安">効果量</span> δ（本当の差の大きさ）や α を動かすと、青(H₀)と紫(H₁)の曲線がせめぎ合い、
-      "間違いを減らすと見逃しが増える"というトレードオフが見える。
+      ここは α（第1種の誤り）/ β（第2種の誤り）/ 検出力 のトレードオフを<b>触って体感する場</b>。<br/>
+      気になったら戻ってきてOK。深い概念整理（2×2マトリクス・α と β が「別の世界」の確率である理由など）は <a href="../columns/error_types.html" style="color:var(--cyan)">『過誤の2×2』コラム</a>でまとめています。
       <br/><i style="color:var(--dim)">Tip: グラフ上を左右にドラッグすると、臨界値（α の境界）を直接動かせる。</i>
 </p>
 
@@ -261,14 +257,14 @@
 ・p値 &gt; α → 棄却できない。「偶然でも十分ありえる範囲」</p>
 <p><b>⚠️ p値 ≠「H₀ が正しい確率」</b><br/>
 ・p値は「H₀ が正しいと仮定した上で」計算している。H₀ の真偽そのものは分からない<br/>
-・これは統計学で最もハマりやすい誤解</p>
+・ここはよくハマるポイント</p>
 </div>
 
 <div class="detail-section">
 <h3>// 検定の5ステップ — 毎回この順番で考える</h3>
 <ol>
 <li><b>仮説を立てる</b>：H₀:「差はない」 vs H₁:「差がある」</li>
-<li><b>有意水準 α を決める</b>：実験前に決める。0.05 が慣例だが分野による</li>
+<li><b>有意水準 α を決める</b>：実験前に決める数（例: 0.05）</li>
 <li><b>検定統計量を計算</b>：z, t, χ² など。「データが H₀ からどれだけずれたか」を1つの数字にまとめる</li>
 <li><b>p値を求める</b>：統計量から確率を引く</li>
 <li><b>判定</b>：p ≤ α なら棄却。p &gt; α なら棄却できない</li>
@@ -283,10 +279,7 @@
 <h3>// 信頼区間との対応</h3>
 <p>95%信頼区間に μ₀ が入っている ⟺ α=0.05 で H₀ を棄却できない。同じ計算を「幅」で見るか「YES/NO」で見るかの違い。結論は必ず一致する。</p>
 <h3>// α と β のトレードオフ</h3>
-<ul>
-<li>α を下げる（例：0.05→0.01）→ 慎重になりすぎて、本当に差があっても見逃しやすくなる（β↑）</li>
-<li>β を下げたいなら → n を増やす。これが「大規模臨床試験」が必要な理由</li>
-</ul>
+<p>α・β・検出力の整理は <a href="../columns/error_types.html" style="color:var(--cyan)">『過誤の2×2』コラム</a>で詳しく扱っています。</p>
 </div>
 
 <div class="misconception-box">
@@ -295,18 +288,11 @@
 <b>❌「p値が小さい = 効果が大きい」</b>
 <p>p値は「データが珍しいかどうか」であって「効果の大きさ」ではない。n=100万なら、ほんの少しの差でもp&lt;0.001 になる。効果の大きさは別途確認が必要。</p>
 </div>
-<div class="misc-item">
-<b>❌「有意でない = 差がない」</b>
-<p>サンプルが少ないと、実際に差があっても p &gt; 0.05 になる（検出力不足）。「差がない」を主張するには n が十分であることを示す必要がある。</p>
-</div>
-<div class="misc-item">
-<b>❌「α を小さくすればするほど良い」</b>
-<p>α を 0.001 にしたら、本当に効く薬でも「効かない」と判定しやすくなる。αとβはシーソーの関係。</p>
-</div>
+<p style="margin:10px 0 0">過誤・検出力にまつわる誤解（「有意でない＝差がない」「α を小さくすればするほど良い」など）は <a href="../columns/error_types.html" style="color:var(--cyan)">『過誤の2×2』コラム</a>のFAQでまとめて整理しています。</p>
 </div>
 
-<div class="exam-note">
-<h3>// 試験での出方</h3>
+<div class="pattern-note">
+<h3>// 型として頭に残しておきたいこと</h3>
 <ul>
 <li><b>p値と判定</b>：「p=0.03, α=0.01 のとき？」→ 0.03 &gt; 0.01 なので棄却できない</li>
 <li><b>両側 vs 片側</b>：「薬で平均が上がるか」= 片側（方向が決まっている）、「薬で平均が変わるか（上下どちらでも）」= 両側（方向を問わない）</li>

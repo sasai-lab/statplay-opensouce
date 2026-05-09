@@ -602,22 +602,22 @@
   body.theme-light .misconception-box{background:rgba(200,0,150,.03);border-color:rgba(200,0,150,.3);color:var(--dim)}
   body.theme-light .misconception-box b{color:var(--text)}
 
-  .exam-note{
+  .pattern-note{
     margin:32px 0;padding:20px 24px;
     border-left:3px solid var(--yellow);
     background:rgba(255,230,0,.03);
     font-size:var(--fs-body);
     line-height:1.85;color:var(--dim);letter-spacing:.2px;word-spacing:1px;
   }
-  .exam-note h3{
+  .pattern-note h3{
     color:var(--yellow);font-size:var(--fs-body);font-family:'Courier New',monospace;
     margin-bottom:10px;letter-spacing:1px;
   }
-  .exam-note b{color:var(--text);font-weight:600}
-  .exam-note ul{margin:8px 0;padding-left:1.2em}
-  .exam-note li{margin:6px 0;line-height:1.75}
-  body.theme-light .exam-note{background:rgba(180,140,0,.03);border-color:rgba(180,140,0,.3);color:var(--dim)}
-  body.theme-light .exam-note b{color:var(--text)}
+  .pattern-note b{color:var(--text);font-weight:600}
+  .pattern-note ul{margin:8px 0;padding-left:1.2em}
+  .pattern-note li{margin:6px 0;line-height:1.75}
+  body.theme-light .pattern-note{background:rgba(180,140,0,.03);border-color:rgba(180,140,0,.3);color:var(--dim)}
+  body.theme-light .pattern-note b{color:var(--text)}
 
   .term-gloss{
     border-bottom:1px dotted var(--cyan);cursor:help;position:relative;

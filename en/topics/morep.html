@@ -6,7 +6,7 @@
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
-<meta name="description" content="Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.">
+<meta name="description" content="Play with three foundational distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.">
 <meta name="keywords" content="binomial distribution, poisson distribution, exponential distribution, discrete, memoryless">
 <meta name="author" content="Sasai Lab">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="StatPlay">
 <meta property="og:title" content="Binomial, Poisson, and Exponential Distributions">
-<meta property="og:description" content="Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.">
+<meta property="og:description" content="Play with three foundational distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.">
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/morep.html">
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 <meta property="og:image:alt" content="StatPlay — Binomial, Poisson, and Exponential Distributions">
@@ -28,7 +28,7 @@
 <meta property="og:locale:alternate" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Binomial, Poisson, and Exponential Distributions">
-<meta name="twitter:description" content="Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.">
+<meta name="twitter:description" content="Play with three foundational distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.">
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 <meta name="twitter:image:alt" content="StatPlay — Binomial, Poisson, and Exponential Distributions">
 
@@ -48,7 +48,7 @@
     {
       "@type": "LearningResource",
       "name": "Binomial, Poisson, and Exponential Distributions",
-      "description": "Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.",
+      "description": "Play with three foundational distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.",
       "inLanguage": "en",
       "educationalLevel": "intermediate",
       "learningResourceType": "interactive visualization",
@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Binomial, Poisson, and Exponential Distributions</a></h1>
-  <p class="topic-lead">Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.</p>
+  <p class="topic-lead">Play with three foundational distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.</p>
   <section class="reveal in" id="morep">
 
 <div class="sec-tag">P.05 / DISCRETE + EXPONENTIAL</div>
@@ -236,7 +236,7 @@
 ・e⁻³ ≈ 0.050: the probability of seeing zero events — baseline<br/>
 ・5! = 120: we don't care about the order of the 5 arrivals<br/>
 ・P(X=5) = 243 × 0.050 / 120 ≈ 0.101</p>
-<p><b>Connection to binomial — this comes up in exams</b><br/>
+<p><b>Connection to binomial — worth remembering</b><br/>
 ・Make n very large and p very small while keeping np = λ → binomial becomes Poisson<br/>
 ・Try n=50, p=0.06 in the simulator above — it matches Poisson(λ=3) almost perfectly<br/>
 ・The defining property: <b>mean = variance = λ</b>. If this doesn't hold for your data, Poisson is the wrong model</p>
@@ -290,7 +290,7 @@
 
 <div class="detail-section">
 <h3>// How the three distributions connect — learning them separately is a waste</h3>
-<p>Textbooks place these on different pages, making them look like three unrelated distributions. In reality they're deeply connected. Once I saw the links, the whole picture snapped into focus.</p>
+<p>Textbooks place these on different pages, making them look like three unrelated distributions. In reality they're deeply connected. Once the links become visible, the whole picture snaps into focus.</p>
 <div class="connection-diagram">Binomial ──n large, p small──→ Poisson
    │                              │
    │ np, n(1-p) both large        │ "time until
@@ -315,12 +315,12 @@ Normal approximation           Exponential</div>
 </div>
 <div class="misc-item">
 <b>❌ "Binomial variance is np"</b>
-<p>np is the mean. The variance is np(1−p). Forgetting the (1−p) factor is a classic exam trap. Variance is smallest when p is near 0 or 1 (outcomes are nearly certain).</p>
+<p>np is the mean. The variance is np(1−p). Forgetting the (1−p) factor is a classic slip. Variance is smallest when p is near 0 or 1 (outcomes are nearly certain).</p>
 </div>
 </div>
 
-<div class="exam-note">
-<h3>// How it shows up in exams</h3>
+<div class="pattern-note">
+<h3>// Patterns to keep in mind</h3>
 <ul>
 <li><b>Complement trick</b>: "P(3 or more successes)" → P(X≥3) = 1 − P(0) − P(1) − P(2) is usually faster</li>
 <li><b>Poisson approximation</b>: "defect rate 2%, 100 items, P(3+ defective)?" → λ=2, use Poisson</li>
