@@ -1739,11 +1739,12 @@
   /* .side-toc-list a inherits color:var(--dim) via semantic layer */
   body.theme-light .side-toc-list a:hover{ color: var(--cyan); border-left-color: var(--cyan); background: rgba(26,107,122,.04) }
   body.theme-light .side-toc-list a.current{ color: var(--cyan); border-left: 3px solid var(--cyan); background: rgba(26,107,122,.06); font-weight:700 }
-  @media (min-width: 1200px){
+  /* Side-TOC only when there's enough gutter to the right of the 1100px main
+     column. Math: viewport - 18 (right) - 190 (width) >= (viewport + 1100)/2
+     => viewport >= 1516. We use 1500 as the breakpoint and accept a 16px
+     overlap in the narrow band. Below 1500px the topic dropdown takes over. */
+  @media (min-width: 1500px){
     .side-toc{ display: block }
-  }
-  @media (min-width: 1200px) and (max-width: 1399px){
-    .side-toc{ width: 160px; font-size: 10px; right: 10px }
   }
   @media (prefers-reduced-motion: reduce){
     .scroll-progress-fill{ transition: none }
@@ -2040,9 +2041,10 @@ body.topic-page .topic-hub-link a {
 }
 
 /* ===== TOPIC DROPDOWN (mobile topic navigation) ===== */
-/* Hidden on wide screens where side-toc is visible */
+/* Hidden only at >=1500px where the side-toc sits clear of the main column.
+   1200-1499px keeps the dropdown visible — the side-toc would overlap there. */
 .topic-dropdown{ display: none }
-@media (max-width: 1199px){
+@media (max-width: 1499px){
   .topic-dropdown{ display: block }
 }
 /* Category headings inside the dropdown */
@@ -2069,8 +2071,8 @@ body.theme-light .topic-dd-cat{ color: #7c3aed }
 body.theme-light .topic-dropdown .nav-dropdown-menu a.current{
   color: var(--cyan); background: rgba(26,107,122,.06);
 }
-/* On tablet (760-1199px): scrollable dropdown, right-aligned */
-@media (min-width: 761px) and (max-width: 1199px){
+/* On tablet (760-1499px): scrollable dropdown, right-aligned */
+@media (min-width: 761px) and (max-width: 1499px){
   .topic-dropdown .nav-dropdown-menu{ max-height: 70vh; overflow-y: auto }
 }
 /* Mobile drawer: make dropdown full-width */
