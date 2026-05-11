@@ -1,5 +1,6 @@
 // StatPlay — module: Birthday Paradox interactive column
 import { TAU, themeColors, resizeCanvas, throttledDraw, debouncedResize } from '../utils.js';
+import { initShare } from './share.js';
 
 const ja = () => document.documentElement.lang === 'ja';
 const lt = () => document.body.classList.contains('theme-light');
@@ -556,3 +557,8 @@ export function initBirthday() {
 }
 
 initBirthday();
+// Wire share buttons (💾 / 🔗 / 𝕏 / 📤) through the canonical share.js
+// pipeline so all column / topic pages share one implementation. Image
+// download produces a framed PNG with date watermark; URL-copy captures
+// the slider state via buildGraphURL.
+initShare();

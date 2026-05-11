@@ -904,47 +904,8 @@ document.addEventListener('DOMContentLoaded', () => {
     nSlider.addEventListener('input', () => { nDisp.textContent = nSlider.value; });
   }
 
-  // Share buttons handler
-  document.querySelectorAll('.share-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const kind = btn.dataset.kind;
-      const canvasId = btn.dataset.share;
-      const title = btn.dataset.title || 'StatPlay';
-      const pageUrl = location.href;
-
-      if (kind === 'dl') {
-        const c = document.getElementById(canvasId);
-        if (!c) return;
-        c.toBlob(blob => {
-          if (!blob) return;
-          const a = document.createElement('a');
-          a.href = URL.createObjectURL(blob);
-          a.download = (title.replace(/[^a-zA-Z0-9\u3000-\u9fff]/g, '_')) + '.png';
-          a.click();
-          setTimeout(() => URL.revokeObjectURL(a.href), 5000);
-        });
-      } else if (kind === 'url') {
-        navigator.clipboard.writeText(pageUrl).then(() => {
-          const orig = btn.textContent;
-          btn.textContent = '\u2713 Copied!';
-          setTimeout(() => { btn.textContent = orig; }, 1500);
-        });
-      } else if (kind === 'x') {
-        const text = title + ' ' + pageUrl;
-        window.open('https://x.com/intent/post?text=' + encodeURIComponent(text), '_blank', 'width=550,height=420');
-      } else if (kind === 'native') {
-        if (navigator.share) {
-          navigator.share({ title: title, url: pageUrl }).catch(() => {});
-        } else {
-          navigator.clipboard.writeText(pageUrl).then(() => {
-            const orig = btn.textContent;
-            btn.textContent = '\u2713 Copied!';
-            setTimeout(() => { btn.textContent = orig; }, 1500);
-          });
-        }
-      }
-    });
-  });
+  // Share buttons (dl / url / x / native) are wired by js/modules/share.js
+  // via birthday.js -> initShare(). Inline handler removed in v3.14.x audit.
 });
 </script>
 </body>
