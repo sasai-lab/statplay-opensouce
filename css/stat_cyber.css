@@ -112,10 +112,9 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Sans',sans-serif;overflow-x:hidden;scroll-behavior:smooth}
+  /* a / a:visited reference --cyan/--purple which remap automatically via semantic layer; no light override needed */
   a{color:var(--cyan)}
   a:visited{color:var(--purple)}
-  body.theme-light a{color:var(--cyan)}
-  body.theme-light a:visited{color:var(--purple)}
   body::before{
     content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
     background:
@@ -206,7 +205,7 @@
     font-size:12px;letter-spacing:1px;text-decoration:none;white-space:nowrap;
     transition:color .15s,background .15s;border:none;position:relative;
   }
-  .nav-dropdown-menu a:hover{color:var(--cyan);background:rgba(0,243,255,.08)}
+  .nav-dropdown-menu a:hover{color:var(--cyan);background:color-mix(in srgb, var(--accent-primary) 8%, transparent)}
   .nav-dropdown-menu a[data-lang]{display:none}
   body:not(.lang-en) .nav-dropdown-menu a[data-lang="ja"]{display:block}
   body.lang-en .nav-dropdown-menu a[data-lang="en"]{display:block}
@@ -479,7 +478,7 @@
   body.lang-en .story-next[data-lang="en"]{display:block}
 
 
-  .col-intro{color:var(--dim);font-size:var(--fs-sub);line-height:1.75;margin-bottom:28px !important}
+  .col-intro{color:var(--dim);font-size:var(--fs-sub);line-height:1.75;margin-bottom:28px}
 
   /* ==========================================================================
      HUB COLUMN/TOOL CARDS — replaces 100+ inline style copies on hub.
@@ -514,6 +513,36 @@
     font-family:'Courier New',monospace;
   }
   .col-card__related a{color:var(--cyan);text-decoration:none}
+  /* Hover / focus-within affordance — mirrors .col-card-topic-cta language
+     (background tint + border-left thicken + soft glow) but routes every
+     visual through `--col-accent` so each card lights up in its own hue
+     (cyan/magenta/yellow/green) instead of a flat cyan. `:focus-within`
+     gives keyboard users the same cue when the inner __title anchor
+     focuses; we deliberately do NOT set `outline:none` on the inner
+     anchor — the card glow is additive on top of the browser focus ring.
+     `@media (hover: hover)` guards the hover branch so it doesn't latch
+     on touchscreens; `:focus-within` covers tap-then-keyboard paths. */
+  .col-card{
+    transition:background .2s, border-left-width .2s, box-shadow .2s;
+  }
+  @media (hover: hover){
+    .col-card:hover{
+      background:linear-gradient(135deg,
+        color-mix(in srgb, var(--col-accent) 10%, rgba(10,15,44,.8)),
+        rgba(5,6,15,.9));
+      border-left-width:5px;
+      box-shadow:inset 0 0 60px rgba(0,243,255,.04),
+        0 0 18px color-mix(in srgb, var(--col-accent) 35%, transparent);
+    }
+  }
+  .col-card:focus-within{
+    background:linear-gradient(135deg,
+      color-mix(in srgb, var(--col-accent) 10%, rgba(10,15,44,.8)),
+      rgba(5,6,15,.9));
+    border-left-width:5px;
+    box-shadow:inset 0 0 60px rgba(0,243,255,.04),
+      0 0 18px color-mix(in srgb, var(--col-accent) 35%, transparent);
+  }
 
   /* ==========================================================================
      HERO / SECTION-LEVEL TYPOGRAPHY HELPERS — extracted from inline style
@@ -796,8 +825,8 @@
     font-size:14.5px;
     line-height:1.75;
   }
-  body.theme-light .col-cta .cta-headline{color:var(--text)}
-  body.theme-light .col-cta .cta-sub{color:var(--text);opacity:.72}
+  /* .col-cta .cta-headline/.cta-sub inherit color:var(--text) via semantic layer; light only nudges opacity */
+  body.theme-light .col-cta .cta-sub{opacity:.72}
   /* NOTE: かつて .col-cta .share-row .share-btn のスコープ付きスタイルがあったが、
      UT 報告 (戦略ドキュメント §3.6) と憲章 §0 を踏まえて CTA 末尾の share-row
      自体を削除した。感情ピーク (Canvas 直下) でのみシェアボタンを置く方針。
@@ -921,9 +950,13 @@
   .learn-more-link a[data-lang]{display:none}
   body:not(.lang-en) .learn-more-link a[data-lang="ja"]{display:inline-block}
   body.lang-en .learn-more-link a[data-lang="en"]{display:inline-block}
-  .learn-more-link a:hover{border-color:var(--cyan) !important;background:rgba(0,243,255,.06)}
-  body.theme-light .learn-more-link a{color:var(--cyan);border-color:#d8dce6 !important}
-  body.theme-light .learn-more-link a:hover{border-color:var(--cyan) !important;background:rgba(26,107,122,.05)}
+  /* Phase 1 cleanup: forced-cascade flags removed from learn-more-link hover/border —
+     they were a cargo-culted defense against now-deleted col-section p a rules.
+     Specificity 0,2,1 holds against base a{} (0,0,1) and keeps the cyan/teal frame
+     in both themes without forcing the cascade. */
+  .learn-more-link a:hover{border-color:var(--cyan);background:color-mix(in srgb, var(--accent-primary) 6%, transparent)}
+  body.theme-light .learn-more-link a{border-color:#d8dce6}
+  body.theme-light .learn-more-link a:hover{border-color:var(--cyan);background:color-mix(in srgb, var(--accent-primary) 5%, transparent)}
 
   /* Formula */
   .formula{
@@ -967,7 +1000,10 @@
   .detail-section{
     margin:32px 0;padding:20px 24px;
     border-left:3px solid var(--cyan);
-    background:rgba(0,243,255,.03);
+    /* Background uses color-mix on the semantic accent so light/dark themes share one rule.
+       Dark mode: --accent-primary=#00f3ff at 5% reads as a faint cyan film.
+       Light mode: --accent-primary=#1a6b7a at 5% remaps automatically — no override needed. */
+    background:color-mix(in srgb, var(--accent-primary) 5%, transparent);
     font-size:var(--fs-body);
     line-height:1.85;color:var(--dim);letter-spacing:.2px;word-spacing:1px;
   }
@@ -987,14 +1023,15 @@
     border:1px dashed rgba(0,243,255,.2);font-size:var(--fs-sm);
     white-space:pre-line;line-height:1.6;
   }
-  body.theme-light .detail-section{background:color-mix(in srgb, var(--accent-primary) 6%, transparent);border-color:color-mix(in srgb, var(--accent-primary) 30%, transparent)}
-  /* .detail-section b / color:var(--dim) inherit from base rule via semantic layer; no override needed */
+  /* .detail-section background remaps automatically via semantic accent; only the border tone needs a light tweak */
+  body.theme-light .detail-section{border-color:color-mix(in srgb, var(--accent-primary) 30%, transparent)}
   body.theme-light .detail-section .connection-diagram{background:rgba(0,0,0,.03)}
 
   .misconception-box{
     margin:32px 0;padding:20px 24px;
     border-left:3px solid var(--magenta);
-    background:rgba(255,43,214,.03);
+    /* Semantic accent-driven background so light/dark share one rule. */
+    background:color-mix(in srgb, var(--accent-danger) 5%, transparent);
     font-size:var(--fs-body);
     line-height:1.85;color:var(--dim);letter-spacing:.2px;word-spacing:1px;
   }
@@ -1006,13 +1043,14 @@
   .misconception-box .misc-item{margin:16px 0}
   .misconception-box .misc-item b{color:var(--magenta)}
   .misconception-box .misc-item p{margin:4px 0 0;padding-left:12px}
-  body.theme-light .misconception-box{background:color-mix(in srgb, var(--accent-danger) 6%, transparent);border-color:color-mix(in srgb, var(--accent-danger) 30%, transparent)}
-  /* .misconception-box b inherits var(--text) via semantic layer; no override needed */
+  /* .misconception-box background remaps via semantic accent; only border tone needs a light tweak */
+  body.theme-light .misconception-box{border-color:color-mix(in srgb, var(--accent-danger) 30%, transparent)}
 
   .pattern-note{
     margin:32px 0;padding:20px 24px;
     border-left:3px solid var(--yellow);
-    background:rgba(255,230,0,.03);
+    /* Semantic accent-driven background so light/dark share one rule. */
+    background:color-mix(in srgb, var(--accent-development-note) 5%, transparent);
     font-size:var(--fs-body);
     line-height:1.85;color:var(--dim);letter-spacing:.2px;word-spacing:1px;
   }
@@ -1023,13 +1061,14 @@
   .pattern-note b{color:var(--text);font-weight:600}
   .pattern-note ul{margin:8px 0;padding-left:1.2em}
   .pattern-note li{margin:6px 0;line-height:1.75}
-  body.theme-light .pattern-note{background:color-mix(in srgb, var(--accent-development-note) 6%, transparent);border-color:color-mix(in srgb, var(--accent-development-note) 30%, transparent)}
-  /* .pattern-note b inherits var(--text) via semantic layer; no override needed */
+  /* .pattern-note background remaps via semantic accent; only border tone needs a light tweak */
+  body.theme-light .pattern-note{border-color:color-mix(in srgb, var(--accent-development-note) 30%, transparent)}
 
   .related-topics{
     margin:32px 0;padding:20px 24px;
     border-left:3px solid var(--cyan);
-    background:rgba(0,243,255,.03);
+    /* Semantic accent-driven background so light/dark share one rule. */
+    background:color-mix(in srgb, var(--accent-primary) 5%, transparent);
     font-size:var(--fs-body);
     line-height:1.85;color:var(--dim);letter-spacing:.2px;word-spacing:1px;
   }
@@ -1043,8 +1082,8 @@
   .related-topics li::before{content:'→';color:var(--cyan);font-family:'Courier New',monospace;position:absolute;left:0;top:0}
   .related-topics a{color:var(--cyan);font-weight:600;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
   .related-topics a:hover,.related-topics a:focus{border-bottom-color:var(--cyan)}
-  body.theme-light .related-topics{background:color-mix(in srgb, var(--accent-primary) 6%, transparent);border-color:color-mix(in srgb, var(--accent-primary) 30%, transparent)}
-  /* .related-topics b inherits var(--text) via semantic layer; no override needed */
+  /* .related-topics background remaps via semantic accent; only border tone needs a light tweak */
+  body.theme-light .related-topics{border-color:color-mix(in srgb, var(--accent-primary) 30%, transparent)}
 
   .further-reading{margin:32px 0 8px}
   .further-reading > h3{
@@ -1054,13 +1093,14 @@
   .fr-card{
     display:flex;align-items:flex-start;gap:16px;
     margin:10px 0;padding:18px 22px;
-    background:rgba(255,0,200,.04);
-    border:1px solid rgba(255,0,200,.2);
+    /* Semantic narrative accent — light/dark share one rule via remapped --accent-narrative. */
+    background:color-mix(in srgb, var(--accent-narrative) 6%, transparent);
+    border:1px solid color-mix(in srgb, var(--accent-narrative) 22%, transparent);
     border-left:3px solid var(--magenta);
     text-decoration:none;
     transition:background .2s, border-left-width .2s;
   }
-  .fr-card:hover,.fr-card:focus{background:rgba(255,0,200,.08);border-left-width:5px;outline:none}
+  .fr-card:hover,.fr-card:focus{background:color-mix(in srgb, var(--accent-narrative) 12%, transparent);border-left-width:5px;outline:none}
   .fr-card .fr-icon{font-size:24px;line-height:1.2;flex-shrink:0;margin-top:2px}
   .fr-card .fr-body{flex:1;min-width:0}
   .fr-card .fr-title{
@@ -1079,8 +1119,7 @@
     border-bottom:1px dotted var(--dim);padding:2px 0;
   }
   .fr-more a:hover,.fr-more a:focus{color:var(--magenta);border-bottom-color:var(--magenta)}
-  body.theme-light .fr-card{background:color-mix(in srgb, var(--accent-narrative) 8%, transparent);border-color:color-mix(in srgb, var(--accent-narrative) 25%, transparent);border-left-color:var(--magenta)}
-  body.theme-light .fr-card:hover,body.theme-light .fr-card:focus{background:color-mix(in srgb, var(--accent-narrative) 16%, transparent)}
+  /* .fr-card surfaces remap automatically via semantic --accent-narrative; no light-specific override needed */
 
   /* === Column → Topic large-card CTA (v3.12.3+) === */
   /* Symmetrical to .fr-card (topic → column, magenta). Cyan large card so a
@@ -1094,14 +1133,15 @@
   .col-card-topic-cta{
     display:flex;align-items:flex-start;gap:16px;
     margin:10px 0;padding:18px 22px;
-    background:rgba(0,243,255,.05);
-    border:1px solid rgba(0,243,255,.25);
+    /* Semantic primary accent — light/dark share one rule via remapped --accent-primary. */
+    background:color-mix(in srgb, var(--accent-primary) 6%, transparent);
+    border:1px solid color-mix(in srgb, var(--accent-primary) 25%, transparent);
     border-left:4px solid var(--cyan);
     text-decoration:none;
     transition:background .2s, border-left-width .2s, box-shadow .2s;
   }
   .col-card-topic-cta:hover,.col-card-topic-cta:focus{
-    background:rgba(0,243,255,.10);border-left-width:6px;
+    background:color-mix(in srgb, var(--accent-primary) 12%, transparent);border-left-width:6px;
     box-shadow:0 0 12px rgba(0,243,255,.18);outline:none;
   }
   .col-card-topic-cta__icon{
@@ -1119,13 +1159,9 @@
     flex-shrink:0;color:var(--cyan);font-family:'Courier New',monospace;
     font-size:18px;align-self:center;margin-left:8px;
   }
-  body.theme-light .col-card-topic-cta{
-    background:color-mix(in srgb, var(--accent-primary) 6%, transparent);
-    border-color:color-mix(in srgb, var(--accent-primary) 25%, transparent);
-    border-left-color:var(--accent-primary);
-  }
+  /* .col-card-topic-cta surfaces remap automatically via semantic --accent-primary;
+     only the dark-mode cyan glow needs to be muted in light mode. */
   body.theme-light .col-card-topic-cta:hover,body.theme-light .col-card-topic-cta:focus{
-    background:color-mix(in srgb, var(--accent-primary) 14%, transparent);
     box-shadow:none;
   }
 
@@ -1162,8 +1198,7 @@
     text-shadow:0 0 6px rgba(255,43,214,.35);
     outline:none;
   }
-  body.theme-light .col-section p a:not(.col-link-strong):not(.fr-card),
-  body.theme-light .col-section li a:not(.col-link-strong):not(.fr-card){
+  body.theme-light .col-section p a:not(.col-link-strong):not(.fr-card),body.theme-light .col-section li a:not(.col-link-strong):not(.fr-card){
     text-decoration-color:rgba(0,120,140,.55);
   }
   body.theme-light .col-section p a:hover,body.theme-light .col-section li a:hover{text-shadow:none}
@@ -1224,6 +1259,23 @@
     background:rgba(0,243,255,.06);border-bottom-color:var(--cyan);outline:none;
   }
   body.theme-light .pattern-companion{border-top-color:color-mix(in srgb, var(--accent-development-note) 30%, transparent)}
+
+  /* External pointer — short note inside misconception-box / pattern-note that
+     points the reader at a topic StatPlay deliberately doesn't cover (e.g.
+     "Weibull lives in the next chapter of your textbook"). Visual treatment
+     is intentionally muted: smaller, dimmer, with a left dashed bar so the
+     ※ marker reads as a side comment rather than a primary claim. */
+  .external-pointer{
+    margin:10px 0 0;
+    padding:6px 0 6px 12px;
+    border-left:2px dashed color-mix(in srgb, var(--accent-narrative) 40%, transparent);
+    font-size:var(--fs-sm);
+    color:var(--dim);
+    line-height:1.7;
+  }
+  body.theme-light .external-pointer{
+    border-left-color:color-mix(in srgb, var(--accent-narrative) 35%, transparent);
+  }
 
   /* === // CONTINUE label above col-relations ===
      CTA (.col-cta) は既に padding-bottom:16px を持つので、aside の margin-top は控えめに。
@@ -1452,50 +1504,49 @@
   }
   body.theme-light .logo:hover{filter:none;opacity:.7}
   body.theme-light .nav-cat-link{color:var(--text);border-color:transparent}
-  body.theme-light .nav-cat-link:hover{color:var(--cyan);border-color:var(--cyan);text-shadow:none;box-shadow:none}
-  body.theme-light .nav-cat-link.current{color:var(--cyan);border-color:var(--cyan);background:rgba(26,107,122,.06);text-shadow:none}
+  /* .nav-cat-link:hover color/border-color reference --cyan and remap automatically; light only kills the dark-mode glow */
+  body.theme-light .nav-cat-link:hover{text-shadow:none;box-shadow:none}
+  /* .nav-cat-link.current color references --cyan via semantic layer; light hardens the border to solid teal and softens the glow */
+  body.theme-light .nav-cat-link.current{border-color:var(--cyan);background:color-mix(in srgb, var(--accent-primary) 8%, transparent);text-shadow:none}
   body.theme-light .nav-toggle{border-color:#d8dce6;color:var(--text)}
   body.theme-light .nav-toggle:hover{background:var(--bg2);color:var(--text);box-shadow:none}
   body.theme-light .nav-links>a:not(.nav-cat-link){color:var(--dim)}
-  body.theme-light .nav-links>a:not(.nav-cat-link):hover{color:var(--cyan);border-color:var(--cyan);text-shadow:none;box-shadow:none}
-  body.theme-light .nav-links>a:not(.nav-cat-link).current{color:var(--cyan);border-color:var(--cyan);background:rgba(26,107,122,.06)}
+  /* nav-link:hover color/border reference --cyan and remap automatically; light only kills the dark-mode glow */
+  body.theme-light .nav-links>a:not(.nav-cat-link):hover{text-shadow:none;box-shadow:none}
+  /* .nav-links current — base color uses --cyan-light which equals --cyan in light theme; only border + bg shift visibly */
+  body.theme-light .nav-links>a:not(.nav-cat-link).current{border-color:var(--cyan);background:color-mix(in srgb, var(--accent-primary) 8%, transparent)}
 
   /* Nav dropdown — light ---------------------------------------- */
   body.theme-light .nav-dropdown-menu::before{
     background:#ffffff;border-color:#d8dce6;
     box-shadow:0 4px 16px rgba(0,0,0,.10);backdrop-filter:none;
   }
-  /* .nav-dropdown-menu a inherits color:var(--dim) via semantic layer */
-  body.theme-light .nav-dropdown-menu a:hover{background:rgba(26,107,122,.05)}
+  /* .nav-dropdown-menu a inherits color:var(--dim) via semantic layer; hover bg remaps via --accent-primary so no light override needed */
   /* hover color:var(--cyan) inherits from base rule via semantic layer */
 
   /* Lang toggle — light ----------------------------------------- */
   body.theme-light .lang-toggle{
     background:transparent;color:var(--dim);border-color:#d8dce6;
   }
-  body.theme-light .lang-toggle:hover,
-  body.theme-light .lang-toggle:focus-visible{
+  body.theme-light .lang-toggle:hover,body.theme-light .lang-toggle:focus-visible{
     color:var(--cyan);border-color:var(--cyan);text-shadow:none;
   }
   body.theme-light .nav-about{
     color:var(--dim);border-color:#d8dce6;
   }
-  body.theme-light .nav-about:hover,
-  body.theme-light .nav-about:focus-visible{
+  body.theme-light .nav-about:hover,body.theme-light .nav-about:focus-visible{
     color:var(--cyan);border-color:var(--cyan);text-shadow:none;
   }
 
   /* Hero --------------------------------------------------------- */
-  body.theme-light .hero{background:none}
+  /* .hero has no base background; no override needed */
   body.theme-light .hero-title{
     background:none;-webkit-background-clip:unset;background-clip:unset;
     color:var(--text);filter:none;animation:none;
   }
-  body.theme-light .hero-sub{color:var(--dim)}
-  body.theme-light .hero-sub span{color:var(--cyan)}
-  body.theme-light .hero-cta{border-color:var(--cyan);color:var(--cyan)}
+  /* .hero-sub / .hero-sub span colors reference --dim/--cyan and remap automatically via semantic layer */
+  /* .hero-cta border-color/color/::before bg all reference --cyan which remaps via semantic layer; only the hover text color needs a light tweak */
   body.theme-light .hero-cta:hover{color:#fff}
-  body.theme-light .hero-cta::before{background:var(--cyan)}
   body.theme-light .hero canvas{border:none;background:transparent}
 
   /* Category headers --------------------------------------------- */
@@ -1511,12 +1562,11 @@
 
   /* Sections & panels — opaque white ----------------------------- */
   body.theme-light .sec-title{text-shadow:none;color:var(--text);background:none;-webkit-background-clip:unset;background-clip:unset;-webkit-text-fill-color:var(--text)}
-  body.theme-light .sec-tag{background:#ffffff;box-shadow:none !important;text-shadow:none}
+  body.theme-light .sec-tag{background:#ffffff;box-shadow:none;text-shadow:none}
   body.theme-light .sec-desc{color:#3a4050}
   body.theme-light .sec-desc b{color:var(--cyan)}
   body.theme-light .sec-desc code{background:#f0f2f5;color:var(--cyan);border:1px solid #d8dce6}
-  body.theme-light .panel,
-  body.theme-light .story-bridge{
+  body.theme-light .panel,body.theme-light .story-bridge{
     background:#ffffff;
     border-color:#d8dce6;
     box-shadow:0 1px 4px rgba(0,0,0,.06);
@@ -1530,8 +1580,15 @@
     /* keep border-left color = --col-accent */
   }
   body.theme-light .col-card__desc{color:#3a4050}
-  body.theme-light .col-card__related{color:var(--dim)}
-  body.theme-light .panel-title{color:var(--text)}
+  /* .col-card__related inherits color:var(--dim) via semantic layer */
+  /* Light-mode hover/focus-within: replace dark glow with a soft accent-tint
+     surface + minimal shadow lift, kept subtle per AD policy. Single block,
+     covers both states; no !important. */
+  body.theme-light .col-card:hover,body.theme-light .col-card:focus-within{
+    background:color-mix(in srgb, var(--col-accent) 8%, #ffffff);
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+  }
+  /* .panel-title inherits color:var(--text) from body via semantic layer; no override needed */
   body.theme-light .panel-caption{color:#3a4050}
   body.theme-light .story-bridge{
     color:var(--text);border-left:3px solid #d8dce6;
@@ -1551,20 +1608,18 @@
   /* .story-arrow / .text-sub inherit color:var(--dim) via semantic layer */
 
   /* Info boxes --------------------------------------------------- */
-  body.theme-light .info-row,
-  body.theme-light .info>div{
+  body.theme-light .info-row,body.theme-light .info>div{
     background:#f8f9fb;border-color:#d8dce6;color:var(--text);
   }
   body.theme-light .info div strong{text-shadow:none}
-  body.theme-light .info span[id]{color:var(--cyan);font-weight:700}
+  /* .info span[id] has no current usage in HTML; rule removed in v3.12.5+ phase-1 cleanup */
   body.theme-light .ctrl label{color:var(--text)}
-  body.theme-light .hint,
-  body.theme-light [class="hint"]{color:var(--dim) !important}
+  /* .hint / [class="hint"] rule removed: no element in shipped HTML carries class="hint";
+     base .hint{color:var(--dim)} already inherits via semantic layer in light mode */
 
   /* Formulas & examples ------------------------------------------ */
   body.theme-light .formula{text-shadow:none;border-left-color:#b0b8c8;color:var(--text);background:color-mix(in srgb, var(--accent-primary) 8%, transparent)}
-  body.theme-light .example-box{background:#fafbfc;border-color:#d8dce6}
-  body.theme-light .guided-steps{background:#fafbfc;border-color:#d8dce6}
+  body.theme-light .example-box,body.theme-light .guided-steps{background:#fafbfc;border-color:#d8dce6}
   body.theme-light .tab-btn{border-color:#d8dce6;color:var(--dim)}
   body.theme-light .tab-btn.active{color:var(--cyan);background:rgba(26,107,122,.05);border-color:var(--cyan)}
   /* .term-gloss border-bottom var(--cyan) inherits via semantic layer */
@@ -1580,13 +1635,11 @@
   }
 
   /* Form controls ------------------------------------------------ */
-  body.theme-light select,
-  body.theme-light button.btn{
+  body.theme-light select,body.theme-light button.btn{
     background:#ffffff;color:var(--text);border-color:#c0c6d0;
   }
   body.theme-light button.btn:hover{box-shadow:none;background:#f0f2f5}
-  body.theme-light button.btn.magenta:hover{box-shadow:none}
-  body.theme-light button.btn.yellow:hover{box-shadow:none}
+  body.theme-light button.btn.magenta:hover,body.theme-light button.btn.yellow:hover{box-shadow:none}
   body.theme-light [style*="background:#0a0f2c"]{
     background:#ffffff !important;color:var(--text) !important;border-color:#c0c6d0 !important;
   }
@@ -1605,12 +1658,7 @@
   body.theme-light .share-btn:hover{background:var(--cyan);color:#fff;border-color:var(--cyan);box-shadow:none}
   body.theme-light .share-btn.x,body.theme-light .share-btn[data-kind="x"]{border-color:#c0c6d0;color:var(--text)}
   body.theme-light .share-btn.x:hover,body.theme-light .share-btn[data-kind="x"]:hover{background:var(--cyan);color:#fff;box-shadow:none}
-  body.theme-light .share-btn.dl:hover,
-  body.theme-light .share-btn.url:hover,
-  body.theme-light .share-btn.native:hover,
-  body.theme-light .share-btn[data-kind="dl"]:hover,
-  body.theme-light .share-btn[data-kind="url"]:hover,
-  body.theme-light .share-btn[data-kind="native"]:hover{box-shadow:none}
+  body.theme-light .share-btn.dl:hover,body.theme-light .share-btn.url:hover,body.theme-light .share-btn.native:hover,body.theme-light .share-btn[data-kind="dl"]:hover,body.theme-light .share-btn[data-kind="url"]:hover,body.theme-light .share-btn[data-kind="native"]:hover{box-shadow:none}
 
   /* Footer — clean, opaque -------------------------------------- */
   body.theme-light footer{
@@ -1619,17 +1667,20 @@
   body.theme-light footer .foot-head{color:var(--text);text-shadow:none}
   body.theme-light footer .foot-head::before{color:var(--dim)}
   body.theme-light footer .foot-col li{
-    background:#ffffff;border-color:#d8dce6;color:var(--text);
+    /* color:var(--text) inherits from base via semantic layer */
+    background:#ffffff;border-color:#d8dce6;
   }
   body.theme-light footer .foot-col li.m{background:#ffffff;border-color:#d8dce6;color:var(--magenta)}
   body.theme-light footer .foot-col li.y{background:#ffffff;border-color:#d8dce6;color:var(--cyan)}
   body.theme-light footer .foot-col li.g{background:#ffffff;border-color:#d8dce6;color:var(--green)}
   body.theme-light footer .foot-bottom{border-top-color:#d8dce6;color:var(--dim)}
-  body.theme-light footer .foot-bottom a{color:var(--dim);border-bottom-color:#d8dce6}
-  body.theme-light footer .foot-bottom a:hover{color:var(--cyan);border-color:var(--cyan)}
-  body.theme-light footer .foot-copy{color:var(--dim);border-bottom-color:#d8dce6}
+  /* footer .foot-bottom a inherits color:var(--dim) via semantic layer; only border-bottom-color needs neutral grey in light mode.
+     The :hover border-color flips back to var(--cyan) via the base rule. */
+  body.theme-light footer .foot-bottom a{border-bottom-color:#d8dce6}
+  /* footer .foot-copy inherits color:var(--dim) via semantic layer; only the dashed border needs neutral grey in light mode */
+  body.theme-light footer .foot-copy{border-bottom-color:#d8dce6}
   body.theme-light footer .foot-copy b{color:var(--text)}
-  body.theme-light footer .built{color:var(--text)}
+  /* footer .built itself has no base color (body inherits --text); only .built b needs to drop cyan in light mode */
   body.theme-light footer .built b{color:var(--text)}
 
   /* Toast -------------------------------------------------------- */
@@ -1699,15 +1750,9 @@
     box-shadow: 0 0 0 4px rgba(0,243,255,.25);
     border-radius: 3px;
   }
-  body.theme-light button:focus-visible,
-  body.theme-light select:focus-visible,
-  body.theme-light a:focus-visible,
-  body.theme-light .logo:focus-visible,
-  body.theme-light input[type="range"]:focus-visible,
-  body.theme-light .sec-title:focus-visible,
-  body.theme-light canvas[role="slider"]:focus-visible{
+  body.theme-light button:focus-visible,body.theme-light select:focus-visible,body.theme-light a:focus-visible,body.theme-light .logo:focus-visible,body.theme-light input[type="range"]:focus-visible,body.theme-light .sec-title:focus-visible,body.theme-light canvas[role="slider"]:focus-visible{
     outline-color: var(--cyan);
-    box-shadow: 0 0 0 3px rgba(26,107,122,.20);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-primary) 20%, transparent);
   }
   /* Make sure focused canvases stay above shimmer overlay */
   canvas[role="slider"]:focus-visible{ position: relative; z-index: 1 }
@@ -2031,7 +2076,7 @@ body.theme-light .progress-bar { box-shadow: none; }
   font-size: 11px; color: var(--dim); letter-spacing: 1px;
   text-transform: uppercase; margin-bottom: 8px;
 }
-.license-box p { font-size: 13px !important; margin-bottom: 6px !important; }
+.license-box p { font-size: 13px; margin-bottom: 6px; }
 
 .about-author-name {
   font-family: 'Courier New', monospace; font-size: 20px;
@@ -2099,7 +2144,8 @@ body.topic-page .topic-hub-link a {
 /* Current-topic highlight in dropdown */
 .topic-dropdown .nav-dropdown-menu a.current{
   color: var(--cyan); border-left: 3px solid var(--cyan);
-  background: rgba(0,243,255,.08); font-weight: 700;
+  /* Semantic accent-driven background — light/dark share one rule via remapped --accent-primary. */
+  background: color-mix(in srgb, var(--accent-primary) 8%, transparent); font-weight: 700;
 }
 /* Ensure the dropdown toggle button matches nav-cat-link style */
 button.topic-dd-toggle{
@@ -2110,9 +2156,7 @@ button.topic-dd-toggle{
 }
 /* Light-theme adjustments */
 body.theme-light .topic-dd-cat{ color: #7c3aed }
-body.theme-light .topic-dropdown .nav-dropdown-menu a.current{
-  color: var(--cyan); background: rgba(26,107,122,.06);
-}
+/* .topic-dropdown a.current background remaps via semantic --accent-primary; no light override needed */
 /* On tablet (760-1499px): scrollable dropdown, right-aligned */
 @media (min-width: 761px) and (max-width: 1499px){
   .topic-dropdown .nav-dropdown-menu{ max-height: 70vh; overflow-y: auto }

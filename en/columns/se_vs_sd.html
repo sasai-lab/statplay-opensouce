@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta content="Standard deviation and standard error look almost identical, but one measures spread of data and the other measures uncertainty of an estimate. Slide n and watch the two pictures separate in real time." name="description"/>
+<meta content="standard error, standard deviation, SD, SE, sigma over root n, sample mean, confidence interval, test statistic, inferential statistics" name="keywords"/>
+<meta content="Sasai Lab" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<title>Standard Deviation vs Standard Error — Telling SD and SE Apart in One Picture | StatPlay</title>
+<link href="https://statplay.sasailab.com/en/columns/se_vs_sd.html" rel="canonical"/>
+<link href="https://statplay.sasailab.com/columns/se_vs_sd.html" hreflang="ja" rel="alternate"/>
+<link href="https://statplay.sasailab.com/en/columns/se_vs_sd.html" hreflang="en" rel="alternate"/>
+<link href="https://statplay.sasailab.com/columns/se_vs_sd.html" hreflang="x-default" rel="alternate"/>
+<meta content="article" property="og:type"/>
+<meta content="StatPlay" property="og:site_name"/>
+<meta content="Standard Deviation vs Standard Error — Telling SD and SE Apart in One Picture" property="og:title"/>
+<meta content="Standard deviation (SD) measures the spread of individuals; standard error (SE) measures the precision of the mean. Slide n and the two pull apart." property="og:description"/>
+<meta content="https://statplay.sasailab.com/en/columns/se_vs_sd.html" property="og:url"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
+<meta content="StatPlay — SD vs SE" property="og:image:alt"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="ja_JP" property="og:locale:alternate"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Standard Deviation vs Standard Error — Telling SD and SE Apart in One Picture" name="twitter:title"/>
+<meta content="Standard deviation (SD) measures the spread of individuals; standard error (SE) measures the precision of the mean. Slide n and the two pull apart." name="twitter:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<meta content="#00f3ff" name="theme-color"/>
+<link href="../../icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="../../icons/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../../icons/icon-192.png" rel="icon" type="image/png"/>
+<link href="../../css/stat_cyber.css" rel="stylesheet"/>
+<style>
+body.column-page #mainNav .nav-links a,
+body.column-page #mainNav .nav-links button { font-size: 12px; }
+body.column-page section { padding-top: 0; }
+body.column-page .col-breadcrumb {
+  max-width: 800px; margin: 48px auto 4px; padding: 0 24px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.column-page .col-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.column-page .col-breadcrumb a:hover { text-decoration: underline; }
+body.column-page .col-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.column-page main { padding-top: 4px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+.hero-cinema {
+  position: relative; width: 100%; min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; z-index: 2;
+  background:
+    radial-gradient(ellipse at center, rgba(0,243,255,.05) 0%, transparent 70%),
+    repeating-linear-gradient(0deg, rgba(0,243,255,.04) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(90deg, rgba(0,243,255,.04) 0 1px, transparent 1px 40px);
+}
+body.theme-light .hero-cinema {
+  background:
+    radial-gradient(ellipse at center, rgba(0,140,180,.06) 0%, transparent 70%),
+    repeating-linear-gradient(0deg, rgba(0,140,180,.05) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(90deg, rgba(0,140,180,.05) 0 1px, transparent 1px 40px);
+}
+.hero-content {
+  position: relative; z-index: 2; text-align: center;
+  max-width: 760px; padding: 0 24px;
+  text-shadow: 0 0 30px var(--bg), 0 0 60px var(--bg);
+}
+body.theme-light .hero-content {
+  text-shadow: 0 0 30px rgba(240,243,250,.9), 0 0 60px rgba(240,243,250,.8);
+}
+.hero-eyebrow {
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+  letter-spacing: 3px; margin-bottom: 18px; opacity: 0;
+}
+.hero-eyebrow.hero-in { opacity: 1; transition: opacity .8s ease; }
+.hero-impact {
+  font-family:'Courier New', monospace;
+  font-size: clamp(48px, 12vw, 96px); font-weight: 900;
+  letter-spacing: -2px;
+  opacity: 0; transform: scale(2);
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.hero-impact.hero-in {
+  opacity: 1; transform: scale(1);
+  transition: opacity .4s ease, transform .5s cubic-bezier(.17,.67,.3,1.3);
+}
+.hero-impact .hi-sigma { color: var(--cyan); margin-right: 4px;
+  text-shadow: 0 0 28px rgba(0,243,255,.45); }
+.hero-impact .hi-slash { color: var(--dim); margin: 0 8px; font-weight: 400; }
+.hero-impact .hi-rootn { color: var(--magenta);
+  text-shadow: 0 0 28px rgba(255,43,214,.45); }
+body.theme-light .hero-impact .hi-sigma { text-shadow: 0 0 12px rgba(0,140,180,.3); }
+body.theme-light .hero-impact .hi-rootn { text-shadow: 0 0 12px rgba(180,30,150,.3); }
+
+.hero-content h1 {
+  font-family:'Courier New', monospace; font-size: clamp(22px, 4.5vw, 36px);
+  line-height: 1.4; color: var(--text); margin-bottom: 16px;
+  opacity: 0; transform: translateY(20px);
+}
+.hero-content h1.hero-in {
+  opacity: 1; transform: translateY(0);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.hero-content h1 em {
+  font-style: normal; color: var(--yellow);
+  text-shadow: 0 0 24px rgba(255,230,0,.5);
+}
+body.theme-light .hero-content h1 em { text-shadow: none; }
+.hero-content .hook-sub {
+  color: var(--dim); font-size: 15px; line-height: 1.7; opacity: 0;
+}
+.hero-content .hook-sub.hero-in {
+  opacity: 1; transition: opacity .8s ease .3s;
+}
+.hero-content .hook-sub strong.sd { color: var(--magenta); }
+.hero-content .hook-sub strong.se { color: var(--cyan); }
+
+.hero-scroll {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: none; border: none; cursor: pointer;
+  font-family:'Courier New', monospace; font-size: 10px; color: var(--dim);
+  letter-spacing: 3px; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  opacity: 0; animation: fadeIn 1s ease 2s forwards;
+}
+.hero-scroll .chevron {
+  width: 12px; height: 12px; border-right: 1.5px solid var(--dim);
+  border-bottom: 1.5px solid var(--dim); transform: rotate(45deg);
+  animation: bounce 1.5s ease infinite;
+}
+@keyframes fadeIn { to { opacity: .5; } }
+@keyframes bounce { 0%,100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(4px); } }
+body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
+
+.article-meta {
+  display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+  margin-top: 14px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+  opacity: 0;
+}
+.article-meta.hero-in { opacity: 1; transition: opacity .8s ease .6s; }
+.article-meta span::before {
+  content: ''; display: inline-block;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--cyan); margin-right: 6px;
+  vertical-align: middle;
+}
+
+.col-section { opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease; }
+.col-section.visible { opacity: 1; transform: translateY(0); }
+.col-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 56px 0 32px; position: relative; z-index: 2;
+}
+.col-divider::before, .col-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,243,255,.2), transparent);
+}
+.col-divider .divider-num {
+  font-family:'Courier New', monospace; font-size: 11px; color: var(--cyan);
+  letter-spacing: 2px; white-space: nowrap; opacity: .6;
+}
+
+.col-formula {
+  font-family:'Courier New', monospace; font-size: clamp(15px, 3vw, 19px);
+  text-align: center; padding: 18px 16px; margin: 18px 0;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  color: var(--cyan); line-height: 1.6;
+}
+.col-formula .sd { color: var(--magenta); }
+.col-formula .se { color: var(--cyan); }
+code, .inline-code {
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 2px 6px; border: 1px solid rgba(0,243,255,.15);
+  background: rgba(0,243,255,.04); color: var(--cyan); border-radius: 2px;
+}
+blockquote.col-quote {
+  margin: 20px 0; padding: 14px 20px;
+  border-left: 3px solid var(--magenta);
+  background: rgba(255,43,214,.04);
+  font-family:'Courier New', monospace; color: var(--text);
+  font-size: 15px; line-height: 1.7;
+}
+aside.col-aside {
+  margin: 18px 0; padding: 10px 14px;
+  border: 1px dashed rgba(0,243,255,.25);
+  background: rgba(0,243,255,.02);
+  font-family:'Courier New', monospace;
+  font-size: 12px; line-height: 1.7; color: var(--dim);
+}
+aside.col-aside .col-aside-tag {
+  display: inline-block; margin-right: 8px;
+  font-size: 11px; letter-spacing: 1.5px; color: var(--cyan);
+}
+
+.tier-figure {
+  display: grid; grid-template-columns: 1fr; gap: 12px;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  padding: 16px; margin: 16px 0;
+}
+.tier-row {
+  display: grid; grid-template-columns: 130px 1fr; gap: 12px; align-items: center;
+  font-family:'Courier New', monospace;
+}
+.tier-row .tier-label {
+  font-size: 11px; letter-spacing: 1.2px; padding: 6px 8px;
+  border-left: 3px solid var(--magenta);
+}
+.tier-row.tier-mean .tier-label { border-left-color: var(--cyan); }
+.tier-row .tier-label .tier-tag { display: block; font-size: 10px; color: var(--dim); margin-bottom: 2px; }
+.tier-row .tier-label .tier-name { color: var(--magenta); }
+.tier-row.tier-mean .tier-label .tier-name { color: var(--cyan); }
+.tier-row .tier-bar {
+  position: relative; height: 28px; border: 1px dashed rgba(148,163,187,.30);
+  border-radius: 2px;
+}
+.tier-row .tier-dot {
+  position: absolute; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--magenta); top: 50%; transform: translate(-50%,-50%);
+  opacity: .65;
+}
+.tier-row.tier-mean .tier-dot { background: var(--cyan); }
+.tier-row .tier-bar .tier-mu {
+  position: absolute; left: 50%; top: -4px; bottom: -4px; width: 1px;
+  background: rgba(255,230,0,.6);
+}
+.tier-row .tier-bar .tier-mu::after {
+  content: 'μ'; position: absolute; left: 4px; top: -14px;
+  font-size: 10px; color: var(--yellow);
+}
+.tier-row .tier-bar .tier-pop {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,43,214,.06) 30%,
+    rgba(255,43,214,.10) 50%, rgba(255,43,214,.06) 70%, transparent 100%);
+}
+.tier-row .tier-bar .tier-narrow {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 35%, rgba(0,243,255,.08) 45%,
+    rgba(0,243,255,.18) 50%, rgba(0,243,255,.08) 55%, transparent 65%);
+}
+.tier-caption {
+  font-family:'Courier New', monospace; font-size: 11px; color: var(--dim);
+  text-align: center; margin-top: 6px;
+}
+
+.intA-block { margin: 16px 0; }
+.intA-stack { display: flex; flex-direction: column; gap: 10px; }
+#seCanvasTier1 {
+  width: 100%; height: 260px; display: block;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+}
+#seCanvasTier2 {
+  width: 100%; height: 320px; display: block;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+}
+@media (max-width: 720px) {
+  #seCanvasTier1 { height: 220px; }
+  #seCanvasTier2 { height: 260px; }
+}
+.intA-ratio {
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--yellow);
+  text-align: center; margin-top: 6px; letter-spacing: .5px;
+}
+.intA-controls {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 12px; padding: 12px 14px;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  font-family:'Courier New', monospace;
+}
+.intA-controls .ctrl-row {
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+}
+.intA-controls label {
+  font-size: 13px; color: var(--text); display: flex; align-items: center; gap: 8px;
+  flex: 1 1 240px;
+}
+.intA-controls input[type="range"] { flex: 1; min-width: 120px; }
+.intA-controls .slider-val { color: var(--yellow); }
+.intA-controls .ctrl-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.intA-controls button {
+  padding: 6px 14px; border: 1px solid rgba(0,243,255,.30); background: transparent;
+  color: var(--cyan); cursor: pointer;
+  font-family:'Courier New', monospace; font-size: 12px; transition: .2s;
+}
+.intA-controls button:hover { background: rgba(0,243,255,.08); }
+.intA-readout {
+  display: flex; gap: 18px; flex-wrap: wrap; padding: 10px 14px; margin-top: 12px;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  font-family:'Courier New', monospace;
+}
+.intA-readout .rd { display: flex; flex-direction: column; min-width: 100px; }
+.intA-readout .rd-label { font-size: 10px; color: var(--dim); letter-spacing: 1.2px; }
+.intA-readout .rd-val { font-size: 18px; font-weight: 700; line-height: 1.1; margin-top: 4px; }
+.intA-readout .rd-sd .rd-val { color: var(--magenta); }
+.intA-readout .rd-se .rd-val { color: var(--cyan); }
+.intA-readout .rd-formula { color: var(--cyan); flex: 1 1 100%; font-size: 12px; opacity: .85; }
+
+.intB-stack {
+  display: flex; flex-direction: column; gap: 10px;
+}
+#seCiCanvas, #seTestCanvas {
+  width: 100%; height: 380px; display: block;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+}
+@media (max-width: 720px) {
+  #seCiCanvas, #seTestCanvas { height: 300px; }
+}
+.intB-readout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-top: 10px;
+  font-family:'Courier New', monospace; font-size: 13px; color: var(--text);
+}
+@media (max-width: 720px) { .intB-readout { grid-template-columns: 1fr; } }
+.intB-readout .ro {
+  padding: 8px 12px;
+  border-left: 3px solid var(--cyan);
+  background: rgba(0,243,255,.04);
+}
+.intB-readout .ro.ro-test { border-left-color: var(--magenta); background: rgba(255,43,214,.04); }
+.intB-shared {
+  margin-top: 12px; padding: 10px 14px; text-align: center;
+  border: 1px dashed rgba(0,243,255,.30); background: rgba(0,243,255,.04);
+  font-family:'Courier New', monospace; font-size: 14px; color: var(--cyan);
+}
+.intB-controls {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 12px; padding: 12px 14px;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  font-family:'Courier New', monospace;
+}
+.intB-controls label {
+  display: grid; grid-template-columns: 110px 1fr 80px; align-items: center; gap: 12px;
+  font-size: 13px; color: var(--text);
+}
+.intB-controls .slider-val { color: var(--yellow); text-align: right; }
+.intB-controls input[type="range"] { width: 100%; }
+
+.trap-table {
+  width: 100%; border-collapse: collapse;
+  font-family:'Courier New', monospace; font-size: 13px;
+  margin: 16px 0;
+}
+.trap-table th, .trap-table td {
+  border: 1px solid rgba(0,243,255,.18);
+  padding: 12px 14px; vertical-align: top; text-align: left;
+}
+.trap-table thead th {
+  font-size: 11px; color: var(--dim); letter-spacing: 1px;
+  background: rgba(0,243,255,.04); text-transform: uppercase;
+}
+.trap-table tbody th { background: rgba(0,243,255,.03); width: 28%; color: var(--text); }
+.trap-table .trap-warn { color: var(--yellow); }
+@media (max-width: 600px) {
+  .trap-table, .trap-table thead, .trap-table tbody,
+  .trap-table tr, .trap-table th, .trap-table td { display: block; width: 100% !important; }
+  .trap-table thead { display: none; }
+  .trap-table tbody th { border-bottom: none; padding: 12px 14px 4px;
+    color: var(--cyan); letter-spacing: 1.5px; font-size: 12px; }
+  .trap-table tbody th::before { content: '// '; }
+  .trap-table td { border-top: none; }
+}
+
+.takeaway {
+  position: relative; z-index: 2;
+  border: 1px solid rgba(255,230,0,.2);
+  background: rgba(255,230,0,.03);
+  padding: 24px 28px; margin: 48px 0 32px;
+}
+.takeaway h3 {
+  font-family:'Courier New', monospace; font-size: 14px;
+  color: var(--yellow); margin-bottom: 12px; letter-spacing: 1px;
+}
+.takeaway ul { list-style: none; padding: 0; }
+.takeaway li {
+  color: var(--text); font-size: 14px; line-height: 1.8;
+  padding-left: 16px; position: relative; margin-bottom: 6px;
+}
+.takeaway li::before { content: '▸'; position: absolute; left: 0; color: var(--yellow); }
+body.theme-light .takeaway { border-color: rgba(140,100,0,.2); background: rgba(255,230,0,.05); }
+
+.faq-item { margin-bottom: 12px; }
+.faq-q {
+  display: block; width: 100%; text-align: left; padding: 12px 16px;
+  background: rgba(0,243,255,.03); border: 1px solid rgba(0,243,255,.1);
+  color: var(--text); font-size: 14px; cursor: pointer;
+  font-family:'Courier New', monospace; transition: .2s;
+}
+.faq-q:hover { background: rgba(0,243,255,.06); }
+.faq-q::before { content: '▸ '; color: var(--cyan); }
+.faq-q.open::before { content: '▾ '; }
+.faq-a {
+  display: none; padding: 12px 16px; font-size: 14px;
+  line-height: 1.8; color: var(--text);
+  border: 1px solid rgba(0,243,255,.06); border-top: none;
+}
+.faq-a p:last-child { margin-bottom: 0; }
+
+.col-cta { text-align: center; padding: 32px 0 48px; padding-bottom: 16px; }
+.cta-headline {
+  font-family:'Courier New', monospace; font-size: 18px;
+  color: var(--text); margin-bottom: 8px;
+}
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
+.share-row {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  width: 0%; transition: width .1s linear;
+  box-shadow: 0 0 8px var(--cyan);
+}
+body.theme-light .progress-bar { box-shadow: none; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Standard Deviation vs Standard Error — Telling SD and SE Apart in One Picture",
+      "description": "Standard deviation and standard error look almost identical, but one measures spread of data and the other measures uncertainty of an estimate. Slide n and watch the two pictures separate in real time.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/columns/se_vs_sd.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": { "@type": "Organization", "name": "Sasai Lab" },
+      "publisher": { "@type": "Organization", "name": "Sasai Lab" },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should I report SD or SE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on what the figure is meant to convey. SD is right when the goal is to show how variable the individual data points are. SE is right when the goal is to show how uncertain the estimated mean is — that is, how much the mean would shift if the experiment were redone. The classic ambiguity in error bars lives precisely here, and almost all of it disappears when the caption explicitly says whether bars represent SD, SE, or a confidence interval."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "If I multiply n by 10, does SE shrink by a factor of 10?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — that's the catch of the √n factor. Because SE = σ/√n, raising n by 10× shrinks SE by only √10 ≈ 3.16. Halving SE requires 4× the data; reaching one-tenth of SE requires 100× the data. The intuition that 'more data buys precision' is correct, but the cost grows linearly while the precision gained is sub-linear."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I don't know the population σ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the sample standard deviation s instead: SE = s/√n. That's not the whole change, though — the multiplier used in interval estimation and tests also switches from z (standard normal) to t (Student's t). The t distribution has heavier tails for small n, which widens the interval estimate. SE is still 'an estimate of σ/√n,' but the multiplier sitting on top of it has moved from the standard normal to the t family."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Columns", "item": "https://statplay.sasailab.com/en/" },
+        { "@type": "ListItem", "position": 3, "name": "Standard Deviation vs Standard Error" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="column-page">
+<div class="progress-bar" id="progressBar"></div>
+<nav id="mainNav">
+<a class="logo" href="../../index.html" title="Back to hub">StatPlay</a>
+<div class="nav-links" id="navLinks">
+<a href="../../index.html">← StatPlay</a>
+<a href="../../columns/se_vs_sd.html" style="font-size:12px">JA</a>
+<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
+</div>
+</nav>
+<!-- ═══ HERO ═══ -->
+<div class="hero-cinema" id="seHero">
+<div class="hero-content">
+<div class="hero-eyebrow hero-in-target">// CASE FILE — STANDARD ERROR vs DEVIATION</div>
+<div class="hero-impact hero-in-target" id="heroImpact"><span class="hi-sigma">σ</span><span class="hi-slash">/</span><span class="hi-rootn">√n</span></div>
+<h1 class="hero-in-target" id="heroTitle">Spread and uncertainty —<br/><em>closer cousins than they look.</em></h1>
+<p class="hook-sub hero-in-target" id="heroSub">
+SD and SE — nearly identical names and formulas.<br/>
+Yet one captures <strong class="sd">data spread</strong>, the other captures <strong class="se">estimate uncertainty</strong>.<br/>
+Slide n and the two start pulling apart.
+</p>
+<div class="article-meta hero-in-target" id="heroMeta">
+<span>5-minute read</span>
+<span>2 interactives</span>
+<span>Sasai Lab</span>
+</div>
+</div>
+<button aria-label="Scroll to content" class="hero-scroll" id="heroScroll" type="button">
+<span>SCROLL</span>
+<div class="chevron"></div>
+</button>
+</div>
+<div aria-label="Breadcrumb" class="col-breadcrumb" style="margin-top:16px">
+<a href="../../index.html">StatPlay</a><span class="sep">›</span>
+<span>Columns</span><span class="sep">›</span>
+<span>What Is Standard Error?</span>
+</div>
+<main>
+<!-- ═══ 01. INTRO ═══ -->
+<div class="col-divider"></div>
+<div class="col-section">
+<h2>Two quantities that share the word "spread"</h2>
+<p>
+Standard deviation (SD) and standard error (SE). The formulas look almost identical, and both fall under the umbrella term "spread." <b style="color:var(--yellow)">Yet, depending on the context, the lead role suddenly switches between them.</b> That kind of moment shows up surprisingly often.
+</p>
+<p>
+Same-looking formulas, both called "spread," routinely blended in prose without flagging which is which — and then <b style="color:var(--magenta)">raising n leaves the lower picture barely moving while the upper picture keeps thinning by √n</b>. That asymmetry surfaces from the same data without warning. A lower floor for "individual data" and an upper floor for "how the mean would wobble if the experiment were rerun" — looked at as a <b style="color:var(--magenta)">two-tier structure</b>, the two near-identical quantities start to look like residents of different floors.
+</p>
+<p>
+Throughout this column, <b style="color:var(--magenta)">SD (spread of individuals)</b> and <b style="color:var(--cyan)">SE (precision of the mean)</b> consistently get their own colors. Reading along with that two-tone mapping in mind might make the interactives later a bit easier to follow.
+</p>
+<p>
+Where this column is hoping to land is <b style="color:var(--text)">a one-sentence description of the SD/SE difference</b>. When two near-identical formulas get placed as two different roles, the same spot in a textbook can read differently next time around.
+</p>
+</div>
+<!-- ═══ 02. TWO-TIER STRUCTURE ═══ -->
+<div class="col-divider"></div>
+<div class="col-section">
+<h2>// Two tiers — the world of data and the world of means</h2>
+<p>
+SD and SE live in different "worlds."
+</p>
+<div class="tier-figure">
+<div class="tier-row">
+<div class="tier-label"><span class="tier-tag">// TIER 1</span><span class="tier-name">individual data</span></div>
+<div class="tier-bar">
+<div class="tier-pop"></div>
+<div class="tier-mu"></div>
+<div class="tier-dot" style="left:18%"></div>
+<div class="tier-dot" style="left:30%"></div>
+<div class="tier-dot" style="left:42%"></div>
+<div class="tier-dot" style="left:50%"></div>
+<div class="tier-dot" style="left:55%"></div>
+<div class="tier-dot" style="left:62%"></div>
+<div class="tier-dot" style="left:74%"></div>
+<div class="tier-dot" style="left:82%"></div>
+</div>
+</div>
+<div class="tier-row tier-mean">
+<div class="tier-label"><span class="tier-tag">// TIER 2</span><span class="tier-name">sample means</span></div>
+<div class="tier-bar">
+<div class="tier-narrow"></div>
+<div class="tier-mu"></div>
+<div class="tier-dot" style="left:48%"></div>
+<div class="tier-dot" style="left:50%"></div>
+<div class="tier-dot" style="left:52%"></div>
+<div class="tier-dot" style="left:51%"></div>
+<div class="tier-dot" style="left:49%"></div>
+</div>
+</div>
+<div class="tier-caption">Bottom: spread of individuals (SD ≈ σ) / Top: precision of the mean (SE = σ/√n)</div>
+</div>
+<p>
+The lower tier (Tier 1) holds <b style="color:var(--magenta)">individual data points</b>. Measure 30 students' heights and 30 dots scatter here. Their typical width is <b style="color:var(--magenta)">SD</b>.
+</p>
+<p>
+The upper tier (Tier 2) holds <b style="color:var(--cyan)">sample means</b>. Imagine repeating the entire 30-student measurement many times — how would those means scatter? Their typical width is <b style="color:var(--cyan)">SE</b>. <b style="color:var(--text)">Same data underneath, but the floor is different</b> — that view is the one this column keeps following.
+</p>
+<div class="col-formula">
+<span class="sd">SD (individual spread)</span> ≒ σ    /    <span class="se">SE (precision of the mean)</span> = σ / √n
+</div>
+<p style="font-size:13px;color:var(--dim);margin-top:-6px;">
+(Symbol guide: <b style="color:var(--text)">σ</b> — the Greek letter "sigma," the population standard deviation. <b style="color:var(--text)">√n</b> — the square root of n. <b style="color:var(--text)">≒</b> means "approximately equal.")
+</p>
+<p>
+On paper, one symbol separates them. But seeing that one symbol (√n) as the dividing line between the data world and the mean world tends to make the later sections easier to walk through.
+</p>
+</div>
+<!-- ═══ 03. INTERACTIVE A ═══ -->
+<div class="col-divider"><span class="divider-num">INTERACTIVE</span></div>
+<div class="col-section">
+<h2>// Try it — slide n and watch which one shrinks</h2>
+<p>
+The setting: <b style="color:var(--text)">heights of 30 students</b>, drawn from a normal population with <code>μ = 172 cm</code> and <code>σ = 6 cm</code> (<b style="color:var(--text)">μ</b> — the Greek letter "mu," the population mean). Use the slider to vary <code>n</code> (how many people in one batch — the sample size).
+</p>
+<p>
+The thing to watch is that <b style="color:var(--magenta)">the lower picture (individual data) barely changes its spread</b>, while <b style="color:var(--cyan)">the upper picture (sample means) thins out by √n</b>. SD and SE "moving in different directions" is exactly this.
+</p>
+<div class="intA-block">
+<div class="intA-controls">
+<div class="ctrl-row">
+<label>n = <span class="slider-val" id="seNVal">30</span>
+<input aria-label="Sample size n" id="seN" max="900" min="10" step="10" type="range" value="30"/>
+</label>
+<div class="ctrl-buttons">
+<button id="seOneBtn" type="button">Draw once</button>
+<button id="seManyBtn" type="button">Run 100×</button>
+<button id="seClearBtn" type="button">Clear</button>
+</div>
+</div>
+</div>
+<div class="intA-stack">
+<canvas aria-busy="true" aria-label="Individual data scatter and population curve with SD bar below" id="seCanvasTier1" role="img"></canvas>
+<canvas aria-busy="true" aria-label="Sample-mean distribution and bell curve with SE bar below" id="seCanvasTier2" role="img"></canvas>
+<div class="intA-ratio" id="seRatioCaption">SD / SE = √n ≈ 5.48</div>
+</div>
+<div class="share-row" style="margin-top:14px">
+<button class="share-btn" data-kind="dl" data-share="seCanvasTier2" data-title="Standard Deviation vs Standard Error">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="seCanvasTier2" data-title="Standard Deviation vs Standard Error">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="seCanvasTier2" data-title="Standard Deviation vs Standard Error">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="seCanvasTier2" data-title="Standard Deviation vs Standard Error">📤 Share</button>
+</div>
+</div>
+<p style="margin-top:24px">A few things tend to surface once n moves around:</p>
+<ul style="color:var(--dim); line-height:2; margin:16px 0;">
+<li><b style="color:var(--magenta)">The bottom dot spread (SD)</b> stays roughly the same as n changes (σ ≈ 6 cm). That's a property of heights themselves and doesn't shrink with sample size.</li>
+<li><b style="color:var(--cyan)">The top mean histogram</b> thins by <b>√n</b> as n grows. The center stays at μ; only the width shrinks.</li>
+<li>The side-by-side SD/SE bar makes the relation literal: the SD bar barely moves while the SE bar shortens as n goes 30 → 100 → 900. <b style="color:var(--yellow)">SD/SE = √n</b> is readable straight off the bars.</li>
+</ul>
+</div>
+<!-- ═══ 04. WHY √n ═══ -->
+<div class="col-divider"></div>
+<div class="col-section">
+<h2>// What √n really does — the cost is linear, the gain is not</h2>
+<p>
+The <b style="color:var(--magenta)">√n</b> in <code>SE = σ/√n</code> sets the rate at which more data buys mean precision. Plugging in numbers makes the rate concrete.
+</p>
+<div class="col-formula">
+n=10  →  SE ≈ 6/√10  ≈ <span class="se">1.90</span> cm<br/>
+n=100  →  SE ≈ 6/√100 ≈ <span class="se">0.60</span> cm<br/>
+n=900  →  SE ≈ 6/√900 ≈ <span class="se">0.20</span> cm
+</div>
+<p>
+Multiplying n by 10 (10 → 100) shrinks SE only from 1.90 to 0.60 — <b style="color:var(--yellow)">a factor of about 3</b>. Cutting SE by 10 takes 100× the data (10 → 1000). <b style="color:var(--cyan)">Halving SE requires 4× the data</b> — that's the core of the √n behavior.
+</p>
+<p>
+The intuition that "more data improves precision" is correct. But <b style="color:var(--text)">precision doesn't grow proportionally with n</b>. Doubling n only buys √2 ≈ 1.4× more precision — that's the property running underneath. The moment that property gets in the way usually shows up when surveying 30, 100, or 1000 people is on the table.
+</p>
+<aside class="col-aside">
+<span class="col-aside-tag">// NOTE</span>When the population σ is unknown, the sample standard deviation s replaces it: SE = s/√n. The multiplier used by confidence intervals and tests then switches from z (standard normal) to t (Student's t). Touching that switch directly is part of the "t / χ² / F family" topic linked below.
+</aside>
+</div>
+<!-- ═══ 05. INTERACTIVE B ═══ -->
+<div class="col-divider"><span class="divider-num">INTERACTIVE</span></div>
+<div class="col-section">
+<h2>// Try it — the same SE bar lives inside both interval estimation and tests</h2>
+<aside class="col-aside" style="margin-top:0;">
+<span class="col-aside-tag">// What you need going in</span>The next section uses <b style="color:var(--cyan)">interval estimation</b> and <b style="color:var(--magenta)">hypothesis tests</b>. <b>Interval estimation</b> = "a band where the true mean probably sits." <b>Test</b> = "a tool that judges whether observed values are random fluctuation or a real effect." That's enough to follow along — the deeper write-ups live in the linked topics. The thing to see here is just <b style="color:var(--yellow)">"the same SE component is buried inside both."</b>
+</aside>
+<p>
+SE rarely appears alone — it's almost always a component of a <b style="color:var(--cyan)">confidence interval</b> or a <b style="color:var(--magenta)">test statistic</b>.<br/>
+Left: interval estimate (center ± 1.96·SE). Right: test (<code>z = (x̄ − μ₀)/SE</code>; <b style="color:var(--text)">x̄</b> — "x-bar," the mean of the n samples in hand. <b style="color:var(--text)">μ₀</b> — "mu-zero," the value the test posits as the null hypothesis). <b style="color:var(--yellow)">The same-thickness SE bar appears in both pictures, side by side</b>.
+</p>
+<div class="intB-controls">
+<label>n
+<input aria-label="Sample size n (B)" id="seBN" max="900" min="10" step="10" type="range" value="30"/>
+<span class="slider-val" id="seBNVal">30</span>
+</label>
+<label>x̄ (cm)
+<input aria-label="Sample mean x-bar" id="seBXbar" max="178" min="166" step="0.1" type="range" value="173.5"/>
+<span class="slider-val" id="seBXbarVal">173.50</span>
+</label>
+<label>μ₀ (cm)
+<input aria-label="Null-hypothesis value mu_0" id="seBMu" max="178" min="166" step="0.1" type="range" value="172.0"/>
+<span class="slider-val" id="seBMuVal">172.00</span>
+</label>
+</div>
+<div class="intB-stack">
+<canvas aria-busy="true" aria-label="Confidence interval and SE bar" id="seCiCanvas" role="img"></canvas>
+<canvas aria-busy="true" aria-label="Test statistic and SE bar" id="seTestCanvas" role="img"></canvas>
+</div>
+<div class="intB-shared" id="seBSeVal">SE = σ/√n ≈ 1.10</div>
+<div class="intB-readout">
+<div class="ro" id="seBCiTxt">95% interval estimate: [—, —] cm</div>
+<div class="ro ro-test" id="seBTtxt">z = (x̄ − μ₀) / SE = —</div>
+</div>
+<div class="share-row" style="margin-top:14px">
+<button class="share-btn" data-kind="dl" data-share="seCiCanvas" data-title="The SE bar inside interval estimation and tests">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="seCiCanvas" data-title="The SE bar inside interval estimation and tests">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="seCiCanvas" data-title="The SE bar inside interval estimation and tests">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="seCiCanvas" data-title="The SE bar inside interval estimation and tests">📤 Share</button>
+</div>
+<p style="margin-top:24px">
+The interval estimate on the left is <b style="color:var(--cyan)">"a band of ±1.96·SE around x̄."</b> The test on the right measures <b style="color:var(--magenta)">"how many SEs the gap (x̄ − μ₀) is."</b> Sliding n shows the SE bar in <i>both</i> pictures shrinking by the same amount: <b style="color:var(--yellow)">the interval gets narrower</b> while (for the same gap) <b style="color:var(--yellow)">z grows</b>. The two move together because the same component is sitting underneath.
+</p>
+<p>
+"Interval estimation and tests are different tools" is a common framing, but looked at structurally, the two start to look like <b style="color:var(--text)">twins built on the same SE part</b>.
+</p>
+</div>
+<!-- ═══ ONE-LINER ═══ -->
+<div class="takeaway">
+<h3>// In a single line</h3>
+<p style="font-size:16px; line-height:1.8; margin:0;"><b style="color:var(--magenta)">SD is a property baked into the data itself</b>; <b style="color:var(--cyan)">SE is a gauge for how trustworthy an estimate looks</b>. <span style="color:var(--dim)">The two near-identical formulas start moving in different directions the moment n is touched — and that's where the gap between their roles shows up.</span></p>
+</div>
+<!-- ═══ FAQ ═══ -->
+<div class="col-divider"><span class="divider-num">FAQ</span></div>
+<div class="col-section">
+<h2>// Frequently asked questions</h2>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" type="button">What happens to SD and SE if the entire population is measured?</button>
+<div class="faq-a">
+<p>"Both spreads should drop to 0" is the natural first read, but going back to the formulas, the two land in different places.</p>
+<p><b style="color:var(--magenta)">SD = √( (1/n) · Σᵢ (xᵢ − μ)² )</b> is the individual variation itself. Pushing <code>n</code> all the way up to the population size <code>N</code> still leaves both 180 cm and 165 cm people in the formula, so <b style="color:var(--magenta)">SD = σ</b> — it lands on the population standard deviation, not 0.</p>
+<p><b style="color:var(--cyan)">SE = √ Var(<code>x̄</code>)</b> is the wobble of the sample mean. With everyone measured, <code>x̄</code> is no longer random — it's exactly <code>μ</code> every time, so <code>Var(x̄) = 0</code> ⇒ <b style="color:var(--cyan)">SE = 0</b>. The room <code>x̄</code> had to wobble in is gone.</p>
+<p>SD is <b>a property of the data itself</b>; SE is <b>about how trustworthy the estimate is</b>. The <code>√n</code> in <code>SE = σ/√n</code> is the symbol marking the boundary between the two floors.</p>
+</div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" type="button">Should I report SD or SE?</button>
+<div class="faq-a">
+<p>It depends on what the figure is meant to convey. <b style="color:var(--magenta)">SD</b> fits when the goal is to show how variable the individual data points are. <b style="color:var(--cyan)">SE</b> fits when the goal is to show how uncertain the estimated mean is — that is, how much the mean would shift if the experiment were redone. The classic ambiguity in error bars seems to live in exactly this spot, and a lot of it tends to ease up once the caption spells out whether bars represent SD, SE, or a confidence interval.</p>
+</div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" type="button">If I multiply n by 10, does SE shrink by a factor of 10?</button>
+<div class="faq-a">
+<p>No — that's the catch of the √n factor. Because <code>SE = σ/√n</code>, raising n by 10× shrinks SE by only <b style="color:var(--yellow)">√10 ≈ 3.16</b>. Halving SE requires 4× the data; reaching one-tenth of SE requires 100× the data. The intuition that "more data buys precision" is correct, but the cost grows linearly while the precision gained is sub-linear.</p>
+</div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q" type="button">What if I don't know the population σ?</button>
+<div class="faq-a">
+<p>Use the sample standard deviation s instead: <code>SE = s/√n</code>. That's not the whole change, though — <b style="color:var(--text)">the multiplier used in interval estimation and tests also switches from z (standard normal) to t (Student's t)</b>. The t distribution has heavier tails for small n, which widens the interval estimate. SE is still "an estimate of σ/√n," but the multiplier sitting on top of it has moved from the standard normal to the t family.</p>
+</div>
+</div>
+</div>
+<!-- ═══ CTA ═══ -->
+<div class="col-cta">
+<p class="cta-headline">Next stop — drag the SE bar around inside an actual interval estimate.</p>
+<p class="cta-sub">
+SE is rarely used on its own — it shows up as the width of an interval estimate and as the denominator of a test.<br/>
+In the live confidence-interval interactive, try sliding the confidence level and watching ±k·SE stretch and contract in real time.
+</p>
+</div>
+
+<aside id="col-relations">
+<div class="col-topic-cta">
+<h3>// Try it live</h3>
+<a href="../topics/ci.html" class="col-card-topic-cta">
+  <span class="col-card-topic-cta__icon" aria-hidden="true">▶</span>
+  <span class="col-card-topic-cta__body">
+    <span class="col-card-topic-cta__title">Drag the live confidence interval</span>
+    <span class="col-card-topic-cta__desc">Slide the confidence level and watch ±k·SE breathe — SE turns out to be the heart of every CI, visible in real time</span>
+  </span>
+  <span class="col-card-topic-cta__arrow" aria-hidden="true">&rarr;</span>
+</a>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<p style="margin:0 0 10px;color:var(--dim)">Apply what you just read by dragging through the matching interactive topics.</p>
+<ul>
+<li><a href="../topics/clt.html">Central Limit Theorem</a> &mdash; CLT is where SE = σ/√n earns its meaning — the guarantee that sample means go normal is the soil SE grows in</li>
+<li><a href="../topics/ci.html">Confidence Interval</a> &mdash; the SE inside center ± 1.96 × SE comes alive here — the very reason CIs have width is the layer SE belongs to</li>
+<li><a href="../topics/test.html">Hypothesis Testing</a> &mdash; SE drives the denominator of (x̄−μ₀)/SE — the moment CI and tests turn out to be built from the same piece</li>
+<li><a href="../topics/lln.html">Law of Large Numbers</a> &mdash; LLN's guarantee that sample means approach truth is exactly why SE shrinks with n</li>
+<li><a href="../topics/dists.html#dists-t">Three Test Distributions</a> &mdash; when σ is unknown, SE shifts to s/√n and the multiplier swaps z for t — SE in its real-world operating mode</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="./standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">What Is Standardization? — The Universal Translator for "Normal"</span>
+    <span class="fr-desc">if z = (X−μ)/σ is the horizontal translator across units, SE is the vertical translator from individuals to means — the paired sister column</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a href="./error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Makes It Click</span>
+    <span class="fr-desc">the SE lives inside the test denominator — same "add an axis to see" strategy in another guise</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; See all columns</a></p>
+</div>
+</aside>
+</main>
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+</div>
+</footer>
+<script>window.__LANG = 'en';</script>
+<script src="../../js/modules/se_vs_sd.js" type="module"></script>
+</body>
+</html>

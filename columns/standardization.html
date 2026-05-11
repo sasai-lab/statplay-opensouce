@@ -614,7 +614,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 </ul>
 <p>
     つまり偏差値は、標準化の<b style="color:var(--cyan)">ユーザーフレンドリー版</b>。<br/>
-    本質は同じ。「平均からσ何個分か」を測っているだけだ（<a href="./deviation.html">偏差値の正体に降りる</a>）。
+    本質は同じ。「平均からσ何個分か」を測っているだけだ。
   </p>
 <table class="compare-table">
 <thead>
@@ -632,6 +632,24 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <tr><td style="color:var(--dim)">-2σ</td><td style="color:var(--cyan)">-2.0</td><td style="color:var(--magenta)">30</td></tr>
 </tbody>
 </table>
+<figure style="margin:32px 0 16px; padding:20px 24px; border:1px solid rgba(255,0,170,.2); border-left:3px solid var(--magenta); background:rgba(255,0,170,.04);">
+<div style="font-family:'Courier New',monospace; font-size:11px; color:var(--magenta); letter-spacing:1px; margin-bottom:12px;">// QUOTE — 姉妹コラムより</div>
+<blockquote style="margin:0; padding:0; color:var(--text); line-height:1.85;">
+<p style="margin:0 0 10px; font-size:17px;">
+        「偏差値60と偏差値70、差はたった10。でも<b style="color:var(--magenta)">"レア度"は5倍</b>違う。」
+      </p>
+<p style="margin:10px 0 0; font-size:13px; color:var(--dim);">
+        偏差値60は上位<b style="color:var(--text)">15.87%</b>（約6人に1人）、偏差値70は上位<b style="color:var(--text)">2.28%</b>（クラス40人で1位）。
+      </p>
+</blockquote>
+<figcaption style="margin-top:14px; padding-top:12px; border-top:1px dashed rgba(255,0,170,.15); font-family:'Courier New',monospace; font-size:12px; text-align:right;">
+<a href="./deviation.html" style="color:var(--cyan); text-decoration:none;">→ 姉妹コラム「偏差値って何？ — 『上位○%』が3秒で見える」を読む</a>
+</figcaption>
+</figure>
+<p style="margin-top:16px;">
+    Zスコアでいえば、これは <b style="color:var(--cyan)">+1σ から +2σ</b> に進んだだけ。<br/>
+    標準化は単位を消す翻訳機であると同時に、Z の目盛りごとに「どれくらい珍しいか」を貼り付けて運んでいる<b style="color:var(--yellow)">物差し</b>でもある。
+  </p>
 </div>
 <div class="col-divider"><span class="divider-num">06</span></div>
 <!-- ═══ QUIZ ═══ -->
@@ -723,7 +741,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <a href="../topics/stdnorm.html" class="col-card-topic-cta">
   <span class="col-card-topic-cta__icon" aria-hidden="true">▶</span>
   <span class="col-card-topic-cta__body">
-    <span class="col-card-topic-cta__title">「触って動かす」標準正規分布へ</span>
+    <span class="col-card-topic-cta__title">z = (X−μ)/σ で単位を超える瞬間を見る</span>
     <span class="col-card-topic-cta__desc">z = (X − μ)/σ で単位を超えて重なる場面を、N(0,1) の上でスライダーを動かしながら確かめられる</span>
   </span>
   <span class="col-card-topic-cta__arrow" aria-hidden="true">&rarr;</span>
@@ -750,6 +768,14 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
   <span class="fr-body">
     <span class="fr-title">偏差値って何？ — 3秒で「上位何%」が見える</span>
     <span class="fr-desc">z スコアが日本独自の「偏差値」として日常に降りていく姿を追う姉妹コラム</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a href="./se_vs_sd.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🎯</span>
+  <span class="fr-body">
+    <span class="fr-title">標準偏差と標準誤差の違い — SDとSEを1枚の絵で見分ける</span>
+    <span class="fr-desc">z = (X−μ)/σ が単位を超える横の翻訳機なら、SE は個体から平均値への縦の翻訳機、対をなす姉妹コラム</span>
   </span>
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>

@@ -128,6 +128,7 @@
 <a href="columns/standardization.html">What Is Standardization?</a>
 <a href="columns/income_prediction.html">Predicting Income</a>
 <a href="columns/error_types.html">Type I vs Type II</a>
+<a href="columns/se_vs_sd.html">SD vs SE</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -230,30 +231,36 @@
 
 
 
+
 <div class="col-card" style="--col-accent:var(--yellow)">
 <a class="col-card__title" href="columns/deviation.html">What Is a Deviation Value? — See "Top X%" in 3 Seconds →</a><br/>
 <span class="col-card__desc">Deviation 60 vs 70 — just 10 points apart, but 5x the rarity. Grasp the truth interactively.</span>
-<span class="col-card__related">Related: <a href="#stdnorm">stdnorm</a> · <a href="#normal">normal</a> · <a href="#clt">clt</a></span>
+<span class="col-card__related">Related: <a href="#stdnorm">Standard Normal</a> · <a href="#normal">Normal Distribution</a> · <a href="#clt">Central Limit Theorem</a></span>
 </div>
 <div class="col-card" style="--col-accent:var(--magenta)">
 <a class="col-card__title" href="columns/birthday.html">The Birthday Paradox — 23 People, 50%+ Chance →</a><br/>
 <span class="col-card__desc">With just 23 people, a shared birthday is more likely than not. Experience the paradox interactively.</span>
-<span class="col-card__related">Related: <a href="#prob">prob</a> · <a href="#morep">morep</a> · <a href="#chitest">chitest</a></span>
+<span class="col-card__related">Related: <a href="#prob">Probability Rules</a> · <a href="#morep">Discrete &amp; Exponential</a> · <a href="#chitest">Chi-Squared Test</a></span>
 </div>
 <div class="col-card" style="--col-accent:var(--green)">
 <a class="col-card__title" href="columns/standardization.html">What Is Standardization? — The Universal Translator for "Normal" →</a><br/>
 <span class="col-card__desc">182 cm tall vs. TOEIC 860 — which is further from "average"? Learn how Z=(X−μ)/σ lets you compare across units in 3 minutes.</span>
-<span class="col-card__related">Related: <a href="#stdnorm">stdnorm</a> · <a href="#normal">normal</a> · <a href="#clt">clt</a> · <a href="#lln">lln</a> · <a href="#test">test</a> · <a href="#ci">ci</a></span>
+<span class="col-card__related">Related: <a href="#stdnorm">Standard Normal</a> · <a href="#normal">Normal Distribution</a> · <a href="#clt">Central Limit Theorem</a> · <a href="#lln">Law of Large Numbers</a> · <a href="#test">Hypothesis Testing</a> · <a href="#ci">Confidence Interval</a></span>
 </div>
 <div class="col-card" style="--col-accent:var(--cyan)">
 <a class="col-card__title" href="columns/income_prediction.html">Income Prediction — How Far Can Statistics Go? →</a><br/>
 <span class="col-card__desc">Age, gender, prefecture — just three inputs reveal a range of income. A hands-on column on multiple regression.</span>
-<span class="col-card__related">Related: <a href="#reg">reg</a> · <a href="#mreg">mreg</a> · <a href="#corr">corr</a> · <a href="#ci">ci</a></span>
+<span class="col-card__related">Related: <a href="#reg">Simple Regression</a> · <a href="#mreg">Multiple Regression</a> · <a href="#corr">Correlation</a> · <a href="#ci">Confidence Interval</a></span>
 </div>
 <div class="col-card" style="--col-accent:var(--yellow)">
 <a class="col-card__title" href="columns/error_types.html">Type I vs Type II Errors — One 2×2 Table Makes It Click →</a><br/>
 <span class="col-card__desc">α, β, power, and effect size all live on a single 2×2 table. Once you see it, the confusion disappears.</span>
-<span class="col-card__related">Related: <a href="#test">test</a> · <a href="#ci">ci</a> · <a href="#bayes">bayes</a> · <a href="#anova">anova</a> · <a href="#proptest">proptest</a> · <a href="#dists">dists</a></span>
+<span class="col-card__related">Related: <a href="#test">Hypothesis Testing</a> · <a href="#ci">Confidence Interval</a> · <a href="#bayes">Bayes' Theorem</a> · <a href="#anova">ANOVA</a> · <a href="#proptest">Proportion Test</a> · <a href="#dists">Three Test Distributions</a></span>
+</div>
+<div class="col-card" style="--col-accent:var(--orange)">
+<a class="col-card__title" href="columns/se_vs_sd.html">Standard Deviation vs Standard Error — Telling SD and SE Apart in One Picture →</a><br/>
+<span class="col-card__desc">Standard deviation (SD) measures the spread of individuals; standard error (SE) measures the precision of the mean. Same-looking formulas, opposite reactions to n.</span>
+<span class="col-card__related">Related: <a href="#clt">Central Limit Theorem</a> · <a href="#ci">Confidence Interval</a> · <a href="#test">Hypothesis Testing</a> · <a href="#lln">Law of Large Numbers</a> · <a href="#dists">Three Test Distributions</a></span>
 </div>
 </section>
 <!-- ============ TOOL: DISTRIBUTION TABLES ============ -->
@@ -544,9 +551,9 @@
 <div class="guided-steps">
 <b>Experiment Guide — try these in order</b>
 <ol>
-<li><b>Step 1:</b> With defaults (prevalence 1%, sensitivity 99%, specificity 95%), check the positive predictive value → only 16.7%. Feel the gap from intuition.</li>
-<li><b>Step 2:</b> Raise prevalence to <b>50%</b> → PPV jumps dramatically. The prior dominates everything.</li>
-<li><b>Step 3:</b> Reset prevalence to 1%, raise specificity to <b>99.9%</b> → false positives plummet, PPV improves.</li>
+<li><b>Step 1:</b> Sweep prevalence between <b>0.001 (general population)</b> and <b>0.4 (high-risk group)</b> → with the same 99% sensitivity and 95% specificity, PPV swings from <b>1.96% to 92.86%</b>. Feel how strongly the prior dominates.</li>
+<li><b>Step 2:</b> At prevalence 0.001, PPV is just 1.96% — only ~2 of 100 positives are actually sick. Feel the gap from intuition.</li>
+<li><b>Step 3:</b> Keep prevalence at 0.001 but raise specificity to <b>99.9%</b> → false positives plummet, PPV improves dramatically.</li>
 <li><b>Step 4:</b> Watch the "town of 1,000" diagram and compare TP (true positive) vs FP (false positive) counts.</li>
 </ol>
 </div>

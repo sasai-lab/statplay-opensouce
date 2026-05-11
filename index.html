@@ -135,6 +135,7 @@
         <a href="columns/standardization.html" data-lang="ja">標準化って何？</a><a href="en/columns/standardization.html" data-lang="en">What Is Standardization?</a>
         <a href="columns/income_prediction.html" data-lang="ja">年収と統計</a><a href="en/columns/income_prediction.html" data-lang="en">Predicting Income</a>
         <a href="columns/error_types.html" data-lang="ja">過誤の2×2</a><a href="en/columns/error_types.html" data-lang="en">Type I vs Type II</a>
+        <a href="columns/se_vs_sd.html" data-lang="ja">標準偏差と標準誤差</a><a href="en/columns/se_vs_sd.html" data-lang="en">SD vs SE</a>
       </div>
     </div>
     <div class="nav-dropdown">
@@ -267,52 +268,62 @@
   <div data-lang="ja" class="col-card" style="--col-accent:var(--yellow)">
     <a href="columns/deviation.html" class="col-card__title">偏差値って何？ &mdash; 「上位○%」が3秒で見える &rarr;</a><br>
     <span class="col-card__desc">偏差値60と70の差はたった10。でもレア度は5倍。その正体をインタラクティブに掴む。</span>
-    <span class="col-card__related">関連: <a href="#stdnorm">stdnorm</a> &middot; <a href="#normal">normal</a> &middot; <a href="#clt">clt</a></span>
+    <span class="col-card__related">関連: <a href="#stdnorm">標準正規分布</a> &middot; <a href="#normal">正規分布と標準化</a> &middot; <a href="#clt">中心極限定理</a></span>
   </div>
   <div data-lang="ja" class="col-card" style="--col-accent:var(--magenta)">
     <a href="columns/birthday.html" class="col-card__title">誕生日のパラドックス &mdash; 23人で50%超え？ &rarr;</a><br>
     <span class="col-card__desc">23人集まれば誕生日が被る確率は50%超。直感を裏切る確率の世界をシミュレーションで体感。</span>
-    <span class="col-card__related">関連: <a href="#prob">prob</a> &middot; <a href="#morep">morep</a> &middot; <a href="#chitest">chitest</a></span>
+    <span class="col-card__related">関連: <a href="#prob">確率の基本法則</a> &middot; <a href="#morep">二項・ポアソン・指数分布</a> &middot; <a href="#chitest">カイ二乗検定</a></span>
   </div>
   <div data-lang="ja" class="col-card" style="--col-accent:var(--green)">
     <a href="columns/standardization.html" class="col-card__title">標準化って何？ &mdash; 世界中の「ふつう」を比べる翻訳機 &rarr;</a><br>
     <span class="col-card__desc">身長182cmとTOEIC 860点、どっちが「ふつう」から遠い？ Z=(X−μ)/σ で単位を超えて比較する方法を3分で掴む。</span>
-    <span class="col-card__related">関連: <a href="#stdnorm">stdnorm</a> &middot; <a href="#normal">normal</a> &middot; <a href="#clt">clt</a> &middot; <a href="#lln">lln</a> &middot; <a href="#test">test</a> &middot; <a href="#ci">ci</a></span>
+    <span class="col-card__related">関連: <a href="#stdnorm">標準正規分布</a> &middot; <a href="#normal">正規分布と標準化</a> &middot; <a href="#clt">中心極限定理</a> &middot; <a href="#lln">大数の法則</a> &middot; <a href="#test">仮説検定</a> &middot; <a href="#ci">信頼区間</a></span>
   </div>
   <div data-lang="ja" class="col-card" style="--col-accent:var(--cyan)">
     <a href="columns/income_prediction.html" class="col-card__title">年収予測 &mdash; 統計でどこまで当てられるか &rarr;</a><br>
     <span class="col-card__desc">年齢・性別・都道府県の3つだけで年収の「幅」が見える。重回帰分析の実践コラム。</span>
-    <span class="col-card__related">関連: <a href="#reg">reg</a> &middot; <a href="#mreg">mreg</a> &middot; <a href="#corr">corr</a> &middot; <a href="#ci">ci</a></span>
+    <span class="col-card__related">関連: <a href="#reg">単回帰分析</a> &middot; <a href="#mreg">重回帰分析</a> &middot; <a href="#corr">相関係数</a> &middot; <a href="#ci">信頼区間</a></span>
   </div>
   <div data-lang="ja" class="col-card" style="--col-accent:var(--yellow)">
     <a href="columns/error_types.html" class="col-card__title">第一種・第二種の過誤って何が違うの？ &mdash; 2&times;2の表で全部見える &rarr;</a><br>
     <span class="col-card__desc">α・β・検出力・効果量・サンプルサイズ。2&times;2に置き直すと、過誤の混乱が一枚絵に収まる。</span>
-    <span class="col-card__related">関連: <a href="#test">test</a> &middot; <a href="#ci">ci</a> &middot; <a href="#bayes">bayes</a> &middot; <a href="#anova">anova</a> &middot; <a href="#proptest">proptest</a> &middot; <a href="#dists">dists</a></span>
+    <span class="col-card__related">関連: <a href="#test">仮説検定</a> &middot; <a href="#ci">信頼区間</a> &middot; <a href="#bayes">ベイズの定理</a> &middot; <a href="#anova">分散分析（ANOVA）</a> &middot; <a href="#proptest">母比率の検定と推定</a> &middot; <a href="#dists">三大検定分布</a></span>
+  </div>
+  <div data-lang="ja" class="col-card" style="--col-accent:var(--orange)">
+    <a href="columns/se_vs_sd.html" class="col-card__title">標準偏差と標準誤差の違い &mdash; SDとSEを1枚の絵で見分ける &rarr;</a><br>
+    <span class="col-card__desc">標準偏差（SD）は個々のばらつき、標準誤差（SE）は平均の精度。字も式も似ているけれど別物で、n を動かすと2つは別の方向に動き出す。</span>
+    <span class="col-card__related">関連: <a href="#clt">中心極限定理</a> &middot; <a href="#ci">信頼区間</a> &middot; <a href="#test">仮説検定</a> &middot; <a href="#lln">大数の法則</a> &middot; <a href="#dists">三大検定分布</a></span>
   </div>
   <div data-lang="en" class="col-card" style="--col-accent:var(--yellow)">
     <a href="en/columns/deviation.html" class="col-card__title">What Is a Deviation Value? &mdash; See "Top X%" in 3 Seconds &rarr;</a><br>
     <span class="col-card__desc">Deviation 60 vs 70 — just 10 points apart, but 5x the rarity. Grasp the truth interactively.</span>
-    <span class="col-card__related">Related: <a href="#stdnorm">stdnorm</a> &middot; <a href="#normal">normal</a> &middot; <a href="#clt">clt</a></span>
+    <span class="col-card__related">Related: <a href="#stdnorm">Standard Normal</a> &middot; <a href="#normal">Normal Distribution</a> &middot; <a href="#clt">Central Limit Theorem</a></span>
   </div>
   <div data-lang="en" class="col-card" style="--col-accent:var(--magenta)">
     <a href="en/columns/birthday.html" class="col-card__title">The Birthday Paradox &mdash; 23 People, 50%+ Chance &rarr;</a><br>
     <span class="col-card__desc">With just 23 people, a shared birthday is more likely than not. Experience the paradox interactively.</span>
-    <span class="col-card__related">Related: <a href="#prob">prob</a> &middot; <a href="#morep">morep</a> &middot; <a href="#chitest">chitest</a></span>
+    <span class="col-card__related">Related: <a href="#prob">Probability Rules</a> &middot; <a href="#morep">Discrete & Exponential</a> &middot; <a href="#chitest">Chi-Squared Test</a></span>
   </div>
   <div data-lang="en" class="col-card" style="--col-accent:var(--green)">
     <a href="en/columns/standardization.html" class="col-card__title">What Is Standardization? &mdash; The Universal Translator for "Normal" &rarr;</a><br>
     <span class="col-card__desc">182 cm tall vs. TOEIC 860 — which is further from "average"? Learn how Z=(X−μ)/σ lets you compare across units in 3 minutes.</span>
-    <span class="col-card__related">Related: <a href="#stdnorm">stdnorm</a> &middot; <a href="#normal">normal</a> &middot; <a href="#clt">clt</a> &middot; <a href="#lln">lln</a> &middot; <a href="#test">test</a> &middot; <a href="#ci">ci</a></span>
+    <span class="col-card__related">Related: <a href="#stdnorm">Standard Normal</a> &middot; <a href="#normal">Normal Distribution</a> &middot; <a href="#clt">Central Limit Theorem</a> &middot; <a href="#lln">Law of Large Numbers</a> &middot; <a href="#test">Hypothesis Testing</a> &middot; <a href="#ci">Confidence Interval</a></span>
   </div>
   <div data-lang="en" class="col-card" style="--col-accent:var(--cyan)">
     <a href="en/columns/income_prediction.html" class="col-card__title">Income Prediction &mdash; How Far Can Statistics Go? &rarr;</a><br>
     <span class="col-card__desc">Age, gender, prefecture — just three inputs reveal a range of income. A hands-on column on multiple regression.</span>
-    <span class="col-card__related">Related: <a href="#reg">reg</a> &middot; <a href="#mreg">mreg</a> &middot; <a href="#corr">corr</a> &middot; <a href="#ci">ci</a></span>
+    <span class="col-card__related">Related: <a href="#reg">Simple Regression</a> &middot; <a href="#mreg">Multiple Regression</a> &middot; <a href="#corr">Correlation</a> &middot; <a href="#ci">Confidence Interval</a></span>
   </div>
   <div data-lang="en" class="col-card" style="--col-accent:var(--yellow)">
     <a href="en/columns/error_types.html" class="col-card__title">Type I vs Type II Errors &mdash; One 2&times;2 Table Makes It Click &rarr;</a><br>
     <span class="col-card__desc">α, β, power, and effect size all live on a single 2&times;2 table. Once you see it, the confusion disappears.</span>
-    <span class="col-card__related">Related: <a href="#test">test</a> &middot; <a href="#ci">ci</a> &middot; <a href="#bayes">bayes</a> &middot; <a href="#anova">anova</a> &middot; <a href="#proptest">proptest</a> &middot; <a href="#dists">dists</a></span>
+    <span class="col-card__related">Related: <a href="#test">Hypothesis Testing</a> &middot; <a href="#ci">Confidence Interval</a> &middot; <a href="#bayes">Bayes' Theorem</a> &middot; <a href="#anova">ANOVA</a> &middot; <a href="#proptest">Proportion Test</a> &middot; <a href="#dists">Three Test Distributions</a></span>
+  </div>
+  <div data-lang="en" class="col-card" style="--col-accent:var(--orange)">
+    <a href="en/columns/se_vs_sd.html" class="col-card__title">Standard Deviation vs Standard Error &mdash; Telling SD and SE Apart in One Picture &rarr;</a><br>
+    <span class="col-card__desc">Standard deviation (SD) measures the spread of individuals; standard error (SE) measures the precision of the mean. Same-looking formulas, opposite reactions to n.</span>
+    <span class="col-card__related">Related: <a href="#clt">Central Limit Theorem</a> &middot; <a href="#ci">Confidence Interval</a> &middot; <a href="#test">Hypothesis Testing</a> &middot; <a href="#lln">Law of Large Numbers</a> &middot; <a href="#dists">Three Test Distributions</a></span>
   </div>
 </section>
 
@@ -712,18 +723,18 @@
 <div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> 初期設定（有病率1%, 感度99%, 特異度95%）で陽性的中率を確認 → たった16.7%。直感とのズレを味わう。</li>
-      <li><b>Step 2:</b> 有病率を <b>50%</b> に上げる → 陽性的中率が一気に跳ね上がる。事前確率がすべてを支配している。</li>
-      <li><b>Step 3:</b> 有病率を1%に戻し、特異度を <b>99.9%</b> にする → 偽陽性が激減し、陽性的中率が改善。</li>
+      <li><b>Step 1:</b> 有病率を <b>0.001（一般集団）</b> と <b>0.4（高リスク群）</b> で往復してみる → 同じ感度99%・特異度95%なのに、陽性的中率が <b>1.96% から 92.86%</b> へ大きく動く。事前確率の効き方を体感する。</li>
+      <li><b>Step 2:</b> 有病率 0.001 で陽性的中率はたった 1.96%。陽性100人のうち、実際に病気なのは2人だけ。直感とのズレを味わう。</li>
+      <li><b>Step 3:</b> 有病率を 0.001 のまま、特異度を <b>99.9%</b> にする → 偽陽性が激減し、陽性的中率が劇的に改善。</li>
       <li><b>Step 4:</b> 1000人の町の図を見ながら、TP（真陽性）と FP（偽陽性）の人数比を確認しよう。</li>
     </ol>
   </div>
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> With defaults (prevalence 1%, sensitivity 99%, specificity 95%), check the positive predictive value → only 16.7%. Feel the gap from intuition.</li>
-      <li><b>Step 2:</b> Raise prevalence to <b>50%</b> → PPV jumps dramatically. The prior dominates everything.</li>
-      <li><b>Step 3:</b> Reset prevalence to 1%, raise specificity to <b>99.9%</b> → false positives plummet, PPV improves.</li>
+      <li><b>Step 1:</b> Sweep prevalence between <b>0.001 (general population)</b> and <b>0.4 (high-risk group)</b> → with the same 99% sensitivity and 95% specificity, PPV swings from <b>1.96% to 92.86%</b>. Feel how strongly the prior dominates.</li>
+      <li><b>Step 2:</b> At prevalence 0.001, PPV is just 1.96% — only ~2 of 100 positives are actually sick. Feel the gap from intuition.</li>
+      <li><b>Step 3:</b> Keep prevalence at 0.001 but raise specificity to <b>99.9%</b> → false positives plummet, PPV improves dramatically.</li>
       <li><b>Step 4:</b> Watch the "town of 1,000" diagram and compare TP (true positive) vs FP (false positive) counts.</li>
     </ol>
   </div>

@@ -11,6 +11,7 @@ export default [
       'scripts/test_layout.mjs',
       'scripts/test_e2e.mjs',
       'scripts/capture_ogp.mjs',
+      'scripts/build_og_screenshot.mjs',
       'scripts/legacy/**',
       'scripts/_split_tests.py',
       // Local-only diagnostic scratches (Playwright-driven, not in CI path).

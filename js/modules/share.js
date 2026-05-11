@@ -74,11 +74,22 @@ export function initShare(){
     if(location.pathname.includes('/tables/')) return location.href;
     const src=document.getElementById(srcId);
     if(!src) return location.href;
-    const panel=src.closest('.panel');
+    // Container that owns the related form controls: hub topics use .panel,
+    // column pages put canvases in block wrappers (.intA-block, .intB-block,
+    // .sim-block, etc.) instead. Fall back to the nearest ancestor that
+    // actually contains a range/select so column URL-copy works.
+    let container=src.closest('.panel');
+    if(!container){
+      let el=src.parentElement;
+      while(el && el!==document.body){
+        if(el.querySelector('input[type="range"], select')){ container=el; break; }
+        el=el.parentElement;
+      }
+    }
     const section=src.closest('section');
     const params=new URLSearchParams();
-    if(panel){
-      panel.querySelectorAll('input[type="range"], select').forEach(el=>{
+    if(container){
+      container.querySelectorAll('input[type="range"], select').forEach(el=>{
         if(!el.id) return;
         params.set(el.id, el.value);
       });
