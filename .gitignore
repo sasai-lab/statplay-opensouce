@@ -16,6 +16,7 @@ test-results/
 *_instructions.md
 *_draft.md
 qiita-articles/
+note-articles/
 
 # Sub-agent scratch directories and files (not for release)
 .tmp_*/

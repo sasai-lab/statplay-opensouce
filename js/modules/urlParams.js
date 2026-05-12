@@ -16,10 +16,15 @@ export function initUrlParams(){
       pending.push([el,'input']);
     }
   });
-  // Dispatch after the current microtask so all modules are fully initialized.
-  setTimeout(()=>{
+  if(pending.length===0) return;
+  function dispatchPending(){
     pending.forEach(([el,type])=>{
       try{el.dispatchEvent(new Event(type,{bubbles:true}));}catch(_){}
     });
-  },50);
+  }
+  // Dispatch once shortly after init so eager modules pick it up...
+  setTimeout(dispatchPending,150);
+  // ...and again whenever a lazily-loaded widget finishes initialising, so a
+  // deep-link into a widget that hadn't loaded yet still restores its state.
+  document.addEventListener('statplay:widget-ready',dispatchPending);
 }
